@@ -1,0 +1,60 @@
+/* ApostilleXpress — Typography tokens
+   Brand typeface: Roboto. Heading scale follows Bootstrap (h1 40 → h6 16);
+   display scale 40→80. Body default 16px / Regular. */
+
+:root {
+  /* Families */
+  --ax-font-base: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --ax-font-heading: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --ax-font-condensed: "Roboto Condensed", "Roboto", sans-serif;
+
+  /* Weights */
+  --ax-fw-light: 300; /* @kind other */
+  --ax-fw-regular: 400; /* @kind other */
+  --ax-fw-medium: 500; /* @kind other */
+  --ax-fw-semibold: 600; /* @kind other */
+  --ax-fw-bold: 700; /* @kind other */
+
+  /* Display line-height 120%; headings/body auto (Bootstrap 1.2 / 1.5) */
+  --ax-lh-display: 1.2; /* @kind other */
+  --ax-lh-heading: 1.2; /* @kind other */
+
+  /* Lead paragraph 20px; p 16px; small 14px (weights 300/400/600/700) */
+  --ax-lead: 20px;
+  --ax-p: 16px;
+  --ax-small: 14px;
+
+  /* Display scale (px) */
+  --ax-display-1: 80px;
+  --ax-display-2: 72px;
+  --ax-display-3: 64px;
+  --ax-display-4: 56px;
+  --ax-display-5: 48px;
+  --ax-display-6: 40px;
+
+  /* Heading scale (Bootstrap, px) */
+  --ax-h1: 40px;
+  --ax-h2: 32px;
+  --ax-h3: 28px;
+  --ax-h4: 24px;
+  --ax-h5: 20px;
+  --ax-h6: 16px;
+
+  /* Body / text scale (px) */
+  --ax-text-xl: 20px;
+  --ax-text-lg: 18px;
+  --ax-text-md: 16px;   /* base */
+  --ax-text-sm: 14px;
+  --ax-text-xs: 12px;
+
+  /* Line heights */
+  --ax-lh-tight: 1.2; /* @kind other */
+  --ax-lh-snug: 1.35; /* @kind other */
+  --ax-lh-base: 1.5; /* @kind other */
+  --ax-lh-relaxed: 1.65; /* @kind other */
+
+  /* Letter spacing */
+  --ax-tracking-tight: -0.01em; /* @kind other */
+  --ax-tracking-normal: 0; /* @kind other */
+  --ax-tracking-wide: 0.04em; /* @kind other */
+}

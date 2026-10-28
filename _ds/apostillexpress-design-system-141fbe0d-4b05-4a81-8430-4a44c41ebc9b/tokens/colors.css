@@ -1,0 +1,201 @@
+/* ApostilleXpress — Color tokens
+   Extracted from "Design System 2.0" Figma Variables.
+   Three layers: (1) primitive palettes, (2) brand + patriot accents,
+   (3) semantic aliases that components consume. Always prefer the
+   semantic aliases (--ax-text-*, --ax-surface-*, --ax-border-*) in UI. */
+
+:root {
+  /* ---- Brand: AX teal ---------------------------------------------- */
+  --ax-sea-depths: #0D5257;   /* primary — deep teal (logo base) */
+  --ax-aqua:       #00B6BD;   /* primary light — bright aqua (logo top) */
+  --ax-aqua-bright: #00b0be;  /* logo gradient stop */
+  --ax-teal-700:   #094b50;
+  --ax-teal-600:   #0d5257;
+  --ax-teal-500:   #117e85;
+  --ax-teal-400:   #2a9aa1;
+  --ax-teal-300:   #63adb3;
+  --ax-teal-200:   #a6e9d5;
+  --ax-teal-100:   #d2f4ea;
+  --ax-teal-50:    #ebfbfc;   /* pale cyan wash */
+
+  /* ---- Brand (Colors.pdf) ------------------------------------------ */
+  --ax-brand-light: #00B6BD;  /* Color Light */
+  --ax-brand-theme: #0D5257;  /* Theme Color */
+  --ax-hitbox: rgba(255, 255, 255, 0);
+
+  /* ---- Bootstrap theme colors ------------------------------------- */
+  --ax-primary:   #0D6EFD;
+  --ax-secondary: #6C757D;
+  --ax-success:   #198754;
+  --ax-danger:    #DC3545;
+  --ax-warning:   #FFC107;
+  --ax-info:      #0DCAF0;
+  --ax-light:     #F8F9FA;
+  --ax-dark:      #212529;
+  --ax-border-color: #DEE2E6;
+  --ax-body-color:   #212529;
+
+  /* ---- Patriot accents (kept for logos) --------------------------- */
+  --ax-freedom-blue:   #0074c2;
+  --ax-integrity-blue: #0086c4;
+  --ax-patriot-red:    #f36f6f;
+  --ax-midnight-blue:  #09101d;
+
+  /* ---- Gray ramp -------------------------------------------------- */
+  --ax-white:    #FFFFFF;
+  --ax-gray-25:  #FEFEFE;
+  --ax-gray-50:  #FEFEFE;
+  --ax-gray-100: #F8F9FA;
+  --ax-gray-200: #E9ECEF;
+  --ax-gray-300: #DEE2E6;
+  --ax-gray-400: #CED4DA;
+  --ax-gray-500: #ADB5BD;
+  --ax-gray-600: #6C757D;
+  --ax-gray-700: #495057;
+  --ax-gray-800: #343A40;
+  --ax-gray-900: #212529;
+  --ax-gray-950: #181818;
+  --ax-black:    #000000;
+
+  /* ---- Color palettes (100 lightest → 900 darkest) ---------------- */
+  --ax-blue-100: #E7F1FF;
+  --ax-blue-200: #9EC5FE;
+  --ax-blue-300: #6EA8FE;
+  --ax-blue-400: #3D8BFD;
+  --ax-blue-500: #0D6EFD;
+  --ax-blue-600: #0A58CA;
+  --ax-blue-700: #084298;
+  --ax-blue-800: #052C65;
+  --ax-blue-900: #031633;
+  --ax-indigo-100: #E0CFFC;
+  --ax-indigo-200: #C29FFA;
+  --ax-indigo-300: #A370F7;
+  --ax-indigo-400: #8540F5;
+  --ax-indigo-500: #6610F2;
+  --ax-indigo-600: #520DC2;
+  --ax-indigo-700: #3D0A91;
+  --ax-indigo-800: #290661;
+  --ax-indigo-900: #140330;
+  --ax-purple-100: #E2D9F3;
+  --ax-purple-200: #C5B3E6;
+  --ax-purple-300: #A98EDA;
+  --ax-purple-400: #8C68CD;
+  --ax-purple-500: #6F42C1;
+  --ax-purple-600: #59359A;
+  --ax-purple-700: #432874;
+  --ax-purple-800: #2C1A4D;
+  --ax-purple-900: #160D27;
+  --ax-pink-100: #F7D6E6;
+  --ax-pink-200: #EFADCE;
+  --ax-pink-300: #E685B5;
+  --ax-pink-400: #DE5C9D;
+  --ax-pink-500: #D63384;
+  --ax-pink-600: #AB296A;
+  --ax-pink-700: #801F4F;
+  --ax-pink-800: #561435;
+  --ax-pink-900: #2B0A1A;
+  --ax-red-100: #F8D7DA;
+  --ax-red-200: #F1AEB5;
+  --ax-red-300: #EA868F;
+  --ax-red-400: #E35D6A;
+  --ax-red-500: #D92D20;
+  --ax-red-600: #B42318;
+  --ax-red-700: #990A00;
+  --ax-red-800: #58151C;
+  --ax-red-900: #2C0B0E;
+  --ax-orange-100: #FFE5D0;
+  --ax-orange-200: #FECBA1;
+  --ax-orange-300: #FEB272;
+  --ax-orange-400: #FD9843;
+  --ax-orange-500: #FD7E14;
+  --ax-orange-600: #CA6510;
+  --ax-orange-700: #984C0C;
+  --ax-orange-800: #653208;
+  --ax-orange-900: #331904;
+  --ax-yellow-100: #FFF3CD;
+  --ax-yellow-200: #FFE69C;
+  --ax-yellow-300: #FFDA6A;
+  --ax-yellow-400: #FFCD39;
+  --ax-yellow-500: #FFC107;
+  --ax-yellow-600: #CC9A06;
+  --ax-yellow-700: #997404;
+  --ax-yellow-800: #664D03;
+  --ax-yellow-900: #332701;
+  --ax-green-100: #D1E7DD;
+  --ax-green-200: #A3CFBB;
+  --ax-green-300: #75B798;
+  --ax-green-400: #479F76;
+  --ax-green-500: #198754;
+  --ax-green-600: #146C43;
+  --ax-green-700: #0F5132;
+  --ax-green-800: #0A3622;
+  --ax-green-900: #051B11;
+  --ax-mint-100: #D2F4EA;
+  --ax-mint-200: #A6E9D5;
+  --ax-mint-300: #79DFC1;
+  --ax-mint-400: #4DD4AC;
+  --ax-mint-500: #20C997;
+  --ax-mint-600: #1AA179;
+  --ax-mint-700: #13795B;
+  --ax-mint-800: #0D503C;
+  --ax-mint-900: #06281E;
+  --ax-cyan-100: #CFF4FC;
+  --ax-cyan-200: #9EEAF9;
+  --ax-cyan-300: #6EDFF6;
+  --ax-cyan-400: #3DD5F3;
+  --ax-cyan-500: #0DCAF0;
+  --ax-cyan-600: #0AA2C0;
+  --ax-cyan-700: #087990;
+  --ax-cyan-800: #0D5257;
+  --ax-cyan-900: #032830;
+
+  /* ---- Status scales (kept names; mapped to palette) -------------- */
+  --ax-success-700: #146C43; --ax-success-600: #198754; --ax-success-500: #198754; --ax-success-200: #A3CFBB; --ax-success-50: #D1E7DD;
+  --ax-warning-700: #997404; --ax-warning-600: #CC9A06; --ax-warning-500: #FFC107; --ax-warning-200: #FFE69C; --ax-warning-50: #FFF3CD;
+  --ax-danger-700: #B02A37; --ax-danger-600: #DC3545; --ax-danger-500: #DC3545; --ax-danger-200: #F1AEB5; --ax-danger-50: #F8D7DA;
+  --ax-info-700: #055160; --ax-info-600: #087990; --ax-info-500: #0DCAF0; --ax-info-200: #9EEAF9; --ax-info-50: #CFF4FC;
+
+  /* ===== SEMANTIC ALIASES (use these in components) ================ */
+  /* Text */
+  --ax-text-primary:    var(--ax-gray-900);   /* #212529 body */
+  --ax-text-secondary:  var(--ax-gray-700);
+  --ax-text-tertiary:   var(--ax-gray-600);
+  --ax-text-disabled:   var(--ax-gray-500);
+  --ax-text-placeholder: var(--ax-gray-500);
+  --ax-text-brand:      var(--ax-sea-depths);
+  --ax-text-on-brand:   var(--ax-white);
+  --ax-text-error:      var(--ax-danger-600);
+  --ax-text-success:    var(--ax-success-600);
+  --ax-text-link:       var(--ax-sea-depths);
+
+  /* Surfaces / backgrounds */
+  --ax-surface-page:      var(--ax-gray-100);
+  --ax-surface-card:      var(--ax-white);
+  --ax-surface-sunken:    var(--ax-gray-200);
+  --ax-surface-hover:     var(--ax-gray-100);
+  --ax-surface-disabled:  var(--ax-gray-200);
+  --ax-surface-brand:     var(--ax-sea-depths);
+  --ax-surface-brand-hover: var(--ax-teal-700);
+  --ax-surface-brand-subtle: var(--ax-teal-50);
+  --ax-surface-inverse:   var(--ax-midnight-blue);
+
+  /* Borders */
+  --ax-border:          var(--ax-gray-300);
+  --ax-border-subtle:   var(--ax-gray-200);
+  --ax-border-strong:   var(--ax-gray-400);
+  --ax-border-brand:    var(--ax-sea-depths);
+  --ax-border-focus:    var(--ax-aqua);
+  --ax-border-error:    var(--ax-danger-500);
+
+  /* Status surfaces (subtle fills for alerts/badges) */
+  --ax-fill-success: var(--ax-success-50);
+  --ax-fill-warning: var(--ax-warning-50);
+  --ax-fill-danger:  var(--ax-danger-50);
+  --ax-fill-info:    var(--ax-info-50);
+
+  /* Focus ring */
+  --ax-focus-ring: 0 0 0 4px rgba(0, 182, 189, 0.35);
+  /* Form-control focus (inputs, selects, textareas, checkbox, switch) */
+  --ax-focus-control: #6EA8FE;
+  --ax-focus-ring-control: 0 0 0 4px rgba(110, 168, 254, 0.35);
+}

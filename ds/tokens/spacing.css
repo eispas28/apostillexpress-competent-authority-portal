@@ -1,0 +1,77 @@
+/* ApostilleXpress — Spacing, radius, layout tokens
+   Spacing on a 4px base scale. Radius and breakpoints from Figma. */
+
+:root {
+  /* Spacing (4px base) */
+  --ax-space-0: 0;
+  --ax-space-0-5: 2px;
+  --ax-space-1: 4px;
+  --ax-space-1-5: 6px;
+  --ax-space-2: 8px;
+  --ax-space-3: 12px;
+  --ax-space-4: 16px;
+  --ax-space-5: 20px;
+  --ax-space-6: 24px;
+  --ax-space-8: 32px;
+  --ax-space-10: 40px;
+  --ax-space-12: 48px;
+  --ax-space-16: 64px;
+  --ax-space-20: 80px;
+  --ax-space-24: 96px;
+  --ax-space-32: 128px;
+
+  /* Spacing primitives (Spacing primitives.pdf): 1 unit = 0.25rem = 4px */
+  --ax-sp-0: 0px; /* @kind spacing */
+  --ax-sp-1: 0.25rem; /* 4px */
+  --ax-sp-2: 0.5rem;  /* 8px */
+  --ax-sp-3: 1rem;    /* 16px */
+  --ax-sp-4: 1.5rem;  /* 24px */
+  --ax-sp-5: 3rem;    /* 48px */
+
+  /* Named spacing aliases */
+  --ax-gap-xs: var(--ax-space-1);
+  --ax-gap-sm: var(--ax-space-2);
+  --ax-gap-md: var(--ax-space-4);
+  --ax-gap-lg: var(--ax-space-6);
+  --ax-gap-xl: var(--ax-space-8);
+
+  /* Radius */
+  --ax-radius-none: 0;
+  --ax-radius-xs: 4px;
+  --ax-radius-sm: 6px;
+  --ax-radius-md: 8px;
+  --ax-radius-lg: 10px;
+  --ax-radius-xl: 12px;
+  --ax-radius-2xl: 16px;
+  --ax-radius-3xl: 20px;
+  --ax-radius-full: 9999px;
+
+  /* Border widths */
+  --ax-border-width: 1px;
+  --ax-border-width-thick: 2px;
+
+  /* Layout / breakpoints (Bootstrap grid) */
+  --ax-bp-sm: 576px;
+  --ax-bp-md: 768px;
+  --ax-bp-lg: 992px;
+  --ax-bp-xl: 1200px;
+  --ax-bp-xxl: 1400px;
+
+  /* Container max widths */
+  --ax-container-sm: 540px;
+  --ax-container-md: 720px;
+  --ax-container-lg: 960px;
+  --ax-container-xl: 1140px;
+  --ax-container-xxl: 1320px;
+
+  /* Z-index scale */
+  --ax-z-dropdown: 1000; /* @kind other */
+  --ax-z-sticky: 1020; /* @kind other */
+  --ax-z-fixed: 1030; /* @kind other */
+  --ax-z-offcanvas: 1045; /* @kind other */
+  --ax-z-modal-backdrop: 1050; /* @kind other */
+  --ax-z-modal: 1055; /* @kind other */
+  --ax-z-popover: 1070; /* @kind other */
+  --ax-z-tooltip: 1080; /* @kind other */
+  --ax-z-toast: 1090; /* @kind other */
+}

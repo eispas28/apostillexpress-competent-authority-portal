@@ -1,0 +1,10 @@
+/* ApostilleXpress Design System — global entry point.
+   This is the single file consumers link. Imports only. */
+
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/shadows.css";
+@import "./tokens/base.css";
+@import "./components.css";

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="ds/tokens/fonts.css">
+  <link rel="stylesheet" href="ds/tokens/colors.css">
+  <link rel="stylesheet" href="ds/tokens/typography.css">
+  <link rel="stylesheet" href="ds/tokens/spacing.css">
+  <link rel="stylesheet" href="ds/tokens/shadows.css">
+  <link rel="stylesheet" href="ds/tokens/base.css">
+  <link rel="stylesheet" href="ds/components.css">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="ds/ds-bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--ax-gray-50, #F8F9FA); font-family: Roboto, system-ui, sans-serif; color: var(--ax-text-primary, #212529); }
+    a { color: var(--ax-sea-depths, #0D5257); }
+    a:hover { color: var(--ax-aqua, #00B6BD); }
+  </style>
+</helmet>
+
+<div style="display:flex;flex-direction:column;gap:18px;padding:24px 24px 56px;max-width:1180px;margin:0 auto">
+
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--ax-text-secondary)">
+      <i class="bi bi-flag" aria-hidden="true"></i><span style="text-transform:uppercase">Feature flag</span><span aria-hidden="true">·</span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px">parentLevelRefunds</span>
+    </div>
+    <h1 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Parent-Level Refund</h1>
+    <p style="margin:0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">Refunds are processed against the Parent Order only. Child Orders are not financial entities, are not selectable, and receive no allocation.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">Flag state</span>
+      <div style="display:inline-flex;padding:3px;background:var(--ax-gray-100);border:1px solid var(--ax-gray-200);border-radius:8px;gap:2px">
+        <sc-for list="{{ flagTabs }}" as="t" hint-placeholder-count="2">
+          <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 14px;border:none;border-radius:6px;background:{{ t.bg }};font:inherit;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ isOn }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+        <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">State</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <sc-for list="{{ stateTabs }}" as="t" hint-placeholder-count="6">
+            <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 12px;border:1px solid {{ t.bd }};border-radius:624.9375rem;background:{{ t.bg }};font:inherit;font-size:12.5px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ isOff }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-text-secondary);border-radius:10px">
+        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-text-secondary);font-size:15px"></i>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">No UI changes</div>
+          <p style="margin:4px 0 0;max-width:68ch;font-size:13.5px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">The existing refund modal and existing child-order refund behavior remain unchanged. Shown below for reference; it is not part of this design.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;background:rgba(11,31,59,.55);border-radius:12px">
+        <div role="group" aria-label="Existing refund modal, unchanged" style="width:100%;max-width:720px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 24px 48px -12px rgba(10,13,18,.18);opacity:.72">
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 20px 0">
+            <div style="flex:1">
+              <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
+              <p style="margin:6px 0 0;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">Select the child orders to refund. Processing a refund does not change the order status.</p>
+              <p style="margin:6px 0 0;font-size:13px;color:var(--ax-text-tertiary)">Order #307-600</p>
+            </div>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;color:var(--ax-text-tertiary);font-size:15px"><i class="bi bi-x-lg" aria-hidden="true"></i></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:14px 20px 0">
+            <span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:13px;font-weight:600;color:var(--ax-text-primary)">Select All</span>
+            <span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:13px;font-weight:600;color:var(--ax-text-primary)">Clear All</span>
+            <div style="flex:1"></div>
+            <span style="font-size:13.5px;color:var(--ax-text-secondary)">Refund amount <strong style="color:var(--ax-text-primary)">$40.00</strong></span>
+          </div>
+          <div style="margin:12px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+            <sc-for list="{{ offRows }}" as="k" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--ax-gray-100)">
+                <span style="width:16px;height:16px;border:1px solid var(--ax-gray-500);border-radius:3px;background:var(--ax-sea-depths)"></span>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">{{ k.name }}</div>
+                  <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">{{ k.meta }}</div>
+                </div>
+                <span style="font-size:13.5px;color:var(--ax-text-secondary)">{{ k.service }}</span>
+                <span style="display:inline-flex;align-items:center;gap:6px">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ k.statusColor }}" size="sm" pill="{{ true }}" dot="{{ true }}" hint-size="auto,24px">{{ k.status }}</x-import>
+                  <sc-if value="{{ k.refunded }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border:1px solid var(--ax-gray-300);border-radius:624.9375rem;background:var(--ax-gray-50);font-size:11.5px;font-weight:600;color:var(--ax-text-secondary)">Refunded</span>
+                  </sc-if>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding:16px 20px 0">
+            <div style="font-size:13px;font-weight:600;color:var(--ax-text-secondary)">Reason *</div>
+            <div style="margin-top:6px;height:42px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;line-height:42px;font-size:14px;color:var(--ax-text-tertiary)">Select a reason</div>
+          </div>
+          <div style="padding:14px 20px 0">
+            <div style="font-size:13px;font-weight:600;color:var(--ax-text-secondary)">Type REFUND to confirm *</div>
+            <div style="margin-top:6px;height:42px;padding:0 14px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;line-height:42px;font-size:15px;color:var(--ax-text-tertiary)">REFUND</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;padding:18px 20px 20px">
+            <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:var(--ax-text-primary)">Cancel</span>
+            <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;background:var(--ax-danger-600);font-size:14px;font-weight:600;color:#fff">Process Refund</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isOn }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-sea-depths);border-radius:10px">
+        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-sea-depths);font-size:15px"></i>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">{{ scenarioTitle }}</div>
+          <p style="margin:4px 0 0;max-width:68ch;font-size:13.5px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">{{ scenarioNote }}</p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;background:rgba(11,31,59,.55);border-radius:12px">
+        <div role="dialog" aria-modal="true" aria-labelledby="plr-title" style="width:100%;max-width:560px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 24px 48px -12px rgba(10,13,18,.18)">
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 20px 0">
+            <div style="flex:1;min-width:0">
+              <h2 id="plr-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
+              <p style="margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">Recorded against the Parent Order. Child Order statuses are unchanged.</p>
+              <p style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 0;font-size:13px;color:var(--ax-text-tertiary)">
+                <span>{{ orderRef }}</span>
+                <span aria-hidden="true">|</span>
+                <span>Paid {{ paidDate }}</span>
+                <span aria-hidden="true">|</span>
+                <a href="#invoice" target="_blank" rel="noopener" style="font-weight:600;color:var(--ax-sea-depths);text-decoration:none">View Invoice</a>
+              </p>
+            </div>
+            <button type="button" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+          </div>
+
+          <div style="margin:16px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px">
+              <span style="font-size:13.5px;color:var(--ax-text-primary)">Maximum State Fee Refundable</span>
+              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailState }}</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px;border-top:1px solid var(--ax-gray-100)">
+              <span style="font-size:13.5px;color:var(--ax-text-primary)">Maximum AX Fee Refundable</span>
+              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailAX }}</span>
+            </div>
+            <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px;border-top:1px solid var(--ax-gray-100)">
+                <span style="font-size:13.5px;color:var(--ax-text-secondary)">Previously refunded</span>
+                <span style="font-size:14px;font-weight:500;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ fRefunded }}</span>
+              </div>
+            </sc-if>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 14px;border-top:1px solid var(--ax-gray-200);background:var(--ax-gray-50)">
+              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">Total Maximum Refundable Amount</span>
+              <span style="font-size:16px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fMax }}</span>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:10px 20px 0">
+              <button type="button" onClick="{{ toggleHistory }}" aria-expanded="{{ historyOpen }}" aria-controls="plr-history" style="display:inline-flex;align-items:center;gap:6px;padding:0;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ historyToggleLabel }}<i class="{{ histCaret }}" aria-hidden="true" style="font-size:10px"></i></button>
+            </div>
+            <sc-if value="{{ historyOpen }}" hint-placeholder-val="{{ false }}">
+              <div id="plr-history" style="margin:10px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+                <div style="padding:9px 14px;background:var(--ax-gray-50);border-bottom:1px solid var(--ax-gray-200);font-size:12.5px;font-weight:600;color:var(--ax-text-secondary)">Refund Activity</div>
+                <div style="max-height:220px;overflow-y:auto">
+                  <sc-for list="{{ historyRows }}" as="h" hint-placeholder-count="2">
+                    <div style="display:flex;flex-direction:column;gap:4px;padding:11px 14px;border-bottom:1px solid var(--ax-gray-100)">
+                      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px">
+                        <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ h.amount }}</span>
+                        <span style="font-size:12.5px;color:var(--ax-text-tertiary)">{{ h.when }}</span>
+                      </div>
+                      <div style="font-size:12.5px;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">State {{ h.state }} · AX {{ h.ax }}{{ h.affirmText }}</div>
+                      <div style="font-size:12.5px;color:var(--ax-text-secondary)">{{ h.reason }} · {{ h.user }} · {{ h.status }}</div>
+                      <sc-if value="{{ h.hasNotes }}" hint-placeholder-val="{{ false }}">
+                        <p style="margin:2px 0 0;font-size:12.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ h.notes }}</p>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </sc-if>
+
+          <sc-if value="{{ isFull }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:flex-start;gap:10px;margin:16px 20px 0;padding:12px 14px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+              <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-text-secondary);font-size:15px"></i>
+              <p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--ax-text-primary);text-wrap:pretty">This Parent Order has been fully refunded. No refundable balance remains. Refund Activity is retained in the order's audit history.</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:14px;padding:16px 20px 0">
+
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Refund Amount" required="{{ true }}" html-for="plr-amount" hint-size="100%,74px">
+                  <span style="display:flex;align-items:center;max-width:220px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;overflow:hidden">
+                    <span style="padding:0 10px;border-right:1px solid var(--ax-gray-200);font-size:14px;color:var(--ax-text-tertiary);line-height:40px">$</span>
+                    <input id="plr-amount" type="text" inputMode="decimal" value="{{ amount }}" onChange="{{ setAmount }}" placeholder="0.00" style="flex:1;min-width:0;height:40px;padding:0 12px;border:none;outline:none;font:inherit;font-size:14px;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">
+                  </span>
+                </x-import>
+                <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+                  <p role="alert" style="display:flex;align-items:flex-start;gap:6px;margin:2px 0 0;font-size:13px;line-height:1.5;color:var(--ax-danger-600)"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0"></i>{{ errorMsg }}</p>
+                </sc-if>
+              </div>
+
+              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Reason" required="{{ true }}" html-for="plr-reason" hint-size="100%,74px">
+                <select id="plr-reason" value="{{ reason }}" onChange="{{ setReason }}" style="width:100%;height:42px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;color:var(--ax-text-primary);cursor:pointer">
+                  <option value="">Select a reason</option>
+                  <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="7"><option value="{{ r.v }}">{{ r.v }}</option></sc-for>
+                </select>
+              </x-import>
+
+              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Notes (Optional)" hint="Appears on receipt and audit history." html-for="plr-notes" hint-size="100%,110px">
+                <textarea id="plr-notes" value="{{ notes }}" onChange="{{ setNotes }}" maxLength="250" rows="3" style="width:100%;padding:10px 14px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;line-height:1.5;color:var(--ax-text-primary);resize:vertical"></textarea>
+              </x-import>
+
+              <sc-if value="{{ needsAffirm }}" hint-placeholder-val="{{ false }}">
+                <div role="alert" style="display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-danger-600);border-radius:10px;background:var(--ax-gray-50)">
+                  <div style="display:flex;align-items:flex-start;gap:10px">
+                    <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0;color:var(--ax-danger-600);font-size:15px"></i>
+                    <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">This refund includes AX Service Fees.</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:4px;padding-left:25px">
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:300px">
+                      <span style="font-size:13.5px;color:var(--ax-text-secondary)">State Fee Portion</span>
+                      <span style="font-size:13.5px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitState }}</span>
+                    </div>
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:300px">
+                      <span style="font-size:13.5px;color:var(--ax-text-secondary)">AX Fee Portion</span>
+                      <span style="font-size:13.5px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitAX }}</span>
+                    </div>
+                  </div>
+                  <div style="padding-left:25px">
+                    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Type AFFIRM to continue." required="{{ true }}" hint="Changing the refund amount clears this acknowledgment." html-for="plr-affirm" hint-size="100%,96px">
+                      <input id="plr-affirm" value="{{ affirm }}" onChange="{{ setAffirm }}" placeholder="AFFIRM" autoComplete="off" style="max-width:220px;height:40px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--ax-text-primary)">
+                    </x-import>
+                  </div>
+                </div>
+              </sc-if>
+
+            </div>
+          </sc-if>
+
+          <div style="display:flex;justify-content:flex-end;gap:10px;padding:18px 20px 20px">
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" hint-size="auto,40px">Cancel</x-import>
+            <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
+              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" disabled="{{ submitDisabled }}" onClick="{{ submit }}" hint-size="auto,40px">Process Refund</x-import>
+            </sc-if>
+          </div>
+
+        </div>
+      </div>
+
+      <sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 12px 24px -8px rgba(10,13,18,.14)">
+          <i class="bi bi-check-circle-fill" aria-hidden="true" style="margin-top:1px;color:var(--ax-success-600);font-size:17px"></i>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">Refund processed</div>
+            <p style="margin:3px 0 0;font-size:13.5px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ toastBody }}</p>
+          </div>
+          <button type="button" onClick="{{ dismissToast }}" style="padding:0 4px;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Dismiss</button>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:1000}}">
+class Component extends DCLogic {
+  state = {
+    flag: 'on',
+    preset: 'empty',
+    amount: '',
+    reason: '',
+    notes: '',
+    affirm: '',
+    toast: null,
+    refunds: null,
+    historyOpen: false,
+  };
+
+  // Addendum §8 canonical example: State collected $20.05, AX collected $69.95, Total $90.00
+  base() { return { stateCollected: 20.05, axCollected: 69.95 }; }
+
+  // Refund Activity fields per Addendum §13.
+  r1() {
+    return {
+      s: 15.00, a: 0, when: 'Aug 12, 2026 · 2:14 PM', user: 'M. Reddy',
+      reason: 'Customer request', status: 'Succeeded', affirm: false,
+      notes: 'Customer withdrew one request before processing.',
+    };
+  }
+  r2() {
+    return {
+      s: 5.05, a: 24.95, when: 'Aug 18, 2026 · 10:02 AM', user: 'D. James',
+      reason: 'Service not delivered in SLA', status: 'Succeeded', affirm: true,
+      notes: '',
+    };
+  }
+  r3() {
+    return {
+      s: 0, a: 45.00, when: 'Aug 21, 2026 · 4:47 PM', user: 'D. James',
+      reason: 'Rejected apostille request', status: 'Succeeded', affirm: true,
+      notes: '',
+    };
+  }
+
+  presets() {
+    return {
+      empty: { refunds: [], amount: '', label: 'Empty' },
+      valid: { refunds: [], amount: '15.00', label: 'Valid refund' },
+      partial: { refunds: [this.r1()], amount: '', label: 'Partial refund' },
+      affirm: { refunds: [this.r1()], amount: '30.00', label: 'AFFIRM required' },
+      full: { refunds: [this.r1(), this.r2(), this.r3()], amount: '', label: 'Fully refunded' },
+      error: { refunds: [this.r1(), this.r2()], amount: '45.01', label: 'Validation error' },
+    };
+  }
+
+  money(v) { return '$' + (Math.round(v * 100) / 100).toFixed(2); }
+
+  balances(s) {
+    const b = this.base();
+    const list = s.refunds !== null ? s.refunds : this.presets()[s.preset].refunds;
+    let rs = 0, ra = 0;
+    list.forEach((r) => { rs += r.s; ra += r.a; });
+    const availState = Math.max(0, Math.round((b.stateCollected - rs) * 100) / 100);
+    const availAX = Math.max(0, Math.round((b.axCollected - ra) * 100) / 100);
+    return {
+      list,
+      availState,
+      availAX,
+      max: Math.round((availState + availAX) * 100) / 100,
+      refunded: Math.round((rs + ra) * 100) / 100,
+    };
+  }
+
+  setPreset(k) {
+    const p = this.presets()[k];
+    this.setState({ preset: k, refunds: p.refunds, amount: p.amount, reason: '', notes: '', affirm: '', toast: null, historyOpen: false });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const bal = this.balances(s);
+    const raw = String(s.amount || '').trim().replace(/^\$/, '');
+    const amt = raw === '' ? null : Number(raw);
+    const valid = amt !== null && isFinite(amt);
+    const decimals = raw.indexOf('.') >= 0 ? raw.split('.')[1].length : 0;
+
+    let error = '';
+    if (raw !== '') {
+      if (!valid) error = 'Enter a refund amount as a number, for example 25.00.';
+      else if (amt <= 0) error = 'Enter a refund amount greater than $0.00.';
+      else if (decimals > 2) error = 'Refund amounts can include no more than two decimal places.';
+      else if (amt > bal.max) error = 'This amount exceeds the Total Maximum Refundable Amount of ' + this.money(bal.max) + '. Enter ' + this.money(bal.max) + ' or less.';
+    }
+
+    const usable = valid && !error && amt > 0;
+    const splitState = usable ? Math.min(amt, bal.availState) : 0;
+    const splitAX = usable ? Math.round((amt - splitState) * 100) / 100 : 0;
+    const needsAffirm = usable && splitAX > 0;
+    const affirmDone = needsAffirm && s.affirm === 'AFFIRM';
+    const canRefund = bal.max > 0;
+    const ready = canRefund && usable && !!s.reason && (!needsAffirm || affirmDone);
+
+    const scenarios = {
+      empty: ['Empty', 'Modal on open. Balances are shown, the amount field is empty and never pre-filled, and Process Refund is unavailable until an amount and reason are entered.'],
+      valid: ['Valid refund', '$15.00 entered against $20.05 of available state fees. The refund stays within state fees, so no acknowledgment is required. Process Refund becomes available once a reason is selected.'],
+      partial: ['Partial refund', 'One $15.00 refund already processed. Balances are recalculated — state fees have dropped to $5.05 and the maximum to $75.00. A further refund is entered exactly as the first.'],
+      affirm: ['AFFIRM required', '$30.00 entered against $5.05 of remaining state fees. The excess $24.95 draws from AX Service Fees, so the AFFIRM block appears with both portions stated. Process Refund stays unavailable until AFFIRM is typed.'],
+      full: ['Fully refunded', 'Cumulative refunds equal the total collected. The maximum is $0.00, the form and Process Refund are withdrawn, and Refund Activity remains available.'],
+      error: ['Validation error', '$45.01 entered against a $45.00 maximum. The amount is rejected inline with the current maximum stated, and Process Refund stays unavailable.'],
+    };
+    const sc = scenarios[s.preset] || scenarios.empty;
+
+    const flagTabs = [['off', 'OFF'], ['on', 'ON']].map(([k, label]) => ({
+      label,
+      bg: s.flag === k ? '#0D5257' : 'transparent',
+      ink: s.flag === k ? '#FFFFFF' : '#495057',
+      go: () => this.setState({ flag: k }),
+    }));
+
+    const stateTabs = Object.keys(this.presets()).map((k) => {
+      const on = s.preset === k;
+      return {
+        label: this.presets()[k].label,
+        bg: on ? 'rgba(0,182,189,.10)' : '#FFFFFF',
+        bd: on ? '#0D5257' : '#CED4DA',
+        ink: on ? '#0D5257' : '#495057',
+        go: () => this.setPreset(k),
+      };
+    });
+
+    return {
+      isOn: s.flag === 'on',
+      isOff: s.flag === 'off',
+      flagTabs,
+      stateTabs,
+      scenarioTitle: sc[0],
+      scenarioNote: sc[1],
+
+      offRows: [
+        { name: 'Birth Certificate', meta: '#307-601 · Mail-in', service: 'Paper Apostille', status: 'Issued', statusColor: 'success', refunded: false },
+        { name: 'Marriage Certificate', meta: '#307-602 · Mail-in', service: 'Paper Apostille', status: 'In Process', statusColor: 'warning', refunded: true },
+        { name: 'Diploma', meta: '#307-603 · Digital', service: 'Digital Apostille', status: 'New', statusColor: 'info', refunded: false },
+      ],
+
+      orderRef: '#307-600',
+      paidDate: 'Aug 10, 2026',
+
+      fAvailState: this.money(bal.availState),
+      fAvailAX: this.money(bal.availAX),
+      fMax: this.money(bal.max),
+      fRefunded: this.money(bal.refunded),
+
+      hasHistory: bal.list.length > 0,
+      historyOpen: s.historyOpen && bal.list.length > 0,
+      historyToggleLabel: (s.historyOpen ? 'Hide Refund Activity' : 'View Refund Activity') + ' (' + bal.list.length + ')',
+      toggleHistory: () => this.setState({ historyOpen: !s.historyOpen }),
+      histCaret: s.historyOpen ? 'bi bi-chevron-up' : 'bi bi-chevron-down',
+      historyRows: bal.list.slice().reverse().map((r) => ({
+        amount: this.money(r.s + r.a),
+        state: this.money(r.s),
+        ax: this.money(r.a),
+        affirmText: r.affirm ? ' · AFFIRM acknowledged' : '',
+        when: r.when || 'Just now',
+        user: r.user || 'You',
+        reason: r.reason || '—',
+        status: r.status || 'Succeeded',
+        notes: r.notes || '',
+        hasNotes: !!(r.notes && r.notes.length),
+      })),
+
+      canRefund,
+      isFull: !canRefund,
+
+      amount: s.amount,
+      setAmount: (e) => this.setState({ amount: e.target.value, affirm: '' }),
+      hasError: !!error,
+      errorMsg: error,
+
+      reason: s.reason,
+      setReason: (e) => this.setState({ reason: e.target.value }),
+      reasons: ['Customer request', 'Duplicate payment', 'Service not delivered in SLA', 'Document ineligible', 'Rejected apostille request', 'Processing error', 'Other'].map((v) => ({ v })),
+
+      notes: s.notes,
+      setNotes: (e) => this.setState({ notes: e.target.value }),
+
+      needsAffirm,
+      affirm: s.affirm,
+      setAffirm: (e) => this.setState({ affirm: e.target.value }),
+      fSplitState: this.money(splitState),
+      fSplitAX: this.money(splitAX),
+
+      submitDisabled: !ready,
+
+      submit: () => {
+        if (!ready) return;
+        const next = bal.list.concat([{
+          s: splitState, a: splitAX,
+          when: 'Sep 16, 2026 · ' + new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+          user: 'You', reason: s.reason, status: 'Succeeded',
+          affirm: needsAffirm, notes: s.notes || '',
+        }]);
+        const after = Math.round((bal.max - amt) * 100) / 100;
+        this.setState({
+          refunds: next,
+          amount: '',
+          reason: '',
+          notes: '',
+          affirm: '',
+          toast: this.money(amt) + ' refunded — ' + this.money(splitState) + ' State Fees and ' + this.money(splitAX) + ' AX Service Fees. ' + (after > 0 ? this.money(after) + ' remains refundable.' : 'This order is now fully refunded.'),
+        });
+      },
+
+      toastOpen: !!s.toast,
+      toastBody: s.toast || '',
+      dismissToast: () => this.setState({ toast: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="ds/tokens/fonts.css">
+  <link rel="stylesheet" href="ds/tokens/colors.css">
+  <link rel="stylesheet" href="ds/tokens/typography.css">
+  <link rel="stylesheet" href="ds/tokens/spacing.css">
+  <link rel="stylesheet" href="ds/tokens/shadows.css">
+  <link rel="stylesheet" href="ds/tokens/base.css">
+  <link rel="stylesheet" href="ds/components.css">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="ds/ds-bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--ax-gray-50, #F8F9FA); font-family: Roboto, system-ui, sans-serif; color: var(--ax-text-primary, #212529); }
+    a { color: var(--ax-sea-depths, #0D5257); }
+    a:hover { color: var(--ax-aqua, #00B6BD); }
+  </style>
+</helmet>
+
+<div style="display:flex;flex-direction:column;gap:18px;padding:24px 24px 56px;max-width:1180px;margin:0 auto">
+
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--ax-text-secondary)">
+      <i class="bi bi-flag" aria-hidden="true"></i><span style="text-transform:uppercase">Feature flag</span><span aria-hidden="true">·</span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px">parentLevelRefunds</span>
+    </div>
+    <h1 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Parent-Level Refund — Compact</h1>
+    <p style="margin:0;max-width:74ch;font-size:14px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">Child Order pricing is reference data, not a selection surface. It reads as a two-column table inside a fixed-height scroll region, so a 35-child order takes exactly as much modal height as a 2-child one.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">Child Orders</span>
+      <div style="display:inline-flex;padding:3px;background:var(--ax-gray-100);border:1px solid var(--ax-gray-200);border-radius:8px;gap:2px">
+        <sc-for list="{{ countTabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 14px;border:none;border-radius:6px;background:{{ t.bg }};font:inherit;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+      <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">State</span>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <sc-for list="{{ stateTabs }}" as="t" hint-placeholder-count="6">
+          <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 12px;border:1px solid {{ t.bd }};border-radius:624.9375rem;background:{{ t.bg }};font:inherit;font-size:12.5px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-sea-depths);border-radius:10px">
+    <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-sea-depths);font-size:15px"></i>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">{{ scenarioTitle }}</div>
+      <p style="margin:4px 0 0;max-width:72ch;font-size:13.5px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">{{ scenarioNote }}</p>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;background:rgba(11,31,59,.55);border-radius:12px">
+    <div role="dialog" aria-modal="true" aria-labelledby="plr2-title" style="display:flex;flex-direction:column;width:100%;max-width:620px;max-height:calc(100vh - 140px);background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 24px 48px -12px rgba(10,13,18,.18);overflow:hidden">
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:16px 20px;border-bottom:1px solid var(--ax-gray-200)">
+        <div style="flex:1;min-width:0">
+          <h2 id="plr2-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
+          <p style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:5px 0 0;font-size:12.5px;color:var(--ax-text-tertiary)">
+            <span style="font-variant-numeric:tabular-nums">{{ orderRef }}</span>
+            <span aria-hidden="true">|</span>
+            <span>Paid {{ paidDate }}</span>
+            <span aria-hidden="true">|</span>
+            <span>{{ childCountLabel }}</span>
+            <span aria-hidden="true">|</span>
+            <a href="#invoice" target="_blank" rel="noopener" style="font-weight:600;color:var(--ax-sea-depths);text-decoration:none">View Invoice</a>
+          </p>
+        </div>
+        <button type="button" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+            <div style="display:flex;flex-direction:column;gap:3px;padding:10px 12px">
+              <span style="font-size:11.5px;font-weight:500;color:var(--ax-text-secondary)">State Fees Refundable</span>
+              <span style="font-size:15px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailState }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-left:1px solid var(--ax-gray-200)">
+              <span style="font-size:11.5px;font-weight:500;color:var(--ax-text-secondary)">AX Fees Refundable</span>
+              <span style="font-size:15px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailAX }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-left:1px solid var(--ax-gray-200);background:var(--ax-gray-50)">
+              <span style="font-size:11.5px;font-weight:500;color:var(--ax-text-secondary)">Max Refund Available</span>
+              <span style="font-size:15px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fMax }}</span>
+            </div>
+          </div>
+
+          <div style="border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+            <div id="plr2-children">
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--ax-gray-50);border-bottom:1px solid var(--ax-gray-200)">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 14px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ax-text-secondary)"><span>Child Order #</span><span>Original Price</span></div>
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 14px;border-left:1px solid var(--ax-gray-200);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ax-text-secondary)"><span>Child Order #</span><span>Original Price</span></div>
+              </div>
+              <div style="max-height:124px;overflow-y:auto">
+                <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr))">
+                  <sc-for list="{{ childRows }}" as="c" hint-placeholder-count="8">
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:6px 14px;border-bottom:1px solid var(--ax-gray-100);border-left:{{ c.edge }};font-size:12.5px;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">
+                      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.id }}</span>
+                      <span style="font-weight:600;color:var(--ax-text-primary)">{{ c.price }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+              <button type="button" onClick="{{ toggleHistory }}" aria-expanded="{{ historyOpen }}" aria-controls="plr2-history" style="display:flex;align-items:center;gap:10px;width:100%;padding:11px 14px;border:none;background:#fff;font:inherit;text-align:left;cursor:pointer" style-hover="background:var(--ax-gray-50)">
+                <i class="{{ histCaret }}" aria-hidden="true" style="font-size:11px;color:var(--ax-text-secondary)"></i>
+                <span style="flex:1;min-width:0;font-size:13.5px;font-weight:600;color:var(--ax-text-primary)">Refund Activity</span>
+              </button>
+              <sc-if value="{{ historyOpen }}" hint-placeholder-val="{{ false }}">
+                <div id="plr2-history" style="border-top:1px solid var(--ax-gray-200);max-height:196px;overflow-y:auto">
+                  <sc-for list="{{ historyRows }}" as="h" hint-placeholder-count="2">
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 14px;border-bottom:1px solid var(--ax-gray-100)" title="{{ h.meta }}">
+                      <span style="font-size:13px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ h.amount }}</span>
+                      <span style="flex-shrink:0;font-size:12px;color:var(--ax-text-secondary)">{{ h.when }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isFull }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+              <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-text-secondary);font-size:15px"></i>
+              <p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--ax-text-primary);text-wrap:pretty">This Parent Order has been fully refunded. No refundable balance remains. Refund Activity is retained in the order's audit history.</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:12px">
+
+              <div style="display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:14px;align-items:start">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Refund Amount" required="{{ true }}" html-for="plr2-amount" hint-size="100%,72px">
+                    <span style="display:flex;align-items:center;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;overflow:hidden">
+                      <span style="padding:0 10px;border-right:1px solid var(--ax-gray-200);font-size:14px;color:var(--ax-text-tertiary);line-height:40px">$</span>
+                      <input id="plr2-amount" type="text" inputMode="decimal" value="{{ amount }}" onChange="{{ setAmount }}" placeholder="0.00" style="flex:1;min-width:0;height:40px;padding:0 10px;border:none;outline:none;font:inherit;font-size:14px;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">
+                    </span>
+                  </x-import>
+                </div>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Reason" required="{{ true }}" html-for="plr2-reason" hint-size="100%,72px">
+                  <select id="plr2-reason" value="{{ reason }}" onChange="{{ setReason }}" style="width:100%;height:42px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;color:var(--ax-text-primary);cursor:pointer">
+                    <option value="">Select a reason</option>
+                    <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="7"><option value="{{ r.v }}">{{ r.v }}</option></sc-for>
+                  </select>
+                </x-import>
+              </div>
+
+              <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+                <p role="alert" style="display:flex;align-items:flex-start;gap:6px;margin:-4px 0 0;font-size:13px;line-height:1.5;color:var(--ax-danger-600)"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0"></i>{{ errorMsg }}</p>
+              </sc-if>
+
+              <sc-if value="{{ showSplit }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:-4px 0 0;font-size:12.5px;line-height:1.5;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ splitSentence }}</p>
+              </sc-if>
+
+              <sc-if value="{{ notesOpen }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Notes (Optional)" hint="Appears on receipt and audit history." html-for="plr2-notes" hint-size="100%,104px">
+                  <textarea id="plr2-notes" value="{{ notes }}" onChange="{{ setNotes }}" maxLength="250" rows="2" style="width:100%;padding:9px 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;line-height:1.5;color:var(--ax-text-primary);resize:vertical"></textarea>
+                </x-import>
+                <button type="button" onClick="{{ removeNotes }}" style="display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:-4px;padding:0;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-text-secondary);cursor:pointer" style-hover="color:var(--ax-danger-600)"><i class="bi bi-x-lg" aria-hidden="true" style="font-size:10px"></i>Remove Notes</button>
+              </sc-if>
+              <sc-if value="{{ notesClosed }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ openNotes }}" style="display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:0;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer"><i class="bi bi-plus-lg" aria-hidden="true" style="font-size:11px"></i>Add Notes (optional)</button>
+              </sc-if>
+
+              <sc-if value="{{ needsAffirm }}" hint-placeholder-val="{{ false }}">
+                <div role="alert" style="display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-danger-600);border-radius:10px;background:var(--ax-gray-50)">
+                  <div style="display:flex;align-items:flex-start;gap:9px">
+                    <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0;color:var(--ax-danger-600);font-size:15px"></i>
+                    <p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--ax-text-primary);text-wrap:pretty"><strong style="font-weight:600">This refund includes AX Service Fees.</strong> {{ affirmSentence }}</p>
+                  </div>
+                  <div style="padding-left:24px">
+                    <input id="plr2-affirm" value="{{ affirm }}" onChange="{{ setAffirm }}" placeholder="AFFIRM" autoComplete="off" aria-label="Type AFFIRM to continue" style="width:100%;max-width:200px;height:38px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--ax-text-primary)">
+                  </div>
+                </div>
+              </sc-if>
+
+            </div>
+          </sc-if>
+
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid var(--ax-gray-200);background:#fff">
+        <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" hint-size="auto,40px">Cancel</x-import>
+        <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="{{ ctaVariant }}" size="md" disabled="{{ submitDisabled }}" onClick="{{ submit }}" hint-size="auto,40px">Process Refund</x-import>
+        </sc-if>
+      </div>
+
+    </div>
+  </div>
+
+  <sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 12px 24px -8px rgba(10,13,18,.14)">
+      <i class="bi bi-check-circle-fill" aria-hidden="true" style="margin-top:1px;color:var(--ax-success-600);font-size:17px"></i>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">Refund processed</div>
+        <p style="margin:3px 0 0;font-size:13.5px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ toastBody }}</p>
+      </div>
+      <button type="button" onClick="{{ dismissToast }}" style="padding:0 4px;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Dismiss</button>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:1000},&quot;childCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:35,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:35,&quot;section&quot;:&quot;Order&quot;}}">
+class Component extends DCLogic {
+  state = {
+    n: null,
+    preset: 'empty',
+    amount: '',
+    reason: '',
+    notes: '',
+    notesOpen: false,
+    affirm: '',
+    toast: null,
+    refunds: null,
+    childrenOpen: null,
+    historyOpen: false,
+  };
+
+  // Per-child economics: State fee $20.05 + AX service fee $49.90 = $69.95 original price.
+  PER_STATE = 20.05;
+  PER_AX = 49.90;
+
+  r(v) { return Math.round(v * 100) / 100; }
+  money(v) { return '$' + this.r(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  count() { return this.state.n !== null ? this.state.n : (this.props.childCount || 35); }
+
+  collected(n) {
+    const st = this.r(this.PER_STATE * n);
+    const ax = this.r(this.PER_AX * n);
+    return { state: st, ax: ax, total: this.r(st + ax) };
+  }
+
+  children(n) {
+    const out = [];
+    for (let i = 1; i <= n; i++) {
+      out.push({
+        id: '1789399-422427-' + String(i).padStart(4, '0'),
+        price: this.r(this.PER_STATE + this.PER_AX),
+      });
+    }
+    return out;
+  }
+
+  prior(kind, c) {
+    const half = { s: this.r(c.state * 0.5), a: 0, when: 'Aug 12, 2026 · 2:14 PM', user: 'M. Reddy', reason: 'Customer request', status: 'Succeeded', affirm: false, notes: 'Customer withdrew several requests before processing.' };
+    if (kind === 'half') return half;
+    return { s: c.state, a: c.ax, when: 'Aug 21, 2026 · 4:47 PM', user: 'D. James', reason: 'Rejected apostille request', status: 'Succeeded', affirm: true, notes: '' };
+  }
+
+  // Five events that sum exactly to the collected totals; slice(0, k) for partial series.
+  series(c) {
+    const s1 = this.r(c.state * 0.25);
+    const s2 = this.r(c.state * 0.15);
+    const s3 = this.r(c.state * 0.20);
+    const s4 = this.r(c.state - s1 - s2 - s3);
+    const a4 = this.r(c.ax * 0.35);
+    const a5 = this.r(c.ax - a4);
+    return [
+      { s: s1, a: 0, when: 'Aug 11, 2026 · 9:38 AM', user: 'M. Reddy', reason: 'Customer request', status: 'Succeeded', affirm: false, notes: 'Two documents withdrawn before processing.' },
+      { s: s2, a: 0, when: 'Aug 12, 2026 · 2:14 PM', user: 'M. Reddy', reason: 'Duplicate payment', status: 'Succeeded', affirm: false, notes: '' },
+      { s: s3, a: 0, when: 'Aug 14, 2026 · 11:05 AM', user: 'J. Taylor', reason: 'Document ineligible', status: 'Succeeded', affirm: false, notes: '' },
+      { s: s4, a: a4, when: 'Aug 18, 2026 · 10:02 AM', user: 'D. James', reason: 'Service not delivered in SLA', status: 'Succeeded', affirm: true, notes: 'Goodwill adjustment approved by supervisor.' },
+      { s: 0, a: a5, when: 'Aug 21, 2026 · 4:47 PM', user: 'D. James', reason: 'Rejected apostille request', status: 'Succeeded', affirm: true, notes: '' },
+    ];
+  }
+
+  presetFor(k, n) {
+    const c = this.collected(n);
+    const half = this.prior('half', c);
+    if (k === 'valid') return { refunds: [], amount: this.r(c.state * 0.25).toFixed(2), label: 'Valid refund' };
+    if (k === 'partial') return { refunds: [half], amount: '', label: 'Partial refund' };
+    if (k === 'affirm') return { refunds: [half], amount: this.r(c.state * 0.5 + c.ax * 0.1).toFixed(2), label: 'AFFIRM required' };
+    if (k === 'multi') return { refunds: this.series(c).slice(0, 4), amount: '', label: 'Multiple refunds' };
+    if (k === 'full') return { refunds: this.series(c), amount: '', label: 'Fully refunded' };
+    if (k === 'error') return { refunds: [half], amount: this.r(c.total - half.s + 0.01).toFixed(2), label: 'Validation error' };
+    return { refunds: [], amount: '', label: 'Empty' };
+  }
+
+  presetKeys() { return ['empty', 'valid', 'partial', 'affirm', 'multi', 'full', 'error']; }
+
+  apply(k, n) {
+    const p = this.presetFor(k, n);
+    this.setState({ n: n, preset: k, refunds: p.refunds, amount: p.amount, reason: '', notes: '', notesOpen: false, affirm: '', toast: null, historyOpen: k === 'multi' || k === 'full' });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const n = this.count();
+    const c = this.collected(n);
+    const list = s.refunds !== null ? s.refunds : this.presetFor(s.preset, n).refunds;
+
+    let rs = 0, ra = 0;
+    list.forEach((x) => { rs += x.s; ra += x.a; });
+    const availState = Math.max(0, this.r(c.state - rs));
+    const availAX = Math.max(0, this.r(c.ax - ra));
+    const max = this.r(availState + availAX);
+    const refunded = this.r(rs + ra);
+
+    const raw = String(s.amount || '').trim().replace(/^\$/, '').replace(/,/g, '');
+    const amt = raw === '' ? null : Number(raw);
+    const isNum = amt !== null && isFinite(amt);
+    const decimals = raw.indexOf('.') >= 0 ? raw.split('.')[1].length : 0;
+
+    let error = '';
+    if (raw !== '') {
+      if (!isNum) error = 'Enter a refund amount as a number, for example 25.00.';
+      else if (amt <= 0) error = 'Enter a refund amount greater than $0.00.';
+      else if (decimals > 2) error = 'Refund amounts can include no more than two decimal places.';
+      else if (amt > max) error = 'This amount exceeds the Max Refund Available of ' + this.money(max) + '. Enter ' + this.money(max) + ' or less.';
+    }
+
+    const usable = isNum && !error && amt > 0;
+    const splitState = usable ? Math.min(amt, availState) : 0;
+    const splitAX = usable ? this.r(amt - splitState) : 0;
+    const needsAffirm = usable && splitAX > 0;
+    const affirmDone = needsAffirm && s.affirm.trim().toUpperCase() === 'AFFIRM';
+    const canRefund = max > 0;
+    const ready = canRefund && usable && !!s.reason && (!needsAffirm || affirmDone);
+
+    const childRows = this.children(n).map((x, i) => ({
+      id: x.id,
+      price: this.money(x.price),
+      edge: i % 2 === 1 ? '1px solid var(--ax-gray-200)' : '1px solid transparent',
+    }));
+
+    const scenarios = {
+      empty: ['Empty', 'Modal on open. Child pricing is capped at a fixed-height scroll region and Refund Activity stays collapsed, so the form holds its position no matter how many children the Parent Order has.'],
+      valid: ['Valid refund', 'The amount stays inside available State Fees, so no acknowledgment is required and the CTA remains neutral.'],
+      partial: ['Partial refund', 'Half of the State Fees have already been refunded. Balances recalculate; a further refund is entered exactly as the first.'],
+      affirm: ['AFFIRM required', 'The amount exceeds remaining State Fees, so the excess draws from AX Service Fees. The AFFIRM block appears and the CTA escalates to danger.'],
+      multi: ['Multiple refunds', 'Four prior refund events across State and AX fees. Rows are one line each — amount and date — so a long history scrolls inside its own region without pushing the form down.'],
+      full: ['Fully refunded', 'Five cumulative refunds equal the total collected. The form and Process Refund are withdrawn; pricing and activity stay readable.'],
+      error: ['Validation error', 'The amount exceeds the maximum by $0.01. It is rejected inline with the current maximum stated.'],
+    };
+    const sc = scenarios[s.preset] || scenarios.empty;
+
+    const childrenOpen = s.childrenOpen !== null ? s.childrenOpen : !!this.props.childPricingOpen;
+
+    return {
+      countTabs: [2, 4, 12, 35].map((k) => ({
+        label: String(k),
+        bg: n === k ? '#0D5257' : 'transparent',
+        ink: n === k ? '#FFFFFF' : '#495057',
+        go: () => this.apply(s.preset, k),
+      })),
+      stateTabs: this.presetKeys().map((k) => {
+        const on = s.preset === k;
+        return {
+          label: this.presetFor(k, n).label,
+          bg: on ? 'rgba(0,182,189,.10)' : '#FFFFFF',
+          bd: on ? '#0D5257' : '#CED4DA',
+          ink: on ? '#0D5257' : '#495057',
+          go: () => this.apply(k, n),
+        };
+      }),
+      scenarioTitle: sc[0],
+      scenarioNote: sc[1],
+
+      orderRef: '#DM-1789399-422427',
+      paidDate: 'Aug 10, 2026',
+      childCountLabel: n + (n === 1 ? ' Child Order' : ' Child Orders'),
+
+      fAvailState: this.money(availState),
+      fAvailAX: this.money(availAX),
+      fMax: this.money(max),
+      fCollected: this.money(c.total),
+
+      childRows,
+      childrenOpen,
+      childCaret: childrenOpen ? 'bi bi-chevron-up' : 'bi bi-chevron-down',
+      childSummary: n + ' · ' + this.money(c.total),
+      toggleChildren: () => this.setState({ childrenOpen: !childrenOpen }),
+
+      hasHistory: list.length > 0,
+      historyOpen: s.historyOpen && list.length > 0,
+      historySummary: list.length + ' · ' + this.money(refunded) + ' refunded',
+      histCaret: s.historyOpen ? 'bi bi-chevron-up' : 'bi bi-chevron-down',
+      toggleHistory: () => this.setState({ historyOpen: !s.historyOpen }),
+      historyRows: list.slice().reverse().map((x) => {
+        const meta = [
+          x.reason || '—',
+          x.user || 'You',
+          x.status || 'Succeeded',
+          x.affirm ? 'AFFIRM acknowledged' : null,
+          x.notes && x.notes.length ? x.notes : null,
+        ].filter(Boolean).join(' · ');
+        return {
+          amount: this.money(x.s + x.a),
+          split: 'State ' + this.money(x.s) + ' · AX ' + this.money(x.a),
+          when: x.when || 'Just now',
+          meta: meta,
+        };
+      }),
+
+      canRefund,
+      isFull: !canRefund,
+
+      amount: s.amount,
+      setAmount: (e) => this.setState({ amount: e.target.value, affirm: '' }),
+      hasError: !!error,
+      errorMsg: error,
+
+      reason: s.reason,
+      setReason: (e) => this.setState({ reason: e.target.value }),
+      reasons: ['Customer request', 'Duplicate payment', 'Service not delivered in SLA', 'Document ineligible', 'Rejected apostille request', 'Processing error', 'Other'].map((v) => ({ v })),
+
+      notes: s.notes,
+      notesOpen: s.notesOpen,
+      notesClosed: !s.notesOpen,
+      openNotes: () => this.setState({ notesOpen: true }),
+      removeNotes: () => this.setState({ notesOpen: false, notes: '' }),
+      setNotes: (e) => this.setState({ notes: e.target.value }),
+
+      showSplit: usable && !needsAffirm && splitState > 0,
+      splitSentence: 'Draws entirely from State Fees — no AX Service Fees are affected.',
+      needsAffirm,
+      affirm: s.affirm,
+      setAffirm: (e) => this.setState({ affirm: e.target.value }),
+      fSplitState: this.money(splitState),
+      fSplitAX: this.money(splitAX),
+      affirmSentence: this.money(splitState) + ' comes from State Fees; the remaining ' + this.money(splitAX) + ' comes from AX Service Fees already collected. Type AFFIRM to continue.',
+
+      ctaVariant: needsAffirm ? 'danger' : 'primary',
+      submitDisabled: !ready,
+      footerHint: canRefund ? 'Max ' + this.money(max) : '',
+
+      submit: () => {
+        if (!ready) return;
+        const next = list.concat([{
+          s: splitState, a: splitAX,
+          when: 'Sep 17, 2026 · ' + new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+          user: 'You', reason: s.reason, status: 'Succeeded',
+          affirm: needsAffirm, notes: s.notes || '',
+        }]);
+        const after = this.r(max - amt);
+        this.setState({
+          refunds: next,
+          amount: '', reason: '', notes: '', notesOpen: false, affirm: '',
+          historyOpen: true,
+          toast: this.money(amt) + ' refunded — ' + this.money(splitState) + ' State Fees and ' + this.money(splitAX) + ' AX Service Fees. ' + (after > 0 ? this.money(after) + ' remains refundable.' : 'This order is now fully refunded.'),
+        });
+      },
+
+      toastOpen: !!s.toast,
+      toastBody: s.toast || '',
+      dismissToast: () => this.setState({ toast: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

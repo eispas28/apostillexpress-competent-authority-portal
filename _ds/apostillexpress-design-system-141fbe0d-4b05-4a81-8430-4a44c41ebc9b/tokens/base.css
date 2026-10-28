@@ -1,0 +1,46 @@
+/* ApostilleXpress — Base layer
+   Document defaults so any consuming page inherits the brand type + color.
+   Components are self-contained; this just sets sensible page-level defaults. */
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ax-font-base);
+  font-size: var(--ax-text-md);
+  line-height: var(--ax-lh-base);
+  color: var(--ax-text-primary);
+  background: var(--ax-surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Heading defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ax-font-heading);
+  font-weight: var(--ax-fw-semibold);
+  line-height: var(--ax-lh-tight);
+  color: var(--ax-text-primary);
+  margin: 0 0 0.5em;
+}
+h1 { font-size: var(--ax-h1); }
+h2 { font-size: var(--ax-h2); }
+h3 { font-size: var(--ax-h3); }
+h4 { font-size: var(--ax-h4); }
+h5 { font-size: var(--ax-h5); }
+h6 { font-size: var(--ax-h6); }
+
+a {
+  color: var(--ax-text-link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+::selection {
+  background: var(--ax-teal-100);
+  color: var(--ax-sea-depths);
+}

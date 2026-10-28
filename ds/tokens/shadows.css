@@ -1,0 +1,19 @@
+/* ApostilleXpress — Elevation / shadow tokens
+   Soft, low-contrast shadows (Untitled-UI style, rgba(10,13,18,*)) used on
+   cards, dropdowns, modals and popovers. Plus a teal focus glow. */
+
+:root {
+  --ax-shadow-xs: 0 1px 2px rgba(10, 13, 18, 0.05);
+  --ax-shadow-sm: 0 1px 3px rgba(10, 13, 18, 0.1), 0 1px 2px rgba(10, 13, 18, 0.06);
+  --ax-shadow-md: 0 4px 8px -2px rgba(10, 13, 18, 0.1), 0 2px 4px -2px rgba(10, 13, 18, 0.06);
+  --ax-shadow-lg: 0 12px 16px -4px rgba(10, 13, 18, 0.08), 0 4px 6px -2px rgba(10, 13, 18, 0.03);
+  --ax-shadow-xl: 0 20px 24px -4px rgba(10, 13, 18, 0.08), 0 8px 8px -4px rgba(10, 13, 18, 0.03);
+  --ax-shadow-2xl: 0 24px 48px -12px rgba(10, 13, 18, 0.18);
+
+  /* Skeuomorphic inset border on inputs/buttons */
+  --ax-shadow-inset: inset 0 0 0 1px rgba(10, 13, 18, 0.05);
+
+  /* Focus ring (teal) */
+  --ax-ring: 0 0 0 4px rgba(0, 182, 189, 0.35);
+  --ax-ring-error: 0 0 0 4px rgba(227, 59, 50, 0.24);
+}

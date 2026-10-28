@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="ds/tokens/fonts.css">
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/shadows.css">
+<link rel="stylesheet" href="ds/tokens/base.css">
+<link rel="stylesheet" href="ds/components.css">
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/ds-bundle.js"></script>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Roboto,system-ui,sans-serif;background:#F8F9FA;color:#212529}
+a{color:#0D5257;text-decoration:none}
+a:hover{color:#00B6BD;text-decoration:underline}
+@keyframes caIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes caSpin{to{transform:rotate(360deg)}}
+.sc-scroll{overflow:auto}
+.sc-scroll::-webkit-scrollbar{width:8px;height:8px}
+.sc-scroll::-webkit-scrollbar-thumb{background:#DEE2E6;border-radius:8px}
+.sc-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.sc-th{padding:0;text-align:left;font-family:Roboto;font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057;border-bottom:1px solid var(--ax-gray-200);white-space:nowrap;background-color:#F8F9FA}
+.sc-th button{display:inline-flex;align-items:center;gap:6px;border:none;background:none;padding:0;font:inherit;color:inherit;letter-spacing:inherit;cursor:pointer}
+.sc-td{height:60px;padding:12px 20px;border-bottom:1px solid #E9EAEB;vertical-align:middle}
+.sc-tbl tbody tr:hover td{background:var(--ax-gray-50)}
+.sc-hide-sm{display:none}
+@media (min-width:768px){.sc-hide-sm{display:inline}}
+.sc-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+@media (max-width:720px){.sc-grid2{grid-template-columns:minmax(0,1fr)}}
+.sc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.sc-danger-btn:hover:not(:disabled),.sc-danger-btn:focus-visible:not(:disabled){border-radius:8px !important;border:1px solid #F1AEB5 !important;background:#FEF3F2 !important;color:#E33B32 !important;box-shadow:0 0 0 1px rgba(10,13,18,.18) inset,0 -2px 0 0 rgba(10,13,18,.05) inset,0 1px 2px 0 rgba(10,13,18,.05) !important}
+.sc-side{flex-shrink:0}
+@media (max-width:1000px){.sc-side{display:none}}
+.sc-notif{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:900px){.sc-notif{grid-template-columns:minmax(0,1fr)}}
+.sc-ed{width:100%;min-height:280px;padding:16px;border:1px solid var(--ax-gray-300);border-top:none;border-radius:0 0 8px 8px;font-family:Roboto,system-ui,sans-serif;font-size:14.5px;line-height:1.6;color:var(--ax-text-primary);outline:none;resize:vertical}
+.sc-ed:focus{border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)}
+.sc-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+</style>
+</helmet>
+<div style="min-height:{{ shellMinHeight }};display:flex;flex-direction:column;font-family:Roboto,system-ui,sans-serif;color:var(--ax-text-primary);background:var(--ax-gray-50)">
+
+  <sc-if value="{{ chrome }}" hint-placeholder-val="{{ true }}">
+  <header style="position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:16px;height:64px;padding:0 16px;background:#fff;border-bottom:1px solid var(--ax-gray-200);box-shadow:0 1px 2px rgba(10,13,18,.05)">
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+      <img src="assets/delmarva-seal.png" alt="Great Seal of the State of Delmarva" width="40" height="40" style="display:block;width:40px;height:40px;flex-shrink:0;object-fit:contain">
+      <span class="sc-hide-sm" style="font-family:Copperplate,'Copperplate Gothic Light','Times New Roman',serif;font-size:1.25rem;font-weight:700;color:var(--ax-gray-700, #444);white-space:nowrap">Delmarva Secretary of State</span>
+    </div>
+    <div style="flex:1"></div>
+    <a href="CA Dashboard.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ax-text-primary)" style-hover="background:var(--ax-gray-50);text-decoration:none">
+      <img src="assets/emily-rodriguez.png" alt="Emily Rodriguez" width="28" height="28" style="display:block;width:28px;height:28px;border-radius:50%;object-fit:cover">
+      <span class="sc-hide-sm">Emily Rodriguez</span>
+    </a>
+  </header>
+  </sc-if>
+
+  <div style="display:flex;align-items:flex-start;flex:1;min-height:0">
+    <sc-if value="{{ chrome }}" hint-placeholder-val="{{ true }}">
+    <div class="sc-side">
+      <x-import component-from-global-scope="AXSideNav" from="./ax-sidenav.jsx" groups="{{ sideNavGroups }}" collapsed="{{ collapsed }}" on-toggle-collapse="{{ toggleCollapse }}" on-navigate="{{ sideNavGo }}" authority="COMPETENT AUTHORITY" country="United States" height="100%" hint-size="257px,100%"></x-import>
+    </div>
+    </sc-if>
+
+    <main style="flex:1;min-width:0;width:100%;padding:{{ mainPad }};background-color:{{ mainBg }}">
+      <div data-screen-label="Site Configuration" style="display:flex;flex-direction:column;gap:20px;width:100%;min-width:0">
+
+        <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:8px;font-size:13.5px">
+          <a href="CA Dashboard.dc.html" style="font-weight:500;color:var(--ax-sea-depths)">Platform Settings</a>
+          <i class="bi bi-chevron-right" aria-hidden="true" style="font-size:11px;color:var(--ax-text-tertiary)"></i>
+          <span style="padding:2px 8px;border-radius:6px;background:var(--ax-gray-100);font-weight:500;color:var(--ax-text-secondary)">Site Configuration</span>
+        </nav>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div style="min-width:280px">
+            <h1 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Site Configuration</h1>
+            <p style="margin:6px 0 0;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">Configure locations, service and certificate offerings, system rules, and customer notifications for this office.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid rgba(0,182,189,.35);border-radius:999px;background:rgba(0,182,189,.08);font-size:13px;font-weight:600;color:var(--ax-sea-depths)"><i class="bi bi-shield-lock" aria-hidden="true"></i>CA Administrator</span>
+          </div>
+        </div>
+
+        <div class="sc-scroll" style="border-bottom:1px solid var(--ax-gray-200)">
+          <div role="tablist" aria-label="Site configuration sections" style="display:flex;gap:4px;min-width:max-content">
+            <sc-for list="{{ sections }}" as="s" hint-placeholder-count="7">
+              <button type="button" role="tab" aria-selected="{{ s.active }}" onClick="{{ s.go }}" style="display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border:none;border-bottom:2px solid {{ s.edge }};background:transparent;font:inherit;font-size:14px;font-weight:{{ s.weight }};color:{{ s.color }};white-space:nowrap;cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ s.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <sc-if value="{{ banner }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid {{ bannerBorder }};border-radius:10px;background:{{ bannerBg }}">
+            <i class="{{ bannerIcon }}" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:17px;color:{{ bannerInk }}"></i>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14.5px;font-weight:600;color:{{ bannerInk }}">{{ bannerTitle }}</div>
+              <div style="margin-top:2px;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">{{ banner }}</div>
+            </div>
+            <button type="button" onClick="{{ bannerClose }}" aria-label="Dismiss" style="border:none;background:none;padding:0;font-size:14px;color:var(--ax-text-tertiary);cursor:pointer"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isUser }}" hint-placeholder-val="{{ true }}">
+          <div role="tablist" aria-label="User configuration collections" style="display:inline-flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--ax-gray-200);align-self:flex-start">
+            <sc-for list="{{ userTabs }}" as="t" hint-placeholder-count="4">
+              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="display:inline-flex;align-items:center;gap:6px;padding:10px 4px;margin:0 8px -1px;border:none;border-bottom:2px solid {{ t.edge }};background:transparent;font:inherit;font-size:14px;font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ t.label }}<span style="margin-left:2px;padding:1px 7px;border-radius:624.9375rem;background:{{ t.countBg }};font-size:12px;font-weight:500;color:{{ t.color }}">{{ t.count }}</span></button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCertInfo }}" hint-placeholder-val="{{ false }}">
+          <div role="tablist" aria-label="Certificate profile view" style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;padding:4px;background:var(--ax-gray-100);border-radius:10px;align-self:flex-start">
+            <sc-for list="{{ archiveTabs }}" as="t" hint-placeholder-count="2">
+              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="padding:7px 14px;border:none;border-radius:8px;background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:14px;font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,background .12s ease">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showCollection }}" hint-placeholder-val="{{ true }}">
+          <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+            <header style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px">
+              <div style="min-width:200px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ colTitle }}</h2>
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="gray" size="sm" pill="{{ true }}" dc-props="{{ countBadgeProps }}" hint-size="auto,22px">{{ colCount }}</x-import>
+                </div>
+                <p style="margin:4px 0 0;font-size:13.5px;color:var(--ax-text-secondary);text-wrap:pretty">{{ colDesc }}</p>
+              </div>
+              <div style="flex:1;min-width:12px"></div>
+              <div style="position:relative;flex:1;min-width:220px;max-width:420px">
+                <i class="bi bi-search" aria-hidden="true" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--ax-text-tertiary)"></i>
+                <input value="{{ colQuery }}" onChange="{{ setColQuery }}" placeholder="{{ colSearchHint }}" aria-label="Search {{ colTitle }}" style="width:100%;height:40px;padding:0 14px 0 40px;font:inherit;font-size:14.5px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+              </div>
+              <select value="{{ colStatus }}" onChange="{{ setColStatus }}" aria-label="Filter by status" style="height:40px;padding:0 10px;font:inherit;font-size:14.5px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
+                <sc-for list="{{ colStatusOpts }}" as="o" hint-placeholder-count="3">
+                  <option value="{{ o }}">{{ o }}</option>
+                </sc-for>
+              </select>
+              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" leading-icon="{{ iconPlus }}" onClick="{{ colCreate }}" hint-size="auto,40px">{{ colCreateLabel }}</x-import>
+            </header>
+
+            <sc-if value="{{ colSelAny }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 20px;background:rgba(0,182,189,.06);border-top:1px solid var(--ax-gray-200)">
+                <span style="font-size:13.5px;font-weight:600;color:var(--ax-sea-depths)">{{ colSelLabel }}</span>
+                <div style="flex:1"></div>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ colBulkEnable }}" hint-size="auto,32px">Enable</x-import>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ colBulkDisable }}" hint-size="auto,32px">Disable</x-import>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ dangerSmallProps }}" onClick="{{ colBulkDelete }}" hint-size="auto,32px">Delete</x-import>
+                <button type="button" onClick="{{ colClearSel }}" style="padding:0 4px;border:none;background:transparent;font:inherit;font-size:13px;font-weight:500;color:var(--ax-text-secondary);cursor:pointer">Clear</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ colHasRows }}" hint-placeholder-val="{{ true }}">
+              <div class="sc-scroll" style="border-top:1px solid var(--ax-gray-200)">
+                <table class="sc-tbl" style="min-width:{{ colMinWidth }}">
+                  <thead>
+                    <tr>
+                      <sc-if value="{{ colBulk }}" hint-placeholder-val="{{ false }}">
+                        <th class="sc-th" style="width:44px"><span style="display:block;padding:10px 0 10px 20px"><input type="checkbox" checked="{{ colAllSel }}" onChange="{{ colToggleAll }}" aria-label="Select all" style="width:16px;height:16px;accent-color:#0D5257;cursor:pointer"></span></th>
+                      </sc-if>
+                      <sc-for list="{{ colCols }}" as="c" hint-placeholder-count="6">
+                        <th class="sc-th" scope="col" aria-sort="{{ c.ariaSort }}"><span style="display:block;padding:10px 20px"><button type="button" onClick="{{ c.sort }}" title="{{ c.title }}">{{ c.label }}<i class="{{ c.icon }}" aria-hidden="true" style="font-size:11px;opacity:{{ c.iconOpacity }}"></i></button></span></th>
+                      </sc-for>
+                      <th class="sc-th" style="width:64px"><span style="display:block;padding:10px 20px;text-align:right">ACTIONS</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <sc-for list="{{ colRows }}" as="r" hint-placeholder-count="6">
+                      <tr style="background:{{ r.rowBg }};transition:background .12s ease">
+                        <sc-if value="{{ colBulk }}" hint-placeholder-val="{{ false }}">
+                          <td class="sc-td" style="padding-right:0"><input type="checkbox" checked="{{ r.sel }}" onChange="{{ r.toggle }}" aria-label="Select {{ r.name }}" style="width:16px;height:16px;accent-color:#0D5257;cursor:pointer"></td>
+                        </sc-if>
+                        <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="6">
+                          <td class="sc-td" style="white-space:{{ cell.wrap }}">
+                            <sc-if value="{{ cell.isText }}" hint-placeholder-val="{{ true }}">
+                              <div style="font-size:{{ cell.size }};font-weight:{{ cell.weight }};color:{{ cell.ink }};overflow-wrap:anywhere">{{ cell.text }}</div>
+                              <sc-if value="{{ cell.hasSub }}" hint-placeholder-val="{{ false }}">
+                                <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary);overflow-wrap:anywhere">{{ cell.sub }}</div>
+                              </sc-if>
+                            </sc-if>
+                            <sc-if value="{{ cell.isBadge }}" hint-placeholder-val="{{ false }}">
+                              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ cell.color }}" size="sm" pill="{{ true }}" dot="{{ true }}" hint-size="auto,24px">{{ cell.text }}</x-import>
+                            </sc-if>
+                            <sc-if value="{{ cell.isTag }}" hint-placeholder-val="{{ false }}">
+                              <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="gray" size="md" dc-props="{{ cell.tagProps }}" hint-size="auto,22px">{{ cell.text }}</x-import>
+                            </sc-if>
+                          </td>
+                        </sc-for>
+                        <td class="sc-td" style="text-align:right">
+                          <button type="button" onClick="{{ r.menu }}" aria-label="Actions for {{ r.name }}" aria-haspopup="menu" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-secondary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-three-dots-vertical" aria-hidden="true"></i></button>
+                        </td>
+                      </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--ax-gray-200)">
+                <div style="display:flex;align-items:center;gap:4px">
+                  <button type="button" onClick="{{ pgFirst }}" disabled="{{ pgFirstDis }}" aria-label="First page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-start-fill" aria-hidden="true"></i></button>
+                  <button type="button" onClick="{{ pgPrev }}" disabled="{{ pgPrevDis }}" aria-label="Previous page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-left-fill" aria-hidden="true"></i></button>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;margin:0 2px;padding:0 10px;border:1px solid var(--ax-gray-200);border-radius:8px;background:var(--ax-gray-50);font-size:15px;font-weight:500;color:var(--ax-text-primary)">{{ pgPage }}</span>
+                  <button type="button" onClick="{{ pgNext }}" disabled="{{ pgNextDis }}" aria-label="Next page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-right-fill" aria-hidden="true"></i></button>
+                  <button type="button" onClick="{{ pgLast }}" disabled="{{ pgLastDis }}" aria-label="Last page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-end-fill" aria-hidden="true"></i></button>
+                </div>
+                <select value="{{ pgPer }}" onChange="{{ setPgPer }}" aria-label="Items per page" style="height:36px;padding:0 8px 0 12px;margin-left:8px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+                <span style="font-size:15px;color:var(--ax-text-secondary)">Items per page</span>
+                <div style="flex:1;min-width:8px"></div>
+                <span style="font-size:15px;color:var(--ax-text-secondary)">{{ pgLabel }}</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ colEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:56px 24px;border-top:1px solid var(--ax-gray-200);text-align:center">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-bottom:8px;border-radius:12px;background:var(--ax-gray-100);color:var(--ax-text-tertiary);font-size:20px"><i class="{{ colEmptyIcon }}" aria-hidden="true"></i></span>
+                <div style="font-size:16px;font-weight:600;color:var(--ax-text-primary)">{{ colEmptyTitle }}</div>
+                <p style="margin:0;max-width:420px;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">{{ colEmptyBody }}</p>
+                <div style="display:flex;gap:10px;margin-top:12px">
+                  <sc-if value="{{ colFiltering }}" hint-placeholder-val="{{ false }}">
+                    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" onClick="{{ colClearFilters }}" hint-size="auto,36px">Clear filters</x-import>
+                  </sc-if>
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="sm" leading-icon="{{ iconPlus }}" onClick="{{ colCreate }}" hint-size="auto,36px">{{ colCreateLabel }}</x-import>
+                </div>
+              </div>
+            </sc-if>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ isSystem }}" hint-placeholder-val="{{ false }}">
+          <div class="sc-cards">
+            <sc-for list="{{ sysCards }}" as="c" hint-placeholder-count="6">
+              <section style="display:flex;flex-direction:column;gap:12px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+                <div style="display:flex;align-items:flex-start;gap:12px">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0;border-radius:10px;background:rgba(0,182,189,.10);color:var(--ax-sea-depths);font-size:18px"><i class="{{ c.icon }}" aria-hidden="true"></i></span>
+                  <div style="min-width:0">
+                    <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">{{ c.title }}</h3>
+                    <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ c.desc }}</p>
+                  </div>
+                </div>
+                <sc-if value="{{ c.isNumber }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;align-items:center;gap:12px">
+                    <input type="number" value="{{ c.value }}" onChange="{{ c.set }}" min="{{ c.min }}" max="{{ c.max }}" aria-label="{{ c.title }}" style="width:120px;height:40px;padding:0 12px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ c.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                    <span style="font-size:13.5px;color:var(--ax-text-tertiary)">{{ c.hint }}</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ c.isSelect }}" hint-placeholder-val="{{ false }}">
+                  <select value="{{ c.value }}" onChange="{{ c.set }}" aria-label="{{ c.title }}" style="width:100%;height:40px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
+                    <sc-for list="{{ c.options }}" as="o" hint-placeholder-count="3">
+                      <option value="{{ o }}">{{ o }}</option>
+                    </sc-for>
+                  </select>
+                </sc-if>
+                <sc-if value="{{ c.hasToggle }}" hint-placeholder-val="{{ false }}">
+                  <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50);cursor:pointer">
+                    <span style="font-size:14px;font-weight:500;color:var(--ax-text-primary);text-wrap:pretty">{{ c.toggleLabel }}</span>
+                    <span style="display:inline-flex;align-items:center;flex-shrink:0;width:44px;height:24px;padding:2px;border-radius:999px;background:{{ c.toggleBg }};transition:background .15s ease">
+                      <input type="checkbox" checked="{{ c.toggleOn }}" onChange="{{ c.toggle }}" style="position:absolute;opacity:0;width:0;height:0">
+                      <span style="width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(10,13,18,.2);transform:translateX({{ c.toggleX }});transition:transform .15s ease"></span>
+                    </span>
+                  </label>
+                </sc-if>
+                <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0;font-size:13px;color:var(--ax-text-tertiary);text-wrap:pretty">{{ c.note }}</p>
+                </sc-if>
+              </section>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ sysReset }}" hint-size="auto,40px">Reset to Defaults</x-import>
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ sysSave }}" hint-size="auto,40px">Save Changes</x-import>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isReg }}" hint-placeholder-val="{{ false }}">
+          <div class="sc-cards">
+            <section style="display:flex;flex-direction:column;gap:14px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+              <div>
+                <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">Document Retention</h3>
+                <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">How long submitted documents are retained before automatic deletion.</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <input type="number" value="{{ regRetention }}" onChange="{{ setRegRetention }}" min="1" max="3650" aria-label="Retention period in days" style="width:120px;height:40px;padding:0 12px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                <span style="font-size:13.5px;color:var(--ax-text-tertiary)">days · default 45</span>
+              </div>
+            </section>
+
+            <section style="display:flex;flex-direction:column;gap:14px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+              <div>
+                <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">Certification Method</h3>
+                <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">Choose whether one certificate type covers every destination, or Hague and non-Hague are issued separately.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ regMethods }}" as="m" hint-placeholder-count="2">
+                  <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.on }}" style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid {{ m.border }};border-radius:10px;background:{{ m.bg }};font:inherit;text-align:left;cursor:pointer;transition:border-color .13s ease,background .13s ease">
+                    <i class="{{ m.icon }}" aria-hidden="true" style="margin-top:2px;font-size:16px;color:{{ m.ink }}"></i>
+                    <span style="flex:1;min-width:0">
+                      <span style="display:block;font-size:14.5px;font-weight:600;color:var(--ax-text-primary)">{{ m.label }}</span>
+                      <span style="display:block;margin-top:3px;font-size:13px;line-height:1.5;color:var(--ax-text-secondary)">{{ m.desc }}</span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ regSplit }}" hint-placeholder-val="{{ false }}">
+                <div class="sc-grid2" style="padding-top:2px">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Hague Certificate Type" required="{{ true }}" hint-size="100%,74px">
+                    <select value="{{ regHague }}" onChange="{{ setRegHague }}" aria-label="Hague certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                      <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
+                        <option value="{{ n }}">{{ n }}</option>
+                      </sc-for>
+                    </select>
+                  </x-import>
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Non-Hague Certificate Type" required="{{ true }}" hint-size="100%,74px">
+                    <select value="{{ regNonHague }}" onChange="{{ setRegNonHague }}" aria-label="Non-Hague certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                      <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
+                        <option value="{{ n }}">{{ n }}</option>
+                      </sc-for>
+                    </select>
+                  </x-import>
+                </div>
+              </sc-if>
+              <sc-if value="{{ regSingle }}" hint-placeholder-val="{{ true }}">
+                <div style="max-width:420px">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Certificate Type" hint="Used for every destination country." hint-size="100%,74px">
+                    <select value="{{ regSingleType }}" onChange="{{ setRegSingleType }}" aria-label="Certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                      <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
+                        <option value="{{ n }}">{{ n }}</option>
+                      </sc-for>
+                    </select>
+                  </x-import>
+                </div>
+              </sc-if>
+            </section>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px">
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ regSave }}" hint-size="auto,40px">Save Changes</x-import>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isNotif }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px;background:var(--ax-gray-100);border-radius:10px;align-self:flex-start">
+            <sc-for list="{{ notifChannels }}" as="t" hint-placeholder-count="2">
+              <button type="button" onClick="{{ t.go }}" aria-pressed="{{ t.active }}" style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid {{ t.border }};border-radius:8px;background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:14px;font-weight:{{ t.weight }};color:{{ t.color }};cursor:pointer"><i class="{{ t.icon }}" aria-hidden="true"></i>{{ t.label }}</button>
+            </sc-for>
+          </div>
+
+          <div class="sc-notif">
+            <section style="background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+              <header style="padding:14px 16px;border-bottom:1px solid var(--ax-gray-200);font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057;background:var(--ax-gray-50)">NOTIFICATION</header>
+              <sc-for list="{{ notifCats }}" as="c" hint-placeholder-count="4">
+                <button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.active }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;border:none;border-left:3px solid {{ c.edge }};border-bottom:1px solid var(--ax-gray-100);background:{{ c.bg }};font:inherit;text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-50)">
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:14.5px;font-weight:{{ c.weight }};color:{{ c.color }}">{{ c.label }}</span>
+                    <span style="display:block;margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">{{ c.meta }}</span>
+                  </span>
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ c.statusColor }}" size="sm" pill="{{ true }}" dot="{{ true }}" hint-size="auto,22px">{{ c.status }}</x-import>
+                </button>
+              </sc-for>
+            </section>
+
+            <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+              <header style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--ax-gray-200)">
+                <div style="min-width:200px">
+                  <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ edTitle }}</h2>
+                  <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary)">{{ edSubtitle }}</p>
+                </div>
+                <div style="flex:1"></div>
+                <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;align-items:center;gap:8px;padding:4px;background:var(--ax-gray-100);border-radius:8px">
+                    <sc-for list="{{ edModes }}" as="m" hint-placeholder-count="2">
+                      <button type="button" onClick="{{ m.go }}" aria-pressed="{{ m.active }}" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid {{ m.border }};border-radius:6px;background:{{ m.bg }};font:inherit;font-size:13px;font-weight:{{ m.weight }};color:{{ m.color }};cursor:pointer"><i class="{{ m.icon }}" aria-hidden="true"></i>{{ m.label }}</button>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </header>
+
+              <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+                <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Subject Line" required="{{ true }}" hint-size="100%,74px">
+                    <input value="{{ edSubject }}" onChange="{{ setEdSubject }}" placeholder="Enter subject" aria-label="Subject line" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                  </x-import>
+                </sc-if>
+
+                <div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px">
+                    <span style="font-size:14px;font-weight:500;color:var(--ax-text-primary)">{{ edBodyLabel }}</span>
+                    <sc-if value="{{ edIsSms }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size:13px;font-weight:600;color:{{ edSmsInk }}">{{ edSmsCounter }}</span>
+                    </sc-if>
+                  </div>
+
+                  <sc-if value="{{ edShowToolbar }}" hint-placeholder-val="{{ true }}">
+                    <div role="toolbar" aria-label="Formatting" style="display:flex;flex-wrap:wrap;align-items:center;gap:2px;padding:6px 8px;border:1px solid var(--ax-gray-300);border-radius:8px 8px 0 0;background:var(--ax-gray-50)">
+                      <sc-for list="{{ edTools }}" as="t" hint-placeholder-count="10">
+                        <sc-if value="{{ t.isDivider }}" hint-placeholder-val="{{ false }}">
+                          <span aria-hidden="true" style="width:1px;height:20px;margin:0 6px;background:var(--ax-gray-300)"></span>
+                        </sc-if>
+                        <sc-if value="{{ t.isButton }}" hint-placeholder-val="{{ true }}">
+                          <button type="button" onClick="{{ t.run }}" title="{{ t.title }}" aria-label="{{ t.title }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 6px;border:none;border-radius:6px;background:transparent;font:inherit;font-size:14px;font-weight:{{ t.weight }};color:var(--ax-text-primary);cursor:pointer" style-hover="background:var(--ax-gray-200)"><i class="{{ t.icon }}" aria-hidden="true"></i></button>
+                        </sc-if>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+
+                  <textarea class="sc-ed {{ edMonoClass }}" value="{{ edBody }}" onChange="{{ setEdBody }}" placeholder="{{ edPlaceholder }}" aria-label="{{ edBodyLabel }}" style="border-radius:{{ edRadius }};border-top:{{ edBorderTop }}"></textarea>
+
+                  <sc-if value="{{ edIsSms }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:8px 0 0;font-size:13px;color:var(--ax-text-tertiary);text-wrap:pretty">110 characters maximum. 50 characters are reserved for the shortened tracking link appended to every message.</p>
+                  </sc-if>
+                </div>
+
+                <div>
+                  <div style="font-size:14px;font-weight:500;color:var(--ax-text-primary)">Merge Fields</div>
+                  <p style="margin:3px 0 8px;font-size:13px;color:var(--ax-text-tertiary)">Select a field to insert it at the end of the message.</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ edMergeFields }}" as="m" hint-placeholder-count="6">
+                      <button type="button" onClick="{{ m.insert }}" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--ax-gray-300);border-radius:999px;background:#fff;font:inherit;font-size:13px;color:var(--ax-text-secondary);cursor:pointer" style-hover="border-color:#00B6BD;color:var(--ax-sea-depths)"><i class="bi bi-braces" aria-hidden="true" style="font-size:12px"></i>{{ m.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+                <span style="font-size:13px;color:var(--ax-text-tertiary)">{{ edAudit }}</span>
+                <div style="flex:1;min-width:8px"></div>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ edPreview }}" hint-size="auto,40px">Preview</x-import>
+                <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
+                  <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ edSendTest }}" hint-size="auto,40px">Send Test Email</x-import>
+                </sc-if>
+                <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ edSaveOff }}" onClick="{{ edSave }}" hint-size="auto,40px">Save Draft</x-import>
+              </div>
+            </section>
+          </div>
+        </sc-if>
+
+      </div>
+    </main>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ menuClose }}" style="position:fixed;inset:0;z-index:160">
+      <div role="menu" onClick="{{ stopProp }}" style="position:fixed;top:{{ menuY }};left:{{ menuX }};min-width:206px;padding:6px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:10px;box-shadow:0 12px 32px rgba(10,13,18,.16)">
+        <sc-for list="{{ menuItems }}" as="a" hint-placeholder-count="4">
+          <button type="button" role="menuitem" onClick="{{ a.run }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:none;border-radius:8px;background:transparent;font:inherit;font-size:14px;color:{{ a.ink }};text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-100)"><i class="{{ a.icon }}" aria-hidden="true" style="width:16px;font-size:14px;color:{{ a.iconInk }}"></i>{{ a.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ formClose }}" style="position:fixed;inset:0;z-index:150;display:flex;align-items:flex-start;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-form-title" onClick="{{ stopProp }}" style="width:100%;max-width:720px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10);animation:caIn .16s ease-out both">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+          <div style="flex:1;min-width:0">
+            <h2 id="sc-form-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ formTitle }}</h2>
+            <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary);text-wrap:pretty">{{ formSubtitle }}</p>
+          </div>
+          <button type="button" onClick="{{ formClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+
+        <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+          <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#FEF3F2;border:1px solid #F1AEB5;border-radius:8px">
+              <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:17px;color:#D92D20"></i>
+              <p style="margin:0;font-size:14.5px;line-height:1.5;color:#B42318;text-wrap:pretty">{{ formError }}</p>
+            </div>
+          </sc-if>
+
+          <sc-for list="{{ formGroups }}" as="g" hint-placeholder-count="1">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <sc-if value="{{ g.hasTitle }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057">{{ g.title }}</span>
+                  <span style="flex:1;height:1px;background:var(--ax-gray-200)"></span>
+                </div>
+              </sc-if>
+              <div class="sc-grid2">
+                <sc-for list="{{ g.fields }}" as="f" hint-placeholder-count="4">
+                  <div style="grid-column:{{ f.span }};min-width:0">
+                    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="{{ f.label }}" required="{{ f.required }}" hint="{{ f.hint }}" error="{{ f.error }}" hint-size="100%,80px">
+                      <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ true }}">
+                        <input value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                      </sc-if>
+                      <sc-if value="{{ f.isNumber }}" hint-placeholder-val="{{ false }}">
+                        <input type="number" value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" step="{{ f.step }}" min="0" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                      </sc-if>
+                      <sc-if value="{{ f.isDate }}" hint-placeholder-val="{{ false }}">
+                        <input type="date" value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                      </sc-if>
+                      <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}">
+                        <select value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;cursor:pointer">
+                          <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+                            <option value="{{ o }}">{{ o }}</option>
+                          </sc-for>
+                        </select>
+                      </sc-if>
+                      <sc-if value="{{ f.isTextarea }}" hint-placeholder-val="{{ false }}">
+                        <textarea value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;min-height:88px;padding:12px 14px;font-family:Roboto,system-ui,sans-serif;font-size:15px;line-height:1.55;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none;resize:vertical" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)"></textarea>
+                      </sc-if>
+                      <sc-if value="{{ f.isPerms }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;padding:12px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+                          <sc-for list="{{ f.perms }}" as="p" hint-placeholder-count="6">
+                            <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--ax-text-primary);cursor:pointer">
+                              <input type="checkbox" checked="{{ p.on }}" onChange="{{ p.toggle }}" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:#0D5257;cursor:pointer">
+                              <span style="min-width:0">{{ p.label }}</span>
+                            </label>
+                          </sc-for>
+                        </div>
+                      </sc-if>
+                      <sc-if value="{{ f.isUpload }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:flex;flex-direction:column;gap:10px">
+                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px;border:1px dashed var(--ax-gray-300);border-radius:10px;background:var(--ax-gray-50)">
+                            <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;flex-shrink:0;border-radius:10px;background:#fff;border:1px solid var(--ax-gray-200);color:var(--ax-sea-depths);font-size:16px"><i class="bi bi-cloud-arrow-up" aria-hidden="true"></i></span>
+                            <div style="flex:1;min-width:140px">
+                              <div style="font-size:14px;font-weight:500;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ f.fileName }}</div>
+                              <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">EPS, SVG or TIFF · up to 20 MB</div>
+                            </div>
+                            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ f.upload }}" hint-size="auto,32px">{{ f.uploadLabel }}</x-import>
+                            <sc-if value="{{ f.hasExisting }}" hint-placeholder-val="{{ false }}">
+                              <select value="{{ f.existing }}" onChange="{{ f.setExisting }}" aria-label="Select existing seal" style="height:32px;padding:0 8px;font:inherit;font-size:13px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                                <sc-for list="{{ f.existingOpts }}" as="o" hint-placeholder-count="3">
+                                  <option value="{{ o }}">{{ o }}</option>
+                                </sc-for>
+                              </select>
+                            </sc-if>
+                          </div>
+                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+                            <sc-for list="{{ f.steps }}" as="st" hint-placeholder-count="4">
+                              <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid {{ st.border }};border-radius:999px;background:{{ st.bg }};font-size:12.5px;font-weight:500;color:{{ st.ink }}"><i class="{{ st.icon }}" aria-hidden="true" style="font-size:12px;animation:{{ st.spin }}"></i>{{ st.label }}</span>
+                              <sc-if value="{{ st.hasArrow }}" hint-placeholder-val="{{ true }}">
+                                <i class="bi bi-arrow-right" aria-hidden="true" style="font-size:11px;color:var(--ax-gray-400)"></i>
+                              </sc-if>
+                            </sc-for>
+                          </div>
+                          <sc-if value="{{ f.scanNote }}" hint-placeholder-val="{{ false }}">
+                            <p style="margin:0;font-size:13px;color:{{ f.scanInk }};text-wrap:pretty">{{ f.scanNote }}</p>
+                          </sc-if>
+                        </div>
+                      </sc-if>
+                    </x-import>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+
+          <sc-if value="{{ formAudit }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:14px 16px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+              <sc-for list="{{ formAuditRows }}" as="a" hint-placeholder-count="4">
+                <div style="min-width:140px">
+                  <div style="font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">{{ a.label }}</div>
+                  <div style="margin-top:3px;font-size:14px;color:var(--ax-text-primary)">{{ a.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ formClose }}" hint-size="auto,40px">Cancel</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ formSave }}" hint-size="auto,40px">{{ formCta }}</x-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ viewOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ viewClose }}" style="position:fixed;inset:0;z-index:150;display:flex;justify-content:flex-end;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <aside role="dialog" aria-modal="true" aria-labelledby="sc-view-title" onClick="{{ stopProp }}" style="display:flex;flex-direction:column;width:100%;max-width:520px;height:100%;background:#fff;box-shadow:-12px 0 40px rgba(10,13,18,.18)">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+          <div style="flex:1;min-width:0">
+            <h2 id="sc-view-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ viewTitle }}</h2>
+            <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary)">{{ viewSubtitle }}</p>
+          </div>
+          <button type="button" onClick="{{ viewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div class="sc-scroll" style="flex:1;padding:20px;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ viewRows }}" as="r" hint-placeholder-count="6">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--ax-gray-100)">
+              <span style="font-size:13.5px;color:var(--ax-text-secondary)">{{ r.label }}</span>
+              <span style="max-width:60%;font-size:14px;font-weight:500;color:var(--ax-text-primary);text-align:right;overflow-wrap:anywhere">{{ r.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ viewClose }}" hint-size="auto,40px">Close</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ viewEdit }}" hint-size="auto,40px">Edit</x-import>
+        </div>
+      </aside>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ confirmClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-cf-title" onClick="{{ stopProp }}" style="width:100%;max-width:520px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-cf-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ confirmTitle }}</h2>
+          <button type="button" onClick="{{ confirmClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div style="padding:20px">
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ confirmBody }}</p>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ confirmClose }}" hint-size="auto,40px">Cancel</x-import>
+          <sc-if value="{{ confirmDanger }}" hint-placeholder-val="{{ true }}">
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" dc-props="{{ dangerBtnProps }}" onClick="{{ confirmGo }}" hint-size="auto,40px">{{ confirmCta }}</x-import>
+          </sc-if>
+          <sc-if value="{{ confirmSafe }}" hint-placeholder-val="{{ false }}">
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ confirmGo }}" hint-size="auto,40px">{{ confirmCta }}</x-import>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ testOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ testClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-test-title" onClick="{{ stopProp }}" style="width:100%;max-width:520px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-test-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Send Test Email</h2>
+          <button type="button" onClick="{{ testClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div style="padding:20px">
+          <p style="margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">We’ll send the current draft of “{{ edTitle }}” so you can check formatting and merge fields.</p>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Email Address" required="{{ true }}" error="{{ testError }}" hint-size="100%,80px">
+            <input value="{{ testEmail }}" onChange="{{ setTestEmail }}" placeholder="Enter email" aria-label="Email address" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ testBorder }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+          </x-import>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ testClose }}" hint-size="auto,40px">Cancel</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ testSend }}" hint-size="auto,40px">Send Test</x-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ previewOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ previewClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-pv-title" onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-pv-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Preview · {{ edTitle }}</h2>
+          <button type="button" onClick="{{ previewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </div>
+        <div style="padding:20px">
+          <div style="padding:18px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+            <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
+              <div style="padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--ax-gray-200)">
+                <div style="font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">SUBJECT</div>
+                <div style="margin-top:3px;font-size:15px;font-weight:600;color:var(--ax-text-primary)">{{ edSubject }}</div>
+              </div>
+            </sc-if>
+            <div style="font-size:14.5px;line-height:1.7;color:var(--ax-text-primary);white-space:pre-wrap;text-wrap:pretty">{{ previewBody }}</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ previewClose }}" hint-size="auto,40px">Close Preview</x-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;right:24px;top:88px;z-index:170;display:flex;align-items:flex-start;gap:14px;width:min(460px,calc(100vw - 48px));padding:18px 20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 12px 36px rgba(10,13,18,.16);animation:caIn .16s ease-out both">
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;flex-shrink:0">
+        <g opacity="0.3"><path d="M19 6C26.1797 6 32 11.8203 32 19C32 26.1797 26.1797 32 19 32C11.8203 32 6 26.1797 6 19C6 11.8203 11.8203 6 19 6Z" stroke="#198754" stroke-width="2"></path></g>
+        <g opacity="0.1"><path d="M19 1C28.9411 1 37 9.05887 37 19C37 28.9411 28.9411 37 19 37C9.05887 37 1 28.9411 1 19C1 9.05887 9.05887 1 19 1Z" stroke="#198754" stroke-width="2"></path></g>
+        <path d="M15.2498 19.0003L17.7498 21.5003L22.7498 16.5003M27.3332 19.0003C27.3332 23.6027 23.6022 27.3337 18.9998 27.3337C14.3975 27.3337 10.6665 23.6027 10.6665 19.0003C10.6665 14.398 14.3975 10.667 18.9998 10.667C23.6022 10.667 27.3332 14.398 27.3332 19.0003Z" stroke="#198754" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div style="flex:1;min-width:0">
+        <sc-if value="{{ toastTitle }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:16px;font-weight:600;color:var(--ax-text-primary);text-wrap:pretty">{{ toastTitle }}</div>
+        </sc-if>
+        <div style="margin-top:3px;font-size:15px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ toast }}</div>
+        <div style="display:flex;align-items:center;gap:20px;margin-top:14px">
+          <button type="button" onClick="{{ toastClose }}" style="padding:0;border:none;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--ax-text-secondary);cursor:pointer">Dismiss</button>
+          <sc-if value="{{ toastHasAction }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ toastAction }}" style="padding:0;border:none;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ toastActionLabel }}</button>
+          </sc-if>
+        </div>
+      </div>
+      <button type="button" onClick="{{ toastClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;flex-shrink:0;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1024},&quot;embedded&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site Configuration&quot;},&quot;defaultSection&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;user&quot;,&quot;services&quot;,&quot;certTypes&quot;,&quot;certInfo&quot;,&quot;system&quot;,&quot;regulatory&quot;,&quot;notifications&quot;],&quot;default&quot;:&quot;user&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site Configuration&quot;},&quot;showAuditColumns&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site Configuration&quot;},&quot;perPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;10&quot;,&quot;25&quot;,&quot;50&quot;],&quot;default&quot;:&quot;10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site Configuration&quot;}}">
+const TEAL = '#0D5257', AQUA = '#00B6BD', RED = '#E33B32';
+const ME = 'Emily Rodriguez';
+const STATES = ['Delaware', 'Maryland', 'Virginia', 'Pennsylvania', 'New Jersey'];
+const PERMS = ['View orders', 'Create orders', 'Process orders', 'Issue certificates', 'Revoke certificates', 'Manage users', 'View reports', 'Configure site'];
+const TAG = { display: 'inline-flex', alignItems: 'center', padding: '2px 6px', borderRadius: '6px', borderStyle: 'solid', borderWidth: '1px', fontWeight: 500 };
+const tag = (bg, bd, fg) => Object.assign({}, TAG, { background: bg, borderColor: bd, color: fg });
+const TAG_BLUE = tag('#F0F9FF', '#B9E6FE', '#026AA2');
+const TAG_INDIGO = tag('#EEF4FF', '#C7D7FE', '#3538CD');
+const TAG_GRAY = tag('#FAFAFA', '#E9EAEB', '#414651');
+const STATUS_COLOR = { Active: 'success', Inactive: 'danger', Enabled: 'success', Disabled: 'danger', Archived: 'gray', Draft: 'warning' };
+const audit = (cb, cd, mb, md) => ({ createdBy: cb, createdOn: cd, modifiedBy: mb, modifiedOn: md });
+
+const SEED = {
+  locations: [
+    Object.assign({ id: 'l1', name: 'Dover Main Office', office: 'Division of Corporations', a1: '401 Federal Street', city: 'Dover', state: 'Delaware', zip: '19901', status: 'Active' }, audit(ME, 'Jan 14, 2026', ME, 'Aug 02, 2026')),
+    Object.assign({ id: 'l2', name: 'Wilmington Annex', office: 'Authentications Unit', a1: '820 North French Street', city: 'Wilmington', state: 'Delaware', zip: '19801', status: 'Active' }, audit('James Carter', 'Feb 03, 2026', ME, 'Jul 19, 2026')),
+    Object.assign({ id: 'l3', name: 'Georgetown Service Center', office: 'Apostille Services', a1: '9 South Bedford Street', city: 'Georgetown', state: 'Delaware', zip: '19947', status: 'Active' }, audit('James Carter', 'Mar 22, 2026', 'Liam Brooks', 'Jun 30, 2026')),
+    Object.assign({ id: 'l4', name: 'Lewes Satellite', office: 'Document Compliance', a1: '19 Bayview Road', city: 'Lewes', state: 'Delaware', zip: '19958', status: 'Inactive' }, audit('Emma Ray', 'Apr 08, 2026', 'Emma Ray', 'May 11, 2026')),
+  ],
+  titles: [
+    Object.assign({ id: 't1', name: 'Authentication Officer', desc: 'Reviews and authenticates submitted documents.', status: 'Active' }, audit(ME, 'Jan 14, 2026', ME, 'Aug 12, 2026')),
+    Object.assign({ id: 't2', name: 'Senior Certification Officer', desc: 'Approves and signs issued apostilles.', status: 'Active' }, audit(ME, 'Jan 14, 2026', 'James Carter', 'Jul 02, 2026')),
+    Object.assign({ id: 't3', name: 'Business Services Representative', desc: 'Handles business registration requests.', status: 'Active' }, audit('Emma Ray', 'Feb 20, 2026', 'Emma Ray', 'Feb 20, 2026')),
+    Object.assign({ id: 't4', name: 'Compliance Review Specialist', desc: 'Audits records for regulatory compliance.', status: 'Active' }, audit('Liam Brooks', 'Mar 05, 2026', ME, 'Aug 20, 2026')),
+    Object.assign({ id: 't5', name: 'Records Clerk', desc: 'Maintains physical document archives.', status: 'Inactive' }, audit('James Carter', 'Jan 30, 2026', 'James Carter', 'Apr 14, 2026')),
+  ],
+  divisions: [
+    Object.assign({ id: 'd1', name: 'Apostille Services', desc: 'Issues apostilles and certificates of authentication.', status: 'Active' }, audit(ME, 'Jan 14, 2026', ME, 'Aug 02, 2026')),
+    Object.assign({ id: 'd2', name: 'Business Registrations & Corporate Services', desc: 'Corporate filings and certified copies.', status: 'Active' }, audit(ME, 'Jan 14, 2026', 'Emma Ray', 'Jun 18, 2026')),
+    Object.assign({ id: 'd3', name: 'Document Compliance & Quality Assurance', desc: 'Reviews document quality before issuance.', status: 'Active' }, audit('Liam Brooks', 'Feb 11, 2026', 'Liam Brooks', 'Jul 27, 2026')),
+    Object.assign({ id: 'd4', name: 'International Document Services', desc: 'Handles non-Hague legalization requests.', status: 'Inactive' }, audit('James Carter', 'Mar 19, 2026', ME, 'May 06, 2026')),
+  ],
+  templates: [
+    Object.assign({ id: 'tp1', name: 'Authentication Officer — Dover', location: 'Dover Main Office', title: 'Authentication Officer', division: 'Apostille Services', perms: ['View orders', 'Process orders', 'Issue certificates', 'View reports'], status: 'Active' }, audit(ME, 'Feb 02, 2026', ME, 'Aug 15, 2026')),
+    Object.assign({ id: 'tp2', name: 'Business Services — Wilmington', location: 'Wilmington Annex', title: 'Business Services Representative', division: 'Business Registrations & Corporate Services', perms: ['View orders', 'Create orders', 'View reports'], status: 'Active' }, audit('Emma Ray', 'Mar 12, 2026', 'Emma Ray', 'Jul 09, 2026')),
+    Object.assign({ id: 'tp3', name: 'Compliance Reviewer — Read Only', location: 'Georgetown Service Center', title: 'Compliance Review Specialist', division: 'Document Compliance & Quality Assurance', perms: ['View orders', 'View reports'], status: 'Inactive' }, audit('Liam Brooks', 'Apr 21, 2026', 'Liam Brooks', 'Apr 21, 2026')),
+  ],
+  services: [
+    Object.assign({ id: 's1', name: 'Apostille — Standard', desc: 'Hague apostille issued within 5 business days.', cost: 25, status: 'Enabled' }, audit(ME, 'Jan 14, 2026', ME, 'Aug 01, 2026')),
+    Object.assign({ id: 's2', name: 'Apostille — Expedited', desc: 'Hague apostille issued within 1 business day.', cost: 75, status: 'Enabled' }, audit(ME, 'Jan 14, 2026', 'James Carter', 'Jul 21, 2026')),
+    Object.assign({ id: 's3', name: 'Certificate of Authentication', desc: 'Non-Hague legalization for embassy submission.', cost: 30, status: 'Enabled' }, audit('James Carter', 'Feb 06, 2026', ME, 'Jun 28, 2026')),
+    Object.assign({ id: 's4', name: 'e-Apostille', desc: 'Digitally signed apostille delivered electronically.', cost: 20, status: 'Enabled' }, audit(ME, 'Mar 02, 2026', ME, 'Aug 18, 2026')),
+    Object.assign({ id: 's5', name: 'Physical to Digital Conversion', desc: 'Scan a physical document into an e-Apostille.', cost: 15, status: 'Disabled' }, audit('Emma Ray', 'Apr 15, 2026', 'Emma Ray', 'May 30, 2026')),
+  ],
+  certTypes: [
+    Object.assign({ id: 'ct1', name: 'Hague Apostille', desc: 'Standard Hague Convention apostille certificate.', profile: 'Delmarva Apostille 2026', kind: 'Both', cost: 25, status: 'Active' }, audit(ME, 'Jan 20, 2026', ME, 'Aug 05, 2026')),
+    Object.assign({ id: 'ct2', name: 'Non-Hague Certification', desc: 'Certificate of authentication for non-member states.', profile: 'Delmarva Authentication 2026', kind: 'Paper', cost: 30, status: 'Active' }, audit(ME, 'Jan 20, 2026', 'Liam Brooks', 'Jul 14, 2026')),
+    Object.assign({ id: 'ct3', name: 'Digital Apostille', desc: 'e-Apostille with embedded digital signature.', profile: 'Delmarva e-Apostille 2026', kind: 'Digital', cost: 20, status: 'Active' }, audit('James Carter', 'Feb 27, 2026', ME, 'Aug 22, 2026')),
+    Object.assign({ id: 'ct4', name: 'Legacy Apostille (2025)', desc: 'Retired artwork retained for reissue requests.', profile: 'Delmarva Apostille 2025', kind: 'Paper', cost: 25, status: 'Inactive' }, audit('Emma Ray', 'Nov 12, 2025', 'Emma Ray', 'Jan 06, 2026')),
+  ],
+  certInfo: [
+    Object.assign({ id: 'ci1', name: 'Delmarva Apostille 2026', location: 'Dover Main Office', authority: 'Delmarva Secretary of State', authOffice: 'Division of Corporations', office: 'Division of Corporations', start: '2026-01-01', end: '2026-12-31', signature: 'sos-signature-2026.svg', seal: 'delmarva-seal.eps', status: 'Active' }, audit(ME, 'Jan 02, 2026', ME, 'Aug 05, 2026')),
+    Object.assign({ id: 'ci2', name: 'Delmarva Authentication 2026', location: 'Wilmington Annex', authority: 'Delmarva Secretary of State', authOffice: 'Authentications Unit', office: 'Authentications Unit', start: '2026-01-01', end: '2026-12-31', signature: 'sos-signature-2026.svg', seal: 'delmarva-seal.eps', status: 'Active' }, audit(ME, 'Jan 02, 2026', 'James Carter', 'Jul 14, 2026')),
+    Object.assign({ id: 'ci3', name: 'Delmarva e-Apostille 2026', location: 'Dover Main Office', authority: 'Delmarva Secretary of State', authOffice: 'Apostille Services', office: 'Apostille Services', start: '2026-02-01', end: '', signature: 'sos-esignature-2026.svg', seal: 'delmarva-seal-digital.svg', status: 'Active' }, audit('Liam Brooks', 'Feb 01, 2026', ME, 'Aug 22, 2026')),
+    Object.assign({ id: 'ci4', name: 'Delmarva Apostille 2025', location: 'Dover Main Office', authority: 'Delmarva Secretary of State', authOffice: 'Division of Corporations', office: 'Division of Corporations', start: '2025-01-01', end: '2025-12-31', signature: 'sos-signature-2025.svg', seal: 'delmarva-seal.eps', status: 'Archived' }, audit(ME, 'Jan 03, 2025', 'Emma Ray', 'Jan 06, 2026')),
+  ],
+};
+
+const SECTIONS = [
+  ['user', 'User Configuration', 'bi bi-people'],
+  ['services', 'Service Types', 'bi bi-collection'],
+  ['certTypes', 'Certificate Types', 'bi bi-patch-check'],
+  ['certInfo', 'Certificate Information', 'bi bi-file-earmark-richtext'],
+  ['system', 'System Settings', 'bi bi-sliders'],
+  ['regulatory', 'Regulatory Settings', 'bi bi-shield-check'],
+  ['notifications', 'Customer Notifications', 'bi bi-envelope'],
+];
+
+const NOTIF_CATS = [
+  ['created', 'Order Created', 'Sent when a customer submits an order.'],
+  ['issued', 'Certification Issued', 'Sent when an apostille or certificate is issued.'],
+  ['revoked', 'Order Revoked', 'Sent when an issued certification is revoked.'],
+  ['rejected', 'Order Rejected', 'Sent when an order cannot be processed.'],
+];
+
+const MERGE_FIELDS = ['{{CustomerName}}', '{{OrderNumber}}', '{{DocumentType}}', '{{IssueDate}}', '{{TrackingLink}}', '{{OfficeName}}'];
+
+const EMAIL_SEED = {
+  created: { subject: 'We received order {{OrderNumber}}', body: 'Hello {{CustomerName}},\n\nWe received your apostille request {{OrderNumber}} and it is now in our queue. You can follow its progress at any time using the link below.\n\n{{TrackingLink}}\n\n{{OfficeName}}', modifiedBy: ME, modifiedOn: 'Aug 12, 2026' },
+  issued: { subject: 'Your apostille for order {{OrderNumber}} is ready', body: 'Hello {{CustomerName}},\n\nYour {{DocumentType}} was apostilled on {{IssueDate}}. Your documents are on the way and can be verified online using the link below.\n\n{{TrackingLink}}\n\n{{OfficeName}}', modifiedBy: ME, modifiedOn: 'Aug 18, 2026' },
+  revoked: { subject: 'Order {{OrderNumber}} has been revoked', body: 'Hello {{CustomerName}},\n\nThe certification issued for order {{OrderNumber}} has been revoked and is no longer valid. Please contact our office if you need a replacement.\n\n{{OfficeName}}', modifiedBy: 'James Carter', modifiedOn: 'Jul 30, 2026' },
+  rejected: { subject: 'We could not process order {{OrderNumber}}', body: 'Hello {{CustomerName}},\n\nWe were unable to process order {{OrderNumber}}. Your documents are being returned along with a note explaining what is needed.\n\n{{OfficeName}}', modifiedBy: 'Emma Ray', modifiedOn: 'Jun 22, 2026' },
+};
+const SMS_SEED = {
+  created: { body: 'We received order {{OrderNumber}}. Track it here:', modifiedBy: ME, modifiedOn: 'Aug 12, 2026' },
+  issued: { body: 'Your apostille is issued. Details:', modifiedBy: ME, modifiedOn: 'Aug 18, 2026' },
+  revoked: { body: 'Order {{OrderNumber}} was revoked. More info:', modifiedBy: 'James Carter', modifiedOn: 'Jul 30, 2026' },
+  rejected: { body: 'Order {{OrderNumber}} could not be processed. Details:', modifiedBy: 'Emma Ray', modifiedOn: 'Jun 22, 2026' },
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const per = Number(props.perPage || 10) || 10;
+    this.state = {
+      section: props.defaultSection || 'user',
+      userTab: 'locations',
+      collapsed: false,
+      data: {
+        locations: SEED.locations.slice(), titles: SEED.titles.slice(), divisions: SEED.divisions.slice(),
+        templates: SEED.templates.slice(), services: SEED.services.slice(),
+        certTypes: SEED.certTypes.slice(), certInfo: SEED.certInfo.slice(),
+      },
+      tbl: {},
+      per: per,
+      sel: {},
+      archiveView: 'Active',
+      menu: null,
+      form: null,
+      view: null,
+      confirm: null,
+      banner: null,
+      toast: '', toastTitle: '', toastActionDef: null,
+      sys: { recipients: 10, requests: 50, tz: 'Eastern Time (ET)', forceTz: false, timeout: 15, language: 'English', p2d: true },
+      reg: { retention: 45, method: 'split', hague: 'Hague Apostille', nonHague: 'Non-Hague Certification', single: 'Hague Apostille' },
+      notif: { channel: 'email', cat: 'created', html: false },
+      email: JSON.parse(JSON.stringify(EMAIL_SEED)),
+      sms: JSON.parse(JSON.stringify(SMS_SEED)),
+      testOpen: false, testEmail: '', testTouched: false,
+      previewOpen: false,
+    };
+  }
+
+  /* ---------- helpers ---------- */
+  flash(msg, title, action) {
+    this.setState({ toast: msg, toastTitle: title || '', toastActionDef: action || null });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.clearToast(), action ? 9000 : 3600);
+  }
+  clearToast() { clearTimeout(this._t); this.setState({ toast: '', toastTitle: '', toastActionDef: null }); }
+  today() {
+    const d = new Date();
+    const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return M[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0') + ', ' + d.getFullYear();
+  }
+  money(n) { return '$' + Number(n || 0).toFixed(2); }
+  prettyDate(iso) {
+    if (!iso) return '—';
+    const p = String(iso).split('-');
+    if (p.length !== 3) return iso;
+    const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return M[Number(p[1]) - 1] + ' ' + p[2] + ', ' + p[0];
+  }
+  tblState(key) { return this.state.tbl[key] || { q: '', status: 'All', sort: { key: 'name', dir: 'asc' }, page: 1 }; }
+  patchTbl(key, patch) {
+    const t = Object.assign({}, this.tblState(key), patch);
+    this.setState({ tbl: Object.assign({}, this.state.tbl, { [key]: t }) });
+  }
+  setData(key, list) { this.setState({ data: Object.assign({}, this.state.data, { [key]: list }) }); }
+  names(key) { return this.state.data[key].map((r) => r.name); }
+
+  /* which collection the active section shows */
+  activeKey() {
+    const s = this.state;
+    if (s.section === 'user') return s.userTab;
+    if (s.section === 'services') return 'services';
+    if (s.section === 'certTypes') return 'certTypes';
+    if (s.section === 'certInfo') return 'certInfo';
+    return null;
+  }
+
+  meta(key) {
+    const d = this.state.data;
+    const M = {
+      locations: {
+        title: 'Locations', singular: 'Location', desc: 'Offices and service centers where orders are received and processed.',
+        create: 'Add Location', icon: 'bi bi-geo-alt', search: 'Search locations', statuses: ['All', 'Active', 'Inactive'], minWidth: '1180px',
+        cols: [
+          { key: 'name', label: 'LOCATION NAME', kind: 'strong' },
+          { key: 'office', label: 'OFFICE NAME', kind: 'text' },
+          { key: 'address', label: 'ADDRESS', kind: 'stack' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      titles: {
+        title: 'Job Titles', singular: 'Job Title', desc: 'Titles that can be assigned to users in this office.',
+        create: 'Create Job Title', icon: 'bi bi-person-badge', search: 'Search job titles', statuses: ['All', 'Active', 'Inactive'], minWidth: '1120px',
+        cols: [
+          { key: 'name', label: 'TITLE NAME', kind: 'strong' },
+          { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      divisions: {
+        title: 'Divisions', singular: 'Division', desc: 'Organizational divisions used for assignment and reporting.',
+        create: 'Create Division', icon: 'bi bi-diagram-3', search: 'Search divisions', statuses: ['All', 'Active', 'Inactive'], minWidth: '1120px',
+        cols: [
+          { key: 'name', label: 'DIVISION NAME', kind: 'strong' },
+          { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      templates: {
+        title: 'User Templates', singular: 'Template', desc: 'Preset location, title, division and permissions applied when inviting a user.',
+        create: 'Create Template', icon: 'bi bi-person-gear', search: 'Search templates', statuses: ['All', 'Active', 'Inactive'], minWidth: '1360px',
+        cols: [
+          { key: 'name', label: 'TEMPLATE NAME', kind: 'strong' },
+          { key: 'location', label: 'LOCATION', kind: 'text' },
+          { key: 'title', label: 'JOB TITLE', kind: 'text' },
+          { key: 'division', label: 'DIVISION', kind: 'wrap' },
+          { key: 'perms', label: 'PERMISSIONS', kind: 'tag' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      services: {
+        title: 'Service Types', singular: 'Service Type', desc: 'Apostille and certification services customers can order.',
+        create: 'Create Service Type', icon: 'bi bi-collection', search: 'Search service types', statuses: ['All', 'Enabled', 'Disabled'], minWidth: '1240px', bulk: true,
+        cols: [
+          { key: 'name', label: 'SERVICE TYPE NAME', kind: 'strong' },
+          { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
+          { key: 'cost', label: 'COST', kind: 'money' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      certTypes: {
+        title: 'Certificate Types', singular: 'Certificate Type', desc: 'Certificates issued by this office and the artwork profile each one uses.',
+        create: 'Create Certificate Type', icon: 'bi bi-patch-check', search: 'Search certificate types', statuses: ['All', 'Active', 'Inactive'], minWidth: '1440px',
+        cols: [
+          { key: 'name', label: 'CERTIFICATE TYPE NAME', kind: 'strong' },
+          { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
+          { key: 'profile', label: 'CERTIFICATE INFORMATION', kind: 'tag' },
+          { key: 'kind', label: 'TYPE', kind: 'tagBlue' },
+          { key: 'cost', label: 'COST', kind: 'money' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+      certInfo: {
+        title: 'Certificate Information', singular: 'Certificate Profile', desc: 'Content and artwork printed on apostilles and certificates.',
+        create: 'Create Certificate Information', icon: 'bi bi-file-earmark-richtext', search: 'Search certificate profiles', statuses: ['All'], minWidth: '1480px',
+        cols: [
+          { key: 'name', label: 'CERTIFICATE NAME', kind: 'strong' },
+          { key: 'location', label: 'ISSUING LOCATION', kind: 'text' },
+          { key: 'authority', label: 'COMPETENT AUTHORITY', kind: 'wrap' },
+          { key: 'start', label: 'START DATE', kind: 'date' },
+          { key: 'end', label: 'END DATE', kind: 'date' },
+          { key: 'status', label: 'STATUS', kind: 'status' },
+        ],
+      },
+    };
+    const m = M[key];
+    return Object.assign({}, m, { count: (d[key] || []).length });
+  }
+
+  fieldsFor(key) {
+    const d = this.state.data;
+    const locNames = this.names('locations');
+    const titleNames = this.names('titles');
+    const divNames = this.names('divisions');
+    const profileNames = d.certInfo.filter((c) => c.status === 'Active').map((c) => c.name);
+    const F = {
+      locations: [{ fields: [
+        { key: 'name', label: 'Location Name', kind: 'text', required: true, span: 'span 1', placeholder: 'Enter location name' },
+        { key: 'office', label: 'Office Name', kind: 'text', required: true, span: 'span 1', placeholder: 'Enter office name' },
+        { key: 'a1', label: 'Street Address', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter street address' },
+        { key: 'city', label: 'City', kind: 'text', required: true, span: 'span 1' },
+        { key: 'state', label: 'State', kind: 'select', required: true, span: 'span 1', options: STATES },
+        { key: 'zip', label: 'Zip Code', kind: 'text', required: true, span: 'span 1' },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Active', 'Inactive'] },
+      ] }],
+      titles: [{ fields: [
+        { key: 'name', label: 'Title Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter title name' },
+        { key: 'desc', label: 'Description', kind: 'textarea', span: '1 / -1', placeholder: 'Describe what this title is responsible for' },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Active', 'Inactive'] },
+      ] }],
+      divisions: [{ fields: [
+        { key: 'name', label: 'Division Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter division name' },
+        { key: 'desc', label: 'Description', kind: 'textarea', span: '1 / -1', placeholder: 'Describe this division' },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Active', 'Inactive'] },
+      ] }],
+      templates: [{ fields: [
+        { key: 'name', label: 'Template Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter template name' },
+        { key: 'location', label: 'Location', kind: 'select', required: true, span: 'span 1', options: locNames },
+        { key: 'title', label: 'Job Title', kind: 'select', required: true, span: 'span 1', options: titleNames },
+        { key: 'division', label: 'Division', kind: 'select', required: true, span: 'span 1', options: divNames },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Active', 'Inactive'] },
+        { key: 'perms', label: 'Assigned Permissions', kind: 'perms', span: '1 / -1', hint: 'Applied to every user created from this template.' },
+      ] }],
+      services: [{ fields: [
+        { key: 'name', label: 'Service Type Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter service type name' },
+        { key: 'desc', label: 'Description', kind: 'textarea', span: '1 / -1', placeholder: 'Describe this service' },
+        { key: 'cost', label: 'Cost', kind: 'number', required: true, span: 'span 1', step: '0.01', placeholder: '0.00', hint: 'Charged per document.' },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Enabled', 'Disabled'] },
+      ] }],
+      certTypes: [{ fields: [
+        { key: 'name', label: 'Certificate Type Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter certificate type name' },
+        { key: 'desc', label: 'Description', kind: 'textarea', span: '1 / -1', placeholder: 'Describe this certificate type' },
+        { key: 'profile', label: 'Assigned Certificate Information', kind: 'select', required: true, span: '1 / -1', options: profileNames, hint: 'Artwork and content profile printed on this certificate.' },
+        { key: 'kind', label: 'Type', kind: 'select', required: true, span: 'span 1', options: ['Paper', 'Digital', 'Both'] },
+        { key: 'cost', label: 'Cost', kind: 'number', required: true, span: 'span 1', step: '0.01', placeholder: '0.00' },
+        { key: 'status', label: 'Status', kind: 'select', required: true, span: 'span 1', options: ['Active', 'Inactive'] },
+      ] }],
+      certInfo: [
+        { title: 'BASIC INFORMATION', fields: [
+          { key: 'name', label: 'Certificate Name', kind: 'text', required: true, span: '1 / -1', placeholder: 'Enter certificate name' },
+          { key: 'location', label: 'Issuing Location', kind: 'select', required: true, span: '1 / -1', options: locNames },
+          { key: 'start', label: 'Start Date', kind: 'date', required: true, span: 'span 1' },
+          { key: 'end', label: 'End Date', kind: 'date', span: 'span 1', hint: 'Leave empty for no expiry.' },
+        ] },
+        { title: 'COMPETENT AUTHORITY', fields: [
+          { key: 'authority', label: 'Authority Name (7a)', kind: 'text', required: true, span: 'span 1', placeholder: 'Enter authority name' },
+          { key: 'authOffice', label: 'Authority Office (7b)', kind: 'text', required: true, span: 'span 1', placeholder: 'Enter authority office' },
+          { key: 'office', label: 'Office Name (10c)', kind: 'text', required: true, span: '1 / -1', hint: 'Pre-filled from Authority Office — edit if the printed name differs.' },
+        ] },
+        { title: 'SIGNATURE & SEAL', fields: [
+          { key: 'signature', label: 'Signature File', kind: 'upload', span: '1 / -1', hint: 'Scanned automatically before it can be used.' },
+          { key: 'seal', label: 'Seal', kind: 'upload', span: '1 / -1', existing: true, hint: 'Upload a new seal or select one already approved for this office.' },
+        ] },
+      ],
+    };
+    return F[key] || [];
+  }
+
+  blank(key) {
+    const d = this.state.data;
+    const first = (arr) => (arr && arr.length ? arr[0] : '');
+    const B = {
+      locations: { name: '', office: '', a1: '', city: '', state: 'Delaware', zip: '', status: 'Active' },
+      titles: { name: '', desc: '', status: 'Active' },
+      divisions: { name: '', desc: '', status: 'Active' },
+      templates: { name: '', location: first(this.names('locations')), title: first(this.names('titles')), division: first(this.names('divisions')), perms: ['View orders'], status: 'Active' },
+      services: { name: '', desc: '', cost: '', status: 'Enabled' },
+      certTypes: { name: '', desc: '', profile: first(d.certInfo.filter((c) => c.status === 'Active').map((c) => c.name)), kind: 'Paper', cost: '', status: 'Active' },
+      certInfo: { name: '', location: first(this.names('locations')), authority: 'Delmarva Secretary of State', authOffice: '', office: '', start: '', end: '', signature: '', seal: '', status: 'Active' },
+    };
+    return B[key];
+  }
+
+  openForm(key, id) {
+    const rec = id ? this.state.data[key].find((r) => r.id === id) : null;
+    const values = rec ? Object.assign({}, rec) : this.blank(key);
+    this.setState({
+      form: { key: key, id: id || null, values: values, errors: {}, submitted: false, scan: {} },
+      menu: null, view: null,
+    });
+  }
+
+  setFormValue(field, value) {
+    const f = this.state.form;
+    if (!f) return;
+    const values = Object.assign({}, f.values, { [field]: value });
+    /* Office Name (10c) mirrors Authority Office until the user edits it directly. */
+    if (f.key === 'certInfo' && field === 'authOffice' && (!f.values.office || f.values.office === f.values.authOffice)) values.office = value;
+    this.setState({ form: Object.assign({}, f, { values: values, errors: Object.assign({}, f.errors, { [field]: undefined }) }) });
+  }
+
+  validateForm() {
+    const f = this.state.form;
+    const groups = this.fieldsFor(f.key);
+    const errors = {};
+    groups.forEach((g) => g.fields.forEach((fd) => {
+      if (!fd.required) return;
+      const v = f.values[fd.key];
+      if (fd.kind === 'number') { if (v === '' || v === null || isNaN(Number(v))) errors[fd.key] = fd.label + ' is required.'; }
+      else if (!String(v || '').trim()) errors[fd.key] = fd.label + ' is required.';
+    }));
+    if (f.key === 'certInfo' && f.values.start && f.values.end && f.values.end < f.values.start) errors.end = 'End date must be after the start date.';
+    const dup = this.state.data[f.key].some((r) => r.id !== f.id && String(r.name || '').toLowerCase() === String(f.values.name || '').trim().toLowerCase());
+    if (dup) errors.name = 'That name is already in use.';
+    return errors;
+  }
+
+  saveForm() {
+    const f = this.state.form;
+    if (!f) return;
+    const errors = this.validateForm();
+    if (Object.keys(errors).length) {
+      this.setState({ form: Object.assign({}, f, { errors: errors, submitted: true }) });
+      return;
+    }
+    const key = f.key;
+    const m = this.meta(key);
+    const list = this.state.data[key].slice();
+    const now = this.today();
+    const values = Object.assign({}, f.values);
+    if (values.cost !== undefined && values.cost !== '') values.cost = Number(values.cost);
+    values.name = String(values.name).trim();
+    if (f.id) {
+      const i = list.findIndex((r) => r.id === f.id);
+      list[i] = Object.assign({}, list[i], values, { modifiedBy: ME, modifiedOn: now });
+    } else {
+      list.unshift(Object.assign({ id: key + Date.now() }, values, audit(ME, now, ME, now)));
+    }
+    this.setData(key, list);
+    this.setState({ form: null });
+    if (key === 'certInfo' && !f.id) {
+      this.setState({ banner: { kind: 'success', title: 'Design Department notified', body: 'A notification with the new certificate content and artwork was emailed to the Design Department for production.' } });
+    }
+    this.flash(
+      m.singular + ' “' + values.name + '” was ' + (f.id ? 'updated' : 'created') + '.',
+      m.singular + (f.id ? ' updated' : ' created')
+    );
+  }
+
+  /* file upload → OPSWAT scan → approved */
+  uploadFile(field) {
+    const f = this.state.form;
+    if (!f) return;
+    const name = field === 'signature' ? 'signature-' + new Date().getFullYear() + '.svg' : 'office-seal-' + new Date().getFullYear() + '.eps';
+    this.setState({ form: Object.assign({}, f, { values: Object.assign({}, f.values, { [field]: name }), scan: Object.assign({}, f.scan, { [field]: 'scanning' }) }) });
+    clearTimeout(this['_scan_' + field]);
+    this['_scan_' + field] = setTimeout(() => {
+      const cur = this.state.form;
+      if (!cur) return;
+      this.setState({ form: Object.assign({}, cur, { scan: Object.assign({}, cur.scan, { [field]: 'approved' }) }) });
+    }, 1400);
+  }
+
+  askDelete(key, id) {
+    const rec = this.state.data[key].find((r) => r.id === id);
+    const m = this.meta(key);
+    this.setState({ menu: null, confirm: {
+      title: 'Delete ' + m.singular.toLowerCase() + '?',
+      body: '“' + rec.name + '” will be removed from Site Configuration. Records already issued using it are not affected.',
+      cta: 'Delete ' + m.singular, danger: true,
+      run: () => {
+        const list = this.state.data[key].filter((r) => r.id !== id);
+        this.setData(key, list);
+        this.setState({ confirm: null, view: null });
+        this.flash('“' + rec.name + '” was deleted.', m.singular + ' deleted', { label: 'Undo', run: () => {
+          const back = this.state.data[key].slice();
+          back.unshift(rec);
+          this.setData(key, back);
+          this.flash('“' + rec.name + '” was restored.', 'Delete undone');
+        } });
+      },
+    } });
+  }
+
+  askBulk(kind) {
+    const key = this.activeKey();
+    const ids = (this.state.sel[key] || []).slice();
+    if (!ids.length) return;
+    const m = this.meta(key);
+    if (kind === 'delete') {
+      this.setState({ confirm: {
+        title: 'Delete ' + ids.length + ' ' + m.title.toLowerCase() + '?',
+        body: 'The selected records will be removed from Site Configuration. This cannot be undone once you leave this page.',
+        cta: 'Delete ' + ids.length, danger: true,
+        run: () => {
+          this.setData(key, this.state.data[key].filter((r) => ids.indexOf(r.id) < 0));
+          this.setState({ confirm: null, sel: Object.assign({}, this.state.sel, { [key]: [] }) });
+          this.flash(ids.length + ' records were deleted.', 'Bulk delete complete');
+        },
+      } });
+      return;
+    }
+    const status = kind === 'enable' ? 'Enabled' : 'Disabled';
+    const now = this.today();
+    this.setData(key, this.state.data[key].map((r) => (ids.indexOf(r.id) >= 0 ? Object.assign({}, r, { status: status, modifiedBy: ME, modifiedOn: now }) : r)));
+    this.setState({ sel: Object.assign({}, this.state.sel, { [key]: [] }) });
+    this.flash(ids.length + ' service types are now ' + status.toLowerCase() + '.', 'Status updated');
+  }
+
+  toggleStatus(key, id) {
+    const rec = this.state.data[key].find((r) => r.id === id);
+    const pairs = { Active: 'Inactive', Inactive: 'Active', Enabled: 'Disabled', Disabled: 'Enabled' };
+    const next = pairs[rec.status] || 'Active';
+    this.setData(key, this.state.data[key].map((r) => (r.id === id ? Object.assign({}, r, { status: next, modifiedBy: ME, modifiedOn: this.today() }) : r)));
+    this.setState({ menu: null });
+    this.flash('“' + rec.name + '” is now ' + next.toLowerCase() + '.', 'Status updated');
+  }
+
+  archive(id, restore) {
+    const rec = this.state.data.certInfo.find((r) => r.id === id);
+    const go = () => {
+      this.setData('certInfo', this.state.data.certInfo.map((r) => (r.id === id ? Object.assign({}, r, { status: restore ? 'Active' : 'Archived', modifiedBy: ME, modifiedOn: this.today() }) : r)));
+      this.setState({ confirm: null, menu: null, view: null });
+      this.flash('“' + rec.name + '” was ' + (restore ? 'restored to active use' : 'archived') + '.', restore ? 'Profile restored' : 'Profile archived');
+    };
+    if (restore) { go(); return; }
+    this.setState({ menu: null, confirm: {
+      title: 'Archive certificate information?',
+      body: '“' + rec.name + '” will stop being available for new certificate types. Certificates already issued keep their artwork.',
+      cta: 'Archive Profile', danger: false, run: go,
+    } });
+  }
+
+  duplicate(key, id) {
+    const rec = this.state.data[key].find((r) => r.id === id);
+    const now = this.today();
+    const copy = Object.assign({}, rec, { id: key + Date.now(), name: rec.name + ' (Copy)', status: 'Inactive' }, audit(ME, now, ME, now));
+    const list = this.state.data[key].slice();
+    list.unshift(copy);
+    this.setData(key, list);
+    this.setState({ menu: null });
+    this.flash('“' + copy.name + '” was created as an inactive copy.', 'Template duplicated', { label: 'Edit copy', run: () => this.openForm(key, copy.id) });
+  }
+
+  rowMenu(key, id, e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const rec = this.state.data[key].find((x) => x.id === id);
+    const items = 3 + (key === 'templates' ? 1 : 0) + (key === 'certInfo' ? 1 : 0) + (key === 'certInfo' ? 0 : 1);
+    const h = items * 40 + 12;
+    const vw = window.innerWidth, vh = window.innerHeight, w = 210;
+    const below = r.bottom + 8;
+    const y = vh - r.bottom - 12 >= h ? below : Math.max(12, r.top - h - 8);
+    this.setState({ menu: { key: key, id: id, status: rec.status, x: Math.min(Math.max(12, r.right - w), Math.max(12, vw - w - 12)), y: Math.min(Math.max(12, y), Math.max(12, vh - h - 12)) } });
+  }
+
+  /* ---------- render values ---------- */
+  renderVals() {
+    const s = this.state;
+    const showAudit = this.props.showAuditColumns !== false;
+    const key = this.activeKey();
+
+    const jump = (screen) => () => { window.location.href = 'CA Dashboard.dc.html#' + screen; };
+    const navItem = (label, icon, screen) => ({
+      label, icon, iconClass: icon, bg: 'transparent', edge: 'transparent', color: '#495057', weight: 400, go: jump(screen),
+    });
+    const sideNavGroups = [
+      { title: 'Main', showTitle: !s.collapsed, items: [
+        navItem('Dashboard', 'bi bi-grid-1x2', 'dashboard'),
+        navItem('Reports', 'bi bi-bar-chart-line', 'reports'),
+        navItem('Order Management', 'bi bi-list-ul', 'orders'),
+      ] },
+      { title: 'Services Center', showTitle: !s.collapsed, items: [
+        navItem('Create New Order', 'bi bi-plus-square', 'create'),
+      ] },
+      { title: 'Platform Settings', showTitle: !s.collapsed, items: [
+        navItem('User Management', 'bi bi-people', 'users'),
+        { label: 'Site Configuration', icon: 'bi bi-gear', iconClass: 'bi bi-gear', bg: 'rgba(0,182,189,.10)', edge: TEAL, color: TEAL, weight: 600, current: 'page', go: () => {} },
+      ] },
+      { title: '', showTitle: false, items: [
+        navItem('My Profile', 'bi bi-person', 'profile'),
+        navItem('Log Out', 'bi bi-box-arrow-right', 'logout'),
+      ] },
+    ];
+
+    const embedded = this.props.embedded === true;
+    const vals = {
+      chrome: !embedded,
+      mainPad: embedded ? '0' : '20px 32px 48px 24px',
+      mainBg: embedded ? 'transparent' : '#FAFBFC',
+      shellMinHeight: embedded ? '0' : '100vh',
+      collapsed: s.collapsed,
+      toggleCollapse: () => this.setState({ collapsed: !s.collapsed }),
+      sideNavGo: () => {},
+      sideNavGroups: sideNavGroups,
+      stopProp: (e) => e.stopPropagation(),
+      iconPlus: React.createElement('i', { className: 'bi bi-plus-lg', 'aria-hidden': 'true' }),
+      smallBtnProps: { style: { height: 32, padding: '0 12px', fontSize: 13, lineHeight: 1 } },
+      dangerSmallProps: { className: 'sc-danger-btn', style: { height: 32, padding: '0 12px', fontSize: 13, lineHeight: 1, border: '1px solid #F1AEB5', color: RED, background: '#fff', boxShadow: 'none' } },
+      dangerBtnProps: { className: 'sc-danger-btn', style: { border: '1px solid #F1AEB5', color: RED, background: '#fff', boxShadow: 'none' } },
+      countBadgeProps: { style: { borderRadius: '624.9375rem', border: '1px solid #E9D7FE', background: '#F9F5FF', color: '#6941C6' } },
+
+      sections: SECTIONS.map(([id, label, icon]) => ({
+        label, icon,
+        active: s.section === id,
+        edge: s.section === id ? TEAL : 'transparent',
+        color: s.section === id ? TEAL : '#495057',
+        weight: s.section === id ? 600 : 400,
+        go: () => this.setState({ section: id, menu: null, banner: null }),
+      })),
+
+      isUser: s.section === 'user',
+      isSystem: s.section === 'system',
+      isReg: s.section === 'regulatory',
+      isNotif: s.section === 'notifications',
+      isCertInfo: s.section === 'certInfo',
+      showCollection: !!key,
+
+      userTabs: [['locations', 'Locations'], ['titles', 'Job Titles'], ['divisions', 'Divisions'], ['templates', 'User Templates']].map(([id, label]) => {
+        const on = s.userTab === id;
+        return {
+          label, count: s.data[id].length,
+          active: on,
+          edge: on ? TEAL : 'transparent',
+          color: on ? TEAL : 'var(--ax-text-tertiary)',
+          countBg: on ? 'rgba(0,182,189,.14)' : 'var(--ax-gray-100)',
+          go: () => this.setState({ userTab: id, menu: null }),
+        };
+      }),
+
+      archiveTabs: ['Active', 'Archived'].map((v) => {
+        const on = s.archiveView === v;
+        return {
+          label: v === 'Active' ? 'Active Profiles' : 'Archived Profiles',
+          active: on,
+          bg: on ? '#fff' : 'transparent',
+          shadow: on ? '0 1px 2px rgba(10,13,18,.05)' : 'none',
+          color: on ? TEAL : 'var(--ax-text-tertiary)',
+          go: () => this.setState({ archiveView: v }),
+        };
+      }),
+
+      banner: s.banner ? s.banner.body : '',
+      bannerTitle: s.banner ? s.banner.title : '',
+      bannerBg: 'rgba(31,148,92,.08)',
+      bannerBorder: 'rgba(31,148,92,.28)',
+      bannerInk: '#1F945C',
+      bannerIcon: 'bi bi-check-circle-fill',
+      bannerClose: () => this.setState({ banner: null }),
+
+      toast: s.toast,
+      toastTitle: s.toastTitle,
+      toastClose: () => this.clearToast(),
+      toastHasAction: !!s.toastActionDef,
+      toastActionLabel: s.toastActionDef ? s.toastActionDef.label : '',
+      toastAction: () => { const a = s.toastActionDef; this.clearToast(); if (a && a.run) a.run(); },
+    };
+
+    Object.assign(vals, this.collectionVals(key, showAudit));
+    Object.assign(vals, this.menuVals());
+    Object.assign(vals, this.formVals());
+    Object.assign(vals, this.viewVals());
+    Object.assign(vals, this.confirmVals());
+    Object.assign(vals, this.sysVals());
+    Object.assign(vals, this.regVals());
+    Object.assign(vals, this.notifVals());
+    return vals;
+  }
+
+  collectionVals(key, showAudit) {
+    if (!key) return { colHasRows: false, colEmpty: false, colBulk: false, colSelAny: false, colRows: [], colCols: [] };
+    const s = this.state;
+    const m = this.meta(key);
+    const t = this.tblState(key);
+    const per = Number(s.per) || 10;
+    const sel = s.sel[key] || [];
+
+    let rows = s.data[key].slice();
+    if (key === 'certInfo') rows = rows.filter((r) => (s.archiveView === 'Archived' ? r.status === 'Archived' : r.status !== 'Archived'));
+    const q = t.q.trim().toLowerCase();
+    if (t.status !== 'All') rows = rows.filter((r) => r.status === t.status);
+    if (q) rows = rows.filter((r) => Object.keys(r).some((k) => k !== 'id' && String(r[k]).toLowerCase().indexOf(q) >= 0));
+
+    const cols = m.cols.concat(showAudit ? [
+      { key: 'createdBy', label: 'CREATED BY', kind: 'muted' },
+      { key: 'createdOn', label: 'CREATED DATE', kind: 'muted' },
+      { key: 'modifiedBy', label: 'MODIFIED BY', kind: 'muted' },
+      { key: 'modifiedOn', label: 'MODIFIED DATE', kind: 'muted' },
+    ] : []);
+
+    const sortVal = (r, k) => {
+      if (k === 'address') return (r.city + ' ' + r.a1).toLowerCase();
+      if (k === 'perms') return (r.perms || []).length;
+      if (k === 'cost') return Number(r.cost || 0);
+      return String(r[k] === undefined ? '' : r[k]).toLowerCase();
+    };
+    const sk = t.sort.key, dir = t.sort.dir === 'desc' ? -1 : 1;
+    rows.sort((a, b) => { const x = sortVal(a, sk), y = sortVal(b, sk); return x < y ? -dir : x > y ? dir : 0; });
+
+    const total = rows.length;
+    const pages = Math.max(1, Math.ceil(total / per));
+    const page = Math.min(t.page, pages);
+    const paged = rows.slice((page - 1) * per, page * per);
+
+    const cell = (r, c) => {
+      const base = { isText: false, isBadge: false, isTag: false, hasSub: false, wrap: 'nowrap', size: '14px', weight: 400, ink: 'var(--ax-text-primary)', text: '', sub: '', color: 'gray', tagProps: { style: TAG_GRAY } };
+      if (c.kind === 'status') return Object.assign(base, { isBadge: true, text: r.status, color: STATUS_COLOR[r.status] || 'gray' });
+      if (c.kind === 'money') return Object.assign(base, { isText: true, text: this.money(r.cost), weight: 500 });
+      if (c.kind === 'date') return Object.assign(base, { isText: true, text: this.prettyDate(r[c.key]), ink: 'var(--ax-text-secondary)' });
+      if (c.kind === 'strong') return Object.assign(base, { isText: true, text: r.name, size: '14.5px', weight: 600, wrap: 'normal' });
+      if (c.kind === 'stack') return Object.assign(base, { isText: true, text: r.a1, hasSub: true, sub: r.city + ', ' + r.state + ' ' + r.zip, wrap: 'normal' });
+      if (c.kind === 'wrap') return Object.assign(base, { isText: true, text: r[c.key] || '—', wrap: 'normal', ink: 'var(--ax-text-secondary)' });
+      if (c.kind === 'muted') return Object.assign(base, { isText: true, text: r[c.key] || '—', ink: 'var(--ax-text-secondary)', size: '13.5px' });
+      if (c.kind === 'tagBlue') return Object.assign(base, { isTag: true, text: r[c.key], tagProps: { style: TAG_BLUE } });
+      if (c.kind === 'tag') {
+        if (c.key === 'perms') return Object.assign(base, { isTag: true, text: (r.perms || []).length + ' permissions', tagProps: { style: TAG_INDIGO } });
+        return Object.assign(base, { isTag: true, text: r[c.key], tagProps: { style: TAG_INDIGO } });
+      }
+      return Object.assign(base, { isText: true, text: r[c.key] || '—' });
+    };
+
+    return {
+      colTitle: m.title,
+      colDesc: m.desc,
+      colCount: String(total),
+      colSearchHint: m.search,
+      colCreateLabel: m.create,
+      colMinWidth: m.minWidth,
+      colStatusOpts: m.statuses.map((v) => (v === 'All' ? 'All Statuses' : v)),
+      colStatus: t.status === 'All' ? 'All Statuses' : t.status,
+      setColStatus: (e) => this.patchTbl(key, { status: e.target.value === 'All Statuses' ? 'All' : e.target.value, page: 1 }),
+      colQuery: t.q,
+      setColQuery: (e) => this.patchTbl(key, { q: e.target.value, page: 1 }),
+      colCreate: () => this.openForm(key),
+      colClearFilters: () => this.patchTbl(key, { q: '', status: 'All', page: 1 }),
+      colFiltering: !!q || t.status !== 'All',
+      colHasRows: paged.length > 0,
+      colEmpty: paged.length === 0,
+      colEmptyIcon: m.icon,
+      colEmptyTitle: (!!q || t.status !== 'All') ? 'No matches for these filters' : 'No ' + m.title.toLowerCase() + ' yet',
+      colEmptyBody: (!!q || t.status !== 'All') ? 'Try a different search term or clear the status filter.' : m.desc,
+      colBulk: !!m.bulk,
+      colAllSel: !!m.bulk && paged.length > 0 && paged.every((r) => sel.indexOf(r.id) >= 0),
+      colToggleAll: () => {
+        const all = paged.every((r) => sel.indexOf(r.id) >= 0);
+        this.setState({ sel: Object.assign({}, s.sel, { [key]: all ? [] : paged.map((r) => r.id) }) });
+      },
+      colSelAny: !!m.bulk && sel.length > 0,
+      colSelLabel: sel.length + ' selected',
+      colClearSel: () => this.setState({ sel: Object.assign({}, s.sel, { [key]: [] }) }),
+      colBulkEnable: () => this.askBulk('enable'),
+      colBulkDisable: () => this.askBulk('disable'),
+      colBulkDelete: () => this.askBulk('delete'),
+
+      colCols: cols.map((c) => {
+        const active = t.sort.key === c.key;
+        return {
+          label: c.label,
+          ariaSort: active ? (t.sort.dir === 'asc' ? 'ascending' : 'descending') : 'none',
+          icon: active ? (t.sort.dir === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down') : 'bi bi-arrow-down',
+          iconOpacity: active ? 1 : 0.4,
+          title: 'Sort by ' + c.label.toLowerCase(),
+          sort: () => this.patchTbl(key, { sort: { key: c.key, dir: active && t.sort.dir === 'asc' ? 'desc' : 'asc' }, page: 1 }),
+        };
+      }),
+
+      colRows: paged.map((r) => ({
+        name: r.name,
+        sel: sel.indexOf(r.id) >= 0,
+        rowBg: sel.indexOf(r.id) >= 0 ? 'rgba(0,182,189,.06)' : '#FFFFFF',
+        toggle: () => {
+          const next = sel.slice();
+          const i = next.indexOf(r.id);
+          if (i >= 0) next.splice(i, 1); else next.push(r.id);
+          this.setState({ sel: Object.assign({}, s.sel, { [key]: next }) });
+        },
+        cells: cols.map((c) => cell(r, c)),
+        menu: (e) => this.rowMenu(key, r.id, e),
+      })),
+
+      pgPage: String(page),
+      pgPer: String(per),
+      pgLabel: total ? 'Items ' + ((page - 1) * per + 1) + ' to ' + Math.min(page * per, total) : 'No items',
+      pgFirstDis: page <= 1, pgPrevDis: page <= 1, pgNextDis: page >= pages, pgLastDis: page >= pages,
+      pgFirst: () => this.patchTbl(key, { page: 1 }),
+      pgPrev: () => this.patchTbl(key, { page: Math.max(1, page - 1) }),
+      pgNext: () => this.patchTbl(key, { page: Math.min(pages, page + 1) }),
+      pgLast: () => this.patchTbl(key, { page: pages }),
+      setPgPer: (e) => this.setState({ per: Number(e.target.value) }),
+    };
+  }
+
+  menuVals() {
+    const s = this.state;
+    const mn = s.menu;
+    const items = [];
+    if (mn) {
+      const key = mn.key;
+      const m = this.meta(key);
+      items.push({ label: 'View Details', icon: 'bi bi-eye', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.setState({ view: { key: key, id: mn.id }, menu: null }) });
+      items.push({ label: 'Edit ' + m.singular, icon: 'bi bi-pencil-square', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.openForm(key, mn.id) });
+      if (key === 'templates') items.push({ label: 'Duplicate', icon: 'bi bi-copy', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.duplicate(key, mn.id) });
+      if (key === 'certInfo') {
+        if (mn.status === 'Archived') items.push({ label: 'Restore Profile', icon: 'bi bi-arrow-counterclockwise', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.archive(mn.id, true) });
+        else items.push({ label: 'Archive Profile', icon: 'bi bi-archive', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.archive(mn.id, false) });
+      } else {
+        const on = mn.status === 'Active' || mn.status === 'Enabled';
+        items.push({ label: on ? (key === 'services' ? 'Disable' : 'Set Inactive') : (key === 'services' ? 'Enable' : 'Set Active'), icon: on ? 'bi bi-slash-circle' : 'bi bi-check-circle', ink: 'var(--ax-text-primary)', iconInk: '#A4A7AE', run: () => this.toggleStatus(key, mn.id) });
+      }
+      items.push({ label: 'Delete', icon: 'bi bi-trash', ink: RED, iconInk: '#D92D20', run: () => this.askDelete(key, mn.id) });
+    }
+    return {
+      menuOpen: !!mn,
+      menuX: mn ? mn.x + 'px' : '0px',
+      menuY: mn ? mn.y + 'px' : '0px',
+      menuItems: items,
+      menuClose: () => this.setState({ menu: null }),
+    };
+  }
+
+  formVals() {
+    const f = this.state.form;
+    if (!f) return { formOpen: false, formGroups: [], formAudit: false, formAuditRows: [] };
+    const key = f.key;
+    const m = this.meta(key);
+    const groups = this.fieldsFor(key);
+    const errFor = (k) => (f.submitted ? f.errors[k] || '' : '');
+    const SCAN_STEPS = [['Upload', 'bi bi-cloud-arrow-up'], ['Malware Scan', 'bi bi-shield-check'], ['Approved', 'bi bi-check-circle'], ['Design Notified', 'bi bi-envelope-check']];
+
+    return {
+      formOpen: true,
+      formTitle: (f.id ? 'Edit ' : 'Create ') + m.singular,
+      formSubtitle: f.id ? 'Changes apply to new orders immediately.' : m.desc,
+      formCta: f.id ? 'Save Changes' : 'Create ' + m.singular,
+      formError: f.submitted && Object.keys(f.errors).length ? 'Review the highlighted fields and try again.' : '',
+      formClose: () => this.setState({ form: null }),
+      formSave: () => this.saveForm(),
+      formGroups: groups.map((g) => ({
+        hasTitle: !!g.title,
+        title: g.title || '',
+        fields: g.fields.map((fd) => {
+          const err = errFor(fd.key);
+          const val = f.values[fd.key];
+          const state = f.scan[fd.key] || (val ? 'approved' : 'idle');
+          const base = {
+            label: fd.label, required: !!fd.required, hint: fd.hint || '', error: err,
+            span: fd.span || 'span 1', placeholder: fd.placeholder || '',
+            border: err ? '#F1AEB5' : 'var(--ax-gray-300)',
+            value: val === undefined || val === null ? '' : String(val),
+            step: fd.step || '1',
+            options: fd.options || [],
+            isText: fd.kind === 'text', isNumber: fd.kind === 'number', isDate: fd.kind === 'date',
+            isSelect: fd.kind === 'select', isTextarea: fd.kind === 'textarea',
+            isPerms: fd.kind === 'perms', isUpload: fd.kind === 'upload',
+            set: (e) => this.setFormValue(fd.key, e.target.value),
+          };
+          if (fd.kind === 'perms') {
+            const on = f.values.perms || [];
+            base.perms = PERMS.map((p) => ({
+              label: p, on: on.indexOf(p) >= 0,
+              toggle: () => {
+                const next = (this.state.form.values.perms || []).slice();
+                const i = next.indexOf(p);
+                if (i >= 0) next.splice(i, 1); else next.push(p);
+                this.setFormValue('perms', next);
+              },
+            }));
+          }
+          if (fd.kind === 'upload') {
+            const done = state === 'approved';
+            base.fileName = val ? String(val) : 'No file selected';
+            base.uploadLabel = val ? 'Replace' : 'Upload';
+            base.upload = () => this.uploadFile(fd.key);
+            base.hasExisting = !!fd.existing;
+            base.existing = val || '';
+            base.existingOpts = ['delmarva-seal.eps', 'delmarva-seal-digital.svg', 'delmarva-seal-legacy.tiff'];
+            base.setExisting = (e) => this.setFormValue(fd.key, e.target.value);
+            base.steps = SCAN_STEPS.map(([label, icon], i) => {
+              const reached = state === 'approved' ? true : (state === 'scanning' ? i <= 1 : i === 0 && !!val);
+              const busy = state === 'scanning' && i === 1;
+              return {
+                label: label, hasArrow: i < SCAN_STEPS.length - 1,
+                icon: busy ? 'bi bi-arrow-repeat' : (reached ? icon : icon),
+                spin: busy ? 'caSpin .7s linear infinite' : 'none',
+                bg: reached ? 'rgba(31,148,92,.10)' : 'var(--ax-gray-50)',
+                border: reached ? 'rgba(31,148,92,.30)' : 'var(--ax-gray-200)',
+                ink: reached ? '#1F945C' : 'var(--ax-text-tertiary)',
+              };
+            });
+            base.scanNote = state === 'scanning'
+              ? 'Scanning “' + val + '” through OPSWAT…'
+              : (done && val ? 'Scan clean — the file is approved for production use.' : '');
+            base.scanInk = state === 'scanning' ? 'var(--ax-text-secondary)' : '#1F945C';
+          }
+          return base;
+        }),
+      })),
+      formAudit: !!f.id,
+      formAuditRows: f.id ? [
+        { label: 'CREATED BY', value: f.values.createdBy || '—' },
+        { label: 'CREATED DATE', value: f.values.createdOn || '—' },
+        { label: 'MODIFIED BY', value: f.values.modifiedBy || '—' },
+        { label: 'MODIFIED DATE', value: f.values.modifiedOn || '—' },
+      ] : [],
+    };
+  }
+
+  viewVals() {
+    const v = this.state.view;
+    if (!v) return { viewOpen: false, viewRows: [] };
+    const rec = this.state.data[v.key].find((r) => r.id === v.id);
+    if (!rec) return { viewOpen: false, viewRows: [] };
+    const m = this.meta(v.key);
+    const skip = { id: 1, name: 1 };
+    const LABELS = {
+      office: 'Office Name', a1: 'Street Address', city: 'City', state: 'State', zip: 'Zip Code', desc: 'Description',
+      location: 'Location', title: 'Job Title', division: 'Division', perms: 'Assigned Permissions', cost: 'Cost',
+      profile: 'Certificate Information', kind: 'Type', authority: 'Authority Name (7a)', authOffice: 'Authority Office (7b)',
+      office2: 'Office Name (10c)', start: 'Start Date', end: 'End Date', signature: 'Signature File', seal: 'Seal',
+      status: 'Status', createdBy: 'Created By', createdOn: 'Created Date', modifiedBy: 'Modified By', modifiedOn: 'Modified Date',
+    };
+    const rows = Object.keys(rec).filter((k) => !skip[k]).map((k) => {
+      let value = rec[k];
+      if (k === 'perms') value = (value || []).join(', ') || '—';
+      else if (k === 'cost') value = this.money(value);
+      else if (k === 'start' || k === 'end') value = this.prettyDate(value);
+      return { label: LABELS[k] || (k.charAt(0).toUpperCase() + k.slice(1)), value: String(value || '—') };
+    });
+    return {
+      viewOpen: true,
+      viewTitle: rec.name,
+      viewSubtitle: m.singular + ' · ' + rec.status,
+      viewRows: rows,
+      viewClose: () => this.setState({ view: null }),
+      viewEdit: () => this.openForm(v.key, v.id),
+    };
+  }
+
+  confirmVals() {
+    const c = this.state.confirm;
+    return {
+      confirmOpen: !!c,
+      confirmTitle: c ? c.title : '',
+      confirmBody: c ? c.body : '',
+      confirmCta: c ? c.cta : '',
+      confirmDanger: !!c && c.danger !== false,
+      confirmSafe: !!c && c.danger === false,
+      confirmClose: () => this.setState({ confirm: null }),
+      confirmGo: () => { if (c && c.run) c.run(); },
+    };
+  }
+
+  sysVals() {
+    const sys = this.state.sys;
+    const set = (k) => (e) => this.setState({ sys: Object.assign({}, this.state.sys, { [k]: e.target.value === '' ? '' : Number(e.target.value) }) });
+    const setStr = (k) => (e) => this.setState({ sys: Object.assign({}, this.state.sys, { [k]: e.target.value }) });
+    const toggle = (k) => () => this.setState({ sys: Object.assign({}, this.state.sys, { [k]: !this.state.sys[k] }) });
+    const wo = this.props.walkOnline !== undefined ? !!this.props.walkOnline : !!sys.wo;
+    const timeoutBad = Number(sys.timeout) < 1 || Number(sys.timeout) > 60;
+    return {
+      sysCards: [
+        { title: 'Walk-In (Online)', desc: 'Support Walk-In (Appointment) orders submitted online, including mixed orders where some documents are paid online and the rest at the appointment.', icon: 'bi bi-person-walking', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable Walk-In (Online)', toggleOn: wo, toggleBg: wo ? TEAL : 'var(--ax-gray-300)', toggleX: wo ? '20px' : '0px',
+          toggle: () => { const v = !wo; this.setState({ sys: Object.assign({}, this.state.sys, { wo: v }) }); if (this.props.onWalkOnline) this.props.onWalkOnline(v); this.flash(v ? 'Walk-In (Online) is on.' : 'Walk-In (Online) is off. The existing Walk-In (Appointment) workflow is unchanged.', v ? 'Walk-In (Online) on' : 'Walk-In (Online) off'); },
+          hasNote: true, note: wo ? 'On: mixed orders show document-level fulfillment and payment on the QR draft page.' : 'Off: the portal behaves exactly as it does today.' },
+        { title: 'Digital Recipients', desc: 'Maximum digital recipients a customer can add to one order.', icon: 'bi bi-people', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: 'Enter 0 for unlimited recipients.', value: String(sys.recipients), min: '0', max: '500', hint: 'default 10', border: 'var(--ax-gray-300)', set: set('recipients') },
+        { title: 'Requests Per Order', desc: 'Maximum document requests allowed in a single order.', icon: 'bi bi-file-earmark-text', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: 'Enter 0 for unlimited requests.', value: String(sys.requests), min: '0', max: '999', hint: 'default 50', border: 'var(--ax-gray-300)', set: set('requests') },
+        { title: 'Time Zone', desc: 'Default time zone applied to timestamps in this office.', icon: 'bi bi-globe-americas', isNumber: false, isSelect: true, options: ['Eastern Time (ET)', 'Central Time (CT)', 'Mountain Time (MT)', 'Pacific Time (PT)', 'Alaska Time (AT)'], value: sys.tz, set: setStr('tz'), hasToggle: true, toggleLabel: 'Force this time zone for all users', toggleOn: sys.forceTz, toggleBg: sys.forceTz ? TEAL : 'var(--ax-gray-300)', toggleX: sys.forceTz ? '20px' : '0px', toggle: toggle('forceTz'), hasNote: false, note: '' },
+        { title: 'Session Timeout', desc: 'Sign users out automatically after a period of inactivity.', icon: 'bi bi-clock-history', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: timeoutBad ? 'Enter a value between 1 and 60 minutes.' : 'Allowed range 1–60 minutes · default 15.', value: String(sys.timeout), min: '1', max: '60', hint: 'minutes', border: timeoutBad ? '#F1AEB5' : 'var(--ax-gray-300)', set: set('timeout') },
+        { title: 'Language', desc: 'Default language for the portal and customer notifications.', icon: 'bi bi-translate', isNumber: false, isSelect: true, options: ['English'], value: sys.language, set: setStr('language'), hasToggle: false, hasNote: true, note: 'Additional translations become available in a future release.' },
+        { title: 'Physical to Digital', desc: 'Allow customers to submit physical documents for scanning into e-Apostilles.', icon: 'bi bi-arrow-left-right', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable physical to digital processing', toggleOn: sys.p2d, toggleBg: sys.p2d ? TEAL : 'var(--ax-gray-300)', toggleX: sys.p2d ? '20px' : '0px', toggle: toggle('p2d'), hasNote: false, note: '' },
+      ],
+      sysSave: () => {
+        if (timeoutBad) { this.flash('Session timeout must be between 1 and 60 minutes.', 'Couldn’t save'); return; }
+        this.flash('System settings were saved for this office.', 'Settings saved');
+      },
+      sysReset: () => {
+        this.setState({ sys: { recipients: 10, requests: 50, tz: 'Eastern Time (ET)', forceTz: false, timeout: 15, language: 'English', p2d: true } });
+        this.flash('System settings were restored to their defaults.', 'Defaults restored');
+      },
+    };
+  }
+
+  regVals() {
+    const reg = this.state.reg;
+    const names = this.state.data.certTypes.filter((c) => c.status === 'Active').map((c) => c.name);
+    const method = (id, label, desc) => {
+      const on = reg.method === id;
+      return {
+        label, desc, on,
+        icon: on ? 'bi bi-check-circle-fill' : 'bi bi-circle',
+        ink: on ? TEAL : 'var(--ax-gray-400)',
+        border: on ? AQUA : 'var(--ax-gray-200)',
+        bg: on ? 'rgba(0,182,189,.06)' : '#fff',
+        pick: () => this.setState({ reg: Object.assign({}, this.state.reg, { method: id }) }),
+      };
+    };
+    return {
+      certTypeNames: names,
+      regRetention: String(reg.retention),
+      setRegRetention: (e) => this.setState({ reg: Object.assign({}, this.state.reg, { retention: e.target.value === '' ? '' : Number(e.target.value) }) }),
+      regMethods: [
+        method('single', 'Use a single certificate type', 'One certificate type is issued for every destination country.'),
+        method('split', 'Use separate certificate types', 'Hague and non-Hague destinations each get their own certificate type.'),
+      ],
+      regSplit: reg.method === 'split',
+      regSingle: reg.method === 'single',
+      regHague: reg.hague,
+      regNonHague: reg.nonHague,
+      regSingleType: reg.single,
+      setRegHague: (e) => this.setState({ reg: Object.assign({}, this.state.reg, { hague: e.target.value }) }),
+      setRegNonHague: (e) => this.setState({ reg: Object.assign({}, this.state.reg, { nonHague: e.target.value }) }),
+      setRegSingleType: (e) => this.setState({ reg: Object.assign({}, this.state.reg, { single: e.target.value }) }),
+      regSave: () => {
+        const d = Number(reg.retention);
+        if (!d || d < 1) { this.flash('Retention period must be at least one day.', 'Couldn’t save'); return; }
+        this.flash('Regulatory settings were saved for this office.', 'Settings saved');
+      },
+    };
+  }
+
+  notifVals() {
+    const s = this.state;
+    const n = s.notif;
+    const isEmail = n.channel === 'email';
+    const store = isEmail ? s.email : s.sms;
+    const rec = store[n.cat] || { body: '', subject: '' };
+    const SMS_MAX = 110, RESERVED = 50, LIMIT = SMS_MAX - RESERVED;
+    const len = String(rec.body || '').length;
+    const left = LIMIT - len;
+    const cat = NOTIF_CATS.find((c) => c[0] === n.cat) || NOTIF_CATS[0];
+
+    const patch = (fields) => {
+      const bucket = isEmail ? 'email' : 'sms';
+      const next = Object.assign({}, s[bucket]);
+      next[n.cat] = Object.assign({}, next[n.cat], fields);
+      this.setState({ [bucket]: next });
+    };
+
+    const tool = (icon, title, weight) => ({ isButton: true, isDivider: false, icon: icon, title: title, weight: weight || 400, run: () => this.flash('Formatting is applied to the selected text in the live editor.', title) });
+    const divider = { isButton: false, isDivider: true, icon: '', title: '', weight: 400, run: () => {} };
+
+    return {
+      notifChannels: [['email', 'Email Notifications', 'bi bi-envelope'], ['sms', 'SMS Notifications', 'bi bi-chat-dots']].map(([id, label, icon]) => {
+        const on = n.channel === id;
+        return {
+          label, icon, active: on,
+          bg: on ? '#fff' : 'transparent',
+          border: on ? 'var(--ax-gray-200)' : 'transparent',
+          shadow: on ? '0 1px 2px rgba(10,13,18,.06)' : 'none',
+          color: on ? TEAL : 'var(--ax-text-secondary)',
+          weight: on ? 600 : 500,
+          go: () => this.setState({ notif: Object.assign({}, n, { channel: id, html: false }) }),
+        };
+      }),
+      notifCats: NOTIF_CATS.map(([id, label, meta]) => {
+        const on = n.cat === id;
+        const r = store[id] || {};
+        return {
+          label, meta,
+          active: on,
+          edge: on ? TEAL : 'transparent',
+          bg: on ? 'rgba(0,182,189,.06)' : '#fff',
+          color: on ? TEAL : 'var(--ax-text-primary)',
+          weight: on ? 600 : 500,
+          status: String(r.body || '').trim() ? 'Active' : 'Draft',
+          statusColor: String(r.body || '').trim() ? 'success' : 'warning',
+          go: () => this.setState({ notif: Object.assign({}, n, { cat: id }) }),
+        };
+      }),
+      edTitle: cat[1] + (isEmail ? ' · Email' : ' · SMS'),
+      edSubtitle: cat[2],
+      edIsEmail: isEmail,
+      edIsSms: !isEmail,
+      edSubject: rec.subject || '',
+      setEdSubject: (e) => patch({ subject: e.target.value }),
+      edBodyLabel: isEmail ? (n.html ? 'HTML Source' : 'Message Body') : 'Message Text',
+      edBody: rec.body || '',
+      setEdBody: (e) => {
+        const v = isEmail ? e.target.value : e.target.value.slice(0, LIMIT);
+        patch({ body: v });
+      },
+      edPlaceholder: isEmail ? 'Write the message customers will receive…' : 'Write a short message — the tracking link is appended automatically.',
+      edShowToolbar: isEmail && !n.html,
+      edMonoClass: isEmail && n.html ? 'sc-mono' : '',
+      edRadius: isEmail && !n.html ? '0 0 8px 8px' : '8px',
+      edBorderTop: isEmail && !n.html ? 'none' : '1px solid var(--ax-gray-300)',
+      edModes: [['rich', 'Rich Text', 'bi bi-type'], ['html', 'HTML Source', 'bi bi-code-slash']].map(([id, label, icon]) => {
+        const on = (id === 'html') === !!n.html;
+        return {
+          label, icon, active: on,
+          bg: on ? '#fff' : 'transparent',
+          border: on ? 'var(--ax-gray-200)' : 'transparent',
+          color: on ? TEAL : 'var(--ax-text-secondary)',
+          weight: on ? 600 : 500,
+          go: () => this.setState({ notif: Object.assign({}, n, { html: id === 'html' }) }),
+        };
+      }),
+      edTools: [
+        tool('bi bi-type-bold', 'Bold', 700), tool('bi bi-type-italic', 'Italic'), tool('bi bi-type-underline', 'Underline'),
+        divider,
+        tool('bi bi-list-ul', 'Bulleted list'), tool('bi bi-list-ol', 'Numbered list'),
+        divider,
+        tool('bi bi-text-left', 'Align left'), tool('bi bi-text-center', 'Align center'),
+        divider,
+        tool('bi bi-link-45deg', 'Insert link'), tool('bi bi-image', 'Insert image'), tool('bi bi-eraser', 'Clear formatting'),
+      ],
+      edSmsCounter: left + ' of ' + LIMIT + ' characters remaining',
+      edSmsInk: left < 0 ? RED : (left <= 10 ? '#EFA22F' : 'var(--ax-text-secondary)'),
+      edMergeFields: MERGE_FIELDS.map((mf) => ({
+        label: mf,
+        insert: () => {
+          const cur = String((isEmail ? this.state.email : this.state.sms)[n.cat].body || '');
+          const next = (cur + (cur.endsWith('\n') || cur === '' ? '' : ' ') + mf);
+          patch({ body: isEmail ? next : next.slice(0, LIMIT) });
+        },
+      })),
+      edAudit: 'Last modified by ' + (rec.modifiedBy || ME) + ' on ' + (rec.modifiedOn || this.today()),
+      edSaveOff: !isEmail && left < 0,
+      edSave: () => {
+        patch({ modifiedBy: ME, modifiedOn: this.today() });
+        this.flash('The ' + (isEmail ? 'email' : 'SMS') + ' template for ' + cat[1].toLowerCase() + ' was saved as a draft.', 'Draft saved');
+      },
+      edPreview: () => this.setState({ previewOpen: true }),
+      edSendTest: () => this.setState({ testOpen: true, testEmail: '', testTouched: false }),
+      previewOpen: s.previewOpen,
+      previewClose: () => this.setState({ previewOpen: false }),
+      previewBody: (rec.body || '') + (isEmail ? '' : '\n\nhttps://apx.gov/t/AB12CD'),
+      testOpen: s.testOpen,
+      testEmail: s.testEmail,
+      setTestEmail: (e) => this.setState({ testEmail: e.target.value }),
+      testError: s.testTouched && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s.testEmail.trim()) ? 'Enter a valid email address.' : '',
+      testBorder: s.testTouched && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s.testEmail.trim()) ? '#F1AEB5' : 'var(--ax-gray-300)',
+      testClose: () => this.setState({ testOpen: false }),
+      testSend: () => {
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s.testEmail.trim());
+        if (!ok) { this.setState({ testTouched: true }); return; }
+        this.setState({ testOpen: false });
+        this.flash('A test of “' + cat[1] + '” was sent to ' + s.testEmail.trim() + '.', 'Test email sent');
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

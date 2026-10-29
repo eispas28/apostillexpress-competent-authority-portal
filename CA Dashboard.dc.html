@@ -5308,8 +5308,8 @@ a:hover{color:#00B6BD;text-decoration:underline}
         </div>
 
         <div style="display:flex;justify-content:flex-end;gap:var(--ax-space-3);padding:var(--ax-space-4) 1.375rem;border-top:var(--ax-border-width) solid var(--ax-gray-200)">
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" onClick="{{ bpBulkClose }}" hint-size="auto,40px">Cancel</x-import>
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" disabled="{{ bpBulkDisabled }}" onClick="{{ bpBulkConfirm }}" hint-size="auto,40px">Confirm</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" disabled="{{ bpBulkBusy }}" onClick="{{ bpBulkClose }}" hint-size="auto,40px">Cancel</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" disabled="{{ bpBulkDisabled }}" loading="{{ bpBulkBusy }}" onClick="{{ bpBulkConfirm }}" hint-size="auto,40px">Confirm</x-import>
         </div>
       </div>
     </div>
@@ -5959,8 +5959,8 @@ a:hover{color:#00B6BD;text-decoration:underline}
         </div>
 
         <div style="display:flex;justify-content:flex-end;gap:var(--ax-space-3);padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-gray-200);background:#fff">
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" onClick="{{ omActClose }}" hint-size="auto,40px">Cancel</x-import>
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" disabled="{{ omActDisabled }}" onClick="{{ omActConfirm }}" hint-size="auto,40px">Confirm</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" disabled="{{ omActBusy }}" onClick="{{ omActClose }}" hint-size="auto,40px">Cancel</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" disabled="{{ omActDisabled }}" loading="{{ omActBusy }}" onClick="{{ omActConfirm }}" hint-size="auto,40px">Confirm</x-import>
         </div>
       </div>
     </div>
@@ -6115,9 +6115,9 @@ a:hover{color:#00B6BD;text-decoration:underline}
         </div>
 
         <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.625rem;padding:0.875rem var(--ax-space-5);border-top:var(--ax-border-width) solid var(--ax-gray-200);background:#fff">
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ plrClose }}" hint-size="auto,40px">{{ plrCancelLabel }}</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" disabled="{{ plrBusy }}" onClick="{{ plrClose }}" hint-size="auto,40px">{{ plrCancelLabel }}</x-import>
           <sc-if value="{{ plrCanRefund }}" hint-placeholder-val="{{ true }}">
-            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="{{ plrCtaVariant }}" size="md" disabled="{{ plrDisabled }}" onClick="{{ plrSubmit }}" hint-size="auto,40px">Process Refund</x-import>
+            <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="{{ plrCtaVariant }}" size="md" disabled="{{ plrDisabled }}" loading="{{ plrBusy }}" onClick="{{ plrSubmit }}" hint-size="auto,40px">{{ plrCtaText }}</x-import>
           </sc-if>
         </div>
 
@@ -10951,7 +10951,7 @@ class Component extends DCLogic {
       plrReason: a.reason,
       plrSetReason: (e) => this.plrPatch({ reason: e.target.value }),
       plrAmount: typed ? m(amt) : '',
-      plrMaxHint: 'Max ' + m(max),
+      plrMaxHint: '',
       plrSetAmount: (e) => this.plrPatch({ amount: String(e.target.value).replace(/\D/g, '').slice(0, 9), affirm: '' }),
       plrHasError: !!error,
       plrError: error,
@@ -10971,11 +10971,15 @@ class Component extends DCLogic {
       plrAffirmSentence: m(splitState) + ' comes from State & Service Fees. The remaining ' + m(splitAX) + ' comes from AX Service fees already collected. Type AFFIRM to continue.',
 
       plrCtaVariant: needsAffirm ? 'danger' : 'primary',
-      plrDisabled: !ready,
+      plrDisabled: !ready && !a.busy,
+      plrBusy: !!a.busy,
+      plrCtaText: a.busy ? 'Processing refund…' : 'Process Refund',
       plrCancelLabel: max > 0 ? 'Cancel' : 'Close',
-      plrClose: () => this.closeRefund(),
+      plrClose: () => { if (!a.busy) this.closeRefund(); },
       plrSubmit: () => {
-        if (!ready) return;
+        if (!ready || a.busy) return;
+        this.plrPatch({ busy: true });
+        setTimeout(() => {
         const ev = {
           state: splitState, ax: splitAX,
           when: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' · '
@@ -10994,6 +10998,7 @@ class Component extends DCLogic {
         this.flash(m(amt) + ' refunded — ' + m(splitState) + ' State Fees and ' + m(splitAX) + ' AX Service Fees. '
           + (after > 0 ? m(after) + ' remains refundable.' : 'This order is now fully refunded.')
           + (isCash ? ' Issue the cash refund to the customer.' : ''), 'Refund processed');
+        }, 1200);
       },
     };
   }
@@ -11696,7 +11701,7 @@ class Component extends DCLogic {
       bpBulkFState: m(availState), bpBulkFAX: m(availAX), bpBulkFMax: m(max),
       bpRefund: one.digits === '' ? '' : m(one.amt).replace('$', ''),
       bpSetRefund: (e) => this.bpPatch({ refundAmt: String(e.target.value).replace(/\D/g, '').slice(0, 9), affirm: '' }),
-      bpMaxHint: 'Max ' + m(childMax),
+      bpMaxHint: '',
       bpHasError: over,
       bpError: 'This refund exceeds the refundable balance on this sub-order (' + m(childMax) + ').',
       bpNeedsAffirm: needsAffirm,
@@ -11831,7 +11836,7 @@ class Component extends DCLogic {
       bpBulkClear: () => this.setState((st) => ({ bp: { ...st.bp, bulk: { ...st.bp.bulk, sel: {} } } })),
       bpBulkRefund: bmoney.digits === '' ? '' : m(bmoney.amt).replace('$', ''),
       bpBulkSetRefund: (e) => this.setState((st) => ({ bp: { ...st.bp, bulk: { ...st.bp.bulk, refundAmt: String(e.target.value).replace(/\D/g, '').slice(0, 9), affirm: '' } } })),
-      bpBulkMaxHint: 'Max ' + m(max),
+      bpBulkMaxHint: '',
       bpBulkHasError: bover,
       bpBulkError: 'This refund exceeds the refundable balance on this order (' + m(max) + ').',
       bpBulkNeedsAffirm: bNeedsAffirm,
@@ -11841,9 +11846,10 @@ class Component extends DCLogic {
       bpBulkCashAmount: m(bmoney.amt > 0 && !bover ? bmoney.amt : max),
       bpBulkCashOk: !!(bulk && bulk.cashOk),
       bpBulkToggleCash: () => this.setState((st) => ({ bp: { ...st.bp, bulk: { ...st.bp.bulk, cashOk: !st.bp.bulk.cashOk } } })),
-      bpBulkDisabled: !(bids.length && (!bIsReject || rfO.noPayment || (bmoney.amt > 0 && !bover && bCashOk && (!bNeedsAffirm || bAffirmOk)))),
-      bpBulkClose: () => this.bpPatch({ bulk: null }),
-      bpBulkConfirm: () => this.bpAdvance(bids, bmoney.amt),
+      bpBulkBusy: this.state.busyKey === 'bulk',
+      bpBulkDisabled: this.state.busyKey !== 'bulk' && !(bids.length && (!bIsReject || rfO.noPayment || (bmoney.amt > 0 && !bover && bCashOk && (!bNeedsAffirm || bAffirmOk)))),
+      bpBulkClose: () => { if (!this.state.busyKey) this.bpPatch({ bulk: null }); },
+      bpBulkConfirm: () => { if (this.state.busyKey) return; this.setState({ busyKey: 'bulk' }); setTimeout(() => { this.bpAdvance(bids, bmoney.amt); this.setState({ busyKey: null }); }, 1000); },
 
       /* Completion summary */
       bpDoneOpen: !!done,
@@ -12233,7 +12239,7 @@ class Component extends DCLogic {
       omActAffirm: a.affirm || '',
       omActSetAffirm: (e) => this.actPatch({ affirm: e.target.value }),
       omActAffirmSentence: m(actSplit.state) + ' comes from State & Service Fees. The remaining ' + m(actSplit.ax) + ' comes from AX Service fees already collected. Type AFFIRM to continue.',
-      omActMaxHint: 'Max ' + m(max),
+      omActMaxHint: '',
       omActHasError: over,
       omActError: 'This refund exceeds the refundable balance on the selected documents (' + m(max) + ').',
 
@@ -12259,9 +12265,10 @@ class Component extends DCLogic {
 
       omActText: a.text,
       omActSetText: (e) => this.actPatch({ text: e.target.value }),
-      omActDisabled: !((ids.length || amt > 0) && a.reason && (a.reason !== 'Other' || String(a.otherReason || '').trim()) && !over && cashDone && (!actNeedsAffirm || actAffirmOk) && String(a.text).trim().toUpperCase() === 'CANCEL'),
-      omActClose: () => this.closeOrderAct(),
-      omActConfirm: () => this.confirmOrderAct(),
+      omActBusy: this.state.busyKey === 'act',
+      omActDisabled: this.state.busyKey !== 'act' && !((ids.length || amt > 0) && a.reason && (a.reason !== 'Other' || String(a.otherReason || '').trim()) && !over && cashDone && (!actNeedsAffirm || actAffirmOk) && String(a.text).trim().toUpperCase() === 'CANCEL'),
+      omActClose: () => { if (!this.state.busyKey) this.closeOrderAct(); },
+      omActConfirm: () => { if (this.state.busyKey) return; this.setState({ busyKey: 'act' }); setTimeout(() => { this.confirmOrderAct(); this.setState({ busyKey: null }); }, 1000); },
     };
   }
 

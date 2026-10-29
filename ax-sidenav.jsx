@@ -1,7 +1,7 @@
 
 /**
  * SideNav — the Competent Authority Portal's primary left navigation rail.
- * Two forms: expanded (257px, logo wordmark + labels) and collapsed
+ * Two forms: expanded (16.0625rem, logo wordmark + labels) and collapsed
  * (80px, logo mark + icons only). Groups are separated by rules and may
  * carry an uppercase caption. Items support an icon, a notification
  * badge, and an expandable list of subsections.
@@ -53,7 +53,7 @@ function Icon({ name, size = 20 }) {
 function Counter({ value }) {
   return (
     <span style={{
-      minWidth: 20, height: 20, padding: "0 5px", borderRadius: "var(--ax-radius-full)",
+      minWidth: 20, height: 20, padding: "0 0.3125rem", borderRadius: "var(--ax-radius-full)",
       background: "var(--ax-sea-depths)", color: "#fff", fontSize: 12,
       fontWeight: "var(--ax-fw-semibold)", display: "inline-flex", alignItems: "center",
       justifyContent: "center", flexShrink: 0,
@@ -68,7 +68,7 @@ function Rule() {
 function Caption({ children, collapsed }) {
   return (
     <div style={{
-      height: collapsed ? 12 : 38, display: "flex", alignItems: "center", padding: "0 28px",
+      height: collapsed ? 12 : 38, display: "flex", alignItems: "center", padding: "0 1.75rem",
       fontSize: 14, fontWeight: "var(--ax-fw-medium)", color: "var(--ax-text-tertiary)",
       letterSpacing: "var(--ax-tracking-wide)", flexShrink: 0, overflow: "hidden",
       whiteSpace: "nowrap", opacity: collapsed ? 0 : 1,
@@ -91,7 +91,7 @@ function Item({ item, collapsed, open, onActivate }) {
       onClick={(e) => { if (!item.href) e.preventDefault(); onActivate && onActivate(item, e); }}
       style={{
         display: "flex", alignItems: "center", gap: 8, height: 44, flexShrink: 0,
-        padding: collapsed ? "12px 27px 12px 27px" : "12px 28px 12px 25px",
+        padding: collapsed ? "var(--ax-space-3) 1.6875rem var(--ax-space-3) 1.6875rem" : "var(--ax-space-3) 1.75rem var(--ax-space-3) 1.5625rem",
         justifyContent: "flex-start", overflow: "hidden",
         boxSizing: "border-box",
         borderLeft: `3px solid ${on ? "var(--ax-sea-depths)" : "transparent"}`,
@@ -141,7 +141,7 @@ function SubItem({ item, onActivate }) {
       onClick={(e) => { if (!item.href) e.preventDefault(); onActivate && onActivate(item, e); }}
       style={{
         display: "flex", alignItems: "center", gap: 12, height: 38, flexShrink: 0,
-        padding: "0 28px 0 56px", textDecoration: "none", fontSize: 16,
+        padding: "0 1.75rem 0 3.5rem", textDecoration: "none", fontSize: 16,
         fontWeight: "var(--ax-fw-medium)", whiteSpace: "nowrap", cursor: "pointer",
         color: tinted ? "var(--ax-sea-depths)" : "var(--ax-text-secondary)",
       }}
@@ -182,14 +182,14 @@ function SideNav({
   return (
     <nav className={`ax-sidenav ${className}`} aria-label="Portal navigation" style={{
       width: collapsed ? W_STRIP : W_OPEN, height, boxSizing: "border-box",
-      display: "flex", flexDirection: "column", gap: 16, padding: "24px 0",
+      display: "flex", flexDirection: "column", gap: 16, padding: "var(--ax-space-6) 0",
       background: "var(--ax-surface-card)", borderRight: "1px solid var(--ax-border-subtle)",
       fontFamily: "var(--ax-font-base)", overflowY: "visible", position: "relative", flexShrink: 0, boxSizing: "border-box",
       transition: tr("width"), willChange: "width", ...style,
     }}>
       <div style={{
         display: "flex", alignItems: "center", flexShrink: 0,
-        justifyContent: "space-between", padding: collapsed ? "0 27px" : "0 28px",
+        justifyContent: "space-between", padding: collapsed ? "0 1.6875rem" : "0 1.75rem",
         height: 26, transition: tr("padding"),
       }}>
         <span style={{ position: "relative", display: "block", height: 26, width: collapsed ? 26 : 160, flexShrink: 0, transition: tr("width") }}>
@@ -242,7 +242,7 @@ function SideNav({
         borderTop: "1px solid var(--ax-border-subtle)", borderBottom: "1px solid var(--ax-border-subtle)",
         display: "flex", flexDirection: "column", gap: 8, justifyContent: "center",
         alignItems: collapsed ? "center" : "flex-start", overflow: "hidden",
-        padding: collapsed ? "22px 16px" : "10px 28px",
+        padding: collapsed ? "1.375rem var(--ax-space-4)" : "0.625rem 1.75rem",
         transition: tr("padding"),
       }}>
         <span style={{

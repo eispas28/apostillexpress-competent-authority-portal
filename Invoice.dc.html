@@ -8,16 +8,16 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="ds/tokens/fonts.css">
-<link rel="stylesheet" href="ds/tokens/colors.css">
-<link rel="stylesheet" href="ds/tokens/typography.css">
-<link rel="stylesheet" href="ds/tokens/spacing.css">
-<link rel="stylesheet" href="ds/tokens/shadows.css">
-<link rel="stylesheet" href="ds/tokens/base.css">
-<link rel="stylesheet" href="ds/components.css">
-<link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/spacing.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
+<link rel="stylesheet" href="ds/components.css?v=rem1">
+<link rel="stylesheet" href="ds/styles.css?v=rem1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<script src="ds/ds-bundle.js"></script>
+<script src="ds/ds-bundle.js?v=rem1"></script>
 <style>
   body{margin:0;background:#F8F9FA;font-family:Roboto,system-ui,sans-serif;color:#212529}
   a{color:#0D5257}
@@ -26,22 +26,22 @@
 </style>
 </helmet>
 
-<div style="min-height:100vh;padding:28px 20px 56px">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:54rem;margin:0 auto 16px" class="inv-actions">
-    <span style="font-size:13px;color:#6C757D">Invoice preview — ApostilleXpress</span>
-    <div style="display:flex;align-items:center;gap:10px">
-      <button type="button" onClick="{{ doPrint }}" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid #DEE2E6;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(10,13,18,.05);font:inherit;font-size:14px;font-weight:500;color:#212529;cursor:pointer;transition:background .13s ease,border-color .13s ease" style-hover="background:#F8F9FA;border-color:#ADB5BD"><i class="bi bi-printer" aria-hidden="true"></i>Print</button>
-      <button type="button" onClick="{{ doPrint }}" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:1px solid #0D5257;border-radius:8px;background:#0D5257;font:inherit;font-size:14px;font-weight:500;color:#fff;cursor:pointer;transition:background .13s ease" style-hover="background:#0A4145"><i class="bi bi-download" aria-hidden="true"></i>Download PDF</button>
+<div style="min-height:100vh;padding:1.75rem var(--ax-space-5) 3.5rem">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--ax-space-4);flex-wrap:wrap;max-width:54rem;margin:0 auto var(--ax-space-4)" class="inv-actions">
+    <span style="font-size:0.8125rem;color:#6C757D">Invoice preview — ApostilleXpress</span>
+    <div style="display:flex;align-items:center;gap:0.625rem">
+      <button type="button" onClick="{{ doPrint }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-2);height:2.5rem;padding:0 0.875rem;border:1px solid #DEE2E6;border-radius:var(--ax-radius-md);background:#fff;box-shadow:0 1px 2px rgba(10,13,18,.05);font:inherit;font-size:var(--ax-text-sm);font-weight:500;color:#212529;cursor:pointer;transition:background .13s ease,border-color .13s ease" style-hover="background:#F8F9FA;border-color:#ADB5BD"><i class="bi bi-printer" aria-hidden="true"></i>Print</button>
+      <button type="button" onClick="{{ doPrint }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-2);height:2.5rem;padding:0 var(--ax-space-4);border:1px solid #0D5257;border-radius:var(--ax-radius-md);background:#0D5257;font:inherit;font-size:var(--ax-text-sm);font-weight:500;color:#fff;cursor:pointer;transition:background .13s ease" style-hover="background:#0A4145"><i class="bi bi-download" aria-hidden="true"></i>Download PDF</button>
     </div>
   </div>
 
-  <article class="inv-sheet" style="max-width:54rem;margin:0 auto;background:#fff;border:1px solid #E9ECEF;border-radius:12px;box-shadow:0 1px 3px rgba(10,13,18,.08);overflow:hidden">
-    <div aria-hidden="true" style="height:6px;background:linear-gradient(90deg,#00B6BD,#0D5257)"></div>
+  <article class="inv-sheet" style="max-width:54rem;margin:0 auto;background:#fff;border:1px solid #E9ECEF;border-radius:var(--ax-radius-xl);box-shadow:0 1px 3px rgba(10,13,18,.08);overflow:hidden">
+    <div aria-hidden="true" style="height:0.375rem;background:linear-gradient(90deg,#00B6BD,#0D5257)"></div>
 
-    <header style="display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:32px 40px 24px">
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <img src="assets/ax-wordmark-color.svg" alt="ApostilleXpress" style="height:38px;width:auto">
-        <div style="font-size:13px;line-height:1.7;color:#6C757D">
+    <header style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.75rem;flex-wrap:wrap;padding:var(--ax-space-8) var(--ax-space-10) var(--ax-space-6)">
+      <div style="display:flex;flex-direction:column;gap:0.875rem">
+        <img src="assets/ax-wordmark-color.svg" alt="ApostilleXpress" style="height:2.375rem;width:auto">
+        <div style="font-size:0.8125rem;line-height:1.7;color:#6C757D">
           <div style="font-weight:600;color:#212529">ApostilleXpress @Gov</div>
           <div>401 Federal Street, Suite 210</div>
           <div>Dover, DE 19901</div>
@@ -49,71 +49,71 @@
         </div>
       </div>
       <div style="text-align:right">
-        <div style="font-family:'Roboto Condensed',Roboto,sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#6C757D">Invoice</div>
-        <div style="margin-top:4px;font-size:30px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums">INV-307-600</div>
-        <span style="display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:4px 12px;border:1px solid #A9DCC3;border-radius:624.9375rem;background:#EAF7F0;font-size:13px;font-weight:600;color:#1F945C"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#1F945C"></span>Paid</span>
+        <div style="font-family:'Roboto Condensed',Roboto,sans-serif;font-size:0.8125rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#6C757D">Invoice</div>
+        <div style="margin-top:var(--ax-space-1);font-size:1.875rem;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums">INV-307-600</div>
+        <span style="display:inline-flex;align-items:center;gap:0.4375rem;margin-top:0.625rem;padding:var(--ax-space-1) var(--ax-space-3);border:1px solid #A9DCC3;border-radius:624.9375rem;background:#EAF7F0;font-size:0.8125rem;font-weight:600;color:#1F945C"><span aria-hidden="true" style="width:0.4375rem;height:0.4375rem;border-radius:50%;background:#1F945C"></span>Paid</span>
       </div>
     </header>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:20px 28px;padding:20px 40px;border-top:1px solid #E9ECEF;border-bottom:1px solid #E9ECEF;background:#F8F9FA">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--ax-space-5) 1.75rem;padding:var(--ax-space-5) var(--ax-space-10);border-top:1px solid #E9ECEF;border-bottom:1px solid #E9ECEF;background:#F8F9FA">
       <div>
-        <div style="font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Billed To</div>
-        <div style="margin-top:6px;font-size:14px;line-height:1.65"><strong style="font-weight:600">Maria L. Alvarez</strong><br>Alvarez Legal Services<br>1820 W Diversey Pkwy<br>Chicago, IL 60614</div>
+        <div style="font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Billed To</div>
+        <div style="margin-top:var(--ax-space-1-5);font-size:var(--ax-text-sm);line-height:1.65"><strong style="font-weight:600">Maria L. Alvarez</strong><br>Alvarez Legal Services<br>1820 W Diversey Pkwy<br>Chicago, IL 60614</div>
       </div>
       <div>
-        <div style="font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Order</div>
-        <div style="margin-top:6px;font-size:14px;line-height:1.75;font-variant-numeric:tabular-nums">#307-600<br>2 child orders<br>Destination: Spain 🇪🇸</div>
+        <div style="font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Order</div>
+        <div style="margin-top:var(--ax-space-1-5);font-size:var(--ax-text-sm);line-height:1.75;font-variant-numeric:tabular-nums">#307-600<br>2 child orders<br>Destination: Spain 🇪🇸</div>
       </div>
       <div>
-        <div style="font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Issued</div>
-        <div style="margin-top:6px;font-size:14px;line-height:1.75;font-variant-numeric:tabular-nums">Sep 18, 2026<br>Due on receipt<br>Paid Sep 18, 2026</div>
+        <div style="font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Issued</div>
+        <div style="margin-top:var(--ax-space-1-5);font-size:var(--ax-text-sm);line-height:1.75;font-variant-numeric:tabular-nums">Sep 18, 2026<br>Due on receipt<br>Paid Sep 18, 2026</div>
       </div>
       <div>
-        <div style="font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Payment</div>
-        <div style="margin-top:6px;font-size:14px;line-height:1.75">Visa ending with 9849<br>Auth #4F2B-77C1<br>Receipt emailed</div>
+        <div style="font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6C757D">Payment</div>
+        <div style="margin-top:var(--ax-space-1-5);font-size:var(--ax-text-sm);line-height:1.75">Visa ending with 9849<br>Auth #4F2B-77C1<br>Receipt emailed</div>
       </div>
     </div>
 
-    <div style="padding:28px 40px 8px">
-      <table style="width:100%;border-collapse:collapse;font-size:14px">
+    <div style="padding:1.75rem var(--ax-space-10) var(--ax-space-2)">
+      <table style="width:100%;border-collapse:collapse;font-size:var(--ax-text-sm)">
         <thead>
           <tr style="text-align:left">
-            <th style="padding:0 0 10px;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Description</th>
-            <th style="padding:0 0 10px;text-align:center;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Qty</th>
-            <th style="padding:0 0 10px;text-align:right;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Rate</th>
-            <th style="padding:0 0 10px;text-align:right;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Amount</th>
+            <th style="padding:0 0 0.625rem;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Description</th>
+            <th style="padding:0 0 0.625rem;text-align:center;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Qty</th>
+            <th style="padding:0 0 0.625rem;text-align:right;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Rate</th>
+            <th style="padding:0 0 0.625rem;text-align:right;font-family:'Roboto Condensed',Roboto,sans-serif;font-size:var(--ax-text-xs);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6C757D;border-bottom:1px solid #DEE2E6">Amount</th>
           </tr>
         </thead>
         <tbody>
           <sc-for list="{{ lines }}" as="l" hint-placeholder-count="4">
             <tr>
-              <td style="padding:14px 12px 14px 0;border-bottom:1px solid #F1F3F5;vertical-align:top">
+              <td style="padding:0.875rem var(--ax-space-3) 0.875rem 0;border-bottom:1px solid #F1F3F5;vertical-align:top">
                 <div style="font-weight:500">{{ l.title }}</div>
-                <div style="margin-top:3px;font-size:13px;color:#6C757D">{{ l.sub }}</div>
+                <div style="margin-top:0.1875rem;font-size:0.8125rem;color:#6C757D">{{ l.sub }}</div>
               </td>
-              <td style="padding:14px 12px;text-align:center;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;vertical-align:top">{{ l.qty }}</td>
-              <td style="padding:14px 0 14px 12px;text-align:right;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;vertical-align:top">{{ l.rate }}</td>
-              <td style="padding:14px 0 14px 12px;text-align:right;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;font-weight:500;vertical-align:top">{{ l.amount }}</td>
+              <td style="padding:0.875rem var(--ax-space-3);text-align:center;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;vertical-align:top">{{ l.qty }}</td>
+              <td style="padding:0.875rem 0 0.875rem var(--ax-space-3);text-align:right;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;vertical-align:top">{{ l.rate }}</td>
+              <td style="padding:0.875rem 0 0.875rem var(--ax-space-3);text-align:right;border-bottom:1px solid #F1F3F5;font-variant-numeric:tabular-nums;font-weight:500;vertical-align:top">{{ l.amount }}</td>
             </tr>
           </sc-for>
         </tbody>
       </table>
     </div>
 
-    <div style="display:flex;justify-content:flex-end;padding:8px 40px 28px">
-      <div style="width:min(100%,20rem);display:flex;flex-direction:column;gap:10px;font-size:14px;font-variant-numeric:tabular-nums">
-        <div style="display:flex;justify-content:space-between;gap:16px"><span style="color:#6C757D">Subtotal</span><span>$186.00</span></div>
-        <div style="display:flex;justify-content:space-between;gap:16px"><span style="color:#6C757D">Expedited handling</span><span>$25.00</span></div>
-        <div style="display:flex;justify-content:space-between;gap:16px"><span style="color:#6C757D">Return shipping (FedEx 2-Day)</span><span>$18.50</span></div>
-        <div style="display:flex;justify-content:space-between;gap:16px;color:#1F945C"><span>Agent discount (10%)</span><span>−$18.60</span></div>
-        <div style="height:1px;background:#DEE2E6;margin:4px 0"></div>
-        <div style="display:flex;justify-content:space-between;gap:16px;font-size:18px;font-weight:600"><span>Total Paid</span><span>$210.90</span></div>
+    <div style="display:flex;justify-content:flex-end;padding:var(--ax-space-2) var(--ax-space-10) 1.75rem">
+      <div style="width:min(100%,20rem);display:flex;flex-direction:column;gap:0.625rem;font-size:var(--ax-text-sm);font-variant-numeric:tabular-nums">
+        <div style="display:flex;justify-content:space-between;gap:var(--ax-space-4)"><span style="color:#6C757D">Subtotal</span><span>$186.00</span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--ax-space-4)"><span style="color:#6C757D">Expedited handling</span><span>$25.00</span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--ax-space-4)"><span style="color:#6C757D">Return shipping (FedEx 2-Day)</span><span>$18.50</span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--ax-space-4);color:#1F945C"><span>Agent discount (10%)</span><span>−$18.60</span></div>
+        <div style="height:1px;background:#DEE2E6;margin:var(--ax-space-1) 0"></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--ax-space-4);font-size:var(--ax-text-lg);font-weight:600"><span>Total Paid</span><span>$210.90</span></div>
       </div>
     </div>
 
-    <footer style="display:flex;align-items:flex-start;gap:14px;padding:20px 40px 28px;border-top:1px solid #E9ECEF;background:#F8F9FA">
-      <img src="assets/ax-mark-color.svg" alt="" aria-hidden="true" style="width:30px;height:30px;flex-shrink:0">
-      <p style="margin:0;font-size:13px;line-height:1.65;color:#6C757D;text-wrap:pretty">Thank you for your order. Apostille fees are set by the issuing Competent Authority and are non-refundable once a document has been issued. Questions about this invoice? Reply to your confirmation email or contact billing@apostillexpress.gov and reference invoice INV-307-600.</p>
+    <footer style="display:flex;align-items:flex-start;gap:0.875rem;padding:var(--ax-space-5) var(--ax-space-10) 1.75rem;border-top:1px solid #E9ECEF;background:#F8F9FA">
+      <img src="assets/ax-mark-color.svg" alt="" aria-hidden="true" style="width:1.875rem;height:1.875rem;flex-shrink:0">
+      <p style="margin:0;font-size:0.8125rem;line-height:1.65;color:#6C757D;text-wrap:pretty">Thank you for your order. Apostille fees are set by the issuing Competent Authority and are non-refundable once a document has been issued. Questions about this invoice? Reply to your confirmation email or contact billing@apostillexpress.gov and reference invoice INV-307-600.</p>
     </footer>
   </article>
 </div>

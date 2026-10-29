@@ -16,17 +16,17 @@
 
   function build() {
     pop = document.createElement('div');
-    css(pop, { position: 'fixed', zIndex: 10000, background: '#fff', border: '1px solid var(--ax-gray-200, #E9ECEF)', borderRadius: '8px', boxShadow: '0 12px 16px -4px rgba(10,13,18,.08), 0 4px 6px -2px rgba(10,13,18,.03)', padding: '6px', boxSizing: 'border-box', fontFamily: 'Roboto, system-ui, sans-serif', fontSize: '14px', color: 'var(--ax-text-primary, #212529)' });
-    const wrap = document.createElement('div'); css(wrap, { position: 'relative', marginBottom: '6px' });
+    css(pop, { position: 'fixed', zIndex: 10000, background: '#fff', border: '1px solid var(--ax-gray-200, #E9ECEF)', borderRadius: '0.5rem', boxShadow: '0 12px 16px -4px rgba(10,13,18,.08), 0 4px 6px -2px rgba(10,13,18,.03)', padding: 'var(--ax-space-1-5)', boxSizing: 'border-box', fontFamily: 'Roboto, system-ui, sans-serif', fontSize: '0.875rem', color: 'var(--ax-text-primary, #212529)' });
+    const wrap = document.createElement('div'); css(wrap, { position: 'relative', marginBottom: '0.375rem' });
     const ic = document.createElement('i'); ic.className = 'bi bi-search'; ic.setAttribute('aria-hidden', 'true');
-    css(ic, { position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', fontSize: '13px', color: 'var(--ax-text-tertiary, #6C757D)', pointerEvents: 'none' });
+    css(ic, { position: 'absolute', left: '0.625rem', top: '50%', transform: 'translateY(-50%)', fontSize: '0.8125rem', color: 'var(--ax-text-tertiary, #6C757D)', pointerEvents: 'none' });
     const inp = document.createElement('input'); inp.type = 'text'; inp.autocomplete = 'off'; inp.spellcheck = false;
     inp.setAttribute('role', 'combobox'); inp.setAttribute('aria-autocomplete', 'list'); inp.setAttribute('aria-expanded', 'true');
-    css(inp, { width: '100%', boxSizing: 'border-box', height: '36px', padding: '0 10px 0 30px', border: '1px solid var(--ax-gray-300, #DEE2E6)', borderRadius: '8px', font: 'inherit', fontSize: '14px', outline: 'none' });
+    css(inp, { width: '100%', boxSizing: 'border-box', height: '2.25rem', padding: '0 0.625rem 0 1.875rem', border: '1px solid var(--ax-gray-300, #DEE2E6)', borderRadius: '0.5rem', font: 'inherit', fontSize: '0.875rem', outline: 'none' });
     inp.addEventListener('focus', () => { inp.style.borderColor = '#00B6BD'; inp.style.boxShadow = '0 0 0 4px rgba(0,182,189,.35)'; });
     inp.addEventListener('blur', () => { inp.style.borderColor = ''; inp.style.boxShadow = ''; });
     const ul = document.createElement('ul'); ul.setAttribute('role', 'listbox'); ul.id = 'ax-ta-list';
-    css(ul, { listStyle: 'none', margin: 0, padding: 0, maxHeight: '264px', overflowY: 'auto' });
+    css(ul, { listStyle: 'none', margin: 0, padding: 0, maxHeight: '16.5rem', overflowY: 'auto' });
     inp.setAttribute('aria-controls', ul.id);
     wrap.append(ic, inp); pop.append(wrap, ul);
     pop.addEventListener('mousedown', (e) => { if (e.target !== inp) e.preventDefault(); });
@@ -46,14 +46,14 @@
     const ul = pop._ul; ul.textContent = '';
     if (!items.length) {
       const li = document.createElement('li'); li.textContent = 'No matches'; li.setAttribute('role', 'option'); li.setAttribute('aria-disabled', 'true');
-      css(li, { padding: '9px 10px', color: 'var(--ax-text-tertiary, #6C757D)' }); ul.append(li);
+      css(li, { padding: '0.5625rem 0.625rem', color: 'var(--ax-text-tertiary, #6C757D)' }); ul.append(li);
       pop._inp.removeAttribute('aria-activedescendant'); return;
     }
     const selIdx = items.findIndex((o) => o.v === cur.value);
     items.forEach((o, i) => {
       const li = document.createElement('li'); li.id = 'ax-ta-' + uid + '-' + i; li.dataset.v = o.v; li.dataset.i = i;
       li.setAttribute('role', 'option'); li.setAttribute('aria-selected', o.v === cur.value ? 'true' : 'false');
-      css(li, { display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '6px', cursor: 'pointer', lineHeight: '1.35' });
+      css(li, { display: 'flex', alignItems: 'center', gap: 'var(--ax-space-2)', padding: 'var(--ax-space-2) 0.625rem', borderRadius: '0.375rem', cursor: 'pointer', lineHeight: '1.35' });
       const s = document.createElement('span'); s.textContent = o.label; s.style.flex = '1';
       li.append(s);
       if (o.v === cur.value) { const c = document.createElement('i'); c.className = 'bi bi-check2'; c.setAttribute('aria-hidden', 'true'); c.style.color = 'var(--ax-sea-depths, #0D5257)'; li.append(c); }

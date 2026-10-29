@@ -4,21 +4,21 @@
 :root {
   /* Spacing (4px base) */
   --ax-space-0: 0;
-  --ax-space-0-5: 2px;
-  --ax-space-1: 4px;
-  --ax-space-1-5: 6px;
-  --ax-space-2: 8px;
-  --ax-space-3: 12px;
-  --ax-space-4: 16px;
-  --ax-space-5: 20px;
-  --ax-space-6: 24px;
-  --ax-space-8: 32px;
-  --ax-space-10: 40px;
-  --ax-space-12: 48px;
-  --ax-space-16: 64px;
-  --ax-space-20: 80px;
-  --ax-space-24: 96px;
-  --ax-space-32: 128px;
+  --ax-space-0-5: 0.125rem;
+  --ax-space-1: 0.25rem;
+  --ax-space-1-5: 0.375rem;
+  --ax-space-2: 0.5rem;
+  --ax-space-3: 0.75rem;
+  --ax-space-4: 1rem;
+  --ax-space-5: 1.25rem;
+  --ax-space-6: 1.5rem;
+  --ax-space-8: 2rem;
+  --ax-space-10: 2.5rem;
+  --ax-space-12: 3rem;
+  --ax-space-16: 4rem;
+  --ax-space-20: 5rem;
+  --ax-space-24: 6rem;
+  --ax-space-32: 8rem;
 
   /* Spacing primitives (Spacing primitives.pdf): 1 unit = 0.25rem = 4px */
   --ax-sp-0: 0px; /* @kind spacing */
@@ -37,14 +37,14 @@
 
   /* Radius */
   --ax-radius-none: 0;
-  --ax-radius-xs: 4px;
-  --ax-radius-sm: 6px;
-  --ax-radius-md: 8px;
-  --ax-radius-lg: 10px;
-  --ax-radius-xl: 12px;
-  --ax-radius-2xl: 16px;
-  --ax-radius-3xl: 20px;
-  --ax-radius-full: 9999px;
+  --ax-radius-xs: 0.25rem;
+  --ax-radius-sm: 0.375rem;
+  --ax-radius-md: 0.5rem;
+  --ax-radius-lg: 0.625rem;
+  --ax-radius-xl: 0.75rem;
+  --ax-radius-2xl: 1rem;
+  --ax-radius-3xl: 1.25rem;
+  --ax-radius-full: 624.9375rem;
 
   /* Border widths */
   --ax-border-width: 1px;
@@ -58,11 +58,11 @@
   --ax-bp-xxl: 1400px;
 
   /* Container max widths */
-  --ax-container-sm: 540px;
-  --ax-container-md: 720px;
-  --ax-container-lg: 960px;
-  --ax-container-xl: 1140px;
-  --ax-container-xxl: 1320px;
+  --ax-container-sm: 33.75rem;
+  --ax-container-md: 45rem;
+  --ax-container-lg: 60rem;
+  --ax-container-xl: 71.25rem;
+  --ax-container-xxl: 82.5rem;
 
   /* Z-index scale */
   --ax-z-dropdown: 1000; /* @kind other */

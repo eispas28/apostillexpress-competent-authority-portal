@@ -67,8 +67,8 @@
         "message": "<Avatar> status must be one of 'online' | 'busy' | 'away' | 'offline'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|color|size|pill|dot|solid|className|style|key|ref|className|style|children)$/]",
-        "message": "<Badge> doesn't accept that prop. Declared props: children, color, size, pill, dot, solid, className, style."
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|color|size|pill|dot|solid|modern|iconLeading|iconTrailing|iconOnly|onClose|className|style|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, color, size, pill, dot, solid, modern, iconLeading, iconTrailing, iconOnly, onClose, className, style."
       },
       {
         "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
@@ -79,12 +79,12 @@
         "message": "<BreadcrumbItem> doesn't accept that prop. Declared props: label, href."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|iconOnly|leadingIcon|trailingIcon|fullWidth|disabled|key|ref|className|style|children)$/]",
-        "message": "<Button> doesn't accept that prop. Declared props: variant, size, iconOnly, leadingIcon, trailingIcon, fullWidth, disabled."
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|destructive|size|iconOnly|leadingIcon|trailingIcon|loading|state|fullWidth|disabled|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, destructive, size, iconOnly, leadingIcon, trailingIcon, loading, state, fullWidth, disabled."
       },
       {
-        "selector": "JSXOpeningElement[name.name='ButtonGroupItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|icon|key|ref|className|style|children)$/]",
-        "message": "<ButtonGroupItem> doesn't accept that prop. Declared props: label, value, icon."
+        "selector": "JSXOpeningElement[name.name='ButtonGroupItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|icon|iconOnly|dot|dotColor|disabled|key|ref|className|style|children)$/]",
+        "message": "<ButtonGroupItem> doesn't accept that prop. Declared props: label, value, icon, iconOnly, dot, dotColor, disabled."
       },
       {
         "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|padding|hoverable|className|style|key|ref|className|style|children)$/]",
@@ -101,6 +101,18 @@
       {
         "selector": "JSXOpeningElement[name.name='Checkbox'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md)$/]",
         "message": "<Checkbox> size must be one of 'sm' | 'md'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CloseButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|darkBackground|state|label|key|ref|className|style|children)$/]",
+        "message": "<CloseButton> doesn't accept that prop. Declared props: size, darkBackground, state, label."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CloseButton'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<CloseButton> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CloseButton'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:default|hover|focused)$/]",
+        "message": "<CloseButton> state must be one of 'default' | 'hover' | 'focused'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Datepicker'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|onChange|placeholder|className|style|key|ref|className|style|children)$/]",
@@ -123,8 +135,8 @@
         "message": "<Drawer> side must be one of 'left' | 'right'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='DropdownItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|onClick|danger|divider|header|shortcut|key|ref|className|style|children)$/]",
-        "message": "<DropdownItem> doesn't accept that prop. Declared props: label, icon, onClick, danger, divider, header, shortcut."
+        "selector": "JSXOpeningElement[name.name='DropdownItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|icon|shortcut|onClick|danger|disabled|checkbox|checked|divider|header|key|ref|className|style|children)$/]",
+        "message": "<DropdownItem> doesn't accept that prop. Declared props: label, icon, shortcut, onClick, danger, disabled, checkbox, checked, divider, header."
       },
       {
         "selector": "JSXOpeningElement[name.name='EmptyState'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|title|description|action|className|style|key|ref|className|style|children)$/]",
@@ -227,6 +239,18 @@
         "message": "<Radio> doesn't accept that prop. Declared props: checked, label."
       },
       {
+        "selector": "JSXOpeningElement[name.name='RadioGroupItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|size|selected|disabled|focused|title|subtext|supportingText|icon|avatarSrc|paymentIcon|badge|price|period|actions|name|value|onSelect|className|style|key|ref|className|style|children)$/]",
+        "message": "<RadioGroupItem> doesn't accept that prop. Declared props: type, size, selected, disabled, focused, title, subtext, supportingText, icon, avatarSrc, paymentIcon, badge, price, period, actions, name, value, onSelect, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RadioGroupItem'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:radio|checkbox|icon|card|payment|avatar)$/]",
+        "message": "<RadioGroupItem> type must be one of 'radio' | 'checkbox' | 'icon' | 'card' | 'payment' | 'avatar'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RadioGroupItem'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md)$/]",
+        "message": "<RadioGroupItem> size must be one of 'sm' | 'md'."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='SearchResult'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|meta|icon|onClick|key|ref|className|style|children)$/]",
         "message": "<SearchResult> doesn't accept that prop. Declared props: label, meta, icon, onClick."
       },
@@ -237,6 +261,10 @@
       {
         "selector": "JSXOpeningElement[name.name='Select'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md)$/]",
         "message": "<Select> size must be one of 'sm' | 'md'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SideNavSubItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|label|href|active|badge|key|ref|className|style|children)$/]",
+        "message": "<SideNavSubItem> doesn't accept that prop. Declared props: id, label, href, active, badge."
       },
       {
         "selector": "JSXOpeningElement[name.name='Skeleton'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|width|height|radius|className|style|key|ref|className|style|children)$/]",
@@ -271,8 +299,8 @@
         "message": "<TableColumn> align must be one of 'left' | 'center' | 'right'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='TabItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|icon|badge|key|ref|className|style|children)$/]",
-        "message": "<TabItem> doesn't accept that prop. Declared props: label, value, icon, badge."
+        "selector": "JSXOpeningElement[name.name='TabItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|icon|iconOnly|badge|key|ref|className|style|children)$/]",
+        "message": "<TabItem> doesn't accept that prop. Declared props: label, value, icon, iconOnly, badge."
       },
       {
         "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|title|children|action|onClose|className|style|key|ref|className|style|children)$/]",
@@ -289,6 +317,22 @@
       {
         "selector": "JSXOpeningElement[name.name='Tooltip'] > JSXAttribute[name.name='placement'] > Literal[value!=/^(?:top|bottom|left|right)$/]",
         "message": "<Tooltip> placement must be one of 'top' | 'bottom' | 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='UtilityButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|label|size|hierarchy|state|disabled|key|ref|className|style|children)$/]",
+        "message": "<UtilityButton> doesn't accept that prop. Declared props: icon, label, size, hierarchy, state, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='UtilityButton'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:xs|sm)$/]",
+        "message": "<UtilityButton> size must be one of 'xs' | 'sm'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='UtilityButton'] > JSXAttribute[name.name='hierarchy'] > Literal[value!=/^(?:secondary|tertiary)$/]",
+        "message": "<UtilityButton> hierarchy must be one of 'secondary' | 'tertiary'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='UtilityButton'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:default|hover|focused|disabled)$/]",
+        "message": "<UtilityButton> state must be one of 'default' | 'hover' | 'focused' | 'disabled'."
       }
     ]
   },
@@ -332,6 +376,9 @@
         "replaces": []
       },
       "Checkbox": {
+        "replaces": []
+      },
+      "CloseButton": {
         "replaces": []
       },
       "Datepicker": {
@@ -388,10 +435,16 @@
       "Radio": {
         "replaces": []
       },
+      "RadioGroupItem": {
+        "replaces": []
+      },
       "SearchResult": {
         "replaces": []
       },
       "Select": {
+        "replaces": []
+      },
+      "SideNavSubItem": {
         "replaces": []
       },
       "Skeleton": {
@@ -417,14 +470,28 @@
       },
       "Tooltip": {
         "replaces": []
+      },
+      "UtilityButton": {
+        "replaces": []
       }
     },
     "tokens": [
       "--ax-aqua",
       "--ax-aqua-bright",
       "--ax-black",
+      "--ax-blue-100",
+      "--ax-blue-200",
+      "--ax-blue-300",
+      "--ax-blue-400",
+      "--ax-blue-500",
+      "--ax-blue-600",
+      "--ax-blue-700",
+      "--ax-blue-800",
+      "--ax-blue-900",
+      "--ax-body-color",
       "--ax-border",
       "--ax-border-brand",
+      "--ax-border-color",
       "--ax-border-error",
       "--ax-border-focus",
       "--ax-border-strong",
@@ -436,16 +503,29 @@
       "--ax-bp-sm",
       "--ax-bp-xl",
       "--ax-bp-xxl",
+      "--ax-brand-light",
+      "--ax-brand-theme",
       "--ax-container-lg",
       "--ax-container-md",
       "--ax-container-sm",
       "--ax-container-xl",
       "--ax-container-xxl",
+      "--ax-cyan-100",
+      "--ax-cyan-200",
+      "--ax-cyan-300",
+      "--ax-cyan-400",
+      "--ax-cyan-500",
+      "--ax-cyan-600",
+      "--ax-cyan-700",
+      "--ax-cyan-800",
+      "--ax-cyan-900",
+      "--ax-danger",
       "--ax-danger-200",
       "--ax-danger-50",
       "--ax-danger-500",
       "--ax-danger-600",
       "--ax-danger-700",
+      "--ax-dark",
       "--ax-display-1",
       "--ax-display-2",
       "--ax-display-3",
@@ -456,7 +536,9 @@
       "--ax-fill-info",
       "--ax-fill-success",
       "--ax-fill-warning",
+      "--ax-focus-control",
       "--ax-focus-ring",
+      "--ax-focus-ring-control",
       "--ax-font-base",
       "--ax-font-condensed",
       "--ax-font-heading",
@@ -483,24 +565,86 @@
       "--ax-gray-800",
       "--ax-gray-900",
       "--ax-gray-950",
+      "--ax-green-100",
+      "--ax-green-200",
+      "--ax-green-300",
+      "--ax-green-400",
+      "--ax-green-500",
+      "--ax-green-600",
+      "--ax-green-700",
+      "--ax-green-800",
+      "--ax-green-900",
       "--ax-h1",
       "--ax-h2",
       "--ax-h3",
       "--ax-h4",
       "--ax-h5",
       "--ax-h6",
+      "--ax-hitbox",
+      "--ax-indigo-100",
+      "--ax-indigo-200",
+      "--ax-indigo-300",
+      "--ax-indigo-400",
+      "--ax-indigo-500",
+      "--ax-indigo-600",
+      "--ax-indigo-700",
+      "--ax-indigo-800",
+      "--ax-indigo-900",
+      "--ax-info",
       "--ax-info-200",
       "--ax-info-50",
       "--ax-info-500",
       "--ax-info-600",
       "--ax-info-700",
       "--ax-integrity-blue",
+      "--ax-lead",
       "--ax-lh-base",
+      "--ax-lh-display",
+      "--ax-lh-heading",
       "--ax-lh-relaxed",
       "--ax-lh-snug",
       "--ax-lh-tight",
+      "--ax-light",
       "--ax-midnight-blue",
+      "--ax-mint-100",
+      "--ax-mint-200",
+      "--ax-mint-300",
+      "--ax-mint-400",
+      "--ax-mint-500",
+      "--ax-mint-600",
+      "--ax-mint-700",
+      "--ax-mint-800",
+      "--ax-mint-900",
+      "--ax-orange-100",
+      "--ax-orange-200",
+      "--ax-orange-300",
+      "--ax-orange-400",
+      "--ax-orange-500",
+      "--ax-orange-600",
+      "--ax-orange-700",
+      "--ax-orange-800",
+      "--ax-orange-900",
+      "--ax-p",
       "--ax-patriot-red",
+      "--ax-pink-100",
+      "--ax-pink-200",
+      "--ax-pink-300",
+      "--ax-pink-400",
+      "--ax-pink-500",
+      "--ax-pink-600",
+      "--ax-pink-700",
+      "--ax-pink-800",
+      "--ax-pink-900",
+      "--ax-primary",
+      "--ax-purple-100",
+      "--ax-purple-200",
+      "--ax-purple-300",
+      "--ax-purple-400",
+      "--ax-purple-500",
+      "--ax-purple-600",
+      "--ax-purple-700",
+      "--ax-purple-800",
+      "--ax-purple-900",
       "--ax-radius-2xl",
       "--ax-radius-3xl",
       "--ax-radius-full",
@@ -510,9 +654,19 @@
       "--ax-radius-sm",
       "--ax-radius-xl",
       "--ax-radius-xs",
+      "--ax-red-100",
+      "--ax-red-200",
+      "--ax-red-300",
+      "--ax-red-400",
+      "--ax-red-500",
+      "--ax-red-600",
+      "--ax-red-700",
+      "--ax-red-800",
+      "--ax-red-900",
       "--ax-ring",
       "--ax-ring-error",
       "--ax-sea-depths",
+      "--ax-secondary",
       "--ax-shadow-2xl",
       "--ax-shadow-inset",
       "--ax-shadow-lg",
@@ -520,6 +674,13 @@
       "--ax-shadow-sm",
       "--ax-shadow-xl",
       "--ax-shadow-xs",
+      "--ax-small",
+      "--ax-sp-0",
+      "--ax-sp-1",
+      "--ax-sp-2",
+      "--ax-sp-3",
+      "--ax-sp-4",
+      "--ax-sp-5",
       "--ax-space-0",
       "--ax-space-0-5",
       "--ax-space-1",
@@ -536,6 +697,7 @@
       "--ax-space-5",
       "--ax-space-6",
       "--ax-space-8",
+      "--ax-success",
       "--ax-success-200",
       "--ax-success-50",
       "--ax-success-500",
@@ -576,12 +738,22 @@
       "--ax-tracking-normal",
       "--ax-tracking-tight",
       "--ax-tracking-wide",
+      "--ax-warning",
       "--ax-warning-200",
       "--ax-warning-50",
       "--ax-warning-500",
       "--ax-warning-600",
       "--ax-warning-700",
       "--ax-white",
+      "--ax-yellow-100",
+      "--ax-yellow-200",
+      "--ax-yellow-300",
+      "--ax-yellow-400",
+      "--ax-yellow-500",
+      "--ax-yellow-600",
+      "--ax-yellow-700",
+      "--ax-yellow-800",
+      "--ax-yellow-900",
       "--ax-z-dropdown",
       "--ax-z-fixed",
       "--ax-z-modal",
@@ -604,6 +776,19 @@
       "--ax-teal-200": "color",
       "--ax-teal-100": "color",
       "--ax-teal-50": "color",
+      "--ax-brand-light": "color",
+      "--ax-brand-theme": "color",
+      "--ax-hitbox": "color",
+      "--ax-primary": "color",
+      "--ax-secondary": "color",
+      "--ax-success": "color",
+      "--ax-danger": "color",
+      "--ax-warning": "color",
+      "--ax-info": "color",
+      "--ax-light": "color",
+      "--ax-dark": "color",
+      "--ax-border-color": "color",
+      "--ax-body-color": "color",
       "--ax-freedom-blue": "color",
       "--ax-integrity-blue": "color",
       "--ax-patriot-red": "color",
@@ -622,6 +807,96 @@
       "--ax-gray-900": "color",
       "--ax-gray-950": "color",
       "--ax-black": "color",
+      "--ax-blue-100": "color",
+      "--ax-blue-200": "color",
+      "--ax-blue-300": "color",
+      "--ax-blue-400": "color",
+      "--ax-blue-500": "color",
+      "--ax-blue-600": "color",
+      "--ax-blue-700": "color",
+      "--ax-blue-800": "color",
+      "--ax-blue-900": "color",
+      "--ax-indigo-100": "color",
+      "--ax-indigo-200": "color",
+      "--ax-indigo-300": "color",
+      "--ax-indigo-400": "color",
+      "--ax-indigo-500": "color",
+      "--ax-indigo-600": "color",
+      "--ax-indigo-700": "color",
+      "--ax-indigo-800": "color",
+      "--ax-indigo-900": "color",
+      "--ax-purple-100": "color",
+      "--ax-purple-200": "color",
+      "--ax-purple-300": "color",
+      "--ax-purple-400": "color",
+      "--ax-purple-500": "color",
+      "--ax-purple-600": "color",
+      "--ax-purple-700": "color",
+      "--ax-purple-800": "color",
+      "--ax-purple-900": "color",
+      "--ax-pink-100": "color",
+      "--ax-pink-200": "color",
+      "--ax-pink-300": "color",
+      "--ax-pink-400": "color",
+      "--ax-pink-500": "color",
+      "--ax-pink-600": "color",
+      "--ax-pink-700": "color",
+      "--ax-pink-800": "color",
+      "--ax-pink-900": "color",
+      "--ax-red-100": "color",
+      "--ax-red-200": "color",
+      "--ax-red-300": "color",
+      "--ax-red-400": "color",
+      "--ax-red-500": "color",
+      "--ax-red-600": "color",
+      "--ax-red-700": "color",
+      "--ax-red-800": "color",
+      "--ax-red-900": "color",
+      "--ax-orange-100": "color",
+      "--ax-orange-200": "color",
+      "--ax-orange-300": "color",
+      "--ax-orange-400": "color",
+      "--ax-orange-500": "color",
+      "--ax-orange-600": "color",
+      "--ax-orange-700": "color",
+      "--ax-orange-800": "color",
+      "--ax-orange-900": "color",
+      "--ax-yellow-100": "color",
+      "--ax-yellow-200": "color",
+      "--ax-yellow-300": "color",
+      "--ax-yellow-400": "color",
+      "--ax-yellow-500": "color",
+      "--ax-yellow-600": "color",
+      "--ax-yellow-700": "color",
+      "--ax-yellow-800": "color",
+      "--ax-yellow-900": "color",
+      "--ax-green-100": "color",
+      "--ax-green-200": "color",
+      "--ax-green-300": "color",
+      "--ax-green-400": "color",
+      "--ax-green-500": "color",
+      "--ax-green-600": "color",
+      "--ax-green-700": "color",
+      "--ax-green-800": "color",
+      "--ax-green-900": "color",
+      "--ax-mint-100": "color",
+      "--ax-mint-200": "color",
+      "--ax-mint-300": "color",
+      "--ax-mint-400": "color",
+      "--ax-mint-500": "color",
+      "--ax-mint-600": "color",
+      "--ax-mint-700": "color",
+      "--ax-mint-800": "color",
+      "--ax-mint-900": "color",
+      "--ax-cyan-100": "color",
+      "--ax-cyan-200": "color",
+      "--ax-cyan-300": "color",
+      "--ax-cyan-400": "color",
+      "--ax-cyan-500": "color",
+      "--ax-cyan-600": "color",
+      "--ax-cyan-700": "color",
+      "--ax-cyan-800": "color",
+      "--ax-cyan-900": "color",
       "--ax-success-700": "color",
       "--ax-success-600": "color",
       "--ax-success-500": "color",
@@ -672,6 +947,8 @@
       "--ax-fill-danger": "color",
       "--ax-fill-info": "color",
       "--ax-focus-ring": "shadow",
+      "--ax-focus-control": "color",
+      "--ax-focus-ring-control": "shadow",
       "--ax-font-base": "font",
       "--ax-font-heading": "font",
       "--ax-font-condensed": "font",
@@ -680,6 +957,11 @@
       "--ax-fw-medium": "other",
       "--ax-fw-semibold": "other",
       "--ax-fw-bold": "other",
+      "--ax-lh-display": "other",
+      "--ax-lh-heading": "other",
+      "--ax-lead": "spacing",
+      "--ax-p": "spacing",
+      "--ax-small": "spacing",
       "--ax-display-1": "spacing",
       "--ax-display-2": "spacing",
       "--ax-display-3": "spacing",
@@ -720,6 +1002,12 @@
       "--ax-space-20": "spacing",
       "--ax-space-24": "spacing",
       "--ax-space-32": "spacing",
+      "--ax-sp-0": "spacing",
+      "--ax-sp-1": "spacing",
+      "--ax-sp-2": "spacing",
+      "--ax-sp-3": "spacing",
+      "--ax-sp-4": "spacing",
+      "--ax-sp-5": "spacing",
       "--ax-gap-xs": "spacing",
       "--ax-gap-sm": "spacing",
       "--ax-gap-md": "spacing",

@@ -80,7 +80,7 @@ function RadioGroupItem({
   if (isCard) {
     return (
       <div role="radio" aria-checked={selected} aria-disabled={disabled || undefined} className={`ax-radio-item ${className}`} style={container} {...handlers} {...props}>
-        <div style={{ display: "flex", alignItems: "center", gap: 4, padding: "12px 20px 12px 12px", borderRadius: "12px 12px 0 0", boxShadow: "inset 0 0 0 1px var(--ax-border-subtle)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 4, padding: "var(--ax-space-3) var(--ax-space-5) var(--ax-space-3) var(--ax-space-3)", borderRadius: "0.75rem 0.75rem 0 0", boxShadow: "inset 0 0 0 1px var(--ax-border-subtle)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexGrow: 1, minWidth: 0 }}>
             <Media type="icon" size="md" icon={icon} />
             <span style={{ fontSize: 16, fontWeight: 600, lineHeight: 1, color: disabled ? "var(--ax-text-disabled)" : "var(--ax-text-primary)" }}>{title}</span>
@@ -111,10 +111,10 @@ function RadioGroupItem({
         <div style={{ display: "flex", flexDirection: "column", gap: type === "payment" ? 12 : s.textGap, flexGrow: 1, minWidth: 0 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: type === "payment" ? 2 : s.textGap }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: s.subGap, flexWrap: "wrap" }}>
-              <span style={type === "payment" ? { fontSize: 16, fontWeight: 500, lineHeight: "24px", color: disabled ? "var(--ax-text-disabled)" : "var(--ax-gray-700)" } : titleStyle}>{title}</span>
-              {subtext ? <span style={type === "payment" ? { fontSize: 16, lineHeight: "24px", color: textColor } : { ...bodyStyle, lineHeight: 1, whiteSpace: "nowrap" }}>{subtext}</span> : null}
+              <span style={type === "payment" ? { fontSize: 16, fontWeight: 500, lineHeight: "1.5rem", color: disabled ? "var(--ax-text-disabled)" : "var(--ax-gray-700)" } : titleStyle}>{title}</span>
+              {subtext ? <span style={type === "payment" ? { fontSize: 16, lineHeight: "1.5rem", color: textColor } : { ...bodyStyle, lineHeight: 1, whiteSpace: "nowrap" }}>{subtext}</span> : null}
             </div>
-            {supportingText ? <span style={type === "payment" ? { fontSize: 16, lineHeight: "24px", color: textColor } : bodyStyle}>{supportingText}</span> : null}
+            {supportingText ? <span style={type === "payment" ? { fontSize: 16, lineHeight: "1.5rem", color: textColor } : bodyStyle}>{supportingText}</span> : null}
           </div>
           {actions ? <div style={{ display: "flex", gap: 12, alignItems: "center" }}>{actions}</div> : null}
         </div>

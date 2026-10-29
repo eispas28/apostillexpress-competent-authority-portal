@@ -11,57 +11,57 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="ds/tokens/fonts.css">
-<link rel="stylesheet" href="ds/tokens/colors.css">
-<link rel="stylesheet" href="ds/tokens/typography.css">
-<link rel="stylesheet" href="ds/tokens/spacing.css">
-<link rel="stylesheet" href="ds/tokens/shadows.css">
-<link rel="stylesheet" href="ds/tokens/base.css">
-<link rel="stylesheet" href="ds/components.css">
-<link rel="stylesheet" href="ds/styles.css">
-<script src="ds/ds-bundle.js"></script>
+<link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/spacing.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
+<link rel="stylesheet" href="ds/components.css?v=rem1">
+<link rel="stylesheet" href="ds/styles.css?v=rem1">
+<script src="ds/ds-bundle.js?v=rem1"></script>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{font-family:Roboto,system-ui,sans-serif;background:#F8F9FA;color:#212529}
 a{color:#0D5257;text-decoration:none}
 a:hover{color:#00B6BD;text-decoration:underline}
-@keyframes caIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes caIn{from{opacity:0;transform:translateY(0.375rem)}to{opacity:1;transform:none}}
 @keyframes caSpin{to{transform:rotate(360deg)}}
 .sc-scroll{overflow:auto}
-.sc-scroll::-webkit-scrollbar{width:8px;height:8px}
-.sc-scroll::-webkit-scrollbar-thumb{background:#DEE2E6;border-radius:8px}
-.sc-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
-.sc-th{padding:0;text-align:left;font-family:Roboto;font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057;border-bottom:1px solid var(--ax-gray-200);white-space:nowrap;background-color:#F8F9FA}
-.sc-th button{display:inline-flex;align-items:center;gap:6px;border:none;background:none;padding:0;font:inherit;color:inherit;letter-spacing:inherit;cursor:pointer}
-.sc-td{height:60px;padding:12px 20px;border-bottom:1px solid #E9EAEB;vertical-align:middle}
+.sc-scroll::-webkit-scrollbar{width:0.5rem;height:0.5rem}
+.sc-scroll::-webkit-scrollbar-thumb{background:#DEE2E6;border-radius:var(--ax-radius-md)}
+.sc-tbl{width:100%;border-collapse:collapse;font-size:0.8438rem}
+.sc-th{padding:0;text-align:left;font-family:Roboto;font-size:var(--ax-text-xs);font-weight:600;letter-spacing:.06em;color:#495057;border-bottom:1px solid var(--ax-gray-200);white-space:nowrap;background-color:#F8F9FA}
+.sc-th button{display:inline-flex;align-items:center;gap:var(--ax-space-1-5);border:none;background:none;padding:0;font:inherit;color:inherit;letter-spacing:inherit;cursor:pointer}
+.sc-td{height:3.75rem;padding:var(--ax-space-3) var(--ax-space-5);border-bottom:1px solid #E9EAEB;vertical-align:middle}
 .sc-tbl tbody tr:hover td{background:var(--ax-gray-50)}
 .sc-hide-sm{display:none}
 @media (min-width:768px){.sc-hide-sm{display:inline}}
-.sc-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+.sc-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.875rem 1.125rem}
 @media (max-width:720px){.sc-grid2{grid-template-columns:minmax(0,1fr)}}
-.sc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.sc-danger-btn:hover:not(:disabled),.sc-danger-btn:focus-visible:not(:disabled){border-radius:8px !important;border:1px solid #F1AEB5 !important;background:#FEF3F2 !important;color:#E33B32 !important;box-shadow:0 0 0 1px rgba(10,13,18,.18) inset,0 -2px 0 0 rgba(10,13,18,.05) inset,0 1px 2px 0 rgba(10,13,18,.05) !important}
+.sc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));gap:var(--ax-space-4)}
+.sc-danger-btn:hover:not(:disabled),.sc-danger-btn:focus-visible:not(:disabled){border-radius:0.5rem !important;border:1px solid #F1AEB5 !important;background:#FEF3F2 !important;color:#E33B32 !important;box-shadow:0 0 0 1px rgba(10,13,18,.18) inset,0 -2px 0 0 rgba(10,13,18,.05) inset,0 1px 2px 0 rgba(10,13,18,.05) !important}
 .sc-side{flex-shrink:0}
 @media (max-width:1000px){.sc-side{display:none}}
-.sc-notif{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:18px;align-items:start}
+.sc-notif{display:grid;grid-template-columns:minmax(0,16.25rem) minmax(0,1fr);gap:1.125rem;align-items:start}
 @media (max-width:900px){.sc-notif{grid-template-columns:minmax(0,1fr)}}
-.sc-ed{width:100%;min-height:280px;padding:16px;border:1px solid var(--ax-gray-300);border-top:none;border-radius:0 0 8px 8px;font-family:Roboto,system-ui,sans-serif;font-size:14.5px;line-height:1.6;color:var(--ax-text-primary);outline:none;resize:vertical}
+.sc-ed{width:100%;min-height:17.5rem;padding:var(--ax-space-4);border:1px solid var(--ax-gray-300);border-top:none;border-radius:0 0 var(--ax-radius-md) var(--ax-radius-md);font-family:Roboto,system-ui,sans-serif;font-size:0.9063rem;line-height:1.6;color:var(--ax-text-primary);outline:none;resize:vertical}
 .sc-ed:focus{border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)}
-.sc-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+.sc-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.8125rem}
 </style>
 </helmet>
 <div style="min-height:{{ shellMinHeight }};display:flex;flex-direction:column;font-family:Roboto,system-ui,sans-serif;color:var(--ax-text-primary);background:var(--ax-gray-50)">
 
   <sc-if value="{{ chrome }}" hint-placeholder-val="{{ true }}">
-  <header style="position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:16px;height:64px;padding:0 16px;background:#fff;border-bottom:1px solid var(--ax-gray-200);box-shadow:0 1px 2px rgba(10,13,18,.05)">
-    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
-      <img src="assets/delmarva-seal.png" alt="Great Seal of the State of Delmarva" width="40" height="40" style="display:block;width:40px;height:40px;flex-shrink:0;object-fit:contain">
+  <header style="position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:var(--ax-space-4);height:4rem;padding:0 var(--ax-space-4);background:#fff;border-bottom:1px solid var(--ax-gray-200);box-shadow:0 1px 2px rgba(10,13,18,.05)">
+    <div style="display:flex;align-items:center;gap:var(--ax-space-3);flex-shrink:0">
+      <img src="assets/delmarva-seal.png" alt="Great Seal of the State of Delmarva" width="40" height="40" style="display:block;width:2.5rem;height:2.5rem;flex-shrink:0;object-fit:contain">
       <span class="sc-hide-sm" style="font-family:Copperplate,'Copperplate Gothic Light','Times New Roman',serif;font-size:1.25rem;font-weight:700;color:var(--ax-gray-700, #444);white-space:nowrap">Delmarva Secretary of State</span>
     </div>
     <div style="flex:1"></div>
-    <a href="CA Dashboard.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ax-text-primary)" style-hover="background:var(--ax-gray-50);text-decoration:none">
-      <img src="assets/emily-rodriguez.png" alt="Emily Rodriguez" width="28" height="28" style="display:block;width:28px;height:28px;border-radius:50%;object-fit:cover">
+    <a href="CA Dashboard.dc.html" style="display:inline-flex;align-items:center;gap:var(--ax-space-2);height:2.5rem;padding:0 var(--ax-space-3);border-radius:62.4375rem;font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary)" style-hover="background:var(--ax-gray-50);text-decoration:none">
+      <img src="assets/emily-rodriguez.png" alt="Emily Rodriguez" width="28" height="28" style="display:block;width:1.75rem;height:1.75rem;border-radius:50%;object-fit:cover">
       <span class="sc-hide-sm">Emily Rodriguez</span>
     </a>
   </header>
@@ -75,75 +75,75 @@ a:hover{color:#00B6BD;text-decoration:underline}
     </sc-if>
 
     <main style="flex:1;min-width:0;width:100%;padding:{{ mainPad }};background-color:{{ mainBg }}">
-      <div data-screen-label="Site Configuration" style="display:flex;flex-direction:column;gap:20px;width:100%;min-width:0">
+      <div data-screen-label="Site Configuration" style="display:flex;flex-direction:column;gap:var(--ax-space-5);width:100%;min-width:0">
 
-        <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:8px;font-size:13.5px">
+        <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:var(--ax-space-2);font-size:0.8438rem">
           <a href="CA Dashboard.dc.html" style="font-weight:500;color:var(--ax-sea-depths)">Platform Settings</a>
-          <i class="bi bi-chevron-right" aria-hidden="true" style="font-size:11px;color:var(--ax-text-tertiary)"></i>
-          <span style="padding:2px 8px;border-radius:6px;background:var(--ax-gray-100);font-weight:500;color:var(--ax-text-secondary)">Site Configuration</span>
+          <i class="bi bi-chevron-right" aria-hidden="true" style="font-size:0.6875rem;color:var(--ax-text-tertiary)"></i>
+          <span style="padding:var(--ax-space-0-5) var(--ax-space-2);border-radius:var(--ax-radius-sm);background:var(--ax-gray-100);font-weight:500;color:var(--ax-text-secondary)">Site Configuration</span>
         </nav>
 
-        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:16px">
-          <div style="min-width:280px">
-            <h1 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Site Configuration</h1>
-            <p style="margin:6px 0 0;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">Configure locations, service and certificate offerings, system rules, and customer notifications for this office.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--ax-space-4)">
+          <div style="min-width:17.5rem">
+            <h1 style="margin:0;font-size:1.75rem;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Site Configuration</h1>
+            <p style="margin:var(--ax-space-1-5) 0 0;font-size:var(--ax-text-sm);color:var(--ax-text-secondary);text-wrap:pretty">Configure locations, service and certificate offerings, system rules, and customer notifications for this office.</p>
           </div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid rgba(0,182,189,.35);border-radius:999px;background:rgba(0,182,189,.08);font-size:13px;font-weight:600;color:var(--ax-sea-depths)"><i class="bi bi-shield-lock" aria-hidden="true"></i>CA Administrator</span>
+          <div style="display:flex;align-items:center;gap:0.625rem">
+            <span style="display:inline-flex;align-items:center;gap:0.4375rem;padding:var(--ax-space-1-5) var(--ax-space-3);border:1px solid rgba(0,182,189,.35);border-radius:62.4375rem;background:rgba(0,182,189,.08);font-size:0.8125rem;font-weight:600;color:var(--ax-sea-depths)"><i class="bi bi-shield-lock" aria-hidden="true"></i>CA Administrator</span>
           </div>
         </div>
 
         <div class="sc-scroll" style="border-bottom:1px solid var(--ax-gray-200)">
-          <div role="tablist" aria-label="Site configuration sections" style="display:flex;gap:4px;min-width:max-content">
+          <div role="tablist" aria-label="Site configuration sections" style="display:flex;gap:var(--ax-space-1);min-width:max-content">
             <sc-for list="{{ sections }}" as="s" hint-placeholder-count="7">
-              <button type="button" role="tab" aria-selected="{{ s.active }}" onClick="{{ s.go }}" style="display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border:none;border-bottom:2px solid {{ s.edge }};background:transparent;font:inherit;font-size:14px;font-weight:{{ s.weight }};color:{{ s.color }};white-space:nowrap;cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ s.label }}</button>
+              <button type="button" role="tab" aria-selected="{{ s.active }}" onClick="{{ s.go }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-2);padding:0.6875rem 0.875rem;border:none;border-bottom:2px solid {{ s.edge }};background:transparent;font:inherit;font-size:var(--ax-text-sm);font-weight:{{ s.weight }};color:{{ s.color }};white-space:nowrap;cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ s.label }}</button>
             </sc-for>
           </div>
         </div>
 
         <sc-if value="{{ banner }}" hint-placeholder-val="{{ false }}">
-          <div role="status" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid {{ bannerBorder }};border-radius:10px;background:{{ bannerBg }}">
-            <i class="{{ bannerIcon }}" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:17px;color:{{ bannerInk }}"></i>
+          <div role="status" style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:0.875rem var(--ax-space-4);border:1px solid {{ bannerBorder }};border-radius:var(--ax-radius-lg);background:{{ bannerBg }}">
+            <i class="{{ bannerIcon }}" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:1.0625rem;color:{{ bannerInk }}"></i>
             <div style="flex:1;min-width:0">
-              <div style="font-size:14.5px;font-weight:600;color:{{ bannerInk }}">{{ bannerTitle }}</div>
-              <div style="margin-top:2px;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">{{ banner }}</div>
+              <div style="font-size:0.9063rem;font-weight:600;color:{{ bannerInk }}">{{ bannerTitle }}</div>
+              <div style="margin-top:var(--ax-space-0-5);font-size:var(--ax-text-sm);color:var(--ax-text-secondary);text-wrap:pretty">{{ banner }}</div>
             </div>
-            <button type="button" onClick="{{ bannerClose }}" aria-label="Dismiss" style="border:none;background:none;padding:0;font-size:14px;color:var(--ax-text-tertiary);cursor:pointer"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+            <button type="button" onClick="{{ bannerClose }}" aria-label="Dismiss" style="border:none;background:none;padding:0;font-size:var(--ax-text-sm);color:var(--ax-text-tertiary);cursor:pointer"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
           </div>
         </sc-if>
 
         <sc-if value="{{ isUser }}" hint-placeholder-val="{{ true }}">
-          <div role="tablist" aria-label="User configuration collections" style="display:inline-flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--ax-gray-200);align-self:flex-start">
+          <div role="tablist" aria-label="User configuration collections" style="display:inline-flex;flex-wrap:wrap;gap:var(--ax-space-1);border-bottom:1px solid var(--ax-gray-200);align-self:flex-start">
             <sc-for list="{{ userTabs }}" as="t" hint-placeholder-count="4">
-              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="display:inline-flex;align-items:center;gap:6px;padding:10px 4px;margin:0 8px -1px;border:none;border-bottom:2px solid {{ t.edge }};background:transparent;font:inherit;font-size:14px;font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ t.label }}<span style="margin-left:2px;padding:1px 7px;border-radius:624.9375rem;background:{{ t.countBg }};font-size:12px;font-weight:500;color:{{ t.color }}">{{ t.count }}</span></button>
+              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5);padding:0.625rem var(--ax-space-1);margin:0 var(--ax-space-2) -1px;border:none;border-bottom:2px solid {{ t.edge }};background:transparent;font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,border-color .12s ease" style-hover="color:var(--ax-sea-depths)">{{ t.label }}<span style="margin-left:var(--ax-space-0-5);padding:1px 0.4375rem;border-radius:624.9375rem;background:{{ t.countBg }};font-size:var(--ax-text-xs);font-weight:500;color:{{ t.color }}">{{ t.count }}</span></button>
             </sc-for>
           </div>
         </sc-if>
 
         <sc-if value="{{ isCertInfo }}" hint-placeholder-val="{{ false }}">
-          <div role="tablist" aria-label="Certificate profile view" style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;padding:4px;background:var(--ax-gray-100);border-radius:10px;align-self:flex-start">
+          <div role="tablist" aria-label="Certificate profile view" style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-1);padding:var(--ax-space-1);background:var(--ax-gray-100);border-radius:var(--ax-radius-lg);align-self:flex-start">
             <sc-for list="{{ archiveTabs }}" as="t" hint-placeholder-count="2">
-              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="padding:7px 14px;border:none;border-radius:8px;background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:14px;font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,background .12s ease">{{ t.label }}</button>
+              <button type="button" role="tab" onClick="{{ t.go }}" aria-selected="{{ t.active }}" style="padding:0.4375rem 0.875rem;border:none;border-radius:var(--ax-radius-md);background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:{{ t.color }};cursor:pointer;transition:color .12s ease,background .12s ease">{{ t.label }}</button>
             </sc-for>
           </div>
         </sc-if>
 
         <sc-if value="{{ showCollection }}" hint-placeholder-val="{{ true }}">
-          <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
-            <header style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px">
-              <div style="min-width:200px">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ colTitle }}</h2>
+          <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+            <header style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-3);padding:var(--ax-space-4) var(--ax-space-5)">
+              <div style="min-width:12.5rem">
+                <div style="display:flex;align-items:center;gap:var(--ax-space-2)">
+                  <h2 style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">{{ colTitle }}</h2>
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="gray" size="sm" pill="{{ true }}" dc-props="{{ countBadgeProps }}" hint-size="auto,22px">{{ colCount }}</x-import>
                 </div>
-                <p style="margin:4px 0 0;font-size:13.5px;color:var(--ax-text-secondary);text-wrap:pretty">{{ colDesc }}</p>
+                <p style="margin:var(--ax-space-1) 0 0;font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty">{{ colDesc }}</p>
               </div>
-              <div style="flex:1;min-width:12px"></div>
-              <div style="position:relative;flex:1;min-width:220px;max-width:420px">
-                <i class="bi bi-search" aria-hidden="true" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--ax-text-tertiary)"></i>
-                <input value="{{ colQuery }}" onChange="{{ setColQuery }}" placeholder="{{ colSearchHint }}" aria-label="Search {{ colTitle }}" style="width:100%;height:40px;padding:0 14px 0 40px;font:inherit;font-size:14.5px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+              <div style="flex:1;min-width:0.75rem"></div>
+              <div style="position:relative;flex:1;min-width:13.75rem;max-width:26.25rem">
+                <i class="bi bi-search" aria-hidden="true" style="position:absolute;left:0.875rem;top:50%;transform:translateY(-50%);font-size:var(--ax-text-sm);color:var(--ax-text-tertiary)"></i>
+                <input value="{{ colQuery }}" onChange="{{ setColQuery }}" placeholder="{{ colSearchHint }}" aria-label="Search {{ colTitle }}" style="width:100%;height:2.5rem;padding:0 0.875rem 0 var(--ax-space-10);font:inherit;font-size:0.9063rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
               </div>
-              <select value="{{ colStatus }}" onChange="{{ setColStatus }}" aria-label="Filter by status" style="height:40px;padding:0 10px;font:inherit;font-size:14.5px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
+              <select value="{{ colStatus }}" onChange="{{ setColStatus }}" aria-label="Filter by status" style="height:2.5rem;padding:0 0.625rem;font:inherit;font-size:0.9063rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
                 <sc-for list="{{ colStatusOpts }}" as="o" hint-placeholder-count="3">
                   <option value="{{ o }}">{{ o }}</option>
                 </sc-for>
@@ -152,13 +152,13 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </header>
 
             <sc-if value="{{ colSelAny }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 20px;background:rgba(0,182,189,.06);border-top:1px solid var(--ax-gray-200)">
-                <span style="font-size:13.5px;font-weight:600;color:var(--ax-sea-depths)">{{ colSelLabel }}</span>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem;padding:0.625rem var(--ax-space-5);background:rgba(0,182,189,.06);border-top:1px solid var(--ax-gray-200)">
+                <span style="font-size:0.8438rem;font-weight:600;color:var(--ax-sea-depths)">{{ colSelLabel }}</span>
                 <div style="flex:1"></div>
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ colBulkEnable }}" hint-size="auto,32px">Enable</x-import>
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ colBulkDisable }}" hint-size="auto,32px">Disable</x-import>
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ dangerSmallProps }}" onClick="{{ colBulkDelete }}" hint-size="auto,32px">Delete</x-import>
-                <button type="button" onClick="{{ colClearSel }}" style="padding:0 4px;border:none;background:transparent;font:inherit;font-size:13px;font-weight:500;color:var(--ax-text-secondary);cursor:pointer">Clear</button>
+                <button type="button" onClick="{{ colClearSel }}" style="padding:0 var(--ax-space-1);border:none;background:transparent;font:inherit;font-size:0.8125rem;font-weight:500;color:var(--ax-text-secondary);cursor:pointer">Clear</button>
               </div>
             </sc-if>
 
@@ -168,26 +168,26 @@ a:hover{color:#00B6BD;text-decoration:underline}
                   <thead>
                     <tr>
                       <sc-if value="{{ colBulk }}" hint-placeholder-val="{{ false }}">
-                        <th class="sc-th" style="width:44px"><span style="display:block;padding:10px 0 10px 20px"><input type="checkbox" checked="{{ colAllSel }}" onChange="{{ colToggleAll }}" aria-label="Select all" style="width:16px;height:16px;accent-color:#0D5257;cursor:pointer"></span></th>
+                        <th class="sc-th" style="width:2.75rem"><span style="display:block;padding:0.625rem 0 0.625rem var(--ax-space-5)"><input type="checkbox" checked="{{ colAllSel }}" onChange="{{ colToggleAll }}" aria-label="Select all" style="width:1rem;height:1rem;accent-color:#0D5257;cursor:pointer"></span></th>
                       </sc-if>
                       <sc-for list="{{ colCols }}" as="c" hint-placeholder-count="6">
-                        <th class="sc-th" scope="col" aria-sort="{{ c.ariaSort }}"><span style="display:block;padding:10px 20px"><button type="button" onClick="{{ c.sort }}" title="{{ c.title }}">{{ c.label }}<i class="{{ c.icon }}" aria-hidden="true" style="font-size:11px;opacity:{{ c.iconOpacity }}"></i></button></span></th>
+                        <th class="sc-th" scope="col" aria-sort="{{ c.ariaSort }}"><span style="display:block;padding:0.625rem var(--ax-space-5)"><button type="button" onClick="{{ c.sort }}" title="{{ c.title }}">{{ c.label }}<i class="{{ c.icon }}" aria-hidden="true" style="font-size:0.6875rem;opacity:{{ c.iconOpacity }}"></i></button></span></th>
                       </sc-for>
-                      <th class="sc-th" style="width:64px"><span style="display:block;padding:10px 20px;text-align:right">ACTIONS</span></th>
+                      <th class="sc-th" style="width:4rem"><span style="display:block;padding:0.625rem var(--ax-space-5);text-align:right">ACTIONS</span></th>
                     </tr>
                   </thead>
                   <tbody>
                     <sc-for list="{{ colRows }}" as="r" hint-placeholder-count="6">
                       <tr style="background:{{ r.rowBg }};transition:background .12s ease">
                         <sc-if value="{{ colBulk }}" hint-placeholder-val="{{ false }}">
-                          <td class="sc-td" style="padding-right:0"><input type="checkbox" checked="{{ r.sel }}" onChange="{{ r.toggle }}" aria-label="Select {{ r.name }}" style="width:16px;height:16px;accent-color:#0D5257;cursor:pointer"></td>
+                          <td class="sc-td" style="padding-right:0"><input type="checkbox" checked="{{ r.sel }}" onChange="{{ r.toggle }}" aria-label="Select {{ r.name }}" style="width:1rem;height:1rem;accent-color:#0D5257;cursor:pointer"></td>
                         </sc-if>
                         <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="6">
                           <td class="sc-td" style="white-space:{{ cell.wrap }}">
                             <sc-if value="{{ cell.isText }}" hint-placeholder-val="{{ true }}">
                               <div style="font-size:{{ cell.size }};font-weight:{{ cell.weight }};color:{{ cell.ink }};overflow-wrap:anywhere">{{ cell.text }}</div>
                               <sc-if value="{{ cell.hasSub }}" hint-placeholder-val="{{ false }}">
-                                <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary);overflow-wrap:anywhere">{{ cell.sub }}</div>
+                                <div style="margin-top:var(--ax-space-0-5);font-size:0.7813rem;color:var(--ax-text-tertiary);overflow-wrap:anywhere">{{ cell.sub }}</div>
                               </sc-if>
                             </sc-if>
                             <sc-if value="{{ cell.isBadge }}" hint-placeholder-val="{{ false }}">
@@ -199,38 +199,38 @@ a:hover{color:#00B6BD;text-decoration:underline}
                           </td>
                         </sc-for>
                         <td class="sc-td" style="text-align:right">
-                          <button type="button" onClick="{{ r.menu }}" aria-label="Actions for {{ r.name }}" aria-haspopup="menu" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-secondary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-three-dots-vertical" aria-hidden="true"></i></button>
+                          <button type="button" onClick="{{ r.menu }}" aria-label="Actions for {{ r.name }}" aria-haspopup="menu" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-secondary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-three-dots-vertical" aria-hidden="true"></i></button>
                         </td>
                       </tr>
                     </sc-for>
                   </tbody>
                 </table>
               </div>
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--ax-gray-200)">
-                <div style="display:flex;align-items:center;gap:4px">
-                  <button type="button" onClick="{{ pgFirst }}" disabled="{{ pgFirstDis }}" aria-label="First page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-start-fill" aria-hidden="true"></i></button>
-                  <button type="button" onClick="{{ pgPrev }}" disabled="{{ pgPrevDis }}" aria-label="Previous page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-left-fill" aria-hidden="true"></i></button>
-                  <span style="display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;margin:0 2px;padding:0 10px;border:1px solid var(--ax-gray-200);border-radius:8px;background:var(--ax-gray-50);font-size:15px;font-weight:500;color:var(--ax-text-primary)">{{ pgPage }}</span>
-                  <button type="button" onClick="{{ pgNext }}" disabled="{{ pgNextDis }}" aria-label="Next page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-right-fill" aria-hidden="true"></i></button>
-                  <button type="button" onClick="{{ pgLast }}" disabled="{{ pgLastDis }}" aria-label="Last page" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:6px;background:transparent;color:var(--ax-text-primary);font-size:13px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-end-fill" aria-hidden="true"></i></button>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem;padding:var(--ax-space-3) var(--ax-space-4);border-top:1px solid var(--ax-gray-200)">
+                <div style="display:flex;align-items:center;gap:var(--ax-space-1)">
+                  <button type="button" onClick="{{ pgFirst }}" disabled="{{ pgFirstDis }}" aria-label="First page" style="display:inline-flex;align-items:center;justify-content:center;width:1.875rem;height:1.875rem;border:none;border-radius:var(--ax-radius-sm);background:transparent;color:var(--ax-text-primary);font-size:0.8125rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-start-fill" aria-hidden="true"></i></button>
+                  <button type="button" onClick="{{ pgPrev }}" disabled="{{ pgPrevDis }}" aria-label="Previous page" style="display:inline-flex;align-items:center;justify-content:center;width:1.875rem;height:1.875rem;border:none;border-radius:var(--ax-radius-sm);background:transparent;color:var(--ax-text-primary);font-size:0.8125rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-left-fill" aria-hidden="true"></i></button>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;min-width:2.25rem;height:2.25rem;margin:0 var(--ax-space-0-5);padding:0 0.625rem;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-md);background:var(--ax-gray-50);font-size:0.9375rem;font-weight:500;color:var(--ax-text-primary)">{{ pgPage }}</span>
+                  <button type="button" onClick="{{ pgNext }}" disabled="{{ pgNextDis }}" aria-label="Next page" style="display:inline-flex;align-items:center;justify-content:center;width:1.875rem;height:1.875rem;border:none;border-radius:var(--ax-radius-sm);background:transparent;color:var(--ax-text-primary);font-size:0.8125rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-caret-right-fill" aria-hidden="true"></i></button>
+                  <button type="button" onClick="{{ pgLast }}" disabled="{{ pgLastDis }}" aria-label="Last page" style="display:inline-flex;align-items:center;justify-content:center;width:1.875rem;height:1.875rem;border:none;border-radius:var(--ax-radius-sm);background:transparent;color:var(--ax-text-primary);font-size:0.8125rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-skip-end-fill" aria-hidden="true"></i></button>
                 </div>
-                <select value="{{ pgPer }}" onChange="{{ setPgPer }}" aria-label="Items per page" style="height:36px;padding:0 8px 0 12px;margin-left:8px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                <select value="{{ pgPer }}" onChange="{{ setPgPer }}" aria-label="Items per page" style="height:2.25rem;padding:0 var(--ax-space-2) 0 var(--ax-space-3);margin-left:var(--ax-space-2);font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);cursor:pointer">
                   <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
                 </select>
-                <span style="font-size:15px;color:var(--ax-text-secondary)">Items per page</span>
-                <div style="flex:1;min-width:8px"></div>
-                <span style="font-size:15px;color:var(--ax-text-secondary)">{{ pgLabel }}</span>
+                <span style="font-size:0.9375rem;color:var(--ax-text-secondary)">Items per page</span>
+                <div style="flex:1;min-width:0.5rem"></div>
+                <span style="font-size:0.9375rem;color:var(--ax-text-secondary)">{{ pgLabel }}</span>
               </div>
             </sc-if>
 
             <sc-if value="{{ colEmpty }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:56px 24px;border-top:1px solid var(--ax-gray-200);text-align:center">
-                <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-bottom:8px;border-radius:12px;background:var(--ax-gray-100);color:var(--ax-text-tertiary);font-size:20px"><i class="{{ colEmptyIcon }}" aria-hidden="true"></i></span>
-                <div style="font-size:16px;font-weight:600;color:var(--ax-text-primary)">{{ colEmptyTitle }}</div>
-                <p style="margin:0;max-width:420px;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">{{ colEmptyBody }}</p>
-                <div style="display:flex;gap:10px;margin-top:12px">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--ax-space-1-5);padding:3.5rem var(--ax-space-6);border-top:1px solid var(--ax-gray-200);text-align:center">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:3rem;height:3rem;margin-bottom:var(--ax-space-2);border-radius:var(--ax-radius-xl);background:var(--ax-gray-100);color:var(--ax-text-tertiary);font-size:var(--ax-text-xl)"><i class="{{ colEmptyIcon }}" aria-hidden="true"></i></span>
+                <div style="font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary)">{{ colEmptyTitle }}</div>
+                <p style="margin:0;max-width:26.25rem;font-size:var(--ax-text-sm);color:var(--ax-text-secondary);text-wrap:pretty">{{ colEmptyBody }}</p>
+                <div style="display:flex;gap:0.625rem;margin-top:var(--ax-space-3)">
                   <sc-if value="{{ colFiltering }}" hint-placeholder-val="{{ false }}">
                     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" onClick="{{ colClearFilters }}" hint-size="auto,36px">Clear filters</x-import>
                   </sc-if>
@@ -244,43 +244,43 @@ a:hover{color:#00B6BD;text-decoration:underline}
         <sc-if value="{{ isSystem }}" hint-placeholder-val="{{ false }}">
           <div class="sc-cards">
             <sc-for list="{{ sysCards }}" as="c" hint-placeholder-count="6">
-              <section style="display:flex;flex-direction:column;gap:12px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
-                <div style="display:flex;align-items:flex-start;gap:12px">
-                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0;border-radius:10px;background:rgba(0,182,189,.10);color:var(--ax-sea-depths);font-size:18px"><i class="{{ c.icon }}" aria-hidden="true"></i></span>
+              <section style="display:flex;flex-direction:column;gap:var(--ax-space-3);padding:var(--ax-space-5);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05)">
+                <div style="display:flex;align-items:flex-start;gap:var(--ax-space-3)">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;border-radius:var(--ax-radius-lg);background:rgba(0,182,189,.10);color:var(--ax-sea-depths);font-size:var(--ax-text-lg)"><i class="{{ c.icon }}" aria-hidden="true"></i></span>
                   <div style="min-width:0">
-                    <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">{{ c.title }}</h3>
-                    <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ c.desc }}</p>
+                    <h3 style="margin:0;font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary)">{{ c.title }}</h3>
+                    <p style="margin:0.1875rem 0 0;font-size:0.8438rem;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ c.desc }}</p>
                   </div>
                 </div>
                 <sc-if value="{{ c.isNumber }}" hint-placeholder-val="{{ false }}">
-                  <div style="display:flex;align-items:center;gap:12px">
-                    <input type="number" value="{{ c.value }}" onChange="{{ c.set }}" min="{{ c.min }}" max="{{ c.max }}" aria-label="{{ c.title }}" style="width:120px;height:40px;padding:0 12px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ c.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
-                    <span style="font-size:13.5px;color:var(--ax-text-tertiary)">{{ c.hint }}</span>
+                  <div style="display:flex;align-items:center;gap:var(--ax-space-3)">
+                    <input type="number" value="{{ c.value }}" onChange="{{ c.set }}" min="{{ c.min }}" max="{{ c.max }}" aria-label="{{ c.title }}" style="width:7.5rem;height:2.5rem;padding:0 var(--ax-space-3);font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ c.border }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                    <span style="font-size:0.8438rem;color:var(--ax-text-tertiary)">{{ c.hint }}</span>
                   </div>
                 </sc-if>
                 <sc-if value="{{ c.isSelect }}" hint-placeholder-val="{{ false }}">
-                  <select value="{{ c.value }}" onChange="{{ c.set }}" aria-label="{{ c.title }}" style="width:100%;height:40px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
+                  <select value="{{ c.value }}" onChange="{{ c.set }}" aria-label="{{ c.title }}" style="width:100%;height:2.5rem;padding:0 0.625rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);cursor:pointer">
                     <sc-for list="{{ c.options }}" as="o" hint-placeholder-count="3">
                       <option value="{{ o }}">{{ o }}</option>
                     </sc-for>
                   </select>
                 </sc-if>
                 <sc-if value="{{ c.hasToggle }}" hint-placeholder-val="{{ false }}">
-                  <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50);cursor:pointer">
-                    <span style="font-size:14px;font-weight:500;color:var(--ax-text-primary);text-wrap:pretty">{{ c.toggleLabel }}</span>
-                    <span style="display:inline-flex;align-items:center;flex-shrink:0;width:44px;height:24px;padding:2px;border-radius:999px;background:{{ c.toggleBg }};transition:background .15s ease">
+                  <label style="display:flex;align-items:center;justify-content:space-between;gap:var(--ax-space-3);padding:var(--ax-space-3) 0.875rem;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50);cursor:pointer">
+                    <span style="font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary);text-wrap:pretty">{{ c.toggleLabel }}</span>
+                    <span style="display:inline-flex;align-items:center;flex-shrink:0;width:2.75rem;height:1.5rem;padding:var(--ax-space-0-5);border-radius:62.4375rem;background:{{ c.toggleBg }};transition:background .15s ease">
                       <input type="checkbox" checked="{{ c.toggleOn }}" onChange="{{ c.toggle }}" style="position:absolute;opacity:0;width:0;height:0">
-                      <span style="width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(10,13,18,.2);transform:translateX({{ c.toggleX }});transition:transform .15s ease"></span>
+                      <span style="width:1.25rem;height:1.25rem;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(10,13,18,.2);transform:translateX({{ c.toggleX }});transition:transform .15s ease"></span>
                     </span>
                   </label>
                 </sc-if>
                 <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}">
-                  <p style="margin:0;font-size:13px;color:var(--ax-text-tertiary);text-wrap:pretty">{{ c.note }}</p>
+                  <p style="margin:0;font-size:0.8125rem;color:var(--ax-text-tertiary);text-wrap:pretty">{{ c.note }}</p>
                 </sc-if>
               </section>
             </sc-for>
           </div>
-          <div style="display:flex;justify-content:flex-end;gap:10px">
+          <div style="display:flex;justify-content:flex-end;gap:0.625rem">
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ sysReset }}" hint-size="auto,40px">Reset to Defaults</x-import>
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ sysSave }}" hint-size="auto,40px">Save Changes</x-import>
           </div>
@@ -288,44 +288,44 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
         <sc-if value="{{ isReg }}" hint-placeholder-val="{{ false }}">
           <div class="sc-cards">
-            <section style="display:flex;flex-direction:column;gap:14px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+            <section style="display:flex;flex-direction:column;gap:0.875rem;padding:var(--ax-space-5);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05)">
               <div>
-                <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">Document Retention</h3>
-                <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">How long submitted documents are retained before automatic deletion.</p>
+                <h3 style="margin:0;font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary)">Document Retention</h3>
+                <p style="margin:0.1875rem 0 0;font-size:0.8438rem;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">How long submitted documents are retained before automatic deletion.</p>
               </div>
-              <div style="display:flex;align-items:center;gap:12px">
-                <input type="number" value="{{ regRetention }}" onChange="{{ setRegRetention }}" min="1" max="3650" aria-label="Retention period in days" style="width:120px;height:40px;padding:0 12px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
-                <span style="font-size:13.5px;color:var(--ax-text-tertiary)">days · default 45</span>
+              <div style="display:flex;align-items:center;gap:var(--ax-space-3)">
+                <input type="number" value="{{ regRetention }}" onChange="{{ setRegRetention }}" min="1" max="3650" aria-label="Retention period in days" style="width:7.5rem;height:2.5rem;padding:0 var(--ax-space-3);font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                <span style="font-size:0.8438rem;color:var(--ax-text-tertiary)">days · default 45</span>
               </div>
             </section>
 
-            <section style="display:flex;flex-direction:column;gap:14px;padding:20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
+            <section style="display:flex;flex-direction:column;gap:0.875rem;padding:var(--ax-space-5);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05)">
               <div>
-                <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-primary)">Certification Method</h3>
-                <p style="margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">Choose whether one certificate type covers every destination, or Hague and non-Hague are issued separately.</p>
+                <h3 style="margin:0;font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary)">Certification Method</h3>
+                <p style="margin:0.1875rem 0 0;font-size:0.8438rem;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">Choose whether one certificate type covers every destination, or Hague and non-Hague are issued separately.</p>
               </div>
-              <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;flex-direction:column;gap:0.625rem">
                 <sc-for list="{{ regMethods }}" as="m" hint-placeholder-count="2">
-                  <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.on }}" style="display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid {{ m.border }};border-radius:10px;background:{{ m.bg }};font:inherit;text-align:left;cursor:pointer;transition:border-color .13s ease,background .13s ease">
-                    <i class="{{ m.icon }}" aria-hidden="true" style="margin-top:2px;font-size:16px;color:{{ m.ink }}"></i>
+                  <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.on }}" style="display:flex;align-items:flex-start;gap:0.625rem;padding:0.875rem;border:1px solid {{ m.border }};border-radius:var(--ax-radius-lg);background:{{ m.bg }};font:inherit;text-align:left;cursor:pointer;transition:border-color .13s ease,background .13s ease">
+                    <i class="{{ m.icon }}" aria-hidden="true" style="margin-top:var(--ax-space-0-5);font-size:var(--ax-text-md);color:{{ m.ink }}"></i>
                     <span style="flex:1;min-width:0">
-                      <span style="display:block;font-size:14.5px;font-weight:600;color:var(--ax-text-primary)">{{ m.label }}</span>
-                      <span style="display:block;margin-top:3px;font-size:13px;line-height:1.5;color:var(--ax-text-secondary)">{{ m.desc }}</span>
+                      <span style="display:block;font-size:0.9063rem;font-weight:600;color:var(--ax-text-primary)">{{ m.label }}</span>
+                      <span style="display:block;margin-top:0.1875rem;font-size:0.8125rem;line-height:1.5;color:var(--ax-text-secondary)">{{ m.desc }}</span>
                     </span>
                   </button>
                 </sc-for>
               </div>
               <sc-if value="{{ regSplit }}" hint-placeholder-val="{{ false }}">
-                <div class="sc-grid2" style="padding-top:2px">
+                <div class="sc-grid2" style="padding-top:var(--ax-space-0-5)">
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Hague Certificate Type" required="{{ true }}" hint-size="100%,74px">
-                    <select value="{{ regHague }}" onChange="{{ setRegHague }}" aria-label="Hague certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                    <select value="{{ regHague }}" onChange="{{ setRegHague }}" aria-label="Hague certificate type" style="width:100%;height:2.625rem;padding:0 0.625rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);cursor:pointer">
                       <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
                         <option value="{{ n }}">{{ n }}</option>
                       </sc-for>
                     </select>
                   </x-import>
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Non-Hague Certificate Type" required="{{ true }}" hint-size="100%,74px">
-                    <select value="{{ regNonHague }}" onChange="{{ setRegNonHague }}" aria-label="Non-Hague certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                    <select value="{{ regNonHague }}" onChange="{{ setRegNonHague }}" aria-label="Non-Hague certificate type" style="width:100%;height:2.625rem;padding:0 0.625rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);cursor:pointer">
                       <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
                         <option value="{{ n }}">{{ n }}</option>
                       </sc-for>
@@ -334,9 +334,9 @@ a:hover{color:#00B6BD;text-decoration:underline}
                 </div>
               </sc-if>
               <sc-if value="{{ regSingle }}" hint-placeholder-val="{{ true }}">
-                <div style="max-width:420px">
+                <div style="max-width:26.25rem">
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Certificate Type" hint="Used for every destination country." hint-size="100%,74px">
-                    <select value="{{ regSingleType }}" onChange="{{ setRegSingleType }}" aria-label="Certificate type" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                    <select value="{{ regSingleType }}" onChange="{{ setRegSingleType }}" aria-label="Certificate type" style="width:100%;height:2.625rem;padding:0 0.625rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);cursor:pointer">
                       <sc-for list="{{ certTypeNames }}" as="n" hint-placeholder-count="3">
                         <option value="{{ n }}">{{ n }}</option>
                       </sc-for>
@@ -346,71 +346,71 @@ a:hover{color:#00B6BD;text-decoration:underline}
               </sc-if>
             </section>
           </div>
-          <div style="display:flex;justify-content:flex-end;gap:10px">
+          <div style="display:flex;justify-content:flex-end;gap:0.625rem">
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ regSave }}" hint-size="auto,40px">Save Changes</x-import>
           </div>
         </sc-if>
 
         <sc-if value="{{ isNotif }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px;background:var(--ax-gray-100);border-radius:10px;align-self:flex-start">
+          <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-2);padding:var(--ax-space-1-5);background:var(--ax-gray-100);border-radius:var(--ax-radius-lg);align-self:flex-start">
             <sc-for list="{{ notifChannels }}" as="t" hint-placeholder-count="2">
-              <button type="button" onClick="{{ t.go }}" aria-pressed="{{ t.active }}" style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid {{ t.border }};border-radius:8px;background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:14px;font-weight:{{ t.weight }};color:{{ t.color }};cursor:pointer"><i class="{{ t.icon }}" aria-hidden="true"></i>{{ t.label }}</button>
+              <button type="button" onClick="{{ t.go }}" aria-pressed="{{ t.active }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-2) 0.875rem;border:1px solid {{ t.border }};border-radius:var(--ax-radius-md);background:{{ t.bg }};box-shadow:{{ t.shadow }};font:inherit;font-size:var(--ax-text-sm);font-weight:{{ t.weight }};color:{{ t.color }};cursor:pointer"><i class="{{ t.icon }}" aria-hidden="true"></i>{{ t.label }}</button>
             </sc-for>
           </div>
 
           <div class="sc-notif">
-            <section style="background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
-              <header style="padding:14px 16px;border-bottom:1px solid var(--ax-gray-200);font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057;background:var(--ax-gray-50)">NOTIFICATION</header>
+            <section style="background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+              <header style="padding:0.875rem var(--ax-space-4);border-bottom:1px solid var(--ax-gray-200);font-size:var(--ax-text-xs);font-weight:600;letter-spacing:.06em;color:#495057;background:var(--ax-gray-50)">NOTIFICATION</header>
               <sc-for list="{{ notifCats }}" as="c" hint-placeholder-count="4">
-                <button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.active }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:14px 16px;border:none;border-left:3px solid {{ c.edge }};border-bottom:1px solid var(--ax-gray-100);background:{{ c.bg }};font:inherit;text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-50)">
+                <button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.active }}" style="display:flex;align-items:center;gap:0.625rem;width:100%;padding:0.875rem var(--ax-space-4);border:none;border-left:3px solid {{ c.edge }};border-bottom:1px solid var(--ax-gray-100);background:{{ c.bg }};font:inherit;text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-50)">
                   <span style="flex:1;min-width:0">
-                    <span style="display:block;font-size:14.5px;font-weight:{{ c.weight }};color:{{ c.color }}">{{ c.label }}</span>
-                    <span style="display:block;margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">{{ c.meta }}</span>
+                    <span style="display:block;font-size:0.9063rem;font-weight:{{ c.weight }};color:{{ c.color }}">{{ c.label }}</span>
+                    <span style="display:block;margin-top:var(--ax-space-0-5);font-size:0.7813rem;color:var(--ax-text-tertiary)">{{ c.meta }}</span>
                   </span>
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ c.statusColor }}" size="sm" pill="{{ true }}" dot="{{ true }}" hint-size="auto,22px">{{ c.status }}</x-import>
                 </button>
               </sc-for>
             </section>
 
-            <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
-              <header style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--ax-gray-200)">
-                <div style="min-width:200px">
-                  <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ edTitle }}</h2>
-                  <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary)">{{ edSubtitle }}</p>
+            <section style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05);overflow:hidden">
+              <header style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-3);padding:var(--ax-space-4) var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
+                <div style="min-width:12.5rem">
+                  <h2 style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">{{ edTitle }}</h2>
+                  <p style="margin:0.1875rem 0 0;font-size:0.8438rem;color:var(--ax-text-secondary)">{{ edSubtitle }}</p>
                 </div>
                 <div style="flex:1"></div>
                 <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
-                  <div style="display:flex;align-items:center;gap:8px;padding:4px;background:var(--ax-gray-100);border-radius:8px">
+                  <div style="display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-1);background:var(--ax-gray-100);border-radius:var(--ax-radius-md)">
                     <sc-for list="{{ edModes }}" as="m" hint-placeholder-count="2">
-                      <button type="button" onClick="{{ m.go }}" aria-pressed="{{ m.active }}" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid {{ m.border }};border-radius:6px;background:{{ m.bg }};font:inherit;font-size:13px;font-weight:{{ m.weight }};color:{{ m.color }};cursor:pointer"><i class="{{ m.icon }}" aria-hidden="true"></i>{{ m.label }}</button>
+                      <button type="button" onClick="{{ m.go }}" aria-pressed="{{ m.active }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5);padding:var(--ax-space-1-5) 0.625rem;border:1px solid {{ m.border }};border-radius:var(--ax-radius-sm);background:{{ m.bg }};font:inherit;font-size:0.8125rem;font-weight:{{ m.weight }};color:{{ m.color }};cursor:pointer"><i class="{{ m.icon }}" aria-hidden="true"></i>{{ m.label }}</button>
                     </sc-for>
                   </div>
                 </sc-if>
               </header>
 
-              <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+              <div style="padding:var(--ax-space-5);display:flex;flex-direction:column;gap:var(--ax-space-4)">
                 <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Subject Line" required="{{ true }}" hint-size="100%,74px">
-                    <input value="{{ edSubject }}" onChange="{{ setEdSubject }}" placeholder="Enter subject" aria-label="Subject line" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                    <input value="{{ edSubject }}" onChange="{{ setEdSubject }}" placeholder="Enter subject" aria-label="Subject line" style="width:100%;height:2.625rem;padding:0 0.875rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
                   </x-import>
                 </sc-if>
 
                 <div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px">
-                    <span style="font-size:14px;font-weight:500;color:var(--ax-text-primary)">{{ edBodyLabel }}</span>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--ax-space-3);margin-bottom:var(--ax-space-1-5)">
+                    <span style="font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary)">{{ edBodyLabel }}</span>
                     <sc-if value="{{ edIsSms }}" hint-placeholder-val="{{ false }}">
-                      <span style="font-size:13px;font-weight:600;color:{{ edSmsInk }}">{{ edSmsCounter }}</span>
+                      <span style="font-size:0.8125rem;font-weight:600;color:{{ edSmsInk }}">{{ edSmsCounter }}</span>
                     </sc-if>
                   </div>
 
                   <sc-if value="{{ edShowToolbar }}" hint-placeholder-val="{{ true }}">
-                    <div role="toolbar" aria-label="Formatting" style="display:flex;flex-wrap:wrap;align-items:center;gap:2px;padding:6px 8px;border:1px solid var(--ax-gray-300);border-radius:8px 8px 0 0;background:var(--ax-gray-50)">
+                    <div role="toolbar" aria-label="Formatting" style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-0-5);padding:var(--ax-space-1-5) var(--ax-space-2);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md) var(--ax-radius-md) 0 0;background:var(--ax-gray-50)">
                       <sc-for list="{{ edTools }}" as="t" hint-placeholder-count="10">
                         <sc-if value="{{ t.isDivider }}" hint-placeholder-val="{{ false }}">
-                          <span aria-hidden="true" style="width:1px;height:20px;margin:0 6px;background:var(--ax-gray-300)"></span>
+                          <span aria-hidden="true" style="width:1px;height:1.25rem;margin:0 var(--ax-space-1-5);background:var(--ax-gray-300)"></span>
                         </sc-if>
                         <sc-if value="{{ t.isButton }}" hint-placeholder-val="{{ true }}">
-                          <button type="button" onClick="{{ t.run }}" title="{{ t.title }}" aria-label="{{ t.title }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 6px;border:none;border-radius:6px;background:transparent;font:inherit;font-size:14px;font-weight:{{ t.weight }};color:var(--ax-text-primary);cursor:pointer" style-hover="background:var(--ax-gray-200)"><i class="{{ t.icon }}" aria-hidden="true"></i></button>
+                          <button type="button" onClick="{{ t.run }}" title="{{ t.title }}" aria-label="{{ t.title }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:1.875rem;height:1.875rem;padding:0 var(--ax-space-1-5);border:none;border-radius:var(--ax-radius-sm);background:transparent;font:inherit;font-size:var(--ax-text-sm);font-weight:{{ t.weight }};color:var(--ax-text-primary);cursor:pointer" style-hover="background:var(--ax-gray-200)"><i class="{{ t.icon }}" aria-hidden="true"></i></button>
                         </sc-if>
                       </sc-for>
                     </div>
@@ -419,24 +419,24 @@ a:hover{color:#00B6BD;text-decoration:underline}
                   <textarea class="sc-ed {{ edMonoClass }}" value="{{ edBody }}" onChange="{{ setEdBody }}" placeholder="{{ edPlaceholder }}" aria-label="{{ edBodyLabel }}" style="border-radius:{{ edRadius }};border-top:{{ edBorderTop }}"></textarea>
 
                   <sc-if value="{{ edIsSms }}" hint-placeholder-val="{{ false }}">
-                    <p style="margin:8px 0 0;font-size:13px;color:var(--ax-text-tertiary);text-wrap:pretty">110 characters maximum. 50 characters are reserved for the shortened tracking link appended to every message.</p>
+                    <p style="margin:var(--ax-space-2) 0 0;font-size:0.8125rem;color:var(--ax-text-tertiary);text-wrap:pretty">110 characters maximum. 50 characters are reserved for the shortened tracking link appended to every message.</p>
                   </sc-if>
                 </div>
 
                 <div>
-                  <div style="font-size:14px;font-weight:500;color:var(--ax-text-primary)">Merge Fields</div>
-                  <p style="margin:3px 0 8px;font-size:13px;color:var(--ax-text-tertiary)">Select a field to insert it at the end of the message.</p>
-                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <div style="font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary)">Merge Fields</div>
+                  <p style="margin:0.1875rem 0 var(--ax-space-2);font-size:0.8125rem;color:var(--ax-text-tertiary)">Select a field to insert it at the end of the message.</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-2)">
                     <sc-for list="{{ edMergeFields }}" as="m" hint-placeholder-count="6">
-                      <button type="button" onClick="{{ m.insert }}" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--ax-gray-300);border-radius:999px;background:#fff;font:inherit;font-size:13px;color:var(--ax-text-secondary);cursor:pointer" style-hover="border-color:#00B6BD;color:var(--ax-sea-depths)"><i class="bi bi-braces" aria-hidden="true" style="font-size:12px"></i>{{ m.label }}</button>
+                      <button type="button" onClick="{{ m.insert }}" style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5);padding:var(--ax-space-1-5) 0.625rem;border:1px solid var(--ax-gray-300);border-radius:62.4375rem;background:#fff;font:inherit;font-size:0.8125rem;color:var(--ax-text-secondary);cursor:pointer" style-hover="border-color:#00B6BD;color:var(--ax-sea-depths)"><i class="bi bi-braces" aria-hidden="true" style="font-size:var(--ax-text-xs)"></i>{{ m.label }}</button>
                     </sc-for>
                   </div>
                 </div>
               </div>
 
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
-                <span style="font-size:13px;color:var(--ax-text-tertiary)">{{ edAudit }}</span>
-                <div style="flex:1;min-width:8px"></div>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
+                <span style="font-size:0.8125rem;color:var(--ax-text-tertiary)">{{ edAudit }}</span>
+                <div style="flex:1;min-width:0.5rem"></div>
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ edPreview }}" hint-size="auto,40px">Preview</x-import>
                 <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ edSendTest }}" hint-size="auto,40px">Send Test Email</x-import>
@@ -453,38 +453,38 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ menuClose }}" style="position:fixed;inset:0;z-index:160">
-      <div role="menu" onClick="{{ stopProp }}" style="position:fixed;top:{{ menuY }};left:{{ menuX }};min-width:206px;padding:6px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:10px;box-shadow:0 12px 32px rgba(10,13,18,.16)">
+      <div role="menu" onClick="{{ stopProp }}" style="position:fixed;top:{{ menuY }};left:{{ menuX }};min-width:12.875rem;padding:var(--ax-space-1-5);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);box-shadow:0 12px 32px rgba(10,13,18,.16)">
         <sc-for list="{{ menuItems }}" as="a" hint-placeholder-count="4">
-          <button type="button" role="menuitem" onClick="{{ a.run }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:none;border-radius:8px;background:transparent;font:inherit;font-size:14px;color:{{ a.ink }};text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-100)"><i class="{{ a.icon }}" aria-hidden="true" style="width:16px;font-size:14px;color:{{ a.iconInk }}"></i>{{ a.label }}</button>
+          <button type="button" role="menuitem" onClick="{{ a.run }}" style="display:flex;align-items:center;gap:0.625rem;width:100%;padding:0.5625rem 0.625rem;border:none;border-radius:var(--ax-radius-md);background:transparent;font:inherit;font-size:var(--ax-text-sm);color:{{ a.ink }};text-align:left;cursor:pointer;transition:background .12s ease" style-hover="background:var(--ax-gray-100)"><i class="{{ a.icon }}" aria-hidden="true" style="width:1rem;font-size:var(--ax-text-sm);color:{{ a.iconInk }}"></i>{{ a.label }}</button>
         </sc-for>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ formClose }}" style="position:fixed;inset:0;z-index:150;display:flex;align-items:flex-start;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
-      <div role="dialog" aria-modal="true" aria-labelledby="sc-form-title" onClick="{{ stopProp }}" style="width:100%;max-width:720px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10);animation:caIn .16s ease-out both">
-        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+    <div onClick="{{ formClose }}" style="position:fixed;inset:0;z-index:150;display:flex;align-items:flex-start;justify-content:center;padding:3.5rem var(--ax-space-4);overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-form-title" onClick="{{ stopProp }}" style="width:100%;max-width:45rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 20px 24px -4px rgba(10,13,18,.10);animation:caIn .16s ease-out both">
+        <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:1.125rem var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
           <div style="flex:1;min-width:0">
-            <h2 id="sc-form-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ formTitle }}</h2>
-            <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary);text-wrap:pretty">{{ formSubtitle }}</p>
+            <h2 id="sc-form-title" style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">{{ formTitle }}</h2>
+            <p style="margin:0.1875rem 0 0;font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty">{{ formSubtitle }}</p>
           </div>
-          <button type="button" onClick="{{ formClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+          <button type="button" onClick="{{ formClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         </div>
 
-        <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="padding:var(--ax-space-5);display:flex;flex-direction:column;gap:var(--ax-space-4)">
           <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
-            <div role="alert" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#FEF3F2;border:1px solid #F1AEB5;border-radius:8px">
-              <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:17px;color:#D92D20"></i>
-              <p style="margin:0;font-size:14.5px;line-height:1.5;color:#B42318;text-wrap:pretty">{{ formError }}</p>
+            <div role="alert" style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:0.875rem var(--ax-space-4);background:#FEF3F2;border:1px solid #F1AEB5;border-radius:var(--ax-radius-md)">
+              <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:1.0625rem;color:#D92D20"></i>
+              <p style="margin:0;font-size:0.9063rem;line-height:1.5;color:#B42318;text-wrap:pretty">{{ formError }}</p>
             </div>
           </sc-if>
 
           <sc-for list="{{ formGroups }}" as="g" hint-placeholder-count="1">
-            <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;flex-direction:column;gap:0.875rem">
               <sc-if value="{{ g.hasTitle }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;align-items:center;gap:10px">
-                  <span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#495057">{{ g.title }}</span>
+                <div style="display:flex;align-items:center;gap:0.625rem">
+                  <span style="font-size:var(--ax-text-xs);font-weight:600;letter-spacing:.06em;color:#495057">{{ g.title }}</span>
                   <span style="flex:1;height:1px;background:var(--ax-gray-200)"></span>
                 </div>
               </sc-if>
@@ -493,61 +493,61 @@ a:hover{color:#00B6BD;text-decoration:underline}
                   <div style="grid-column:{{ f.span }};min-width:0">
                     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="{{ f.label }}" required="{{ f.required }}" hint="{{ f.hint }}" error="{{ f.error }}" hint-size="100%,80px">
                       <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ true }}">
-                        <input value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                        <input value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;height:2.625rem;padding:0 0.875rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
                       </sc-if>
                       <sc-if value="{{ f.isNumber }}" hint-placeholder-val="{{ false }}">
-                        <input type="number" value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" step="{{ f.step }}" min="0" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                        <input type="number" value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" step="{{ f.step }}" min="0" aria-label="{{ f.label }}" style="width:100%;height:2.625rem;padding:0 0.875rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
                       </sc-if>
                       <sc-if value="{{ f.isDate }}" hint-placeholder-val="{{ false }}">
-                        <input type="date" value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+                        <input type="date" value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:2.625rem;padding:0 0.875rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
                       </sc-if>
                       <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}">
-                        <select value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:42px;padding:0 10px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;cursor:pointer">
+                        <select value="{{ f.value }}" onChange="{{ f.set }}" aria-label="{{ f.label }}" style="width:100%;height:2.625rem;padding:0 0.625rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:var(--ax-radius-md);cursor:pointer">
                           <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
                             <option value="{{ o }}">{{ o }}</option>
                           </sc-for>
                         </select>
                       </sc-if>
                       <sc-if value="{{ f.isTextarea }}" hint-placeholder-val="{{ false }}">
-                        <textarea value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;min-height:88px;padding:12px 14px;font-family:Roboto,system-ui,sans-serif;font-size:15px;line-height:1.55;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none;resize:vertical" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)"></textarea>
+                        <textarea value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.placeholder }}" aria-label="{{ f.label }}" style="width:100%;min-height:5.5rem;padding:var(--ax-space-3) 0.875rem;font-family:Roboto,system-ui,sans-serif;font-size:0.9375rem;line-height:1.55;color:var(--ax-text-primary);background:#fff;border:1px solid {{ f.border }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none;resize:vertical" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)"></textarea>
                       </sc-if>
                       <sc-if value="{{ f.isPerms }}" hint-placeholder-val="{{ false }}">
-                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;padding:12px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13.75rem,1fr));gap:var(--ax-space-2);padding:var(--ax-space-3);border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
                           <sc-for list="{{ f.perms }}" as="p" hint-placeholder-count="6">
-                            <label style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--ax-text-primary);cursor:pointer">
-                              <input type="checkbox" checked="{{ p.on }}" onChange="{{ p.toggle }}" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:#0D5257;cursor:pointer">
+                            <label style="display:flex;align-items:flex-start;gap:var(--ax-space-2);font-size:var(--ax-text-sm);color:var(--ax-text-primary);cursor:pointer">
+                              <input type="checkbox" checked="{{ p.on }}" onChange="{{ p.toggle }}" style="margin-top:var(--ax-space-0-5);width:1rem;height:1rem;flex-shrink:0;accent-color:#0D5257;cursor:pointer">
                               <span style="min-width:0">{{ p.label }}</span>
                             </label>
                           </sc-for>
                         </div>
                       </sc-if>
                       <sc-if value="{{ f.isUpload }}" hint-placeholder-val="{{ false }}">
-                        <div style="display:flex;flex-direction:column;gap:10px">
-                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px;border:1px dashed var(--ax-gray-300);border-radius:10px;background:var(--ax-gray-50)">
-                            <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;flex-shrink:0;border-radius:10px;background:#fff;border:1px solid var(--ax-gray-200);color:var(--ax-sea-depths);font-size:16px"><i class="bi bi-cloud-arrow-up" aria-hidden="true"></i></span>
-                            <div style="flex:1;min-width:140px">
-                              <div style="font-size:14px;font-weight:500;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ f.fileName }}</div>
-                              <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">EPS, SVG or TIFF · up to 20 MB</div>
+                        <div style="display:flex;flex-direction:column;gap:0.625rem">
+                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem;padding:0.875rem;border:1px dashed var(--ax-gray-300);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
+                            <span style="display:inline-flex;align-items:center;justify-content:center;width:2.375rem;height:2.375rem;flex-shrink:0;border-radius:var(--ax-radius-lg);background:#fff;border:1px solid var(--ax-gray-200);color:var(--ax-sea-depths);font-size:var(--ax-text-md)"><i class="bi bi-cloud-arrow-up" aria-hidden="true"></i></span>
+                            <div style="flex:1;min-width:8.75rem">
+                              <div style="font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ f.fileName }}</div>
+                              <div style="margin-top:var(--ax-space-0-5);font-size:0.7813rem;color:var(--ax-text-tertiary)">EPS, SVG or TIFF · up to 20 MB</div>
                             </div>
                             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="sm" dc-props="{{ smallBtnProps }}" onClick="{{ f.upload }}" hint-size="auto,32px">{{ f.uploadLabel }}</x-import>
                             <sc-if value="{{ f.hasExisting }}" hint-placeholder-val="{{ false }}">
-                              <select value="{{ f.existing }}" onChange="{{ f.setExisting }}" aria-label="Select existing seal" style="height:32px;padding:0 8px;font:inherit;font-size:13px;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:8px;cursor:pointer">
+                              <select value="{{ f.existing }}" onChange="{{ f.setExisting }}" aria-label="Select existing seal" style="height:2rem;padding:0 var(--ax-space-2);font:inherit;font-size:0.8125rem;color:var(--ax-text-primary);background:#fff;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);cursor:pointer">
                                 <sc-for list="{{ f.existingOpts }}" as="o" hint-placeholder-count="3">
                                   <option value="{{ o }}">{{ o }}</option>
                                 </sc-for>
                               </select>
                             </sc-if>
                           </div>
-                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+                          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-2)">
                             <sc-for list="{{ f.steps }}" as="st" hint-placeholder-count="4">
-                              <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid {{ st.border }};border-radius:999px;background:{{ st.bg }};font-size:12.5px;font-weight:500;color:{{ st.ink }}"><i class="{{ st.icon }}" aria-hidden="true" style="font-size:12px;animation:{{ st.spin }}"></i>{{ st.label }}</span>
+                              <span style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5);padding:0.3125rem 0.625rem;border:1px solid {{ st.border }};border-radius:62.4375rem;background:{{ st.bg }};font-size:0.7813rem;font-weight:500;color:{{ st.ink }}"><i class="{{ st.icon }}" aria-hidden="true" style="font-size:var(--ax-text-xs);animation:{{ st.spin }}"></i>{{ st.label }}</span>
                               <sc-if value="{{ st.hasArrow }}" hint-placeholder-val="{{ true }}">
-                                <i class="bi bi-arrow-right" aria-hidden="true" style="font-size:11px;color:var(--ax-gray-400)"></i>
+                                <i class="bi bi-arrow-right" aria-hidden="true" style="font-size:0.6875rem;color:var(--ax-gray-400)"></i>
                               </sc-if>
                             </sc-for>
                           </div>
                           <sc-if value="{{ f.scanNote }}" hint-placeholder-val="{{ false }}">
-                            <p style="margin:0;font-size:13px;color:{{ f.scanInk }};text-wrap:pretty">{{ f.scanNote }}</p>
+                            <p style="margin:0;font-size:0.8125rem;color:{{ f.scanInk }};text-wrap:pretty">{{ f.scanNote }}</p>
                           </sc-if>
                         </div>
                       </sc-if>
@@ -559,18 +559,18 @@ a:hover{color:#00B6BD;text-decoration:underline}
           </sc-for>
 
           <sc-if value="{{ formAudit }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:14px 16px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+            <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-4) var(--ax-space-8);padding:0.875rem var(--ax-space-4);border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
               <sc-for list="{{ formAuditRows }}" as="a" hint-placeholder-count="4">
-                <div style="min-width:140px">
-                  <div style="font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">{{ a.label }}</div>
-                  <div style="margin-top:3px;font-size:14px;color:var(--ax-text-primary)">{{ a.value }}</div>
+                <div style="min-width:8.75rem">
+                  <div style="font-size:0.7188rem;font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">{{ a.label }}</div>
+                  <div style="margin-top:0.1875rem;font-size:var(--ax-text-sm);color:var(--ax-text-primary)">{{ a.value }}</div>
                 </div>
               </sc-for>
             </div>
           </sc-if>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ formClose }}" hint-size="auto,40px">Cancel</x-import>
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ formSave }}" hint-size="auto,40px">{{ formCta }}</x-import>
         </div>
@@ -580,23 +580,23 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
   <sc-if value="{{ viewOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ viewClose }}" style="position:fixed;inset:0;z-index:150;display:flex;justify-content:flex-end;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
-      <aside role="dialog" aria-modal="true" aria-labelledby="sc-view-title" onClick="{{ stopProp }}" style="display:flex;flex-direction:column;width:100%;max-width:520px;height:100%;background:#fff;box-shadow:-12px 0 40px rgba(10,13,18,.18)">
-        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
+      <aside role="dialog" aria-modal="true" aria-labelledby="sc-view-title" onClick="{{ stopProp }}" style="display:flex;flex-direction:column;width:100%;max-width:32.5rem;height:100%;background:#fff;box-shadow:-12px 0 40px rgba(10,13,18,.18)">
+        <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:1.125rem var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
           <div style="flex:1;min-width:0">
-            <h2 id="sc-view-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ viewTitle }}</h2>
-            <p style="margin:3px 0 0;font-size:13.5px;color:var(--ax-text-secondary)">{{ viewSubtitle }}</p>
+            <h2 id="sc-view-title" style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ viewTitle }}</h2>
+            <p style="margin:0.1875rem 0 0;font-size:0.8438rem;color:var(--ax-text-secondary)">{{ viewSubtitle }}</p>
           </div>
-          <button type="button" onClick="{{ viewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+          <button type="button" onClick="{{ viewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         </div>
-        <div class="sc-scroll" style="flex:1;padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div class="sc-scroll" style="flex:1;padding:var(--ax-space-5);display:flex;flex-direction:column;gap:var(--ax-space-4)">
           <sc-for list="{{ viewRows }}" as="r" hint-placeholder-count="6">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--ax-gray-100)">
-              <span style="font-size:13.5px;color:var(--ax-text-secondary)">{{ r.label }}</span>
-              <span style="max-width:60%;font-size:14px;font-weight:500;color:var(--ax-text-primary);text-align:right;overflow-wrap:anywhere">{{ r.value }}</span>
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--ax-space-4);padding-bottom:var(--ax-space-3);border-bottom:1px solid var(--ax-gray-100)">
+              <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">{{ r.label }}</span>
+              <span style="max-width:60%;font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-primary);text-align:right;overflow-wrap:anywhere">{{ r.value }}</span>
             </div>
           </sc-for>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+        <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ viewClose }}" hint-size="auto,40px">Close</x-import>
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ viewEdit }}" hint-size="auto,40px">Edit</x-import>
         </div>
@@ -605,16 +605,16 @@ a:hover{color:#00B6BD;text-decoration:underline}
   </sc-if>
 
   <sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ confirmClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
-      <div role="dialog" aria-modal="true" aria-labelledby="sc-cf-title" onClick="{{ stopProp }}" style="width:100%;max-width:520px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
-        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
-          <h2 id="sc-cf-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">{{ confirmTitle }}</h2>
-          <button type="button" onClick="{{ confirmClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    <div onClick="{{ confirmClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:3.5rem var(--ax-space-4);overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-cf-title" onClick="{{ stopProp }}" style="width:100%;max-width:32.5rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:1.125rem var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-cf-title" style="flex:1;margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">{{ confirmTitle }}</h2>
+          <button type="button" onClick="{{ confirmClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         </div>
-        <div style="padding:20px">
-          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ confirmBody }}</p>
+        <div style="padding:var(--ax-space-5)">
+          <p style="margin:0;font-size:0.9375rem;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ confirmBody }}</p>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+        <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ confirmClose }}" hint-size="auto,40px">Cancel</x-import>
           <sc-if value="{{ confirmDanger }}" hint-placeholder-val="{{ true }}">
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" dc-props="{{ dangerBtnProps }}" onClick="{{ confirmGo }}" hint-size="auto,40px">{{ confirmCta }}</x-import>
@@ -628,19 +628,19 @@ a:hover{color:#00B6BD;text-decoration:underline}
   </sc-if>
 
   <sc-if value="{{ testOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ testClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
-      <div role="dialog" aria-modal="true" aria-labelledby="sc-test-title" onClick="{{ stopProp }}" style="width:100%;max-width:520px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
-        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
-          <h2 id="sc-test-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Send Test Email</h2>
-          <button type="button" onClick="{{ testClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    <div onClick="{{ testClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:3.5rem var(--ax-space-4);overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-test-title" onClick="{{ stopProp }}" style="width:100%;max-width:32.5rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:1.125rem var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-test-title" style="flex:1;margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">Send Test Email</h2>
+          <button type="button" onClick="{{ testClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         </div>
-        <div style="padding:20px">
-          <p style="margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">We’ll send the current draft of “{{ edTitle }}” so you can check formatting and merge fields.</p>
+        <div style="padding:var(--ax-space-5)">
+          <p style="margin:0 0 var(--ax-space-4);font-size:0.9375rem;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">We’ll send the current draft of “{{ edTitle }}” so you can check formatting and merge fields.</p>
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Email Address" required="{{ true }}" error="{{ testError }}" hint-size="100%,80px">
-            <input value="{{ testEmail }}" onChange="{{ setTestEmail }}" placeholder="Enter email" aria-label="Email address" style="width:100%;height:42px;padding:0 14px;font:inherit;font-size:15px;color:var(--ax-text-primary);background:#fff;border:1px solid {{ testBorder }};border-radius:8px;box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
+            <input value="{{ testEmail }}" onChange="{{ setTestEmail }}" placeholder="Enter email" aria-label="Email address" style="width:100%;height:2.625rem;padding:0 0.875rem;font:inherit;font-size:0.9375rem;color:var(--ax-text-primary);background:#fff;border:1px solid {{ testBorder }};border-radius:var(--ax-radius-md);box-shadow:0 1px 2px rgba(10,13,18,.05);outline:none" style-focus="border-color:#00B6BD;box-shadow:0 0 0 4px rgba(0,182,189,.35)">
           </x-import>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+        <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ testClose }}" hint-size="auto,40px">Cancel</x-import>
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ testSend }}" hint-size="auto,40px">Send Test</x-import>
         </div>
@@ -649,24 +649,24 @@ a:hover{color:#00B6BD;text-decoration:underline}
   </sc-if>
 
   <sc-if value="{{ previewOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ previewClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:56px 16px;overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
-      <div role="dialog" aria-modal="true" aria-labelledby="sc-pv-title" onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
-        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ax-gray-200)">
-          <h2 id="sc-pv-title" style="flex:1;margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Preview · {{ edTitle }}</h2>
-          <button type="button" onClick="{{ previewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    <div onClick="{{ previewClose }}" style="position:fixed;inset:0;z-index:155;display:flex;align-items:center;justify-content:center;padding:3.5rem var(--ax-space-4);overflow:auto;background:rgba(16,24,40,.55);backdrop-filter:blur(2px)">
+      <div role="dialog" aria-modal="true" aria-labelledby="sc-pv-title" onClick="{{ stopProp }}" style="width:100%;max-width:37.5rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 20px 24px -4px rgba(10,13,18,.10)">
+        <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:1.125rem var(--ax-space-5);border-bottom:1px solid var(--ax-gray-200)">
+          <h2 id="sc-pv-title" style="flex:1;margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">Preview · {{ edTitle }}</h2>
+          <button type="button" onClick="{{ previewClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         </div>
-        <div style="padding:20px">
-          <div style="padding:18px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
+        <div style="padding:var(--ax-space-5)">
+          <div style="padding:1.125rem;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
             <sc-if value="{{ edIsEmail }}" hint-placeholder-val="{{ true }}">
-              <div style="padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--ax-gray-200)">
-                <div style="font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">SUBJECT</div>
-                <div style="margin-top:3px;font-size:15px;font-weight:600;color:var(--ax-text-primary)">{{ edSubject }}</div>
+              <div style="padding-bottom:var(--ax-space-3);margin-bottom:var(--ax-space-3);border-bottom:1px solid var(--ax-gray-200)">
+                <div style="font-size:var(--ax-text-xs);font-weight:600;letter-spacing:.04em;color:var(--ax-text-tertiary)">SUBJECT</div>
+                <div style="margin-top:0.1875rem;font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary)">{{ edSubject }}</div>
               </div>
             </sc-if>
-            <div style="font-size:14.5px;line-height:1.7;color:var(--ax-text-primary);white-space:pre-wrap;text-wrap:pretty">{{ previewBody }}</div>
+            <div style="font-size:0.9063rem;line-height:1.7;color:var(--ax-text-primary);white-space:pre-wrap;text-wrap:pretty">{{ previewBody }}</div>
           </div>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;border-top:1px solid var(--ax-gray-200)">
+        <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:var(--ax-space-4) var(--ax-space-5);border-top:1px solid var(--ax-gray-200)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ previewClose }}" hint-size="auto,40px">Close Preview</x-import>
         </div>
       </div>
@@ -674,7 +674,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
   </sc-if>
 
   <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
-    <div role="status" style="position:fixed;right:24px;top:88px;z-index:170;display:flex;align-items:flex-start;gap:14px;width:min(460px,calc(100vw - 48px));padding:18px 20px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 12px 36px rgba(10,13,18,.16);animation:caIn .16s ease-out both">
+    <div role="status" style="position:fixed;right:1.5rem;top:5.5rem;z-index:170;display:flex;align-items:flex-start;gap:0.875rem;width:min(28.75rem,calc(100vw - 3rem));padding:1.125rem var(--ax-space-5);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 12px 36px rgba(10,13,18,.16);animation:caIn .16s ease-out both">
       <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;flex-shrink:0">
         <g opacity="0.3"><path d="M19 6C26.1797 6 32 11.8203 32 19C32 26.1797 26.1797 32 19 32C11.8203 32 6 26.1797 6 19C6 11.8203 11.8203 6 19 6Z" stroke="#198754" stroke-width="2"></path></g>
         <g opacity="0.1"><path d="M19 1C28.9411 1 37 9.05887 37 19C37 28.9411 28.9411 37 19 37C9.05887 37 1 28.9411 1 19C1 9.05887 9.05887 1 19 1Z" stroke="#198754" stroke-width="2"></path></g>
@@ -682,17 +682,17 @@ a:hover{color:#00B6BD;text-decoration:underline}
       </svg>
       <div style="flex:1;min-width:0">
         <sc-if value="{{ toastTitle }}" hint-placeholder-val="{{ false }}">
-          <div style="font-size:16px;font-weight:600;color:var(--ax-text-primary);text-wrap:pretty">{{ toastTitle }}</div>
+          <div style="font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary);text-wrap:pretty">{{ toastTitle }}</div>
         </sc-if>
-        <div style="margin-top:3px;font-size:15px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ toast }}</div>
-        <div style="display:flex;align-items:center;gap:20px;margin-top:14px">
-          <button type="button" onClick="{{ toastClose }}" style="padding:0;border:none;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--ax-text-secondary);cursor:pointer">Dismiss</button>
+        <div style="margin-top:0.1875rem;font-size:0.9375rem;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ toast }}</div>
+        <div style="display:flex;align-items:center;gap:var(--ax-space-5);margin-top:0.875rem">
+          <button type="button" onClick="{{ toastClose }}" style="padding:0;border:none;background:none;font:inherit;font-size:0.9375rem;font-weight:600;color:var(--ax-text-secondary);cursor:pointer">Dismiss</button>
           <sc-if value="{{ toastHasAction }}" hint-placeholder-val="{{ false }}">
-            <button type="button" onClick="{{ toastAction }}" style="padding:0;border:none;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ toastActionLabel }}</button>
+            <button type="button" onClick="{{ toastAction }}" style="padding:0;border:none;background:none;font:inherit;font-size:0.9375rem;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ toastActionLabel }}</button>
           </sc-if>
         </div>
       </div>
-      <button type="button" onClick="{{ toastClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;flex-shrink:0;border:none;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      <button type="button" onClick="{{ toastClose }}" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:1.75rem;height:1.75rem;flex-shrink:0;border:none;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
     </div>
   </sc-if>
 </div>
@@ -703,7 +703,7 @@ const TEAL = '#0D5257', AQUA = '#00B6BD', RED = '#E33B32';
 const ME = 'Emily Rodriguez';
 const STATES = ['Delaware', 'Maryland', 'Virginia', 'Pennsylvania', 'New Jersey'];
 const PERMS = ['View orders', 'Create orders', 'Process orders', 'Issue certificates', 'Revoke certificates', 'Manage users', 'View reports', 'Configure site'];
-const TAG = { display: 'inline-flex', alignItems: 'center', padding: '2px 6px', borderRadius: '6px', borderStyle: 'solid', borderWidth: '1px', fontWeight: 500 };
+const TAG = { display: 'inline-flex', alignItems: 'center', padding: 'var(--ax-space-0-5) var(--ax-space-1-5)', borderRadius: '0.375rem', borderStyle: 'solid', borderWidth: '1px', fontWeight: 500 };
 const tag = (bg, bd, fg) => Object.assign({}, TAG, { background: bg, borderColor: bd, color: fg });
 const TAG_BLUE = tag('#F0F9FF', '#B9E6FE', '#026AA2');
 const TAG_INDIGO = tag('#EEF4FF', '#C7D7FE', '#3538CD');
@@ -865,7 +865,7 @@ class Component extends DCLogic {
     const M = {
       locations: {
         title: 'Locations', singular: 'Location', desc: 'Offices and service centers where orders are received and processed.',
-        create: 'Add Location', icon: 'bi bi-geo-alt', search: 'Search locations', statuses: ['All', 'Active', 'Inactive'], minWidth: '1180px',
+        create: 'Add Location', icon: 'bi bi-geo-alt', search: 'Search locations', statuses: ['All', 'Active', 'Inactive'], minWidth: '73.75rem',
         cols: [
           { key: 'name', label: 'LOCATION NAME', kind: 'strong' },
           { key: 'office', label: 'OFFICE NAME', kind: 'text' },
@@ -875,7 +875,7 @@ class Component extends DCLogic {
       },
       titles: {
         title: 'Job Titles', singular: 'Job Title', desc: 'Titles that can be assigned to users in this office.',
-        create: 'Create Job Title', icon: 'bi bi-person-badge', search: 'Search job titles', statuses: ['All', 'Active', 'Inactive'], minWidth: '1120px',
+        create: 'Create Job Title', icon: 'bi bi-person-badge', search: 'Search job titles', statuses: ['All', 'Active', 'Inactive'], minWidth: '70rem',
         cols: [
           { key: 'name', label: 'TITLE NAME', kind: 'strong' },
           { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
@@ -884,7 +884,7 @@ class Component extends DCLogic {
       },
       divisions: {
         title: 'Divisions', singular: 'Division', desc: 'Organizational divisions used for assignment and reporting.',
-        create: 'Create Division', icon: 'bi bi-diagram-3', search: 'Search divisions', statuses: ['All', 'Active', 'Inactive'], minWidth: '1120px',
+        create: 'Create Division', icon: 'bi bi-diagram-3', search: 'Search divisions', statuses: ['All', 'Active', 'Inactive'], minWidth: '70rem',
         cols: [
           { key: 'name', label: 'DIVISION NAME', kind: 'strong' },
           { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
@@ -893,7 +893,7 @@ class Component extends DCLogic {
       },
       templates: {
         title: 'User Templates', singular: 'Template', desc: 'Preset location, title, division and permissions applied when inviting a user.',
-        create: 'Create Template', icon: 'bi bi-person-gear', search: 'Search templates', statuses: ['All', 'Active', 'Inactive'], minWidth: '1360px',
+        create: 'Create Template', icon: 'bi bi-person-gear', search: 'Search templates', statuses: ['All', 'Active', 'Inactive'], minWidth: '85rem',
         cols: [
           { key: 'name', label: 'TEMPLATE NAME', kind: 'strong' },
           { key: 'location', label: 'LOCATION', kind: 'text' },
@@ -905,7 +905,7 @@ class Component extends DCLogic {
       },
       services: {
         title: 'Service Types', singular: 'Service Type', desc: 'Apostille and certification services customers can order.',
-        create: 'Create Service Type', icon: 'bi bi-collection', search: 'Search service types', statuses: ['All', 'Enabled', 'Disabled'], minWidth: '1240px', bulk: true,
+        create: 'Create Service Type', icon: 'bi bi-collection', search: 'Search service types', statuses: ['All', 'Enabled', 'Disabled'], minWidth: '77.5rem', bulk: true,
         cols: [
           { key: 'name', label: 'SERVICE TYPE NAME', kind: 'strong' },
           { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
@@ -915,7 +915,7 @@ class Component extends DCLogic {
       },
       certTypes: {
         title: 'Certificate Types', singular: 'Certificate Type', desc: 'Certificates issued by this office and the artwork profile each one uses.',
-        create: 'Create Certificate Type', icon: 'bi bi-patch-check', search: 'Search certificate types', statuses: ['All', 'Active', 'Inactive'], minWidth: '1440px',
+        create: 'Create Certificate Type', icon: 'bi bi-patch-check', search: 'Search certificate types', statuses: ['All', 'Active', 'Inactive'], minWidth: '90rem',
         cols: [
           { key: 'name', label: 'CERTIFICATE TYPE NAME', kind: 'strong' },
           { key: 'desc', label: 'DESCRIPTION', kind: 'wrap' },
@@ -927,7 +927,7 @@ class Component extends DCLogic {
       },
       certInfo: {
         title: 'Certificate Information', singular: 'Certificate Profile', desc: 'Content and artwork printed on apostilles and certificates.',
-        create: 'Create Certificate Information', icon: 'bi bi-file-earmark-richtext', search: 'Search certificate profiles', statuses: ['All'], minWidth: '1480px',
+        create: 'Create Certificate Information', icon: 'bi bi-file-earmark-richtext', search: 'Search certificate profiles', statuses: ['All'], minWidth: '92.5rem',
         cols: [
           { key: 'name', label: 'CERTIFICATE NAME', kind: 'strong' },
           { key: 'location', label: 'ISSUING LOCATION', kind: 'text' },
@@ -1230,7 +1230,7 @@ class Component extends DCLogic {
     const embedded = this.props.embedded === true;
     const vals = {
       chrome: !embedded,
-      mainPad: embedded ? '0' : '20px 32px 48px 24px',
+      mainPad: embedded ? '0' : '1.25rem 2rem 3rem 1.5rem',
       mainBg: embedded ? 'transparent' : '#FAFBFC',
       shellMinHeight: embedded ? '0' : '100vh',
       collapsed: s.collapsed,
@@ -1239,8 +1239,8 @@ class Component extends DCLogic {
       sideNavGroups: sideNavGroups,
       stopProp: (e) => e.stopPropagation(),
       iconPlus: React.createElement('i', { className: 'bi bi-plus-lg', 'aria-hidden': 'true' }),
-      smallBtnProps: { style: { height: 32, padding: '0 12px', fontSize: 13, lineHeight: 1 } },
-      dangerSmallProps: { className: 'sc-danger-btn', style: { height: 32, padding: '0 12px', fontSize: 13, lineHeight: 1, border: '1px solid #F1AEB5', color: RED, background: '#fff', boxShadow: 'none' } },
+      smallBtnProps: { style: { height: 32, padding: '0 var(--ax-space-3)', fontSize: 13, lineHeight: 1 } },
+      dangerSmallProps: { className: 'sc-danger-btn', style: { height: 32, padding: '0 var(--ax-space-3)', fontSize: 13, lineHeight: 1, border: '1px solid #F1AEB5', color: RED, background: '#fff', boxShadow: 'none' } },
       dangerBtnProps: { className: 'sc-danger-btn', style: { border: '1px solid #F1AEB5', color: RED, background: '#fff', boxShadow: 'none' } },
       countBadgeProps: { style: { borderRadius: '624.9375rem', border: '1px solid #E9D7FE', background: '#F9F5FF', color: '#6941C6' } },
 
@@ -1347,14 +1347,14 @@ class Component extends DCLogic {
     const paged = rows.slice((page - 1) * per, page * per);
 
     const cell = (r, c) => {
-      const base = { isText: false, isBadge: false, isTag: false, hasSub: false, wrap: 'nowrap', size: '14px', weight: 400, ink: 'var(--ax-text-primary)', text: '', sub: '', color: 'gray', tagProps: { style: TAG_GRAY } };
+      const base = { isText: false, isBadge: false, isTag: false, hasSub: false, wrap: 'nowrap', size: '0.875rem', weight: 400, ink: 'var(--ax-text-primary)', text: '', sub: '', color: 'gray', tagProps: { style: TAG_GRAY } };
       if (c.kind === 'status') return Object.assign(base, { isBadge: true, text: r.status, color: STATUS_COLOR[r.status] || 'gray' });
       if (c.kind === 'money') return Object.assign(base, { isText: true, text: this.money(r.cost), weight: 500 });
       if (c.kind === 'date') return Object.assign(base, { isText: true, text: this.prettyDate(r[c.key]), ink: 'var(--ax-text-secondary)' });
-      if (c.kind === 'strong') return Object.assign(base, { isText: true, text: r.name, size: '14.5px', weight: 600, wrap: 'normal' });
+      if (c.kind === 'strong') return Object.assign(base, { isText: true, text: r.name, size: '0.9063rem', weight: 600, wrap: 'normal' });
       if (c.kind === 'stack') return Object.assign(base, { isText: true, text: r.a1, hasSub: true, sub: r.city + ', ' + r.state + ' ' + r.zip, wrap: 'normal' });
       if (c.kind === 'wrap') return Object.assign(base, { isText: true, text: r[c.key] || '—', wrap: 'normal', ink: 'var(--ax-text-secondary)' });
-      if (c.kind === 'muted') return Object.assign(base, { isText: true, text: r[c.key] || '—', ink: 'var(--ax-text-secondary)', size: '13.5px' });
+      if (c.kind === 'muted') return Object.assign(base, { isText: true, text: r[c.key] || '—', ink: 'var(--ax-text-secondary)', size: '0.8438rem' });
       if (c.kind === 'tagBlue') return Object.assign(base, { isTag: true, text: r[c.key], tagProps: { style: TAG_BLUE } });
       if (c.kind === 'tag') {
         if (c.key === 'perms') return Object.assign(base, { isTag: true, text: (r.perms || []).length + ' permissions', tagProps: { style: TAG_INDIGO } });
@@ -1603,15 +1603,15 @@ class Component extends DCLogic {
     const timeoutBad = Number(sys.timeout) < 1 || Number(sys.timeout) > 60;
     return {
       sysCards: [
-        { title: 'Walk-In (Online)', desc: 'Support Walk-In (Appointment) orders submitted online, including mixed orders where some documents are paid online and the rest at the appointment.', icon: 'bi bi-person-walking', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable Walk-In (Online)', toggleOn: wo, toggleBg: wo ? TEAL : 'var(--ax-gray-300)', toggleX: wo ? '20px' : '0px',
+        { title: 'Walk-In (Online)', desc: 'Support Walk-In (Appointment) orders submitted online, including mixed orders where some documents are paid online and the rest at the appointment.', icon: 'bi bi-person-walking', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable Walk-In (Online)', toggleOn: wo, toggleBg: wo ? TEAL : 'var(--ax-gray-300)', toggleX: wo ? '1.25rem' : '0',
           toggle: () => { const v = !wo; this.setState({ sys: Object.assign({}, this.state.sys, { wo: v }) }); if (this.props.onWalkOnline) this.props.onWalkOnline(v); this.flash(v ? 'Walk-In (Online) is on.' : 'Walk-In (Online) is off. The existing Walk-In (Appointment) workflow is unchanged.', v ? 'Walk-In (Online) on' : 'Walk-In (Online) off'); },
           hasNote: true, note: wo ? 'On: mixed orders show document-level fulfillment and payment on the QR draft page.' : 'Off: the portal behaves exactly as it does today.' },
         { title: 'Digital Recipients', desc: 'Maximum digital recipients a customer can add to one order.', icon: 'bi bi-people', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: 'Enter 0 for unlimited recipients.', value: String(sys.recipients), min: '0', max: '500', hint: 'default 10', border: 'var(--ax-gray-300)', set: set('recipients') },
         { title: 'Requests Per Order', desc: 'Maximum document requests allowed in a single order.', icon: 'bi bi-file-earmark-text', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: 'Enter 0 for unlimited requests.', value: String(sys.requests), min: '0', max: '999', hint: 'default 50', border: 'var(--ax-gray-300)', set: set('requests') },
-        { title: 'Time Zone', desc: 'Default time zone applied to timestamps in this office.', icon: 'bi bi-globe-americas', isNumber: false, isSelect: true, options: ['Eastern Time (ET)', 'Central Time (CT)', 'Mountain Time (MT)', 'Pacific Time (PT)', 'Alaska Time (AT)'], value: sys.tz, set: setStr('tz'), hasToggle: true, toggleLabel: 'Force this time zone for all users', toggleOn: sys.forceTz, toggleBg: sys.forceTz ? TEAL : 'var(--ax-gray-300)', toggleX: sys.forceTz ? '20px' : '0px', toggle: toggle('forceTz'), hasNote: false, note: '' },
+        { title: 'Time Zone', desc: 'Default time zone applied to timestamps in this office.', icon: 'bi bi-globe-americas', isNumber: false, isSelect: true, options: ['Eastern Time (ET)', 'Central Time (CT)', 'Mountain Time (MT)', 'Pacific Time (PT)', 'Alaska Time (AT)'], value: sys.tz, set: setStr('tz'), hasToggle: true, toggleLabel: 'Force this time zone for all users', toggleOn: sys.forceTz, toggleBg: sys.forceTz ? TEAL : 'var(--ax-gray-300)', toggleX: sys.forceTz ? '1.25rem' : '0', toggle: toggle('forceTz'), hasNote: false, note: '' },
         { title: 'Session Timeout', desc: 'Sign users out automatically after a period of inactivity.', icon: 'bi bi-clock-history', isNumber: true, isSelect: false, hasToggle: false, hasNote: true, note: timeoutBad ? 'Enter a value between 1 and 60 minutes.' : 'Allowed range 1–60 minutes · default 15.', value: String(sys.timeout), min: '1', max: '60', hint: 'minutes', border: timeoutBad ? '#F1AEB5' : 'var(--ax-gray-300)', set: set('timeout') },
         { title: 'Language', desc: 'Default language for the portal and customer notifications.', icon: 'bi bi-translate', isNumber: false, isSelect: true, options: ['English'], value: sys.language, set: setStr('language'), hasToggle: false, hasNote: true, note: 'Additional translations become available in a future release.' },
-        { title: 'Physical to Digital', desc: 'Allow customers to submit physical documents for scanning into e-Apostilles.', icon: 'bi bi-arrow-left-right', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable physical to digital processing', toggleOn: sys.p2d, toggleBg: sys.p2d ? TEAL : 'var(--ax-gray-300)', toggleX: sys.p2d ? '20px' : '0px', toggle: toggle('p2d'), hasNote: false, note: '' },
+        { title: 'Physical to Digital', desc: 'Allow customers to submit physical documents for scanning into e-Apostilles.', icon: 'bi bi-arrow-left-right', isNumber: false, isSelect: false, hasToggle: true, toggleLabel: 'Enable physical to digital processing', toggleOn: sys.p2d, toggleBg: sys.p2d ? TEAL : 'var(--ax-gray-300)', toggleX: sys.p2d ? '1.25rem' : '0', toggle: toggle('p2d'), hasNote: false, note: '' },
       ],
       sysSave: () => {
         if (timeoutBad) { this.flash('Session timeout must be between 1 and 60 minutes.', 'Couldn’t save'); return; }
@@ -1726,7 +1726,7 @@ class Component extends DCLogic {
       edPlaceholder: isEmail ? 'Write the message customers will receive…' : 'Write a short message — the tracking link is appended automatically.',
       edShowToolbar: isEmail && !n.html,
       edMonoClass: isEmail && n.html ? 'sc-mono' : '',
-      edRadius: isEmail && !n.html ? '0 0 8px 8px' : '8px',
+      edRadius: isEmail && !n.html ? '0 0 8px 8px' : 'var(--ax-radius-md)',
       edBorderTop: isEmail && !n.html ? 'none' : '1px solid var(--ax-gray-300)',
       edModes: [['rich', 'Rich Text', 'bi bi-type'], ['html', 'HTML Source', 'bi bi-code-slash']].map(([id, label, icon]) => {
         const on = (id === 'html') === !!n.html;

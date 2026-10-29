@@ -1,7 +1,7 @@
 /* Feature-flag defaults — match the design preview. Bump ?v= in the script tag when changed. */
-window.CA_FLAGS_VERSION = 1;
+window.CA_FLAGS_VERSION = 2;
 window.CA_FLAGS_DEFAULTS = {
-  streamlinedCheckout: false,
+  skipToPayment: false,
   copyOrderExperience: false,
   deliveryBoth: false,
   reportsEnabled: true,

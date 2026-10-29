@@ -8,16 +8,16 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="ds/tokens/fonts.css">
-  <link rel="stylesheet" href="ds/tokens/colors.css">
-  <link rel="stylesheet" href="ds/tokens/typography.css">
-  <link rel="stylesheet" href="ds/tokens/spacing.css">
-  <link rel="stylesheet" href="ds/tokens/shadows.css">
-  <link rel="stylesheet" href="ds/tokens/base.css">
-  <link rel="stylesheet" href="ds/components.css">
-  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
+  <link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
+  <link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
+  <link rel="stylesheet" href="ds/tokens/spacing.css?v=rem1">
+  <link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
+  <link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
+  <link rel="stylesheet" href="ds/components.css?v=rem1">
+  <link rel="stylesheet" href="ds/styles.css?v=rem1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <script src="ds/ds-bundle.js"></script>
+  <script src="ds/ds-bundle.js?v=rem1"></script>
   <style>
     body { margin: 0; background: var(--ax-gray-50, #F8F9FA); font-family: Roboto, system-ui, sans-serif; color: var(--ax-text-primary, #212529); }
     a { color: var(--ax-sea-depths, #0D5257); }
@@ -25,32 +25,32 @@
   </style>
 </helmet>
 
-<div style="display:flex;flex-direction:column;gap:18px;padding:24px 24px 56px;max-width:1180px;margin:0 auto">
+<div style="display:flex;flex-direction:column;gap:1.125rem;padding:var(--ax-space-6) var(--ax-space-6) 3.5rem;max-width:73.75rem;margin:0 auto">
 
-  <div style="display:flex;flex-direction:column;gap:6px">
-    <div style="display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--ax-text-secondary)">
-      <i class="bi bi-flag" aria-hidden="true"></i><span style="text-transform:uppercase">Feature flag</span><span aria-hidden="true">·</span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px">parentLevelRefunds</span>
+  <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+    <div style="display:inline-flex;align-items:center;gap:var(--ax-space-2);font-size:0.7188rem;font-weight:500;letter-spacing:.04em;color:var(--ax-text-secondary)">
+      <i class="bi bi-flag" aria-hidden="true"></i><span style="text-transform:uppercase">Feature flag</span><span aria-hidden="true">·</span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.6875rem">parentLevelRefunds</span>
     </div>
-    <h1 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Parent-Level Refund</h1>
-    <p style="margin:0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">Refunds are processed against the Parent Order only. Child Orders are not financial entities, are not selectable, and receive no allocation.</p>
+    <h1 style="margin:0;font-size:1.75rem;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">Parent-Level Refund</h1>
+    <p style="margin:0;max-width:70ch;font-size:var(--ax-text-sm);line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">Refunds are processed against the Parent Order only. Child Orders are not financial entities, are not selectable, and receive no allocation.</p>
   </div>
 
-  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 1px 2px rgba(10,13,18,.05)">
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">Flag state</span>
-      <div style="display:inline-flex;padding:3px;background:var(--ax-gray-100);border:1px solid var(--ax-gray-200);border-radius:8px;gap:2px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-5);padding:0.875rem var(--ax-space-4);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 1px 2px rgba(10,13,18,.05)">
+    <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+      <span style="font-size:var(--ax-text-xs);font-weight:600;color:var(--ax-text-secondary)">Flag state</span>
+      <div style="display:inline-flex;padding:0.1875rem;background:var(--ax-gray-100);border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-md);gap:var(--ax-space-0-5)">
         <sc-for list="{{ flagTabs }}" as="t" hint-placeholder-count="2">
-          <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 14px;border:none;border-radius:6px;background:{{ t.bg }};font:inherit;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+          <button type="button" onClick="{{ t.go }}" style="height:1.875rem;padding:0 0.875rem;border:none;border-radius:var(--ax-radius-sm);background:{{ t.bg }};font:inherit;font-size:0.8125rem;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
         </sc-for>
       </div>
     </div>
 
     <sc-if value="{{ isOn }}" hint-placeholder-val="{{ true }}">
-      <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
-        <span style="font-size:12px;font-weight:600;color:var(--ax-text-secondary)">State</span>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5);min-width:0">
+        <span style="font-size:var(--ax-text-xs);font-weight:600;color:var(--ax-text-secondary)">State</span>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-1-5)">
           <sc-for list="{{ stateTabs }}" as="t" hint-placeholder-count="6">
-            <button type="button" onClick="{{ t.go }}" style="height:30px;padding:0 12px;border:1px solid {{ t.bd }};border-radius:624.9375rem;background:{{ t.bg }};font:inherit;font-size:12.5px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+            <button type="button" onClick="{{ t.go }}" style="height:1.875rem;padding:0 var(--ax-space-3);border:1px solid {{ t.bd }};border-radius:624.9375rem;background:{{ t.bg }};font:inherit;font-size:0.7813rem;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
           </sc-for>
         </div>
       </div>
@@ -58,60 +58,60 @@
   </div>
 
   <sc-if value="{{ isOff }}" hint-placeholder-val="{{ false }}">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-text-secondary);border-radius:10px">
-        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-text-secondary);font-size:15px"></i>
+    <div style="display:flex;flex-direction:column;gap:var(--ax-space-3)">
+      <div style="display:flex;align-items:flex-start;gap:0.625rem;padding:0.875rem var(--ax-space-4);background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-text-secondary);border-radius:var(--ax-radius-lg)">
+        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);color:var(--ax-text-secondary);font-size:0.9375rem"></i>
         <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">No UI changes</div>
-          <p style="margin:4px 0 0;max-width:68ch;font-size:13.5px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">The existing refund modal and existing child-order refund behavior remain unchanged. Shown below for reference; it is not part of this design.</p>
+          <div style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">No UI changes</div>
+          <p style="margin:var(--ax-space-1) 0 0;max-width:68ch;font-size:0.8438rem;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">The existing refund modal and existing child-order refund behavior remain unchanged. Shown below for reference; it is not part of this design.</p>
         </div>
       </div>
 
-      <div style="display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;background:rgba(11,31,59,.55);border-radius:12px">
-        <div role="group" aria-label="Existing refund modal, unchanged" style="width:100%;max-width:720px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 24px 48px -12px rgba(10,13,18,.18);opacity:.72">
-          <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 20px 0">
+      <div style="display:flex;align-items:flex-start;justify-content:center;padding:var(--ax-space-8) var(--ax-space-4);background:rgba(11,31,59,.55);border-radius:var(--ax-radius-xl)">
+        <div role="group" aria-label="Existing refund modal, unchanged" style="width:100%;max-width:45rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 24px 48px -12px rgba(10,13,18,.18);opacity:.72">
+          <div style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:var(--ax-space-5) var(--ax-space-5) 0">
             <div style="flex:1">
-              <h2 style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
-              <p style="margin:6px 0 0;font-size:14px;color:var(--ax-text-secondary);text-wrap:pretty">Select the child orders to refund. Processing a refund does not change the order status.</p>
-              <p style="margin:6px 0 0;font-size:13px;color:var(--ax-text-tertiary)">Order #307-600</p>
+              <h2 style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
+              <p style="margin:var(--ax-space-1-5) 0 0;font-size:var(--ax-text-sm);color:var(--ax-text-secondary);text-wrap:pretty">Select the child orders to refund. Processing a refund does not change the order status.</p>
+              <p style="margin:var(--ax-space-1-5) 0 0;font-size:0.8125rem;color:var(--ax-text-tertiary)">Order #307-600</p>
             </div>
-            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;color:var(--ax-text-tertiary);font-size:15px"><i class="bi bi-x-lg" aria-hidden="true"></i></span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:var(--ax-radius-md);color:var(--ax-text-tertiary);font-size:0.9375rem"><i class="bi bi-x-lg" aria-hidden="true"></i></span>
           </div>
-          <div style="display:flex;align-items:center;gap:10px;padding:14px 20px 0">
-            <span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:13px;font-weight:600;color:var(--ax-text-primary)">Select All</span>
-            <span style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:13px;font-weight:600;color:var(--ax-text-primary)">Clear All</span>
+          <div style="display:flex;align-items:center;gap:0.625rem;padding:0.875rem var(--ax-space-5) 0">
+            <span style="display:inline-flex;align-items:center;height:1.875rem;padding:0 var(--ax-space-3);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font-size:0.8125rem;font-weight:600;color:var(--ax-text-primary)">Select All</span>
+            <span style="display:inline-flex;align-items:center;height:1.875rem;padding:0 var(--ax-space-3);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font-size:0.8125rem;font-weight:600;color:var(--ax-text-primary)">Clear All</span>
             <div style="flex:1"></div>
-            <span style="font-size:13.5px;color:var(--ax-text-secondary)">Refund amount <strong style="color:var(--ax-text-primary)">$40.00</strong></span>
+            <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">Refund amount <strong style="color:var(--ax-text-primary)">$40.00</strong></span>
           </div>
-          <div style="margin:12px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
+          <div style="margin:var(--ax-space-3) var(--ax-space-5) 0;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);overflow:hidden">
             <sc-for list="{{ offRows }}" as="k" hint-placeholder-count="3">
-              <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--ax-gray-100)">
-                <span style="width:16px;height:16px;border:1px solid var(--ax-gray-500);border-radius:3px;background:var(--ax-sea-depths)"></span>
+              <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:0.625rem 0.875rem;border-bottom:1px solid var(--ax-gray-100)">
+                <span style="width:1rem;height:1rem;border:1px solid var(--ax-gray-500);border-radius:0.1875rem;background:var(--ax-sea-depths)"></span>
                 <div style="flex:1;min-width:0">
-                  <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">{{ k.name }}</div>
-                  <div style="margin-top:2px;font-size:12.5px;color:var(--ax-text-tertiary)">{{ k.meta }}</div>
+                  <div style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">{{ k.name }}</div>
+                  <div style="margin-top:var(--ax-space-0-5);font-size:0.7813rem;color:var(--ax-text-tertiary)">{{ k.meta }}</div>
                 </div>
-                <span style="font-size:13.5px;color:var(--ax-text-secondary)">{{ k.service }}</span>
-                <span style="display:inline-flex;align-items:center;gap:6px">
+                <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">{{ k.service }}</span>
+                <span style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5)">
                   <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ k.statusColor }}" size="sm" pill="{{ true }}" dot="{{ true }}" hint-size="auto,24px">{{ k.status }}</x-import>
                   <sc-if value="{{ k.refunded }}" hint-placeholder-val="{{ false }}">
-                    <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border:1px solid var(--ax-gray-300);border-radius:624.9375rem;background:var(--ax-gray-50);font-size:11.5px;font-weight:600;color:var(--ax-text-secondary)">Refunded</span>
+                    <span style="display:inline-flex;align-items:center;height:1.375rem;padding:0 var(--ax-space-2);border:1px solid var(--ax-gray-300);border-radius:624.9375rem;background:var(--ax-gray-50);font-size:0.7188rem;font-weight:600;color:var(--ax-text-secondary)">Refunded</span>
                   </sc-if>
                 </span>
               </div>
             </sc-for>
           </div>
-          <div style="padding:16px 20px 0">
-            <div style="font-size:13px;font-weight:600;color:var(--ax-text-secondary)">Reason *</div>
-            <div style="margin-top:6px;height:42px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;line-height:42px;font-size:14px;color:var(--ax-text-tertiary)">Select a reason</div>
+          <div style="padding:var(--ax-space-4) var(--ax-space-5) 0">
+            <div style="font-size:0.8125rem;font-weight:600;color:var(--ax-text-secondary)">Reason *</div>
+            <div style="margin-top:var(--ax-space-1-5);height:2.625rem;padding:0 var(--ax-space-3);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;line-height:2.625rem;font-size:var(--ax-text-sm);color:var(--ax-text-tertiary)">Select a reason</div>
           </div>
-          <div style="padding:14px 20px 0">
-            <div style="font-size:13px;font-weight:600;color:var(--ax-text-secondary)">Type REFUND to confirm *</div>
-            <div style="margin-top:6px;height:42px;padding:0 14px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;line-height:42px;font-size:15px;color:var(--ax-text-tertiary)">REFUND</div>
+          <div style="padding:0.875rem var(--ax-space-5) 0">
+            <div style="font-size:0.8125rem;font-weight:600;color:var(--ax-text-secondary)">Type REFUND to confirm *</div>
+            <div style="margin-top:var(--ax-space-1-5);height:2.625rem;padding:0 0.875rem;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;line-height:2.625rem;font-size:0.9375rem;color:var(--ax-text-tertiary)">REFUND</div>
           </div>
-          <div style="display:flex;justify-content:flex-end;gap:10px;padding:18px 20px 20px">
-            <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:var(--ax-text-primary)">Cancel</span>
-            <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;background:var(--ax-danger-600);font-size:14px;font-weight:600;color:#fff">Process Refund</span>
+          <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:1.125rem var(--ax-space-5) var(--ax-space-5)">
+            <span style="display:inline-flex;align-items:center;height:2.5rem;padding:0 var(--ax-space-4);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">Cancel</span>
+            <span style="display:inline-flex;align-items:center;height:2.5rem;padding:0 var(--ax-space-4);border-radius:var(--ax-radius-md);background:var(--ax-danger-600);font-size:var(--ax-text-sm);font-weight:600;color:#fff">Process Refund</span>
           </div>
         </div>
       </div>
@@ -119,23 +119,23 @@
   </sc-if>
 
   <sc-if value="{{ isOn }}" hint-placeholder-val="{{ true }}">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-sea-depths);border-radius:10px">
-        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-sea-depths);font-size:15px"></i>
+    <div style="display:flex;flex-direction:column;gap:var(--ax-space-3)">
+      <div style="display:flex;align-items:flex-start;gap:0.625rem;padding:0.875rem var(--ax-space-4);background:#fff;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-sea-depths);border-radius:var(--ax-radius-lg)">
+        <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);color:var(--ax-sea-depths);font-size:0.9375rem"></i>
         <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">{{ scenarioTitle }}</div>
-          <p style="margin:4px 0 0;max-width:68ch;font-size:13.5px;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">{{ scenarioNote }}</p>
+          <div style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">{{ scenarioTitle }}</div>
+          <p style="margin:var(--ax-space-1) 0 0;max-width:68ch;font-size:0.8438rem;line-height:1.6;color:var(--ax-text-secondary);text-wrap:pretty">{{ scenarioNote }}</p>
         </div>
       </div>
 
-      <div style="display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;background:rgba(11,31,59,.55);border-radius:12px">
-        <div role="dialog" aria-modal="true" aria-labelledby="plr-title" style="width:100%;max-width:560px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 24px 48px -12px rgba(10,13,18,.18)">
+      <div style="display:flex;align-items:flex-start;justify-content:center;padding:var(--ax-space-8) var(--ax-space-4);background:rgba(11,31,59,.55);border-radius:var(--ax-radius-xl)">
+        <div role="dialog" aria-modal="true" aria-labelledby="plr-title" style="width:100%;max-width:35rem;background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 24px 48px -12px rgba(10,13,18,.18)">
 
-          <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 20px 0">
+          <div style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:var(--ax-space-5) var(--ax-space-5) 0">
             <div style="flex:1;min-width:0">
-              <h2 id="plr-title" style="margin:0;font-size:18px;font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
-              <p style="margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">Recorded against the Parent Order. Child Order statuses are unchanged.</p>
-              <p style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 0;font-size:13px;color:var(--ax-text-tertiary)">
+              <h2 id="plr-title" style="margin:0;font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary)">Refund Order</h2>
+              <p style="margin:var(--ax-space-1-5) 0 0;font-size:var(--ax-text-sm);line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">Recorded against the Parent Order. Child Order statuses are unchanged.</p>
+              <p style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem;margin:var(--ax-space-2) 0 0;font-size:0.8125rem;color:var(--ax-text-tertiary)">
                 <span>{{ orderRef }}</span>
                 <span aria-hidden="true">|</span>
                 <span>Paid {{ paidDate }}</span>
@@ -143,48 +143,48 @@
                 <a href="#invoice" target="_blank" rel="noopener" style="font-weight:600;color:var(--ax-sea-depths);text-decoration:none">View Invoice</a>
               </p>
             </div>
-            <button type="button" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ax-text-tertiary);font-size:15px;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+            <button type="button" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:1px solid transparent;border-radius:var(--ax-radius-md);background:transparent;color:var(--ax-text-tertiary);font-size:0.9375rem;cursor:pointer" style-hover="background:var(--ax-gray-100)"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
           </div>
 
-          <div style="margin:16px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px">
-              <span style="font-size:13.5px;color:var(--ax-text-primary)">Maximum State Fee Refundable</span>
-              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailState }}</span>
+          <div style="margin:var(--ax-space-4) var(--ax-space-5) 0;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);overflow:hidden">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);padding:0.625rem 0.875rem">
+              <span style="font-size:0.8438rem;color:var(--ax-text-primary)">Maximum State Fee Refundable</span>
+              <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailState }}</span>
             </div>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px;border-top:1px solid var(--ax-gray-100)">
-              <span style="font-size:13.5px;color:var(--ax-text-primary)">Maximum AX Fee Refundable</span>
-              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailAX }}</span>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);padding:0.625rem 0.875rem;border-top:1px solid var(--ax-gray-100)">
+              <span style="font-size:0.8438rem;color:var(--ax-text-primary)">Maximum AX Fee Refundable</span>
+              <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fAvailAX }}</span>
             </div>
             <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 14px;border-top:1px solid var(--ax-gray-100)">
-                <span style="font-size:13.5px;color:var(--ax-text-secondary)">Previously refunded</span>
-                <span style="font-size:14px;font-weight:500;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ fRefunded }}</span>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);padding:0.625rem 0.875rem;border-top:1px solid var(--ax-gray-100)">
+                <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">Previously refunded</span>
+                <span style="font-size:var(--ax-text-sm);font-weight:500;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ fRefunded }}</span>
               </div>
             </sc-if>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 14px;border-top:1px solid var(--ax-gray-200);background:var(--ax-gray-50)">
-              <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">Total Maximum Refundable Amount</span>
-              <span style="font-size:16px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fMax }}</span>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);padding:var(--ax-space-3) 0.875rem;border-top:1px solid var(--ax-gray-200);background:var(--ax-gray-50)">
+              <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">Total Maximum Refundable Amount</span>
+              <span style="font-size:var(--ax-text-md);font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fMax }}</span>
             </div>
           </div>
 
           <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:10px 20px 0">
-              <button type="button" onClick="{{ toggleHistory }}" aria-expanded="{{ historyOpen }}" aria-controls="plr-history" style="display:inline-flex;align-items:center;gap:6px;padding:0;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ historyToggleLabel }}<i class="{{ histCaret }}" aria-hidden="true" style="font-size:10px"></i></button>
+            <div style="padding:0.625rem var(--ax-space-5) 0">
+              <button type="button" onClick="{{ toggleHistory }}" aria-expanded="{{ historyOpen }}" aria-controls="plr-history" style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5);padding:0;border:none;background:transparent;font:inherit;font-size:0.8125rem;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">{{ historyToggleLabel }}<i class="{{ histCaret }}" aria-hidden="true" style="font-size:0.625rem"></i></button>
             </div>
             <sc-if value="{{ historyOpen }}" hint-placeholder-val="{{ false }}">
-              <div id="plr-history" style="margin:10px 20px 0;border:1px solid var(--ax-gray-200);border-radius:10px;overflow:hidden">
-                <div style="padding:9px 14px;background:var(--ax-gray-50);border-bottom:1px solid var(--ax-gray-200);font-size:12.5px;font-weight:600;color:var(--ax-text-secondary)">Refund Activity</div>
-                <div style="max-height:220px;overflow-y:auto">
+              <div id="plr-history" style="margin:0.625rem var(--ax-space-5) 0;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);overflow:hidden">
+                <div style="padding:0.5625rem 0.875rem;background:var(--ax-gray-50);border-bottom:1px solid var(--ax-gray-200);font-size:0.7813rem;font-weight:600;color:var(--ax-text-secondary)">Refund Activity</div>
+                <div style="max-height:13.75rem;overflow-y:auto">
                   <sc-for list="{{ historyRows }}" as="h" hint-placeholder-count="2">
-                    <div style="display:flex;flex-direction:column;gap:4px;padding:11px 14px;border-bottom:1px solid var(--ax-gray-100)">
-                      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px">
-                        <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ h.amount }}</span>
-                        <span style="font-size:12.5px;color:var(--ax-text-tertiary)">{{ h.when }}</span>
+                    <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);padding:0.6875rem 0.875rem;border-bottom:1px solid var(--ax-gray-100)">
+                      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--ax-space-2)">
+                        <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ h.amount }}</span>
+                        <span style="font-size:0.7813rem;color:var(--ax-text-tertiary)">{{ h.when }}</span>
                       </div>
-                      <div style="font-size:12.5px;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">State {{ h.state }} · AX {{ h.ax }}{{ h.affirmText }}</div>
-                      <div style="font-size:12.5px;color:var(--ax-text-secondary)">{{ h.reason }} · {{ h.user }} · {{ h.status }}</div>
+                      <div style="font-size:0.7813rem;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">State {{ h.state }} · AX {{ h.ax }}{{ h.affirmText }}</div>
+                      <div style="font-size:0.7813rem;color:var(--ax-text-secondary)">{{ h.reason }} · {{ h.user }} · {{ h.status }}</div>
                       <sc-if value="{{ h.hasNotes }}" hint-placeholder-val="{{ false }}">
-                        <p style="margin:2px 0 0;font-size:12.5px;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ h.notes }}</p>
+                        <p style="margin:var(--ax-space-0-5) 0 0;font-size:0.7813rem;line-height:1.5;color:var(--ax-text-secondary);text-wrap:pretty">{{ h.notes }}</p>
                       </sc-if>
                     </div>
                   </sc-for>
@@ -194,57 +194,57 @@
           </sc-if>
 
           <sc-if value="{{ isFull }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;align-items:flex-start;gap:10px;margin:16px 20px 0;padding:12px 14px;border:1px solid var(--ax-gray-200);border-radius:10px;background:var(--ax-gray-50)">
-              <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:2px;color:var(--ax-text-secondary);font-size:15px"></i>
-              <p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--ax-text-primary);text-wrap:pretty">This Parent Order has been fully refunded. No refundable balance remains. Refund Activity is retained in the order's audit history.</p>
+            <div style="display:flex;align-items:flex-start;gap:0.625rem;margin:var(--ax-space-4) var(--ax-space-5) 0;padding:var(--ax-space-3) 0.875rem;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
+              <i class="bi bi-info-circle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);color:var(--ax-text-secondary);font-size:0.9375rem"></i>
+              <p style="margin:0;font-size:0.8438rem;line-height:1.55;color:var(--ax-text-primary);text-wrap:pretty">This Parent Order has been fully refunded. No refundable balance remains. Refund Activity is retained in the order's audit history.</p>
             </div>
           </sc-if>
 
           <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;flex-direction:column;gap:14px;padding:16px 20px 0">
+            <div style="display:flex;flex-direction:column;gap:0.875rem;padding:var(--ax-space-4) var(--ax-space-5) 0">
 
-              <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Refund Amount" required="{{ true }}" html-for="plr-amount" hint-size="100%,74px">
-                  <span style="display:flex;align-items:center;max-width:220px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;overflow:hidden">
-                    <span style="padding:0 10px;border-right:1px solid var(--ax-gray-200);font-size:14px;color:var(--ax-text-tertiary);line-height:40px">$</span>
-                    <input id="plr-amount" type="text" inputMode="decimal" value="{{ amount }}" onChange="{{ setAmount }}" placeholder="0.00" style="flex:1;min-width:0;height:40px;padding:0 12px;border:none;outline:none;font:inherit;font-size:14px;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">
+                  <span style="display:flex;align-items:center;max-width:13.75rem;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;overflow:hidden">
+                    <span style="padding:0 0.625rem;border-right:1px solid var(--ax-gray-200);font-size:var(--ax-text-sm);color:var(--ax-text-tertiary);line-height:2.5rem">$</span>
+                    <input id="plr-amount" type="text" inputMode="decimal" value="{{ amount }}" onChange="{{ setAmount }}" placeholder="0.00" style="flex:1;min-width:0;height:2.5rem;padding:0 var(--ax-space-3);border:none;outline:none;font:inherit;font-size:var(--ax-text-sm);color:var(--ax-text-primary);font-variant-numeric:tabular-nums">
                   </span>
                 </x-import>
                 <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
-                  <p role="alert" style="display:flex;align-items:flex-start;gap:6px;margin:2px 0 0;font-size:13px;line-height:1.5;color:var(--ax-danger-600)"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0"></i>{{ errorMsg }}</p>
+                  <p role="alert" style="display:flex;align-items:flex-start;gap:var(--ax-space-1-5);margin:var(--ax-space-0-5) 0 0;font-size:0.8125rem;line-height:1.5;color:var(--ax-danger-600)"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);flex-shrink:0"></i>{{ errorMsg }}</p>
                 </sc-if>
               </div>
 
               <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Reason" required="{{ true }}" html-for="plr-reason" hint-size="100%,74px">
-                <select id="plr-reason" value="{{ reason }}" onChange="{{ setReason }}" style="width:100%;height:42px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;color:var(--ax-text-primary);cursor:pointer">
+                <select id="plr-reason" value="{{ reason }}" onChange="{{ setReason }}" style="width:100%;height:2.625rem;padding:0 var(--ax-space-3);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font:inherit;font-size:var(--ax-text-sm);color:var(--ax-text-primary);cursor:pointer">
                   <option value="">Select a reason</option>
                   <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="7"><option value="{{ r.v }}">{{ r.v }}</option></sc-for>
                 </select>
               </x-import>
 
               <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Notes (Optional)" hint="Appears on receipt and audit history." html-for="plr-notes" hint-size="100%,110px">
-                <textarea id="plr-notes" value="{{ notes }}" onChange="{{ setNotes }}" maxLength="250" rows="3" style="width:100%;padding:10px 14px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;line-height:1.5;color:var(--ax-text-primary);resize:vertical"></textarea>
+                <textarea id="plr-notes" value="{{ notes }}" onChange="{{ setNotes }}" maxLength="250" rows="3" style="width:100%;padding:0.625rem 0.875rem;border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font:inherit;font-size:var(--ax-text-sm);line-height:1.5;color:var(--ax-text-primary);resize:vertical"></textarea>
               </x-import>
 
               <sc-if value="{{ needsAffirm }}" hint-placeholder-val="{{ false }}">
-                <div role="alert" style="display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-danger-600);border-radius:10px;background:var(--ax-gray-50)">
-                  <div style="display:flex;align-items:flex-start;gap:10px">
-                    <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="margin-top:2px;flex-shrink:0;color:var(--ax-danger-600);font-size:15px"></i>
-                    <span style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">This refund includes AX Service Fees.</span>
+                <div role="alert" style="display:flex;flex-direction:column;gap:0.625rem;padding:0.875rem;border:1px solid var(--ax-gray-200);border-left:4px solid var(--ax-danger-600);border-radius:var(--ax-radius-lg);background:var(--ax-gray-50)">
+                  <div style="display:flex;align-items:flex-start;gap:0.625rem">
+                    <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);flex-shrink:0;color:var(--ax-danger-600);font-size:0.9375rem"></i>
+                    <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">This refund includes AX Service Fees.</span>
                   </div>
-                  <div style="display:flex;flex-direction:column;gap:4px;padding-left:25px">
-                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:300px">
-                      <span style="font-size:13.5px;color:var(--ax-text-secondary)">State Fee Portion</span>
-                      <span style="font-size:13.5px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitState }}</span>
+                  <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);padding-left:1.5625rem">
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);max-width:18.75rem">
+                      <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">State Fee Portion</span>
+                      <span style="font-size:0.8438rem;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitState }}</span>
                     </div>
-                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;max-width:300px">
-                      <span style="font-size:13.5px;color:var(--ax-text-secondary)">AX Fee Portion</span>
-                      <span style="font-size:13.5px;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitAX }}</span>
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--ax-space-4);max-width:18.75rem">
+                      <span style="font-size:0.8438rem;color:var(--ax-text-secondary)">AX Fee Portion</span>
+                      <span style="font-size:0.8438rem;font-weight:600;color:var(--ax-text-primary);font-variant-numeric:tabular-nums">{{ fSplitAX }}</span>
                     </div>
                   </div>
-                  <div style="padding-left:25px">
+                  <div style="padding-left:1.5625rem">
                     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.FormField" label="Type AFFIRM to continue." required="{{ true }}" hint="Changing the refund amount clears this acknowledgment." html-for="plr-affirm" hint-size="100%,96px">
-                      <input id="plr-affirm" value="{{ affirm }}" onChange="{{ setAffirm }}" placeholder="AFFIRM" autoComplete="off" style="max-width:220px;height:40px;padding:0 12px;border:1px solid var(--ax-gray-300);border-radius:8px;background:#fff;font:inherit;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--ax-text-primary)">
+                      <input id="plr-affirm" value="{{ affirm }}" onChange="{{ setAffirm }}" placeholder="AFFIRM" autoComplete="off" style="max-width:13.75rem;height:2.5rem;padding:0 var(--ax-space-3);border:1px solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;font:inherit;font-size:var(--ax-text-sm);font-weight:600;letter-spacing:.06em;color:var(--ax-text-primary)">
                     </x-import>
                   </div>
                 </div>
@@ -253,7 +253,7 @@
             </div>
           </sc-if>
 
-          <div style="display:flex;justify-content:flex-end;gap:10px;padding:18px 20px 20px">
+          <div style="display:flex;justify-content:flex-end;gap:0.625rem;padding:1.125rem var(--ax-space-5) var(--ax-space-5)">
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" hint-size="auto,40px">Cancel</x-import>
             <sc-if value="{{ canRefund }}" hint-placeholder-val="{{ true }}">
               <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" disabled="{{ submitDisabled }}" onClick="{{ submit }}" hint-size="auto,40px">Process Refund</x-import>
@@ -264,13 +264,13 @@
       </div>
 
       <sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}">
-        <div role="status" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--ax-gray-200);border-radius:12px;box-shadow:0 12px 24px -8px rgba(10,13,18,.14)">
-          <i class="bi bi-check-circle-fill" aria-hidden="true" style="margin-top:1px;color:var(--ax-success-600);font-size:17px"></i>
+        <div role="status" style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:0.875rem var(--ax-space-4);background:#fff;border:1px solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:0 12px 24px -8px rgba(10,13,18,.14)">
+          <i class="bi bi-check-circle-fill" aria-hidden="true" style="margin-top:1px;color:var(--ax-success-600);font-size:1.0625rem"></i>
           <div style="flex:1;min-width:0">
-            <div style="font-size:14px;font-weight:600;color:var(--ax-text-primary)">Refund processed</div>
-            <p style="margin:3px 0 0;font-size:13.5px;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ toastBody }}</p>
+            <div style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">Refund processed</div>
+            <p style="margin:0.1875rem 0 0;font-size:0.8438rem;line-height:1.55;color:var(--ax-text-secondary);text-wrap:pretty">{{ toastBody }}</p>
           </div>
-          <button type="button" onClick="{{ dismissToast }}" style="padding:0 4px;border:none;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Dismiss</button>
+          <button type="button" onClick="{{ dismissToast }}" style="padding:0 var(--ax-space-1);border:none;background:transparent;font:inherit;font-size:0.8125rem;font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Dismiss</button>
         </div>
       </sc-if>
     </div>

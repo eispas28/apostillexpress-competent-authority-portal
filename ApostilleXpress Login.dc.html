@@ -11,15 +11,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="ds/tokens/fonts.css">
-<link rel="stylesheet" href="ds/tokens/colors.css">
-<link rel="stylesheet" href="ds/tokens/typography.css">
-<link rel="stylesheet" href="ds/tokens/spacing.css">
-<link rel="stylesheet" href="ds/tokens/shadows.css">
-<link rel="stylesheet" href="ds/tokens/base.css">
-<link rel="stylesheet" href="ds/components.css">
-<link rel="stylesheet" href="ds/styles.css">
-<script src="ds/ds-bundle.js"></script>
+<link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/spacing.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
+<link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
+<link rel="stylesheet" href="ds/components.css?v=rem1">
+<link rel="stylesheet" href="ds/styles.css?v=rem1">
+<script src="ds/ds-bundle.js?v=rem1"></script>
 <script src="./image-slot.js"></script>
 <style>
 *{box-sizing:border-box}
@@ -28,27 +28,27 @@ body{font-family:Roboto,system-ui,sans-serif;background:#0D5257;overflow-x:hidde
 a{color:#006D77;text-decoration:none}
 a:hover{color:#00B0BE;text-decoration:underline}
 @keyframes axSpin{to{transform:rotate(360deg)}}
-@keyframes axCardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.ax-logo-header{width:140px}
-.ax-logo-card{width:150px}
+@keyframes axCardIn{from{opacity:0;transform:translateY(0.75rem)}to{opacity:1;transform:none}}
+.ax-logo-header{width:8.75rem}
+.ax-logo-card{width:9.375rem}
 .ax-logo-header svg,.ax-logo-card svg{display:block;width:100%;height:auto}
 .ax-logo-header svg path{fill:#fff}
-.ax-foot{flex-direction:column;align-items:center;text-align:center;gap:12px}
-.ax-foot-links{flex-direction:column;align-items:center;gap:10px}
-.ax-card{width:92%;padding:24px}
-.ax-header{padding:16px}
+.ax-foot{flex-direction:column;align-items:center;text-align:center;gap:var(--ax-space-3)}
+.ax-foot-links{flex-direction:column;align-items:center;gap:0.625rem}
+.ax-card{width:92%;padding:var(--ax-space-6)}
+.ax-header{padding:var(--ax-space-4)}
 @media (min-width:768px){
-  .ax-logo-header{width:180px}
-  .ax-logo-card{width:170px}
-  .ax-card{width:440px;padding:32px}
-  .ax-header{padding:16px 32px}
-  .ax-foot{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;gap:20px}
-  .ax-foot-links{flex-direction:row;align-items:center;gap:24px}
+  .ax-logo-header{width:11.25rem}
+  .ax-logo-card{width:10.625rem}
+  .ax-card{width:27.5rem;padding:var(--ax-space-8)}
+  .ax-header{padding:var(--ax-space-4) var(--ax-space-8)}
+  .ax-foot{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;gap:var(--ax-space-5)}
+  .ax-foot-links{flex-direction:row;align-items:center;gap:var(--ax-space-6)}
 }
 @media (min-width:1024px){
-  .ax-logo-header{width:220px}
-  .ax-logo-card{width:180px}
-  .ax-card{width:520px;padding:40px}
+  .ax-logo-header{width:13.75rem}
+  .ax-logo-card{width:11.25rem}
+  .ax-card{width:32.5rem;padding:var(--ax-space-10)}
 }
 </style>
 </helmet>
@@ -61,9 +61,9 @@ a:hover{color:#00B0BE;text-decoration:underline}
 
   
 
-  <header class="ax-header" style="position:sticky;top:0;z-index:10;display:flex;align-items:center;min-height:72px;width:100%;background:#0D5257;box-shadow:0 2px 10px rgba(0,0,0,.12)">
+  <header class="ax-header" style="position:sticky;top:0;z-index:10;display:flex;align-items:center;min-height:4.5rem;width:100%;background:#0D5257;box-shadow:0 2px 10px rgba(0,0,0,.12)">
     <a href="#" aria-label="ApostilleXpress home" class="ax-logo-header" style="display:block;line-height:0">
-      <svg viewBox="0 0 231 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ApostilleXpress" style="width: 192px">
+      <svg viewBox="0 0 231 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ApostilleXpress" style="width: 12rem">
         <path d="M24.4235 30.4112L31.0415 26.3931L24.1084 21.7054H21.7842L17.8055 9.02094H17.1359L12.5269 23.7144H23.7538L27.7325 26.3931L23.7538 28.7173H11.2269L8.58762 37.0686H0L14.1814 0H20.7994L31.0415 26.3931L35.0202 37.0686H26.1174L24.4629 30.3718L24.4235 30.4112Z" fill="url(#axg1)"></path>
         <path d="M118.1 21.8235C119.478 21.8235 120.621 22.0992 121.606 22.6113C122.59 23.1234 123.339 23.8719 123.89 24.8961C124.442 25.8809 124.678 27.1021 124.678 28.5203V30.4899H115.185C115.224 31.6323 115.578 32.4989 116.209 33.1686C116.839 33.7989 117.745 34.114 118.887 34.114C120.03 34.114 120.7 34.0352 121.487 33.8383C122.275 33.6413 123.063 33.3656 123.89 32.9716V36.0837C123.142 36.4382 122.393 36.714 121.606 36.8715C120.818 37.0291 119.872 37.1079 118.73 37.1079C117.588 37.1079 115.933 36.8321 114.791 36.2806C113.648 35.7291 112.782 34.9019 112.112 33.7989C111.482 32.6959 111.167 31.2777 111.167 29.5839C111.167 27.89 111.442 26.4324 112.033 25.2901C112.624 24.1477 113.451 23.281 114.475 22.6901C115.539 22.0992 116.721 21.8235 118.139 21.8235H118.1ZM118.139 24.6598C117.351 24.6598 116.721 24.8961 116.169 25.4082C115.657 25.9203 115.382 26.7082 115.303 27.7718H120.936C120.936 27.1809 120.818 26.6294 120.621 26.1961C120.424 25.7234 120.109 25.3688 119.715 25.0931C119.321 24.8173 118.809 24.6992 118.178 24.6992L118.139 24.6598Z" fill="#083D41"></path>
         <path d="M109.315 37.1079H105.297V16.3479H109.315V37.1079Z" fill="#083D41"></path>
@@ -85,9 +85,9 @@ a:hover{color:#00B0BE;text-decoration:underline}
         </defs>
       </svg>
     </a>
-  </header><main style="position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; border-radius: 12px">
-    <section class="ax-card" aria-labelledby="ax-login-title" style="max-width: 520px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.25); animation: axCardIn 300ms ease-out both; background-color: #FFFFFF">
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:left">
+  </header><main style="position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--ax-space-10) var(--ax-space-4); border-radius: var(--ax-radius-xl)">
+    <section class="ax-card" aria-labelledby="ax-login-title" style="max-width: 32.5rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.35); border-radius: var(--ax-radius-3xl); box-shadow: 0 20px 60px rgba(0,0,0,.25); animation: axCardIn 300ms ease-out both; background-color: #FFFFFF">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:var(--ax-space-3);text-align:left">
         <span class="ax-logo-card" style="display:block;line-height:0">
           <svg viewBox="0 0 231 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ApostilleXpress">
             <path d="M24.4235 30.4112L31.0415 26.3931L24.1084 21.7054H21.7842L17.8055 9.02094H17.1359L12.5269 23.7144H23.7538L27.7325 26.3931L23.7538 28.7173H11.2269L8.58762 37.0686H0L14.1814 0H20.7994L31.0415 26.3931L35.0202 37.0686H26.1174L24.4629 30.3718L24.4235 30.4112Z" fill="url(#axg1)"></path>
@@ -109,93 +109,93 @@ a:hover{color:#00B0BE;text-decoration:underline}
         </span>
         
         <sc-if value="{{ isPasswordStep }}" hint-placeholder-val="{{ false }}">
-          <button type="button" onClick="{{ back }}" style="display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 0; border: none; background: transparent; font-family: inherit; font-size: 13px; color: #495057; cursor: pointer; font-weight: 600" style-hover="color:#343A40; text-decoration-line: underline; text-decoration-style: solid"><i class="bi bi-arrow-left" aria-hidden="true"></i>{{ email }}</button>
+          <button type="button" onClick="{{ back }}" style="display: inline-flex; align-items: center; gap: var(--ax-space-2); margin: 0; padding: 0; border: none; background: transparent; font-family: inherit; font-size: 0.8125rem; color: #495057; cursor: pointer; font-weight: 600" style-hover="color:#343A40; text-decoration-line: underline; text-decoration-style: solid"><i class="bi bi-arrow-left" aria-hidden="true"></i>{{ email }}</button>
         </sc-if>
-        <h1 id="ax-login-title" style="margin: 2px 0 0; font-size: 28px; line-height: 1.2; font-weight: 600; color: #181D27">{{ title }}</h1>
+        <h1 id="ax-login-title" style="margin: var(--ax-space-0-5) 0 0; font-size: 1.75rem; line-height: 1.2; font-weight: 600; color: #181D27">{{ title }}</h1>
         <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
-          <p role="alert" style="margin: 0; font-size: 14px; line-height: 1.45; font-weight: 400; color: #E33B32; text-wrap: pretty">{{ formError }}</p>
+          <p role="alert" style="margin: 0; font-size: var(--ax-text-sm); line-height: 1.45; font-weight: 400; color: #E33B32; text-wrap: pretty">{{ formError }}</p>
         </sc-if>
         <sc-if value="{{ showSubtitle }}" hint-placeholder-val="{{ true }}">
-          <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #535862; text-wrap: pretty">{{ subtitle }}</p>
+          <p style="margin: 0; font-size: 0.9375rem; line-height: 1.5; color: #535862; text-wrap: pretty">{{ subtitle }}</p>
         </sc-if>
       </div>
 
-      <form novalidate="novalidate" onSubmit="{{ submit }}" style="margin-top:28px;display:flex;flex-direction:column;gap:18px">
+      <form novalidate="novalidate" onSubmit="{{ submit }}" style="margin-top:1.75rem;display:flex;flex-direction:column;gap:1.125rem">
         <sc-if value="{{ showEmailField }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <label for="ax-email" style="font-size: 14px; font-weight: 500; color: #495057">Email <span style="color:#E33B32" aria-hidden="true">*</span></label>
-          <input id="ax-email" name="email" type="email" autoComplete="username" required="{{ true }}" placeholder="you@example.com" value="{{ email }}" onChange="{{ setEmail }}" aria-required="true" aria-invalid="{{ emailInvalid }}" aria-describedby="ax-email-err" style="width: 100%; height: 48px; padding: 0 14px; font-family: inherit; font-size: 16px; color: #495057; background: #fff; border: 1px solid {{ emailBorderColor }}; border-radius: 8px; outline: none; transition: border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus="border:2px solid #6EA8FE;padding:0 13px;background:#fff;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
+        <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+          <label for="ax-email" style="font-size: var(--ax-text-sm); font-weight: 500; color: #495057">Email <span style="color:#E33B32" aria-hidden="true">*</span></label>
+          <input id="ax-email" name="email" type="email" autoComplete="username" required="{{ true }}" placeholder="you@example.com" value="{{ email }}" onChange="{{ setEmail }}" aria-required="true" aria-invalid="{{ emailInvalid }}" aria-describedby="ax-email-err" style="width: 100%; height: 3rem; padding: 0 0.875rem; font-family: inherit; font-size: var(--ax-text-md); color: #495057; background: #fff; border: 1px solid {{ emailBorderColor }}; border-radius: var(--ax-radius-md); outline: none; transition: border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus="border:2px solid #6EA8FE;padding:0 0.8125rem;background:#fff;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
         </div>
         </sc-if>
 
         <sc-if value="{{ isPasswordStep }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <label for="ax-password" style="font-size: 14px; font-weight: 500; color: #495057">Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
-          <div style="display:flex;align-items:center;gap:6px;height:48px;padding:0 6px 0 14px;background:#fff;border:1px solid {{ pwBorderColor }};border-radius:8px;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 5px 0 13px;background:#fff;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
-            <input id="ax-password" name="password" type="{{ pwType }}" autoComplete="current-password" required="{{ true }}" placeholder="Enter your password" value="{{ password }}" onChange="{{ setPassword }}" aria-required="true" aria-invalid="{{ pwInvalid }}" aria-describedby="ax-pw-err" style="flex: 1; min-width: 0; height: 100%; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: #495057">
-            <button type="button" onClick="{{ togglePw }}" aria-label="{{ pwToggleLabel }}" aria-pressed="{{ showPw }}" title="{{ pwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:none;border-radius:8px;background:transparent;color:#5c6f71;font-size:18px;cursor:pointer;transition:background 200ms ease,color 200ms ease" style-hover="background-color:F2F2F2" style-focus="outline:none;box-shadow:0 0 0 3px rgba(0,182,189,.45)"><i class="{{ pwIcon }}" aria-hidden="true"></i></button>
+        <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+          <label for="ax-password" style="font-size: var(--ax-text-sm); font-weight: 500; color: #495057">Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
+          <div style="display:flex;align-items:center;gap:var(--ax-space-1-5);height:3rem;padding:0 var(--ax-space-1-5) 0 0.875rem;background:#fff;border:1px solid {{ pwBorderColor }};border-radius:var(--ax-radius-md);transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 0.3125rem 0 0.8125rem;background:#fff;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
+            <input id="ax-password" name="password" type="{{ pwType }}" autoComplete="current-password" required="{{ true }}" placeholder="Enter your password" value="{{ password }}" onChange="{{ setPassword }}" aria-required="true" aria-invalid="{{ pwInvalid }}" aria-describedby="ax-pw-err" style="flex: 1; min-width: 0; height: 100%; border: none; outline: none; background: transparent; font-family: inherit; font-size: var(--ax-text-md); color: #495057">
+            <button type="button" onClick="{{ togglePw }}" aria-label="{{ pwToggleLabel }}" aria-pressed="{{ showPw }}" title="{{ pwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:#5c6f71;font-size:var(--ax-text-lg);cursor:pointer;transition:background 200ms ease,color 200ms ease" style-hover="background-color:F2F2F2" style-focus="outline:none;box-shadow:0 0 0 3px rgba(0,182,189,.45)"><i class="{{ pwIcon }}" aria-hidden="true"></i></button>
           </div>
-          <sc-if value="{{ pwInvalid }}" hint-placeholder-val="{{ false }}"><p id="ax-pw-err" role="alert" style="margin:0;font-size:13px;color:#E33B32">Enter your password</p></sc-if>
+          <sc-if value="{{ pwInvalid }}" hint-placeholder-val="{{ false }}"><p id="ax-pw-err" role="alert" style="margin:0;font-size:0.8125rem;color:#E33B32">Enter your password</p></sc-if>
         </div>
 
         <div style="display:flex;align-items:center;justify-content:flex-start">
-          <a href="#" onClick="{{ goForgot }}" style="font-size: 14px; font-weight: 400; color: #495057; text-decoration: none" style-hover="color:#0D5257;text-decoration:underline">Forgot my password</a>
+          <a href="#" onClick="{{ goForgot }}" style="font-size: var(--ax-text-sm); font-weight: 400; color: #495057; text-decoration: none" style-hover="color:#0D5257;text-decoration:underline">Forgot my password</a>
         </div>
         </sc-if>
 
         <sc-if value="{{ isCodeStep }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <input id="ax-code" name="code" type="text" inputMode="numeric" autoComplete="one-time-code" placeholder="Enter code" value="{{ code }}" onChange="{{ setCode }}" aria-label="Verification code" maxLength="{{ 6 }}" aria-invalid="{{ codeInvalid }}" style="width:100%;height:48px;padding:0 14px;font-family:inherit;font-size:16px;letter-spacing:.02em;color:#495057;background:#fff;border:1px solid {{ codeBorderColor }};border-radius:8px;outline:none;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus="border:2px solid #6EA8FE;padding:0 13px;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
+        <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+          <input id="ax-code" name="code" type="text" inputMode="numeric" autoComplete="one-time-code" placeholder="Enter code" value="{{ code }}" onChange="{{ setCode }}" aria-label="Verification code" maxLength="{{ 6 }}" aria-invalid="{{ codeInvalid }}" style="width:100%;height:3rem;padding:0 0.875rem;font-family:inherit;font-size:var(--ax-text-md);letter-spacing:.02em;color:#495057;background:#fff;border:1px solid {{ codeBorderColor }};border-radius:var(--ax-radius-md);outline:none;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus="border:2px solid #6EA8FE;padding:0 0.8125rem;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
           <sc-if value="{{ showDemoCode }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0;font-size:13px;font-weight:500;color:#0D5257">{{ demoCodeText }}</p>
+            <p style="margin:0;font-size:0.8125rem;font-weight:500;color:#0D5257">{{ demoCodeText }}</p>
           </sc-if>
-          <p style="margin:0;font-size:13px;color:#535862">Didn’t receive a code? <a href="#" onClick="{{ resendCode }}" style="font-weight: 500; color: #495057; text-decoration: none" style-hover="color: #343A40; font-weight: 600">Resend</a></p>
+          <p style="margin:0;font-size:0.8125rem;color:#535862">Didn’t receive a code? <a href="#" onClick="{{ resendCode }}" style="font-weight: 500; color: #495057; text-decoration: none" style-hover="color: #343A40; font-weight: 600">Resend</a></p>
         </div>
         </sc-if>
 
         <sc-if value="{{ isChangeStep }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;flex-direction:column;gap:18px">
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <label for="ax-new-pw" style="font-size:14px;font-weight:500;color:#495057">New Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
-            <div style="display:flex;align-items:center;gap:6px;height:48px;padding:0 6px 0 14px;background:#fff;border:1px solid {{ newPwBorderColor }};border-radius:8px;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 5px 0 13px;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
-              <input id="ax-new-pw" name="new-password" type="{{ newPwType }}" autoComplete="new-password" placeholder="Enter your password" value="{{ newPw }}" onChange="{{ setNewPw }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:16px;color:#495057">
-              <button type="button" onClick="{{ toggleNewPw }}" aria-label="{{ newPwToggleLabel }}" title="{{ newPwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:none;border-radius:8px;background:transparent;color:#5c6f71;font-size:18px;cursor:pointer;transition:background 200ms ease" style-hover="background:#F2F2F2"><i class="{{ newPwIcon }}" aria-hidden="true"></i></button>
+        <div style="display:flex;flex-direction:column;gap:1.125rem">
+          <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+            <label for="ax-new-pw" style="font-size:var(--ax-text-sm);font-weight:500;color:#495057">New Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
+            <div style="display:flex;align-items:center;gap:var(--ax-space-1-5);height:3rem;padding:0 var(--ax-space-1-5) 0 0.875rem;background:#fff;border:1px solid {{ newPwBorderColor }};border-radius:var(--ax-radius-md);transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 0.3125rem 0 0.8125rem;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
+              <input id="ax-new-pw" name="new-password" type="{{ newPwType }}" autoComplete="new-password" placeholder="Enter your password" value="{{ newPw }}" onChange="{{ setNewPw }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:var(--ax-text-md);color:#495057">
+              <button type="button" onClick="{{ toggleNewPw }}" aria-label="{{ newPwToggleLabel }}" title="{{ newPwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:#5c6f71;font-size:var(--ax-text-lg);cursor:pointer;transition:background 200ms ease" style-hover="background:#F2F2F2"><i class="{{ newPwIcon }}" aria-hidden="true"></i></button>
             </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <label for="ax-confirm-pw" style="font-size:14px;font-weight:500;color:#495057">Confirm Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
-            <div style="display:flex;align-items:center;gap:6px;height:48px;padding:0 6px 0 14px;background:#fff;border:1px solid {{ confirmPwBorderColor }};border-radius:8px;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 5px 0 13px;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
-              <input id="ax-confirm-pw" name="confirm-password" type="{{ confirmPwType }}" autoComplete="new-password" placeholder="Enter your password" value="{{ confirmPw }}" onChange="{{ setConfirmPw }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:16px;color:#495057">
-              <button type="button" onClick="{{ toggleConfirmPw }}" aria-label="{{ confirmPwToggleLabel }}" title="{{ confirmPwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:none;border-radius:8px;background:transparent;color:#5c6f71;font-size:18px;cursor:pointer;transition:background 200ms ease" style-hover="background:#F2F2F2"><i class="{{ confirmPwIcon }}" aria-hidden="true"></i></button>
+          <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+            <label for="ax-confirm-pw" style="font-size:var(--ax-text-sm);font-weight:500;color:#495057">Confirm Password <span style="color:#E33B32" aria-hidden="true">*</span></label>
+            <div style="display:flex;align-items:center;gap:var(--ax-space-1-5);height:3rem;padding:0 var(--ax-space-1-5) 0 0.875rem;background:#fff;border:1px solid {{ confirmPwBorderColor }};border-radius:var(--ax-radius-md);transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus-within="border:2px solid #6EA8FE;padding:0 0.3125rem 0 0.8125rem;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
+              <input id="ax-confirm-pw" name="confirm-password" type="{{ confirmPwType }}" autoComplete="new-password" placeholder="Enter your password" value="{{ confirmPw }}" onChange="{{ setConfirmPw }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font-family:inherit;font-size:var(--ax-text-md);color:#495057">
+              <button type="button" onClick="{{ toggleConfirmPw }}" aria-label="{{ confirmPwToggleLabel }}" title="{{ confirmPwToggleLabel }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border:none;border-radius:var(--ax-radius-md);background:transparent;color:#5c6f71;font-size:var(--ax-text-lg);cursor:pointer;transition:background 200ms ease" style-hover="background:#F2F2F2"><i class="{{ confirmPwIcon }}" aria-hidden="true"></i></button>
             </div>
           </div>
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--ax-space-2)">
             <sc-for list="{{ pwRules }}" as="rule" hint-placeholder-count="6">
-              <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#495057">
-                <i class="bi bi-check-lg" aria-hidden="true" style="font-size:15px;color: {{ rule.color }}"></i>{{ rule.label }}
+              <li style="display:flex;align-items:center;gap:0.625rem;font-size:0.8125rem;color:#495057">
+                <i class="bi bi-check-lg" aria-hidden="true" style="font-size:0.9375rem;color: {{ rule.color }}"></i>{{ rule.label }}
               </li>
             </sc-for>
           </ul>
         </div>
         </sc-if>
 
-        <button type="submit" style="width:100%;height:48px;border:none;border-radius:8px;background:#0D5257;color:#fff;font-family:inherit;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 1px 2px rgba(10,13,18,.06);transition:background 200ms ease,transform 200ms ease,box-shadow 200ms ease" style-hover="background:#0A4145;transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,109,119,.3)" style-active="transform:translateY(0)" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.45)" disabled="{{ submitDisabled }}" aria-busy="{{ loading }}" style-disabled="cursor:default;background:#F1F3F4;color:#98A2A3;transform:none;box-shadow:none">
-          <span style="display:inline-flex;align-items:center;justify-content:center;gap:10px">
-            <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:axSpin .7s linear infinite"></span></sc-if>
+        <button type="submit" style="width:100%;height:3rem;border:none;border-radius:var(--ax-radius-md);background:#0D5257;color:#fff;font-family:inherit;font-size:var(--ax-text-md);font-weight:500;cursor:pointer;box-shadow:0 1px 2px rgba(10,13,18,.06);transition:background 200ms ease,transform 200ms ease,box-shadow 200ms ease" style-hover="background:#0A4145;transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,109,119,.3)" style-active="transform:translateY(0)" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.45)" disabled="{{ submitDisabled }}" aria-busy="{{ loading }}" style-disabled="cursor:default;background:#F1F3F4;color:#98A2A3;transform:none;box-shadow:none">
+          <span style="display:inline-flex;align-items:center;justify-content:center;gap:0.625rem">
+            <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:1.125rem;height:1.125rem;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:axSpin .7s linear infinite"></span></sc-if>
             {{ submitLabel }}
           </span>
         </button>
 
         <sc-if value="{{ isRecovery }}" hint-placeholder-val="{{ false }}">
-          <button type="button" onClick="{{ backToLogin }}" style="width:100%;height:48px;background:#fff;border:1px solid #CED4DA;border-radius:8px;font-family:inherit;font-size:16px;font-weight:500;color:#212529;cursor:pointer;box-shadow:0 1px 2px rgba(10,13,18,.05);transition:background 200ms ease,border-color 200ms ease" style-hover="background:#F8F9FA;border-color:#ADB5BD" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.35)">Back to Log In</button>
+          <button type="button" onClick="{{ backToLogin }}" style="width:100%;height:3rem;background:#fff;border:1px solid #CED4DA;border-radius:var(--ax-radius-md);font-family:inherit;font-size:var(--ax-text-md);font-weight:500;color:#212529;cursor:pointer;box-shadow:0 1px 2px rgba(10,13,18,.05);transition:background 200ms ease,border-color 200ms ease" style-hover="background:#F8F9FA;border-color:#ADB5BD" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.35)">Back to Log In</button>
         </sc-if>
 
         <sc-if value="{{ showSso }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:18px">
-            <div aria-hidden="true" style="display:flex;align-items:center;gap:14px;color:#7b8b8d;font-size:13px;font-weight:500">
+          <div style="display:flex;flex-direction:column;gap:1.125rem">
+            <div aria-hidden="true" style="display:flex;align-items:center;gap:0.875rem;color:#7b8b8d;font-size:0.8125rem;font-weight:500">
               <span style="flex:1;height:1px;background:#DEE2E6"></span>OR<span style="flex:1;height:1px;background:#DEE2E6"></span>
             </div>
-            <button type="button" onClick="{{ ssoGo }}" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:48px;background:#fff;border:1px solid #8A8886;border-radius:10px;font-family:inherit;font-size:16px;font-weight:500;color:#201F1E;cursor:pointer;transition:background 200ms ease,border-color 200ms ease,transform 200ms ease" style-hover="background:#F3F2F1;border-color:#605E5C;transform:translateY(-1px)" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.45)">
+            <button type="button" onClick="{{ ssoGo }}" style="display:flex;align-items:center;justify-content:center;gap:0.625rem;width:100%;height:3rem;background:#fff;border:1px solid #8A8886;border-radius:var(--ax-radius-lg);font-family:inherit;font-size:var(--ax-text-md);font-weight:500;color:#201F1E;cursor:pointer;transition:background 200ms ease,border-color 200ms ease,transform 200ms ease" style-hover="background:#F3F2F1;border-color:#605E5C;transform:translateY(-1px)" style-focus="outline:none;box-shadow:0 0 0 4px rgba(0,182,189,.45)">
               <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="0" y="0" width="8.2" height="8.2" fill="#F25022"></rect><rect x="9.8" y="0" width="8.2" height="8.2" fill="#7FBA00"></rect><rect x="0" y="9.8" width="8.2" height="8.2" fill="#00A4EF"></rect><rect x="9.8" y="9.8" width="8.2" height="8.2" fill="#FFB900"></rect></svg>
               Sign in with Microsoft
             </button>
@@ -205,12 +205,12 @@ a:hover{color:#00B0BE;text-decoration:underline}
     </section>
   </main>
 
-  <footer class="ax-foot" style="position:relative;z-index:1;display:flex;width:100%;padding:20px 32px 24px;font-size:14px;color:rgba(255,255,255,.8);background:#0D5257">
+  <footer class="ax-foot" style="position:relative;z-index:1;display:flex;width:100%;padding:var(--ax-space-5) var(--ax-space-8) var(--ax-space-6);font-size:var(--ax-text-sm);color:rgba(255,255,255,.8);background:#0D5257">
     <span style="display: none">Copyright © 2026 @Gov</span>
     <div class="ax-foot-links" style="display:flex;margin-left:auto">
       <a href="https://apostille-xpress.com/terms-conditions/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff;text-decoration:underline">Terms &amp; Conditions</a>
       <a href="https://apostille-xpress.com/contact/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff;text-decoration:underline">Contact Us</a>
-      <span style="display: none; align-items: center; gap: 8px">Powered by
+      <span style="display: none; align-items: center; gap: var(--ax-space-2)">Powered by
         <svg width="51" height="26" viewBox="0 0 51 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="@Gov" style="opacity:.9">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0L25.3656 2.76172V5.69761H24.4325V3.59522L0.933015 1.04498V24.955L24.4325 22.2679V20.29H25.3656V23.1014L0 26V0Z" fill="white"></path>
           <path d="M43.8516 19.5686L40.0325 9.87769H42.3463L45.0707 17.404L47.7952 9.87769H50.0841L46.2774 19.5686H43.864H43.8516Z" fill="white"></path>

@@ -5938,7 +5938,8 @@ function Modal({
       alignItems: "flex-start",
       justifyContent: "space-between",
       gap: "var(--ax-space-4)",
-      padding: "var(--ax-space-5) var(--ax-space-6) var(--ax-space-3)"
+      padding: "var(--ax-space-5) var(--ax-space-6) var(--ax-space-3)",
+      borderBottom: "1px solid var(--ax-border-subtle)"
     }
   }, /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -5975,7 +5976,9 @@ function Modal({
       overflowY: "auto",
       color: "var(--ax-text-secondary)",
       fontSize: "var(--ax-text-sm)",
-      lineHeight: "var(--ax-lh-base)"
+      lineHeight: "var(--ax-lh-base)",
+      paddingTop: title ? "1.25rem" : "1.5rem",
+      textAlign: "left"
     }
   }, children), footer ? /*#__PURE__*/React.createElement("div", {
     style: {

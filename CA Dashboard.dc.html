@@ -9319,7 +9319,7 @@ class Component extends DCLogic {
           delivery: (i + k) % 3 === 0 ? 'Traditional Delivery (Paper)' : 'Electronic Delivery (e-Apostille)',
           /* Some e-Apostille orders start as physical documents mailed in, so the
              originals must be returned; the rest are fully digital uploads. */
-          mailIn: (i + k) % 3 !== 0 && (i + k) % 2 === 0,
+          mailIn: false,
           service, request: (i + k) % 4 === 0 ? 'Adoption Documents' : 'Regular Documents',
           status: (() => {
             if (i % 3 === 0) return 'New';
@@ -9427,7 +9427,7 @@ class Component extends DCLogic {
         request: it.request, status: 'New',
         /* Keep the file the requester uploaded so Review & Issue previews it. */
         file: (it.file || (co.docFiles || [])[0]) || null,
-        mailIn: String(it.deliveryLabel || '').indexOf('Paper') < 0 && !(it.file || (co.docFiles || [])[0]),
+        mailIn: false,
       })),
       requestor: (String(co.r.first || '') + ' ' + String(co.r.last || '')).trim() || 'Requester',
       org: co.r.org || '—',
@@ -9626,7 +9626,7 @@ class Component extends DCLogic {
           id: '#1788451-' + (601700 - i) + '_' + ('000' + (k + 1)).slice(-4),
           name: DOCS[(i + k) % DOCS.length],
           delivery: (i + k) % 2 ? 'Electronic Delivery (e-Apostille)' : 'Traditional Delivery (Paper)',
-          mailIn: !!((i + k) % 2) && (i + k) % 3 === 0,
+          mailIn: false,
           service: svc, request: (i + k) % 4 === 0 ? 'Adoption Documents' : 'Regular Documents', status: st,
         })),
       };
@@ -9884,7 +9884,7 @@ class Component extends DCLogic {
       id: d.id, requestor: d.requestor, email: d.email, org: d.org === '—' ? '' : d.org, type: 'Mail-In', service: d.service || 'Same-Day',
       submitted: at, processor: d.by || '', status: 'Incomplete', total: 0,
       fees: { state: 0, ax: 0, service: 0, discounts: 0 }, payment: { method: 'check', at }, refunds: [],
-      docs: (d.docs || []).map((k) => ({ ...k, sub: k.id, docType: k.name, status: /Paper/i.test(k.delivery || '') ? 'Incomplete' : 'New', mailIn: true })),
+      docs: (d.docs || []).map((k) => ({ ...k, sub: k.id, docType: k.name, status: /Paper/i.test(k.delivery || '') ? 'Incomplete' : 'New', mailIn: false })),
       entered: { r: { first: parts.shift() || '', last: parts.join(' '), email: d.email, org: d.org === '—' ? '' : d.org }, c: null, doc: {}, recs: [] },
       history: [{ type: 'submitted', text: 'Mail-In order created. Waiting for documents.', by: d.by || '', at }],
     };
@@ -10338,10 +10338,10 @@ class Component extends DCLogic {
       childRefunded: !!d.refunded,
       childIsPaper: paper,
       childIsDigital: !paper,
-      childHasReturn: paper || !!d.mailIn,
-      childShowReturn: !(o.qr || o.type === 'Walk-In (Appointment)') && (paper || !!d.mailIn),
+      childHasReturn: paper,
+      childShowReturn: !(o.qr || o.type === 'Walk-In (Appointment)') && paper,
       childShowMail: !(o.qr || o.type === 'Walk-In (Appointment)') && paper,
-      childSource: paper ? 'Mailed in' : (d.mailIn ? 'Mailed in (originals returned)' : 'Uploaded (fully digital)'),
+      childSource: paper ? 'Mailed in' : 'Uploaded (fully digital)',
       childLocked: !canEdit,
       childEditInk: canEdit ? 'var(--ax-text-primary)' : 'var(--ax-text-tertiary)',
       childEditCursor: canEdit ? 'pointer' : 'not-allowed',
@@ -10355,7 +10355,7 @@ class Component extends DCLogic {
         ['Name on Document or Entity Name', r.entityName],
         ['Document Type', r.docType],
         ['Document Description', r.docDesc],
-        ['Document Source', paper ? 'Mailed in' : (d.mailIn ? 'Mailed in' : 'Uploaded (fully digital)')],
+        ['Document Source', paper ? 'Mailed in' : 'Uploaded (fully digital)'],
         ['Adoption Agency', r.adoptionAgency],
         ['Destination Country', r.destCountry],
         ['Tracking Number', r.tracking],
@@ -11179,7 +11179,7 @@ class Component extends DCLogic {
     const cashOk = !isCash || one.amt <= 0 || !!b.cashOk;
 
     const uploaded = b.uploaded || {};
-    const needsUpload = (d) => !!d && !!d.mailIn && String(d.delivery || '').indexOf('Paper') < 0 && !uploaded[d.id] && !(d.file && d.file.url);
+    const needsUpload = () => false; /* Digital orders always arrive with their document uploaded. */
     /* Reissue: always show the document on the revoked apostille (the one uploaded
        with the order, or its scan) so it can be reviewed or replaced. */
     const reissueCur = (d) => !!(b.reissue && d && (b.reissue.childId === d.id || b.reissue.childId === d.sub));
@@ -11570,7 +11570,7 @@ class Component extends DCLogic {
       /* A physical document submitted for an e-Apostille must be scanned and
          uploaded before it can be reviewed. */
       bpNeedsUpload: needsUpload(cur),
-      bpUploadReady: !!cur.mailIn && String(cur.delivery || '').indexOf('Paper') < 0 && !needsUpload(cur),
+      bpUploadReady: false,
       /* Paper submissions have nothing to preview — the CA holds the original. */
       bpIsPhysical: !needsUpload(cur) && String(cur.delivery || '').indexOf('Paper') >= 0 && !reissueCur(cur),
       /* Paper reissue with no file on record: offer the upload drop zone. */
@@ -11614,7 +11614,7 @@ class Component extends DCLogic {
         id: (k.sub || k.id),
         delivery: String(k.delivery || '').indexOf('Paper') >= 0 ? 'Traditional Delivery' : 'Electronic Delivery',
         needs: needsUpload(k),
-        ready: !!k.mailIn && String(k.delivery || '').indexOf('Paper') < 0 && !needsUpload(k),
+        ready: false,
         ink: needsUpload(k) ? 'var(--ax-text-tertiary)' : 'var(--ax-text-primary)',
         cursor: needsUpload(k) ? 'not-allowed' : 'pointer',
         tip: needsUpload(k) ? 'Scan the mailed document before assigning a signature.' : '',

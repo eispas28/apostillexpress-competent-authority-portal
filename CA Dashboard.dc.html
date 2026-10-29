@@ -6997,7 +6997,22 @@ class Component extends DCLogic {
   resetCreate(extra) {
     this.setState({ co: Component.blankCo(), pay: Component.blankPay(), dup: null, dupRec: null, ...(extra || {}) });
   }
+  /* In-person orders that were checked out complete belong under New, not Drop-Off (one-time clean-up of earlier saves). */
+  migrateInPerson() {
+    const bad = (d) => d.bucket === 'Paid' && !d.qr && !d.mix && d.type === 'Walk-In (Appointment)' && d.step === 'pay';
+    if (!(this.state.drafts || []).some(bad)) return;
+    const now = Date.now();
+    this.setState((st) => {
+      const conv = (st.drafts || []).filter(bad).map((d) => ({
+        id: d.id, requestor: d.requestor, org: d.org, email: d.email, type: 'Walk-In (Appointment)', service: d.service || 'Same-Day', submitted: d.modified || new Date(now).toISOString(), processor: 'Unassigned',
+        status: 'New', total: +((d.docs || []).length * 74.95).toFixed(2), payMethod: 'Card', payment: d.payment || { method: 'card' }, refunds: [],
+        docs: (d.docs || []).map((k) => ({ ...k, sub: k.id, status: 'New', refunded: false })),
+      }));
+      return { orders: conv.concat(st.orders || []), drafts: (st.drafts || []).filter((d) => !bad(d)) };
+    });
+  }
   componentDidMount() {
+    this.migrateInPerson();
     this.sync();
     const ffp = document.getElementById('ff-panel'); if (ffp) ffp.setAttribute('hidden', 'until-found');
     this._ffFind = (e) => { const p = document.getElementById('ff-panel'); if (!p) return; if ((e.metaKey || e.ctrlKey) && (e.key === 'f' || e.key === 'F')) p.removeAttribute('hidden'); else if (e.key === 'Escape') p.setAttribute('hidden', 'until-found'); };
@@ -13110,7 +13125,7 @@ class Component extends DCLogic {
       const method = bypass || total === 0 ? 'none' : pm === 'card' ? cardTab : pm === 'cash' ? cashTab : 'reader';
       const orderNo = p.qrOrder || '#' + String(Date.now()).slice(-7) + '-' + String(Math.floor(Math.random() * 900000) + 100000);
       const payMethod = statePaid ? 'state' : noBill ? 'company' : total === 0 ? 'nobill' : pm === 'card' ? cardTab : pm === 'cash' ? cashTab : 'reader';
-      if (items.some((x) => x.copied)) {
+      if ((items.some((x) => x.copied) && !p.qrOrder) || (p.qrOrder && !p.qrReady)) {
         const dd = (this.state.dup && this.state.dup.items) || [], rr = co.r || {};
         const draft = {
           id: orderNo, requestor: (String(rr.first || '') + ' ' + String(rr.last || '')).trim() || 'Unnamed requestor', org: rr.org || '\u2014', email: rr.email || '\u2014',
@@ -13122,7 +13137,7 @@ class Component extends DCLogic {
         };
         this.setState((st) => ({ drafts: [draft].concat(st.drafts || []) }));
       } else this.recordOrder(co, items, { orderNo, total, zeroDue: bypass || total === 0, method: payMethod, promo: p.promo || '' });
-      if (p.qrOrder) this.setState((st) => ({ drafts: (st.drafts || []).filter((x) => x.id !== p.qrOrder) }));
+      if (p.qrOrder) this.setState((st) => ({ drafts: (st.drafts || []).filter((x) => x.id !== p.qrOrder || !x.qr) }));
       setPay({
         stage: 'confirm',
         orderNo: orderNo.replace('#', ''),
@@ -13398,7 +13413,7 @@ class Component extends DCLogic {
       pcShowReceipt: !(co.orderType === 'appt' || co.orderType === 'qr' || (typeof paid !== 'undefined' && paid && paid.qr)),
 pcPrint: () => window.print(),
       pcNewOrder: () => this.resetCreate(),
-      pcGoOrders: () => { const id = '#' + (p.orderNo || ''); const dr = (this.state.drafts || []).filter((x) => x.id === id || x.id === p.orderNo)[0]; if (dr) { this.openPaidDraft(dr); return; } if ((this.state.orders || []).some((o) => o.id === id)) this.openOverview(id); else this.setState({ screen: 'orders' }); },
+      pcGoOrders: () => { const dg = (v) => String(v || '').replace(/\D/g, ''), want = dg(p.orderNo); const od = (this.state.orders || []).filter((o) => dg(o.id) === want)[0]; if (od) { this.openOverview(od.id); return; } const dr = (this.state.drafts || []).filter((x) => dg(x.id) === want)[0]; if (dr) { this.openPaidDraft(dr); return; } this.setState({ screen: 'orders' }); },
     };
   }
 
@@ -14003,7 +14018,7 @@ pcPrint: () => window.print(),
       },
       dupCheckout: () => {
         if (!allReady && !copy && !this.streamOn() && !(paid && paid.qr)) { this.flash('Upload the missing documents before checking out.', 'Cannot check out yet'); return; }
-        this.setState((st) => ({ pay: { ...st.pay, qrOrder: paid && paid.qr ? paid.id : '', stage: 'pay', carried: null, items: this.mergeItems(st.pay.carried, this.dupPayItems((copy || this.streamOn()) ? st.dup.items.map((x) => ({ ...x, _copy: true })) : st.dup.items)) } }));
+        this.setState((st) => ({ pay: { ...st.pay, qrOrder: paid && paid.qr ? paid.id : '', qrReady: missingCount === 0 && !items.some((x) => (x.delivery === 'electronic' || x.delivery === 'both') && !(x.files || []).length), stage: 'pay', carried: null, items: this.mergeItems(st.pay.carried, this.dupPayItems((copy || this.streamOn()) ? st.dup.items.map((x) => ({ ...x, _copy: true })) : st.dup.items)) } }));
       },
       dupGoOrders: () => this.setState((st) => ({ pay: { ...st.pay, stage: 'info' }, dup: null, screen: 'orders' })),
       dupCancel: () => this.setState((st) => ({ pay: { ...st.pay, stage: 'info' }, dup: null })),

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ca-title="ApostilleXpress">
 <head>
 <meta charset="utf-8">
+<title>Site Configuration – ApostilleXpress</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -18,8 +19,10 @@
 <link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
 <link rel="stylesheet" href="ds/components.css?v=rem1">
-<link rel="stylesheet" href="ds/styles.css?v=rem1">
-<script src="ds/ds-bundle.js?v=rem1"></script>
+<link rel="stylesheet" href="ds/styles.css?v=a11y1">
+<link rel="stylesheet" href="ca-a11y.css?v=a11y4">
+<script src="ds/ds-bundle.js?v=a11y3"></script>
+<script src="ca-a11y.js?v=a11y3"></script>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -41,7 +44,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 .sc-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.875rem 1.125rem}
 @media (max-width:720px){.sc-grid2{grid-template-columns:minmax(0,1fr)}}
 .sc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));gap:var(--ax-space-4)}
-.sc-danger-btn:hover:not(:disabled),.sc-danger-btn:focus-visible:not(:disabled){border-radius:0.5rem !important;border:1px solid #F1AEB5 !important;background:#FEF3F2 !important;color:#E33B32 !important;box-shadow:0 0 0 1px rgba(10,13,18,.18) inset,0 -2px 0 0 rgba(10,13,18,.05) inset,0 1px 2px 0 rgba(10,13,18,.05) !important}
+.sc-danger-btn:hover:not(:disabled),.sc-danger-btn:focus-visible:not(:disabled){border-radius:0.5rem !important;border:1px solid #F1AEB5 !important;background:#FEF3F2 !important;color:#B42318 !important;box-shadow:0 0 0 1px rgba(10,13,18,.18) inset,0 -2px 0 0 rgba(10,13,18,.05) inset,0 1px 2px 0 rgba(10,13,18,.05) !important}
 .sc-side{flex-shrink:0}
 @media (max-width:1000px){.sc-side{display:none}}
 .sc-notif{display:grid;grid-template-columns:minmax(0,16.25rem) minmax(0,1fr);gap:1.125rem;align-items:start}
@@ -475,7 +478,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
         <div style="padding:var(--ax-space-5);display:flex;flex-direction:column;gap:var(--ax-space-4)">
           <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
             <div role="alert" style="display:flex;align-items:flex-start;gap:var(--ax-space-3);padding:0.875rem var(--ax-space-4);background:#FEF3F2;border:1px solid #F1AEB5;border-radius:var(--ax-radius-md)">
-              <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:1.0625rem;color:#D92D20"></i>
+              <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:1px;font-size:1.0625rem;color:#B42318"></i>
               <p style="margin:0;font-size:0.9063rem;line-height:1.5;color:#B42318;text-wrap:pretty">{{ formError }}</p>
             </div>
           </sc-if>

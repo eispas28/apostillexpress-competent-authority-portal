@@ -1686,6 +1686,8 @@ function Table({
     }
   }, columns.map(c => /*#__PURE__*/React.createElement("th", {
     key: c.key,
+    scope: "col",
+    "aria-sort": c.sort || undefined,
     style: {
       textAlign: c.align || "left",
       padding: "0.625rem var(--ax-space-4)",
@@ -1702,6 +1704,8 @@ function Table({
     key: row[rowKey] ?? ri,
     className: "ax-row--hover",
     onClick: onRowClick ? () => onRowClick(row) : undefined,
+    tabIndex: onRowClick ? 0 : undefined,
+    onKeyDown: onRowClick ? e => { if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onRowClick(row); } } : undefined,
     style: {
       cursor: onRowClick ? "pointer" : "default",
       borderBottom: ri === rows.length - 1 ? "none" : "0.0625rem solid var(--ax-border-subtle)"
@@ -1841,6 +1845,13 @@ const rem = n => `${n / 16}rem`;
 
 // Design system.fig Badge — [bg, border, text, dot/icon, close-x]
 const COLORS = {
+  digital: {
+    bg: "#F0F9FF",
+    bd: "#B9E6FE",
+    fg: "#065986",
+    dot: "#0086C9",
+    x: "#36BFFA"
+  },
   gray: {
     bg: "#FAFAFA",
     bd: "#E9EAEB",
@@ -2710,6 +2721,7 @@ function Checkbox({
   return /*#__PURE__*/React.createElement("label", {
     className: `ax-check-label ${className}`,
     style: {
+      minHeight: "1.5rem",
       display: "inline-flex",
       alignItems: "center",
       gap: "var(--ax-space-2)",
@@ -3160,6 +3172,21 @@ function FormField({
   className = "",
   style = {}
 }) {
+  const uid = React.useId();
+  const id = htmlFor || "ax-f-" + uid.replace(/:/g, "");
+  const msgId = id + "-msg";
+  const has = !!(error || hint);
+  const SR = { position: "absolute", width: 1, height: 1, margin: -1, padding: 0, overflow: "hidden", clip: "rect(0 0 0 0)", whiteSpace: "nowrap", border: 0 };
+  const kids = React.Children.map(children, (ch, i) => {
+    if (i !== 0 || !React.isValidElement(ch) || typeof ch.type === "string" && !/^(input|select|textarea)$/.test(ch.type)) return ch;
+    const p = ch.props || {};
+    const add = {};
+    if (p.id == null) add.id = id;
+    if (required && p["aria-required"] == null) add["aria-required"] = true;
+    if (error && p["aria-invalid"] == null) add["aria-invalid"] = true;
+    if (has && p["aria-describedby"] == null) add["aria-describedby"] = msgId;
+    return Object.keys(add).length ? React.cloneElement(ch, add) : ch;
+  });
   return /*#__PURE__*/React.createElement("div", {
     className: `ax-field ${className}`,
     style: {
@@ -3169,7 +3196,7 @@ function FormField({
       ...style
     }
   }, label ? /*#__PURE__*/React.createElement("label", {
-    htmlFor: htmlFor,
+    htmlFor: id,
     style: {
       display: "flex",
       gap: "var(--ax-space-0-5)",
@@ -3179,20 +3206,24 @@ function FormField({
       lineHeight: "1.25rem",
       color: "var(--ax-gray-700)"
     }
-  }, label, required ? /*#__PURE__*/React.createElement("span", {
+  }, label, required ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+    "aria-hidden": "true",
     style: {
-      color: "var(--ax-danger)",
+      color: "#B02A37",
       fontWeight: 500,
       fontSize: "var(--ax-text-sm)"
     }
-  }, "*") : null) : null, children, error ? /*#__PURE__*/React.createElement("span", {
+  }, "*"), /*#__PURE__*/React.createElement("span", { style: SR }, " (required)")) : null) : null, kids, error ? /*#__PURE__*/React.createElement("span", {
+    id: msgId,
+    role: "alert",
     style: {
       fontFamily: "var(--ax-font-base)",
       fontSize: "var(--ax-text-sm)",
       lineHeight: "1.25rem",
-      color: "var(--ax-danger)"
+      color: "#B02A37"
     }
   }, error) : hint ? /*#__PURE__*/React.createElement("span", {
+    id: msgId,
     style: {
       fontFamily: "var(--ax-font-base)",
       fontSize: "var(--ax-text-sm)",
@@ -3358,6 +3389,7 @@ function Radio({
   return /*#__PURE__*/React.createElement("label", {
     className: `ax-radio-label ${className}`,
     style: {
+      minHeight: "1.5rem",
       display: "inline-flex",
       alignItems: "center",
       gap: "var(--ax-space-2)",

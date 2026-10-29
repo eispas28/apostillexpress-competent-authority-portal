@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ca-title="ApostilleXpress">
 <head>
 <meta charset="utf-8">
+<title>Sign in – ApostilleXpress</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -18,8 +19,10 @@
 <link rel="stylesheet" href="ds/tokens/shadows.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
 <link rel="stylesheet" href="ds/components.css?v=rem1">
-<link rel="stylesheet" href="ds/styles.css?v=rem1">
-<script src="ds/ds-bundle.js?v=rem1"></script>
+<link rel="stylesheet" href="ds/styles.css?v=a11y1">
+<link rel="stylesheet" href="ca-a11y.css?v=a11y4">
+<script src="ds/ds-bundle.js?v=a11y3"></script>
+<script src="ca-a11y.js?v=a11y3"></script>
 <script src="./image-slot.js"></script>
 <style>
 *{box-sizing:border-box}
@@ -145,6 +148,7 @@ a:hover{color:#00B0BE;text-decoration:underline}
 
         <sc-if value="{{ isCodeStep }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
+          <label for="ax-code" style="font-size: var(--ax-text-sm); font-weight: 500; color: #495057">Verification code</label>
           <input id="ax-code" name="code" type="text" inputMode="numeric" autoComplete="one-time-code" placeholder="Enter code" value="{{ code }}" onChange="{{ setCode }}" aria-label="Verification code" maxLength="{{ 6 }}" aria-invalid="{{ codeInvalid }}" style="width:100%;height:3rem;padding:0 0.875rem;font-family:inherit;font-size:var(--ax-text-md);letter-spacing:.02em;color:#495057;background:#fff;border:1px solid {{ codeBorderColor }};border-radius:var(--ax-radius-md);outline:none;transition:border-color 200ms ease,box-shadow 200ms ease" style-hover="border-color:#6EA8FE" style-focus="border:2px solid #6EA8FE;padding:0 0.8125rem;box-shadow:0 1px 2px 0 rgba(10,13,18,0.05)">
           <sc-if value="{{ showDemoCode }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0;font-size:0.8125rem;font-weight:500;color:#0D5257">{{ demoCodeText }}</p>

@@ -1,0 +1,20 @@
+/* WCAG 2.2 AA shared layer — load after the design-system CSS */
+html{scroll-padding-top:5.5rem;scroll-padding-bottom:7rem}
+.ca-scroll{scroll-padding-top:3.5rem}
+:root:root :focus-visible{outline:0.125rem solid #0D5257!important;outline-offset:0.125rem!important;box-shadow:0 0 0 0.125rem #fff}
+:root{--ax-text-placeholder:#6C757D}
+::placeholder{color:#6C757D!important;opacity:1}
+.ca-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ca-skip{position:fixed;left:0.75rem;top:-4rem;z-index:1000;padding:0.75rem 1rem;border-radius:0.5rem;background:#0D5257;color:#fff;font:600 1rem/1.25 Roboto,system-ui,sans-serif;text-decoration:underline;transition:top .12s ease}
+.ca-skip:focus{top:0.75rem}
+#ca-main:focus{outline:none}
+button,[role=button],[role=menuitem],[role=tab],summary,select{min-height:1.5rem}
+button,[role=button],[role=tab]{min-width:1.5rem}
+input[type=checkbox]:not(.ax-check),input[type=radio]:not(.ax-radio){width:1.5rem!important;height:1.5rem!important;min-width:1.5rem}
+.ca-help{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0.5rem 1rem;padding:1rem 2rem;border-top:1px solid #DEE2E6;background:#fff;font:400 0.875rem/1.4 Roboto,system-ui,sans-serif;color:#495057}
+.ca-help a{color:#0D5257;text-decoration:underline;text-underline-offset:0.1875rem;display:inline-flex;align-items:center;min-height:1.5rem}
+.ca-help a:hover{color:#08393D}
+img,svg,video,canvas{max-width:100%}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+:root:root input:not([type=checkbox]):not([type=radio]):focus-visible,:root:root select:focus-visible,:root:root textarea:focus-visible,:root:root .ax-input-wrap input:focus-visible{outline:none!important;box-shadow:none}

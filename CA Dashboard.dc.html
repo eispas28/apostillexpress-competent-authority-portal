@@ -2231,6 +2231,13 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </div>
           </div>
 
+          <sc-if value="{{ ovMailBanner }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="display: flex; gap: 0.625rem; padding: 0.875rem var(--ax-space-4); border: var(--ax-border-width) solid #F5D9A0; border-radius: var(--ax-radius-lg); background: #FFFAEB; justify-content: flex-start; align-items: center">
+              <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);flex-shrink:0;color:#B54708"></i>
+              <p style="margin:0;font-size:var(--ax-text-sm);line-height:1.5;color:#7A4A12;text-wrap:pretty"><strong>Awaiting Mailed Documents.</strong> {{ ovMailBannerText }}</p>
+            </div>
+          </sc-if>
+
           <div style="position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(26.875rem,1fr));background:#fff;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);box-shadow:var(--ax-shadow-xs)">
             <span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:0.375rem;background:#5BA7AD"></span>
             <div class="ca-cardq" style="padding:1.375rem 1.625rem var(--ax-space-6) 1.875rem;min-width:0">
@@ -10504,6 +10511,12 @@ class Component extends DCLogic {
       ovId: Component.fmtId(o.id || ov.id),
       ovStatus: o.status || 'New',
       ovStatusColor: STATUS_COLOR[o.status] || 'gray',
+      ...((() => {
+        const live = kids.filter((d) => ['Cancelled', 'Rejected', 'Revoked & Cancelled'].indexOf(d.status) < 0);
+        const n = live.length, p = live.filter(isPaper).length;
+        const on = o.type === 'Mail-In' && o.status === 'Incomplete' && p > 0;
+        return { ovMailBanner: on, ovMailBannerText: p === n ? 'All ' + n + ' sub-orders are pending original documents by mail. This order remains Incomplete until they arrive.' : p + ' of ' + n + ' sub-orders are pending original documents by mail and can’t be processed until they arrive. The remaining ' + (n - p) + ' sub-orders are ready to process now.' };
+      })()),
       ovIncomplete: o.status === 'Incomplete', ovIncompleteNot: o.status !== 'Incomplete',
       ovPlaced: MONTHS[d0.getMonth()] + ' ' + d0.getDate() + ', ' + d0.getFullYear(),
       ovOrderNo: String(o.id || '').replace(/[^0-9]/g, '').slice(0, 9),

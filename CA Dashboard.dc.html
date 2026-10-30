@@ -13817,7 +13817,7 @@ pcPrint: () => window.print(),
         ],
         notes: it.doc.notes || '',
         setNotes: setDoc('notes'),
-        edBtn: !copy && ((!sx && (!paid || (!!paid.qr && paid.status === 'Draft'))) || (sx && !!paid && !paid.qr)),
+        edBtn: copy || ((!sx && (!paid || (!!paid.qr && paid.status === 'Draft'))) || (sx && !!paid && !paid.qr)),
         sxBtns: sx && !copy && (!paid || (!!paid.qr && paid.status === 'Draft')),
         sxDoc: sx && !copy, docEditable: !(sx && !copy),
         docView: [['Document Type', it.doc.type], ['Document Description', descText], ['Destination Country', it.doc.country], ['Documents Notes', it.doc.notes]].map((r) => ({ label: r[0], value: blank(r[1]) ? '\u2014' : r[1] })),
@@ -13840,12 +13840,12 @@ pcPrint: () => window.print(),
     });
 
     const allReady = items.every((x) => x.ready);
-    const bothSrc = !!(dup.items[dup.open] || dup.items[dup.items.length - 1] || {}).fromBoth;
+    const bothSrc = !!(dup.items[dup.items.length - 1] || {}).fromBoth;
     const atMax = items.length >= MAX;
     const addCopy = () => {
       if (items.length >= MAX) { return; }
       this.setState((st) => {
-        const src = st.dup.items[st.dup.open] || st.dup.items[st.dup.items.length - 1];
+        const src = st.dup.items[st.dup.items.length - 1];
         const next = st.dup.copy ? this.cloneItem(src) : this.dupItemFrom(st.co, src);
         return { dup: { items: st.dup.items.concat([next]), open: st.dup.items.length } };
       });
@@ -14140,9 +14140,6 @@ pcPrint: () => window.print(),
       tabErr.order = bl(d.oi.request) || bl(d.oi.service) || bl(d.oi.delivery) || (pp && bl(d.oi.fulfillment));
       if (bl(d.oi.request)) M('Apostille type');
       if (bl(d.oi.service)) M('Service type');
-      /* Order Info is read-only here (set when the order was created), so it never blocks saving. */
-      tabErr.order = false;
-      for (let k = cpMissL.length - 1; k >= 0; k--) { if (['Apostille type', 'Service type', 'Return method'].includes(cpMissL[k].t)) cpMissL.splice(k, 1); }
     }
     const person = tab === 'cust' ? 'c' : 'r';
     const pv = d[person] || {};
@@ -14294,12 +14291,12 @@ pcPrint: () => window.print(),
       eoiDismissUpload: () => this.eoiPatch({ dis: { ...(e.dis || {}), upload: true } }), eoiDismissMail: () => this.eoiPatch({ dis: { ...(e.dis || {}), mail: true } }),
       eoiGoDoc: () => this.eoiPatch({ tab: 'doc', removing: false }), eoiGoMail: () => this.eoiPatch({ tab: 'mail', removing: false }),
       eoiFileErr: cpyMode && !!tabErr.upload, eoiMailErr: cpyMode && !!tabErr.mail,
-      eoiRODisp: (cpyMode || roOn) ? 'none' : 'block',
+      eoiRODisp: roOn ? 'none' : 'block',
       eoiROList: orderFields.concat(d.oi.request === 'Adoption Documents' ? [{ label: 'Adoption Agency', value: d.oi.agency || '' }] : []).map((f, k) => {
         const o = (f.options || []).filter((x) => x.v === f.value)[0];
         return { label: f.label, value: (o && o.v !== '' ? o.label : f.value) || '—', bd: k ? 'var(--ax-border-width) solid var(--ax-gray-200)' : 'none' };
       }),
-      eoiRO: cpyMode || roOn, eoiROMsg: roOn ? 'This order has been paid, so order information is read-only. You can still complete the missing requestor, document, recipient and mailing details.' : 'Order information is set when the order is created and can’t be edited here. You can still complete the requestor, customer, document, recipient and mailing details.', eoiROInert: undefined, eoiROOpacity: '1',
+      eoiRO: roOn, eoiROMsg: roOn ? 'This order has been paid, so order information is read-only. You can still complete the missing requestor, document, recipient and mailing details.' : 'Order information is set when the order is created and can’t be edited here. You can still complete the requestor, customer, document, recipient and mailing details.', eoiROInert: undefined, eoiROOpacity: '1',
       eoiCopy: cpyMode && !!(s.dup && s.dup.copy), eoiUpReq: !cpyMode, eoiCancelVar: cpyMode ? 'tertiary' : 'secondary',
       eoiW: cpyMode ? '45rem' : 'min(50vw,65rem)', eoiMinW: cpyMode ? 'min(100vw,26.25rem)' : 'min(100vw,35rem)',
       eoiHeadBg: cpyMode ? '#fff' : '#F8F9FA',
@@ -14429,17 +14426,12 @@ pcPrint: () => window.print(),
       })),
 
       eoiDirty: dirty,
-      eoiSaveDisabled: cpyMode ? (!roOn && (cpMissL.length > 0 || Object.values(tabErr).some(Boolean))) : !dirty,
+      eoiSaveDisabled: cpyMode ? (() => { let b = {}; try { b = (JSON.parse(e.base) || {}).oi || {}; } catch (x) {} const o = d.oi || {}, ch = ['request', 'delivery', 'fulfillment', 'service'].some((k) => (o[k] || '') !== (b[k] || '')); if (!ch) return false; const em = (v) => !String(v || '').trim(); return em(o.request) || em(o.delivery) || em(o.service) || (o.delivery !== 'electronic' && em(o.fulfillment)); })() : !dirty,
       eoiHasError: !!e.submitted && problems.length > 0,
       eoiErrorText: 'Complete the required fields before saving: ' + problems.map((p) => p.label).join('; ') + '.',
       eoiClose: close,
       eoiCancel: close,
       eoiSave: () => {
-        if (cpyMode && !roOn && (tabErr.order || tabErr.req)) {
-          this.eoiPatch({ tab: tabErr.order ? 'order' : 'req' });
-          this.flash('Complete Order Information and Requestor Information before saving.', 'Cannot save yet');
-          return;
-        }
         if (problems.length && !cpyMode) {
           this.eoiPatch({ submitted: true, tab: problems[0].tab });
           this.flash('Some required fields are still missing.', 'Cannot save yet');

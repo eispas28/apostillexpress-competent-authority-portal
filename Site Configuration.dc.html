@@ -11,7 +11,7 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 <link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
@@ -20,8 +20,9 @@
 <link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
 <link rel="stylesheet" href="ds/components.css?v=rem1">
 <link rel="stylesheet" href="ds/styles.css?v=a11y1">
-<link rel="stylesheet" href="ca-a11y.css?v=a11y4">
+<link rel="stylesheet" href="ca-a11y.css?v=a11y8">
 <script src="ds/ds-bundle.js?v=a11y5"></script>
+<script src="ax-nav-icons.js?v=1"></script>
 <script src="ca-a11y.js?v=a11y3"></script>
 <style>
 *{box-sizing:border-box}
@@ -73,7 +74,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
   <div style="display:flex;align-items:flex-start;flex:1;min-height:0">
     <sc-if value="{{ chrome }}" hint-placeholder-val="{{ true }}">
     <div class="sc-side">
-      <x-import component-from-global-scope="AXSideNav" from="./ax-sidenav.jsx" groups="{{ sideNavGroups }}" collapsed="{{ collapsed }}" on-toggle-collapse="{{ toggleCollapse }}" on-navigate="{{ sideNavGo }}" authority="COMPETENT AUTHORITY" country="United States" height="100%" hint-size="257px,100%"></x-import>
+      <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.SideNav" groups="{{ sideNavGroups }}" logo="assets/ax-wordmark-color.svg" logo-mark="assets/ax-mark-color.svg" flag="assets/us.png" collapsed="{{ collapsed }}" on-toggle-collapse="{{ toggleCollapse }}" on-navigate="{{ sideNavGo }}" authority="COMPETENT AUTHORITY" country="United States" height="100%" hint-size="257px,100%"></x-import>
     </div>
     </sc-if>
 
@@ -1208,25 +1209,26 @@ class Component extends DCLogic {
     const key = this.activeKey();
 
     const jump = (screen) => () => { window.location.href = 'CA Dashboard.dc.html#' + screen; };
-    const navItem = (label, icon, screen) => ({
-      label, icon, iconClass: icon, bg: 'transparent', edge: 'transparent', color: '#495057', weight: 400, go: jump(screen),
-    });
+    /* Design-system SideNav shape: { label, items: [{ id, label, icon, active }] }.
+       `dashboard` / `order-management` are the SideNav's own glyphs; the rest are Bootstrap Icons names. */
+    const ico = (n) => (window.axNavIcon ? window.axNavIcon(n) : n);
+    const navItem = (label, icon, screen) => ({ id: screen, label, icon: ico(icon), active: false, go: jump(screen) });
     const sideNavGroups = [
-      { title: 'Main', showTitle: !s.collapsed, items: [
-        navItem('Dashboard', 'bi bi-grid-1x2', 'dashboard'),
-        navItem('Reports', 'bi bi-bar-chart-line', 'reports'),
-        navItem('Order Management', 'bi bi-list-ul', 'orders'),
+      { label: 'MAIN', items: [
+        navItem('Dashboard', 'dashboard', 'dashboard'),
+        navItem('Reports', 'bar-chart-line', 'reports'),
+        navItem('Order Management', 'order-management', 'orders'),
       ] },
-      { title: 'Services Center', showTitle: !s.collapsed, items: [
-        navItem('Create New Order', 'bi bi-plus-square', 'create'),
+      { label: 'SERVICES CENTER', items: [
+        navItem('Create New Order', 'plus-square', 'create'),
       ] },
-      { title: 'Platform Settings', showTitle: !s.collapsed, items: [
-        navItem('User Management', 'bi bi-people', 'users'),
-        { label: 'Site Configuration', icon: 'bi bi-gear', iconClass: 'bi bi-gear', bg: 'rgba(0,182,189,.10)', edge: TEAL, color: TEAL, weight: 600, current: 'page', go: () => {} },
+      { label: 'PLATFORM SETTINGS', items: [
+        navItem('User Management', 'people', 'users'),
+        { id: 'site', label: 'Site Configuration', icon: ico('gear-wide-connected'), active: true, go: () => {} },
       ] },
-      { title: '', showTitle: false, items: [
-        navItem('My Profile', 'bi bi-person', 'profile'),
-        navItem('Log Out', 'bi bi-box-arrow-right', 'logout'),
+      { label: '', items: [
+        navItem('My Profile', 'person', 'profile'),
+        navItem('Log Out', 'box-arrow-right', 'logout'),
       ] },
     ];
 
@@ -1238,7 +1240,7 @@ class Component extends DCLogic {
       shellMinHeight: embedded ? '0' : '100vh',
       collapsed: s.collapsed,
       toggleCollapse: () => this.setState({ collapsed: !s.collapsed }),
-      sideNavGo: () => {},
+      sideNavGo: (item) => { if (item && item.go) item.go(); },
       sideNavGroups: sideNavGroups,
       stopProp: (e) => e.stopPropagation(),
       iconPlus: React.createElement('i', { className: 'bi bi-plus-lg', 'aria-hidden': 'true' }),

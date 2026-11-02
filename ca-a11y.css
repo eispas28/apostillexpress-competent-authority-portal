@@ -1,5 +1,12 @@
 /* WCAG 2.2 AA shared layer — load after the design-system CSS */
 html{scroll-padding-top:5.5rem;scroll-padding-bottom:7rem}
+/* Scrolling: every page scrolls inside its own root (#dc-root) rather than the window, so it scrolls
+   in any preview frame, whatever height the frame gives the page. Sticky headers, side menus and
+   floating bars stick to this scroller. Print keeps normal page flow. */
+@media screen{
+  html,body{height:100%;overflow:hidden}
+  #dc-root{height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scroll-padding-top:5.5rem;scroll-padding-bottom:7rem}
+}
 .ca-scroll{scroll-padding-top:3.5rem}
 :root:root :focus-visible{outline:0.125rem solid #0D5257!important;outline-offset:0.125rem!important;box-shadow:0 0 0 0.125rem #fff}
 :root{--ax-text-placeholder:#6C757D}
@@ -18,3 +25,8 @@ img,svg,video,canvas{max-width:100%}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 :root:root input:not([type=checkbox]):not([type=radio]):focus-visible,:root:root select:focus-visible,:root:root textarea:focus-visible,:root:root .ax-input-wrap input:focus-visible{outline:none!important;box-shadow:none}
+
+/* Table row hover — applies to every data row in every table across the platform (header rows use <th>, so they stay static) */
+tbody tr>td{transition:background-color .12s ease}
+tbody tr:hover>td{background-color:#F5F7F9!important}
+@media print{tbody tr:hover>td{background-color:transparent!important}}

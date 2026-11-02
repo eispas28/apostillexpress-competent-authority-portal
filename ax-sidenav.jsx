@@ -41,6 +41,12 @@ const NAV_ICONS = {
       <defs><clipPath id="ax-nav-orders-clip"><rect width="20" height="20" fill="white" /></clipPath></defs>
     </svg>
   ),
+  reports: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+      <rect x="1.58" y="1.58" width="16.84" height="16.84" rx="6" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M6.67 13.33V10M10 13.33V6.67M13.33 13.33V8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
 };
 
 function Icon({ name, size = 20 }) {

@@ -12,7 +12,7 @@
 <style>#ff-panel[hidden]{padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;min-width:0!important;height:0!important;overflow:hidden}</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&amp;display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 <link rel="stylesheet" href="ds/tokens/fonts.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/colors.css?v=rem1">
 <link rel="stylesheet" href="ds/tokens/typography.css?v=rem1">
@@ -21,8 +21,9 @@
 <link rel="stylesheet" href="ds/tokens/base.css?v=rem1">
 <link rel="stylesheet" href="ds/components.css?v=rem1">
 <link rel="stylesheet" href="ds/styles.css?v=a11y1">
-<link rel="stylesheet" href="ca-a11y.css?v=a11y4">
+<link rel="stylesheet" href="ca-a11y.css?v=a11y8">
 <script src="ds/ds-bundle.js?v=a11y5"></script>
+<script src="ax-nav-icons.js?v=1"></script>
 <script src="ca-a11y.js?v=a11y3"></script>
 <script src="ca-flags.js?v=rem2"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
@@ -171,6 +172,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 @media (max-width:620px){.ca-pf-fields{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:820px){.co-2,.co-sum{grid-template-columns:1fr}.co-3{grid-template-columns:1fr}}
 .ca-nic-orders{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Crect x='1.58' y='1.58' width='16.84' height='16.84' rx='6'/%3E%3Cpath d='M6.67 6.67h6.66M6.67 10h6.66M6.67 13.33h6.66'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Crect x='1.58' y='1.58' width='16.84' height='16.84' rx='6'/%3E%3Cpath d='M6.67 6.67h6.66M6.67 10h6.66M6.67 13.33h6.66'/%3E%3C/svg%3E")}
+.ca-nic-reports{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Crect x='1.58' y='1.58' width='16.84' height='16.84' rx='6'/%3E%3Cpath d='M6.67 13.33V10M10 13.33V6.67M13.33 13.33V8.75'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Crect x='1.58' y='1.58' width='16.84' height='16.84' rx='6'/%3E%3Cpath d='M6.67 13.33V10M10 13.33V6.67M13.33 13.33V8.75'/%3E%3C/svg%3E")}
 .ca-udetail{display:grid;grid-template-columns:minmax(0,17.5rem) minmax(0,1fr);gap:1.125rem;align-items:start}
 @media (max-width:960px){.ca-udetail{grid-template-columns:minmax(0,1fr)}}
 .ca-utbl{width:100%;min-width:55rem;border-collapse:collapse;font-size:0.8438rem}
@@ -256,7 +258,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
   <div style="display:flex;align-items:flex-start;flex:1;min-height:0">
     <div class="ca-side" data-open="{{ sidebarOpenFlag }}" style="flex-shrink:0;transition:width 280ms cubic-bezier(.4,0,.2,1)">
-      <x-import component-from-global-scope="AXSideNav" from="./ax-sidenav.jsx" groups="{{ sideNavGroups }}" collapsed="{{ collapsed }}" on-toggle-collapse="{{ toggleCollapse }}" on-navigate="{{ sideNavGo }}" authority="COMPETENT AUTHORITY" country="United States" height="100%" hint-size="257px,100%"></x-import>
+      <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.SideNav" groups="{{ sideNavGroups }}" logo="assets/ax-wordmark-color.svg" logo-mark="assets/ax-mark-color.svg" flag="assets/us.png" collapsed="{{ collapsed }}" on-toggle-collapse="{{ toggleCollapse }}" on-navigate="{{ sideNavGo }}" authority="COMPETENT AUTHORITY" country="United States" height="100%" hint-size="257px,100%"></x-import>
     </div>
 
     <main style="position: relative; flex: 1; min-width: 0; padding: var(--ax-space-5) var(--ax-space-4) var(--ax-space-12); background-color: #FAFBFC; width: 100%; padding-right: var(--ax-space-8); padding-left: var(--ax-space-6)">
@@ -3027,12 +3029,13 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </div>
           </div>
           <sc-if value="{{ cpHasSel }}" hint-placeholder-val="{{ false }}"><label style="display:inline-flex;align-items:center;gap:0.625rem;margin:0 0 var(--ax-space-3);font-size:var(--ax-text-sm);color:var(--ax-text-secondary);cursor:pointer"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" checked="{{ cpAllSel }}" onChange="{{ cpSelAll }}" hint-size="20px,20px"></x-import>{{ cpSelCount }} selected</label></sc-if>
+          <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 var(--ax-space-3)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" label="Select All" checked="{{ dsAllSel }}" indeterminate="{{ dsSomeSel }}" onChange="{{ dsSelAll }}" aria-label="Select all documents" hint-size="auto,24px"></x-import></div></sc-if>
           <div style="display:flex;flex-direction:column;gap:var(--ax-space-4);min-height:calc(100vh - 18.75rem)">
             <sc-for list="{{ dupItems }}" as="d" hint-placeholder-count="1">
               <div data-cp-idx="{{ d.i }}" style="background:#fff;border-radius:var(--ax-radius-xl);box-shadow:var(--ax-shadow-xs),0 0 0 0.0625rem var(--ax-gray-200)">
                 <div onClick="{{ d.toggle }}" style="display:flex;align-items:center;gap:var(--ax-space-3);padding:var(--ax-space-3) var(--ax-space-5);min-height:3.25rem;cursor:pointer">
                   <div style="display:flex;align-items:center;gap:var(--ax-space-3);flex-wrap:wrap;flex:1;min-width:0">
-                    <span onClick="{{ stopProp }}" style="display:{{ d.cpCbDisp }};align-items:center"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" checked="{{ d.cpSelOn }}" onChange="{{ d.cpToggleSel }}" hint-size="20px,20px"></x-import></span>
+                    <span onClick="{{ stopProp }}" style="display:{{ d.cpCbDisp }};align-items:center"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" checked="{{ d.cpSelOn }}" onChange="{{ d.cpToggleSel }}" aria-label="{{ d.dsCbLabel }}" hint-size="20px,20px"></x-import></span>
                     <span style="font-size:var(--ax-text-lg);font-weight:600;color:var(--ax-text-primary);overflow-wrap:anywhere">{{ d.cpTitle }}</span>
                     <span style="display:inline-flex;align-items:center;gap:var(--ax-space-2);flex-wrap:wrap">
                       <sc-if value="{{ d.cpReady }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="success" pill="{{ true }}" size="lg" hint-size="auto,28px"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Ready</x-import></sc-if>
@@ -3045,6 +3048,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
                     <sc-if value="{{ d.cpCanCopy }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Copy this order" placement="top" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="Copy this order" onClick="{{ d.cpCopy }}" disabled="{{ d.copyDisabled }}" icon="{{ iconCopy }}" hint-size="36px,36px"></x-import></x-import></sc-if>
                     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Edit order" placement="top" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="Edit order" onClick="{{ d.cpEdit }}" icon="{{ iconPencilSq }}" hint-size="36px,36px"></x-import></x-import>
                     <sc-if value="{{ d.canDelete }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Delete order" placement="top" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="Delete order" onClick="{{ d.del }}" icon="{{ iconTrash }}" hint-size="36px,36px"></x-import></x-import></sc-if>
+                    <sc-if value="{{ d.dsTrash }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="{{ d.dsDelTip }}" placement="top" hint-size="auto,auto"><span title="{{ d.dsDelTip }}" style="display:inline-flex"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="{{ d.dsDelTip }}" disabled="{{ d.dsDelOff }}" onClick="{{ d.dsDel }}" icon="{{ iconTrash }}" hint-size="36px,36px"></x-import></span></x-import></sc-if>
                     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Expand or collapse" placement="top" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="tertiary" size="sm" label="Expand or collapse" onClick="{{ d.toggle }}" icon="{{ d.cpChevN }}" hint-size="36px,36px"></x-import></x-import>
                   </div>
                 </div>
@@ -3083,7 +3087,9 @@ a:hover{color:#00B6BD;text-decoration:underline}
               </div>
             </sc-for>
           </div>
+          <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="height:5.5rem"></div></sc-if>
           <div style="position:sticky;bottom:0.75rem;z-index:60;margin-top:var(--ax-space-6)">
+            <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--ax-space-3) var(--ax-space-4);padding:0.875rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)"><span role="status" aria-live="polite" style="font-size:1.125rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
             <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:var(--ax-space-2);display:flex;flex-direction:column;gap:var(--ax-space-2)">
             <sc-if value="{{ cpAtMax }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>Maximum of 35 orders reached.</div></sc-if>
             <sc-if value="{{ cpHasSel }}" hint-placeholder-val="{{ false }}">
@@ -3201,10 +3207,12 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </div>
 
             <div style="display:flex;flex-direction:column;gap:0.875rem;padding:var(--ax-space-4) 1.125rem">
+              <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" label="Select All" checked="{{ dsAllSel }}" indeterminate="{{ dsSomeSel }}" onChange="{{ dsSelAll }}" aria-label="Select all documents" hint-size="auto,24px"></x-import></div></sc-if>
               <sc-for list="{{ dupItems }}" as="d" hint-placeholder-count="1">
                 <div style="border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:#fff">
 
                   <div style="display:flex;align-items:center;gap:var(--ax-space-3);padding:0.875rem var(--ax-space-4)">
+                    <sc-if value="{{ d.dsCb }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Checkbox" size="md" checked="{{ d.dsSelOn }}" onChange="{{ d.dsToggleSel }}" aria-label="{{ d.dsCbLabel }}" hint-size="20px,20px"></x-import></span></sc-if>
                     <button type="button" onClick="{{ d.toggle }}" aria-expanded="{{ d.open }}" style="display:flex;align-items:center;gap:var(--ax-space-3);flex:1;min-width:0;padding:0;border:none;background:transparent;font:inherit;text-align:left;cursor:pointer">
                       <span style="font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.title }}</span>
                       <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Badge" color="{{ d.cpFmtColor }}" pill="{{ true }}" size="lg" hint-size="auto,28px">{{ d.cpFmt }}</x-import>
@@ -3231,6 +3239,9 @@ a:hover{color:#00B6BD;text-decoration:underline}
                     </sc-if>
                     <sc-if value="{{ d.canDelete }}" hint-placeholder-val="{{ false }}">
                       <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Delete duplicated order" placement="bottom" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="Delete duplicated order" onClick="{{ d.del }}" icon="{{ iconTrash }}" hint-size="36px,36px"></x-import></x-import>
+                    </sc-if>
+                    <sc-if value="{{ d.dsTrash }}" hint-placeholder-val="{{ false }}">
+                      <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="{{ d.dsDelTip }}" placement="bottom" hint-size="auto,auto"><span title="{{ d.dsDelTip }}" style="display:inline-flex"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="{{ d.dsDelTip }}" disabled="{{ d.dsDelOff }}" onClick="{{ d.dsDel }}" icon="{{ iconTrash }}" hint-size="36px,36px"></x-import></span></x-import>
                     </sc-if>
                     <sc-if value="{{ d.edBtn }}" hint-placeholder-val="{{ false }}">
                       <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="Edit order" placement="bottom" hint-size="auto,auto"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.IconButton" variant="secondary" size="sm" label="Edit order" onClick="{{ d.cpEdit }}" icon="{{ iconPencilSq }}" hint-size="36px,36px"></x-import></x-import>
@@ -3437,9 +3448,11 @@ a:hover{color:#00B6BD;text-decoration:underline}
               <input type="file" ref="{{ dupFileRef }}" onChange="{{ dupOnFiles }}" accept=".pdf,.jpg,.jpeg,.tif,.tiff,application/pdf,image/jpeg,image/tiff" style="position:absolute;width:0.0625rem;height:0.0625rem;opacity:0;pointer-events:none">
             </div>
           </section>
+          <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="height:5.5rem"></div></sc-if>
 
           <sc-if value="{{ dupPaid }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--ax-space-3) var(--ax-space-4);position:sticky;bottom:0.75rem;z-index:30;margin-bottom:0.75rem;padding:var(--ax-space-3) var(--ax-space-5);border-radius:var(--ax-radius-xl);background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(0.75rem);backdrop-filter:blur(0.75rem);box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)">
+              <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ax-space-3) var(--ax-space-4); padding: 0.875rem var(--ax-space-5); border-radius: var(--ax-radius-xl); background: #fff; box-shadow: 0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12); flex-direction: row"><span role="status" aria-live="polite" style="font-size: 0.88rem; color: #212529"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
               <span style="font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty">{{ dupPaidProgress }}</span>
 <sc-if value="{{ dupNotQr }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ dupBlocked }}" onClick="{{ dupFinalize }}" hint-size="auto,40px">Finalize Order</x-import></sc-if><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ dupCheckout }}" hint-size="auto,40px">Checkout</x-import></div></sc-if>
             </div>
@@ -3471,6 +3484,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
           <sc-if value="{{ dupLegacyBar }}" hint-placeholder-val="{{ true }}">
           <div style="display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: var(--ax-space-3); padding: 1rem 1.25rem; margin-bottom: .75rem; position: sticky; bottom: .75rem; z-index: 30; background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(0.75rem); backdrop-filter: blur(0.75rem); border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: .5rem; box-shadow: var(--ax-shadow-lg)">
+            <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--ax-space-3) var(--ax-space-4);padding:0.875rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)"><span role="status" aria-live="polite" style="font-size:1.125rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
             <div style="display:flex;flex-direction:column;gap:var(--ax-space-2)">
               <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.625rem">
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ dupPrevious }}" hint-size="auto,40px">Previous</x-import>
@@ -5439,6 +5453,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
             <input id="ax-cpm-n" type="text" inputmode="numeric" value="{{ cpmN }}" onChange="{{ cpmType }}" aria-label="Additional copies" style="width:2.75rem;height:2.5rem;padding:0;border:none;border-left:var(--ax-border-width) solid var(--ax-gray-200);border-right:var(--ax-border-width) solid var(--ax-gray-200);text-align:center;font:inherit;font-size:var(--ax-text-sm);font-weight:600;outline:none;background:var(--ax-gray-50);color:var(--ax-text-primary)">
             <button type="button" onClick="{{ cpmPlus }}" disabled="{{ cpmPlusOff }}" aria-label="More copies" style="width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">+</button>
           </div>
+          <sc-if value="{{ cpmAtLimit }}" hint-placeholder-val="{{ false }}"><div role="status" aria-live="polite" style="display:flex;align-items:flex-start;gap:var(--ax-space-2);padding:var(--ax-space-3) 0.875rem;border-radius:var(--ax-radius-md);background:#FEF3F2;box-shadow:0 0 0 0.0625rem #FECDCA;color:#B42318;font-size:var(--ax-text-sm);line-height:1.45"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:0.125rem"></i><span><strong style="font-weight:600">You’ve reached the 35-order limit.</strong> {{ cpmLimitText }}</span></div></sc-if>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:var(--ax-space-3);margin:0 -1.5rem -1.25rem;padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-gray-200);background:#fff">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ cpmCancel }}" hint-size="auto,40px">Cancel</x-import>
@@ -5454,6 +5469,16 @@ a:hover{color:#00B6BD;text-decoration:underline}
       <div style="display:flex;justify-content:flex-end;gap:0.625rem;margin:var(--ax-space-4) -1.5rem -1.25rem;padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-border-subtle);background:var(--ax-gray-25)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ doCancel }}" hint-size="auto,40px">Keep Editing</x-import>
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" onClick="{{ doConfirm }}" hint-size="auto,40px">Delete Order</x-import>
+      </div>
+    </x-import>
+  </sc-if>
+
+  <sc-if value="{{ dsDelOpen }}" hint-placeholder-val="{{ false }}">
+    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Modal" open="{{ true }}" onClose="{{ dsDelCancel }}" title="{{ dsDelTitle }}" width="25rem" hint-size="100%,100%">
+      {{ dsDelText }}
+      <div style="display:flex;justify-content:flex-end;gap:0.625rem;margin:var(--ax-space-4) -1.5rem -1.25rem;padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-border-subtle);background:var(--ax-gray-25)">
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ dsDelCancel }}" hint-size="auto,40px">Keep Editing</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" onClick="{{ dsDelGo }}" hint-size="auto,40px">Delete</x-import>
       </div>
     </x-import>
   </sc-if>
@@ -5623,7 +5648,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </sc-if>
           </sc-if>
 
-          <sc-if value="{{ eoiIsOrder }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ eoiRO }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:0.625rem;margin-bottom:0.875rem;padding:var(--ax-space-3) 0.875rem;border-radius:var(--ax-radius-lg);background:var(--ax-gray-50);box-shadow:0 0 0 0.0625rem var(--ax-gray-200);font-size:var(--ax-text-sm);line-height:1.5;color:var(--ax-text-secondary)"><i class="bi bi-lock-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5)"></i><span>{{ eoiROMsg }}</span></div></sc-if><sc-if value="{{ eoiRO }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);background:#fff;overflow:hidden">
+          <sc-if value="{{ eoiIsOrder }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ eoiRO }}" hint-placeholder-val="{{ false }}"></sc-if><sc-if value="{{ eoiRO }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);background:#fff;overflow:hidden">
             <sc-for list="{{ eoiROList }}" as="r" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:minmax(7.5rem,40%) 1fr;gap:var(--ax-space-4);padding:0.875rem var(--ax-space-4);border-top:{{ r.bd }};font-size:var(--ax-text-sm)"><span style="color:var(--ax-text-secondary)">{{ r.label }}</span><span style="color:var(--ax-text-primary);font-weight:500;overflow-wrap:anywhere">{{ r.value }}</span></div></sc-for>
           </div></sc-if><div inert="{{ eoiROInert }}" style="display:{{ eoiRODisp }};opacity:{{ eoiROOpacity }}">
             <div class="eoi-grid">
@@ -5812,7 +5837,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
         </sc-if>
 
         <div style="display:flex;align-items:center;justify-content:space-between;gap:0.875rem;flex-shrink:0;padding:0.875rem var(--ax-space-5);border-top:var(--ax-border-width) solid var(--ax-gray-200);background:#fff">
-          <div style="flex:1;min-width:0.5rem"></div>
+          <div style="flex:1;min-width:0.5rem;font-size:0.8125rem;color:var(--ax-text-secondary)">{{ eoiSaveHint }}</div>
           <div style="display:flex;gap:0.625rem">
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="{{ eoiCancelVar }}" size="md" onClick="{{ eoiCancel }}" hint-size="auto,40px">Cancel</x-import>
             <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ eoiSaveDisabled }}" onClick="{{ eoiSave }}" hint-size="auto,40px">Save Changes</x-import>
@@ -7149,7 +7174,12 @@ class Component extends DCLogic {
      mirrors; retries a few times before showing the failure state. */
   loadWorldMap(attempt) {
     const n = attempt || 0;
-    if (window.__caWorldMap) { if (!this.state.mapReady) this.setState({ mapReady: true }); return; }
+    /* Ready only when the CURRENT echarts instance holds the 'world' map: echarts can be
+       reloaded after registration, which drops the map while the old flag stays true. */
+    const ec = window.echarts;
+    if (ec && ec.getMap && ec.getMap('world')) { window.__caWorldMap = true; if (!this.state.mapReady) this.setState({ mapReady: true }); return; }
+    if (ec && window.__caWorldGeo) { ec.registerMap('world', window.__caWorldGeo); window.__caWorldMap = true; this.setState({ mapReady: true, mapFailed: false }); return; }
+    window.__caWorldMap = false;
     if (!window.echarts) { if (n < 40) setTimeout(() => this.loadWorldMap(n + 1), 250); return; }
     if (window.__caWorldMapLoading) { setTimeout(() => this.loadWorldMap(n + 1), 400); return; }
     window.__caWorldMapLoading = true;
@@ -7167,6 +7197,7 @@ class Component extends DCLogic {
       fetch(urls[i]).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then((geo) => {
           if (!geo || !geo.features) throw new Error('bad geo');
+          window.__caWorldGeo = geo;
           window.echarts.registerMap('world', geo);
           window.__caWorldMap = true; window.__caWorldMapLoading = false;
           this.setState({ mapReady: true, mapFailed: false });
@@ -7552,7 +7583,7 @@ class Component extends DCLogic {
       if (this.state.compare && key === 'rp_volume') s.push({ name: 'Prior period', type: 'line', data: rec.map((v) => Math.round(v * 0.86)), smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { color: TEAL, width: 2, type: 'dashed' }, itemStyle: { color: TEAL } });
       return this.base(Object.assign({
         legend: { top: 2, right: 8, icon: 'circle', itemHeight: 8, textStyle: { color: '#495057', fontSize: 12 } },
-        dataZoom: [{ type: 'inside' }, { type: 'slider', height: 16, bottom: 4, brushSelect: true, borderColor: '#E9ECEF', fillerColor: 'rgba(0,182,189,.14)', handleStyle: { color: TEAL } }],
+        dataZoom: [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, preventDefaultMouseMove: false }, { type: 'slider', height: 16, bottom: 4, brushSelect: true, borderColor: '#E9ECEF', fillerColor: 'rgba(0,182,189,.14)', handleStyle: { color: TEAL } }],
         grid: { left: 46, right: 16, top: 36, bottom: 46 },
         tooltip: this.tip(),
         series: s,
@@ -7563,7 +7594,7 @@ class Component extends DCLogic {
       const d = series(cats.length, kind === 'rp_time' ? 62 : 20, 22, seed).map((v) => Math.max(2, Math.round(v * (0.7 + m * 0.14))));
       return this.base(Object.assign({
         legend: { top: 2, right: 8, icon: 'circle', itemHeight: 8, textStyle: { color: '#495057', fontSize: 12 } },
-        dataZoom: big ? [{ type: 'inside' }, { type: 'slider', height: 16, bottom: 4 }] : [{ type: 'inside' }],
+        dataZoom: big ? [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, preventDefaultMouseMove: false }, { type: 'slider', height: 16, bottom: 4 }] : [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, preventDefaultMouseMove: false }],
         tooltip: this.tip(),
         series: [{
           name: kind === 'rp_time' ? 'Avg hours' : 'Hours', type: 'line', data: d,
@@ -7576,7 +7607,7 @@ class Component extends DCLogic {
     }
     if (kind === 'area') {
       const d = series(12, 900, 460, seed).map((v) => Math.round(v * m));
-      return this.base(Object.assign({ series: [{ type: 'line', name: 'Volume', data: d, smooth: true, symbol: 'none', lineStyle: { width: 2, color: TEAL }, areaStyle: { color: AQUA, opacity: 0.16 } }], dataZoom: [{ type: 'inside' }] }, this.axis(MONTHS)));
+      return this.base(Object.assign({ series: [{ type: 'line', name: 'Volume', data: d, smooth: true, symbol: 'none', lineStyle: { width: 2, color: TEAL }, areaStyle: { color: AQUA, opacity: 0.16 } }], dataZoom: [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, preventDefaultMouseMove: false }] }, this.axis(MONTHS)));
     }
     if (kind === 'donut' || kind === 'rp_mix') {
       const cats = kind === 'rp_mix' ? COUNTRIES.slice(0, 5) : DOCS;
@@ -7592,7 +7623,11 @@ class Component extends DCLogic {
       };
     }
     if (kind === 'map') {
-      if (!window.__caWorldMap) return null;
+      /* Draw only once the map data is registered in the echarts instance on the page. */
+      if (!(window.echarts && window.echarts.getMap && window.echarts.getMap('world'))) {
+        if (window.__caWorldMap || window.__caWorldGeo) { window.__caWorldMap = false; clearTimeout(this._mapReT); this._mapReT = setTimeout(() => this.loadWorldMap(), 0); }
+        return null;
+      }
       const data = Object.keys(MAP_COUNTRIES).map((n) => ({ name: n, value: Math.round(MAP_COUNTRIES[n] * 90 * m) }));
       return {
         animationDuration: 320,
@@ -7604,7 +7639,7 @@ class Component extends DCLogic {
           { max: 130 * m, label: 'Low', color: '#9FCDE4' },
         ] },
         series: [{
-          type: 'map', map: 'world', roam: true, zoom: 1.15, center: [10, 20],
+          type: 'map', map: 'world', roam: 'move', zoom: 1.15, center: [10, 20],
           itemStyle: { areaColor: '#EEF2F4', borderColor: '#fff', borderWidth: 0.6 },
           emphasis: { label: { show: false }, itemStyle: { areaColor: AQUA } },
           select: { itemStyle: { areaColor: TEAL }, label: { show: false } },
@@ -8154,6 +8189,7 @@ class Component extends DCLogic {
       ...this.dupVals(s),
       ...this.dupRecVals(s),
       ...this.delOrderVals(s),
+      ...this.dsDelVals(s),
       ...this.cpmVals(s),
       ...this.omAssignVals(s),
       ...this.omRrVals(s),
@@ -8420,7 +8456,7 @@ class Component extends DCLogic {
         label: sec.title ? sec.title.toUpperCase() : '',
         items: sec.items.map(([k, label, icon]) => ({
           id: k, label,
-          icon: k === 'dashboard' ? 'dashboard' : k === 'orders' ? 'order-management' : icon.replace('bi bi-', ''),
+          icon: k === 'dashboard' ? 'dashboard' : k === 'orders' ? 'order-management' : (window.axNavIcon ? window.axNavIcon(icon.replace('bi bi-', '')) : icon.replace('bi bi-', '')),
           active: s.screen === k || (k === 'users' && s.screen === 'userDetail'),
         })),
       })),
@@ -13508,6 +13544,9 @@ pcPrint: () => window.print(),
       cpmMinus: () => this.setState({ cpm: { ...m, n: Math.max(1, n - 1) } }),
       cpmPlus: () => this.setState({ cpm: { ...m, n: Math.min(room, n + 1) } }),
       cpmMinusOff: n <= 1, cpmPlusOff: n >= room,
+      /* Shown as soon as the copy count reaches the 35-per-order cap. */
+      cpmAtLimit: n >= room,
+      cpmLimitText: n + (n === 1 ? ' copy' : ' copies') + ' will bring this order to the maximum of 35. To add more documents, create a new order.',
       cpmType: (ev) => { const v = parseInt(String(ev.target.value).replace(/\D/g, '').slice(0, 3), 10); this.setState({ cpm: { ...m, n: isNaN(v) ? 1 : Math.max(1, Math.min(room, v)) } }); },
       cpmCancel: () => this.setState({ cpm: null }),
       cpmGo: () => {
@@ -13518,6 +13557,37 @@ pcPrint: () => window.print(),
           return { cpm: null, dup: { ...st.dup, items: list, open: m.i + n } };
         });
         this.flash(n >= room ? 'Maximum of 35 orders reached. Uploaded files are not copied.' : 'Uploaded files are not copied.', n + (n === 1 ? ' copy created' : ' copies created'));
+      },
+    };
+  }
+  /* Document delete confirmation for the Duplicated Order and In-Person order pages
+     (one document from its trash icon, or several from the selection bar). */
+  dsDelVals(s) {
+    const m = s.dsDel;
+    if (!m || !s.dup) return { dsDelOpen: false };
+    const n = m.keys.length;
+    return {
+      dsDelOpen: true,
+      dsDelTitle: n === 1 ? 'Delete document?' : 'Delete ' + n + ' documents?',
+      dsDelText: 'The selected document' + (n === 1 ? '' : 's') + ' and any information entered will be removed. This can’t be undone.',
+      dsDelCancel: () => this.setState({ dsDel: null }),
+      dsDelGo: () => {
+        try {
+          /* Test hook: set window.__caFailDocDelete = true to see the error path. */
+          if (window.__caFailDocDelete) throw new Error('Simulated delete failure');
+          const items = (this.state.dup && this.state.dup.items) || [];
+          const drop = {}; m.keys.forEach((k) => { drop[k] = true; });
+          const list = items.filter((x) => !drop[x.key]);
+          if (!list.length || list.length === items.length) throw new Error('Nothing deleted');
+          const openKey = this.state.dup.open == null ? null : (items[this.state.dup.open] || {}).key;
+          const open = openKey != null && !drop[openKey] ? list.findIndex((x) => x.key === openKey) : null;
+          this.setState((st) => ({ dsDel: null, dsSel: {}, dup: { ...st.dup, items: list, open } }));
+          this.flash(n === 1 ? 'The document has been removed.' : n + ' documents have been removed.', '', null, 'success');
+          if (window.caAnnounce) window.caAnnounce(n === 1 ? 'The document has been removed.' : n + ' documents have been removed.');
+        } catch (err) {
+          this.setState({ dsDel: null });
+          this.flash('Something went wrong. Try again.', 'Couldn’t delete document', null, 'error');
+        }
       },
     };
   }
@@ -13658,6 +13728,12 @@ pcPrint: () => window.print(),
     const copy = !!dup.copy && !paid;
     const sx = this.streamOn();
     const cu = copy || (!!paid && this.copyOn());
+    /* Multi-select delete for the Duplicated Order page and the In-Person order page
+       (Order Overview from a QR code). Same pattern as Copy Order. Drop-Off (paid) orders
+       and mixed paid-online In-Person orders keep their documents. */
+    const dsOn = !copy && !mixOn && (!paid || !!paid.qr);
+    const dsSel = this.state.dsSel || {};
+    const dsCount = dup.items.length;
     const missingFor = (it) => {
       const dg = it.delivery === 'electronic' || it.delivery === 'both', pp = it.delivery !== 'electronic', m = [];
       if (blank(co.r.first) || blank(co.r.last) || blank(co.r.email)) m.push('Requestor information');
@@ -13686,7 +13762,17 @@ pcPrint: () => window.print(),
       const setDoc = (k) => (ev) => this.dupPatch(i, { doc: { ...it.doc, [k]: ev.target.value } });
       return {
         i, key: it.key, ...mixFields(i), copyMode: copy, missing: miss,
-        cpCbDisp: copy ? 'inline-flex' : 'none', cpSelOn: !!(this.state.cpSel || {})[it.key], cpToggleSel: () => this.setState((st) => ({ cpSel: { ...(st.cpSel || {}), [it.key]: !(st.cpSel || {})[it.key] } })),
+        cpCbDisp: copy || dsOn ? 'inline-flex' : 'none',
+        cpSelOn: copy ? !!(this.state.cpSel || {})[it.key] : !!dsSel[it.key],
+        cpToggleSel: copy
+          ? () => this.setState((st) => ({ cpSel: { ...(st.cpSel || {}), [it.key]: !(st.cpSel || {})[it.key] } }))
+          : () => this.setState((st) => ({ dsSel: { ...(st.dsSel || {}), [it.key]: !(st.dsSel || {})[it.key] } })),
+        dsCb: dsOn, dsSelOn: !!dsSel[it.key],
+        dsToggleSel: () => this.setState((st) => ({ dsSel: { ...(st.dsSel || {}), [it.key]: !(st.dsSel || {})[it.key] } })),
+        dsCbLabel: 'Select Document ' + (i + 1) + ' – ' + (descText || it.doc.type || 'Document'),
+        dsTrash: dsOn, dsDelOff: dsCount <= 1,
+        dsDelTip: dsCount <= 1 ? 'An order must have at least one document.' : 'Delete document',
+        dsDel: () => { if (dsCount <= 1) return; this.setState({ dsDel: { keys: [it.key] } }); },
         cpTitle: 'Document ' + (i + 1) + ' \u2022 ' + (descText || 'Document'),
         cpStatus: !cu ? '' : !copy ? (readiness === 'Upload Missing' ? 'Upload missing' : readiness === 'Information Missing' ? (digital ? 'Incomplete' : 'Missing Information') : 'Ready') : miss.filter((m) => m !== 'Documents not uploaded').length ? (digital ? 'Incomplete' : 'Missing Information') : (digital && !it.files.length) ? 'Upload missing' : 'Ready',
         cpCanCopy: !paid || (!!paid.qr && paid.status === 'Draft'),
@@ -13708,7 +13794,7 @@ pcPrint: () => window.print(),
           return r;
         })(),
         cpEdit: () => this.openEditOrder(0, { ...it, doc: it.doc.type, id: it.key, docObj: it.doc, filesObj: it.files || [] }, 'req', null),
-        cpCopy: () => { if (dup.items.length >= MAX) { return; } this.setState({ cpm: { i, n: 1 } }); },
+        cpCopy: () => { if (dup.items.length >= MAX) { this.flash('This order already has 35 orders, the maximum allowed. To add more, create a new order.', 'Order limit reached'); return; } this.setState({ cpm: { i, n: 1 } }); },
         fmtLabel: it.delivery === 'electronic' ? 'Digital' : 'Paper',
         fmtIcon: it.delivery === 'electronic' ? 'bi bi-cloud-check' : 'bi bi-file-earmark-text',
         fmtBg: it.delivery === 'electronic' ? '#F0F9FF' : '#FFFAEB',
@@ -13719,7 +13805,7 @@ pcPrint: () => window.print(),
         closed: dup.open !== i,
         chevron: dup.open === i ? 'bi bi-chevron-up' : 'bi bi-chevron-down',
         toggle: () => this.setState((st) => ({ dup: { ...st.dup, open: st.dup.open === i ? null : i } })),
-        canDelete: !paid || (!!paid.qr && paid.status === 'Draft' && dup.items.length > 1), uploadReq: !copy, uploadLater: copy, copyDisabled: dup.items.length >= MAX,
+        canDelete: !dsOn && (!paid || (!!paid.qr && paid.status === 'Draft' && dup.items.length > 1)), uploadReq: !copy, uploadLater: copy, copyDisabled: dup.items.length >= MAX,
         editIt: () => this.setState((st) => ({ dup: { ...st.dup, open: i } })),
         copyIt: () => {
           if (dup.items.length >= MAX) { return; }
@@ -13876,6 +13962,17 @@ pcPrint: () => window.print(),
     return {
       dupOpen: !cu,
       dupItems: items,
+      ...(() => {
+        const keys = items.map((x) => x.key).filter((k) => dsSel[k]), n = keys.length, all = n > 0 && n === items.length;
+        return {
+          dsBarOn: dsOn && n > 0, dsSelCount: n, dsSelNoun: n === 1 ? 'document selected' : 'documents selected',
+          dsAllSel: all, dsSomeSel: n > 0 && !all, dsAllPicked: dsOn && all,
+          dsDelLabel: 'Delete (' + n + ')',
+          dsSelAll: () => this.setState({ dsSel: all ? {} : items.reduce((o, x) => { o[x.key] = true; return o; }, {}) }),
+          dsClear: () => this.setState({ dsSel: {} }),
+          dsAskSel: () => { if (!n || all) return; this.setState({ dsDel: { keys } }); },
+        };
+      })(),
       dupPaid: !!paid, dupPaidNotCopy: !!paid && !copy,
       dupNotPaid: !paid, dupLegacyBar: !paid && !copy, dupCopyBar: copy, dupPaidCopyOn: !!paid && this.copyOn(),
       cpDigitalN: items.filter((x) => x.cpFmt !== 'Paper').length, cpPaperN: items.filter((x) => x.cpFmt === 'Paper').length, ...(() => {
@@ -14298,7 +14395,7 @@ pcPrint: () => window.print(),
       eoiOpen: true,
       eoiShowTabs: !e.only,
       eoiMissAny: false, eoiMissList: [],
-      eoiBnCore: cpyMode && !roOn && (!!tabErr.order || !!tabErr.req),
+      eoiBnCore: cpyMode && !roOn && !(s.dup && s.dup.paid && s.dup.paid.qr) && (!!tabErr.order || !!tabErr.req),
       eoiBnCoreText: [tabErr.order ? 'Order Information' : '', tabErr.req ? 'Requestor Information' : ''].filter(Boolean).join(' and ') + ' must be completed — pricing and processing can\u2019t be determined without ' + (tabErr.order && tabErr.req ? 'them' : 'it') + '.',
       eoiGoCore: () => this.eoiPatch({ tab: tabErr.order ? 'order' : 'req', removing: false }),
       eoiMailSrc: e.mailSrc || '', eoiMailSrcOpts: mailSrcOpts, eoiSetMailSrc: setMailSrc,
@@ -14307,12 +14404,13 @@ pcPrint: () => window.print(),
       eoiDismissUpload: () => this.eoiPatch({ dis: { ...(e.dis || {}), upload: true } }), eoiDismissMail: () => this.eoiPatch({ dis: { ...(e.dis || {}), mail: true } }),
       eoiGoDoc: () => this.eoiPatch({ tab: 'doc', removing: false }), eoiGoMail: () => this.eoiPatch({ tab: 'mail', removing: false }),
       eoiFileErr: cpyMode && !!tabErr.upload, eoiMailErr: cpyMode && !!tabErr.mail,
-      eoiRODisp: (cpyMode && !!(s.dup && s.dup.paid) && !(s.dup.paid.qr && s.dup.paid.status === 'Draft')) ? 'none' : 'block',
+      /* In-Person (QR) orders aren't paid yet, so Order Information stays fully editable there — no lock, no read-only summary. */
+      eoiRODisp: (cpyMode && !!(s.dup && s.dup.paid && !s.dup.paid.qr)) ? 'none' : 'block',
       eoiROList: orderFields.concat(d.oi.request === 'Adoption Documents' ? [{ label: 'Adoption Agency', value: d.oi.agency || '' }] : []).map((f, k) => {
         const o = (f.options || []).filter((x) => x.v === f.value)[0];
         return { label: f.label, value: (o && o.v !== '' ? o.label : f.value) || '—', bd: k ? 'var(--ax-border-width) solid var(--ax-gray-200)' : 'none' };
       }),
-      eoiRO: cpyMode && !!(s.dup && s.dup.paid), eoiROMsg: (cpyMode && !!(s.dup && s.dup.paid) && !(s.dup.paid.qr && s.dup.paid.status === 'Draft')) ? 'Order information can’t be changed on an order that is awaiting finalization. You can still complete the missing requestor, customer, document, recipient and mailing details.' : 'Order information is set when the order is created and can’t be edited here. You can still complete the requestor, customer, document, recipient and mailing details.', eoiROInert: undefined, eoiROOpacity: '1',
+      eoiRO: cpyMode && !!(s.dup && s.dup.paid && !s.dup.paid.qr), eoiROMsg: (cpyMode && !!(s.dup && s.dup.paid) && !(s.dup.paid.qr && s.dup.paid.status === 'Draft')) ? 'Order information can’t be changed on an order that is awaiting finalization. You can still complete the missing requestor, customer, document, recipient and mailing details.' : 'Order information is set when the order is created and can’t be edited here. You can still complete the requestor, customer, document, recipient and mailing details.', eoiROInert: undefined, eoiROOpacity: '1',
       eoiCopy: cpyMode && !!(s.dup && s.dup.copy), eoiUpReq: !cpyMode, eoiCancelVar: cpyMode ? 'tertiary' : 'secondary',
       eoiW: cpyMode ? '45rem' : 'min(50vw,65rem)', eoiMinW: cpyMode ? 'min(100vw,26.25rem)' : 'min(100vw,35rem)',
       eoiHeadBg: cpyMode ? '#fff' : '#F8F9FA',
@@ -14442,7 +14540,10 @@ pcPrint: () => window.print(),
       })),
 
       eoiDirty: dirty,
-      eoiSaveDisabled: cpyMode ? (() => { let b = {}; try { b = (JSON.parse(e.base) || {}).oi || {}; } catch (x) {} const o = d.oi || {}, ch = ['request', 'delivery', 'fulfillment', 'service'].some((k) => (o[k] || '') !== (b[k] || '')); if (!ch) return false; const em = (v) => !String(v || '').trim(); return em(o.request) || em(o.delivery) || em(o.service) || (o.delivery !== 'electronic' && em(o.fulfillment)); })() : !dirty,
+      /* Drop-Off orders only (paid, not from a QR appointment): Save stays disabled until every required
+         detail is complete. In-Person orders can still save partial progress. */
+      eoiSaveHint: (cpyMode && !!(s.dup && s.dup.paid && !s.dup.paid.qr) && (cpMissL.length > 0 || !!tabErr.upload)) ? 'Complete all required information to save.' : '',
+      eoiSaveDisabled: (cpyMode && !!(s.dup && s.dup.paid && !s.dup.paid.qr) && (cpMissL.length > 0 || !!tabErr.upload)) || (cpyMode ? (() => { let b = {}; try { b = (JSON.parse(e.base) || {}).oi || {}; } catch (x) {} const o = d.oi || {}, ch = ['request', 'delivery', 'fulfillment', 'service'].some((k) => (o[k] || '') !== (b[k] || '')); if (!ch) return false; const em = (v) => !String(v || '').trim(); return em(o.request) || em(o.delivery) || em(o.service) || (o.delivery !== 'electronic' && em(o.fulfillment)); })() : !dirty),
       eoiHasError: !!e.submitted && problems.length > 0,
       eoiErrorText: 'Complete the required fields before saving: ' + problems.map((p) => p.label).join('; ') + '.',
       eoiClose: close,

@@ -3090,7 +3090,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
           </div>
           <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="height:5.5rem"></div></sc-if>
           <div style="position:sticky;bottom:0.75rem;z-index:60;margin-top:var(--ax-space-6)">
-            <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--ax-space-3) var(--ax-space-4);padding:0.875rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)"><span role="status" aria-live="polite" style="font-size:1.125rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
+            <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:var(--ax-space-2)"><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</div></sc-if><sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div role="region" aria-label="Document selection" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--ax-space-3) var(--ax-space-4);padding:0.875rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)"><div style="display:flex;align-items:center;gap:var(--ax-space-8)"><span role="status" aria-live="polite" style="font-size:1.125rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsSelAll }}" hint-size="auto,40px">{{ dsSelAllLabel }}</x-import></div><div style="display:flex;align-items:center;gap:var(--ax-space-6)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div></div></sc-if></div>
             <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:var(--ax-space-2);display:flex;flex-direction:column;gap:var(--ax-space-2)">
             <sc-if value="{{ cpAtMax }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>Maximum of 35 orders reached.</div></sc-if>
             <sc-if value="{{ cpHasSel }}" hint-placeholder-val="{{ false }}">
@@ -3188,7 +3188,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
 
           <sc-if value="{{ sxBar }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--ax-space-3) var(--ax-space-6);padding:1.125rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:var(--ax-shadow-xs),0 0 0 0.0625rem var(--ax-gray-200)">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: var(--ax-space-3) var(--ax-space-6); padding: 1.125rem var(--ax-space-5); border-radius: 0.5rem; background: #fff; box-shadow: var(--ax-shadow-xs),0 0 0 0.0625rem var(--ax-gray-200)">
             <div style="display:flex;flex-direction:column;gap:var(--ax-space-1-5)">
               <span style="font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary)">Orders being added</span>
               <span style="font-size:0.8438rem;color:var(--ax-text-tertiary)"><b style="font-weight:600;color:var(--ax-text-secondary)">{{ sxReadyCount }} of {{ cpTotal }}</b> ready · each copy needs its own uploaded document</span>
@@ -3201,7 +3201,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
           </div>
           </sc-if>
 
-          <section class="co-card" style="display:flex;flex-direction:column">
+          <section class="co-card" style="display: flex; flex-direction: column; border-radius: 0.5rem">
             <div style="flex-shrink:0;padding:1.125rem 1.125rem var(--ax-space-4);border-bottom:var(--ax-border-width) solid var(--ax-gray-200)">
               <h2 style="margin:0;font-size:1.0625rem;font-weight:600;color:var(--ax-text-primary)">Document &amp; Order Details</h2>
               <p style="margin:var(--ax-space-1) 0 0;font-size:0.8438rem;color:var(--ax-text-secondary)">{{ dupCardNote }}</p>
@@ -3453,7 +3453,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
 
           <sc-if value="{{ dupPaid }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--ax-space-3) var(--ax-space-4);position:sticky;bottom:0.75rem;z-index:30;margin-bottom:0.75rem;padding:var(--ax-space-3) var(--ax-space-5);border-radius:var(--ax-radius-xl);background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(0.75rem);backdrop-filter:blur(0.75rem);box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)">
-              <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ax-space-3) var(--ax-space-4); padding: 0.875rem var(--ax-space-5); border-radius: var(--ax-radius-xl); background: #fff; box-shadow: 0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12); flex-direction: row"><span role="status" aria-live="polite" style="font-size: 0.88rem; color: #212529"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
+              <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:var(--ax-space-2)"><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</div></sc-if><sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div role="region" aria-label="Document selection" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ax-space-3) var(--ax-space-4); padding: 0.875rem var(--ax-space-5); border-radius: var(--ax-radius-xl); background: #fff; box-shadow: 0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12); flex-direction: row"><div style="display:flex;align-items:center;gap:var(--ax-space-8)"><span role="status" aria-live="polite" style="font-size: 0.88rem; color: #212529"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsSelAll }}" hint-size="auto,40px">{{ dsSelAllLabel }}</x-import></div><div style="display:flex;align-items:center;gap:var(--ax-space-6)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div></div></sc-if></div>
               <span style="font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty">{{ dupPaidProgress }}</span>
 <sc-if value="{{ dupNotQr }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ dupBlocked }}" onClick="{{ dupFinalize }}" hint-size="auto,40px">Finalize Order</x-import></sc-if><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ dupCheckout }}" hint-size="auto,40px">Checkout</x-import></div></sc-if>
             </div>
@@ -3484,13 +3484,14 @@ a:hover{color:#00B6BD;text-decoration:underline}
           </sc-if>
 
           <sc-if value="{{ dupLegacyBar }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: var(--ax-space-3); padding: 1rem 1.25rem; margin-bottom: .75rem; position: sticky; bottom: .75rem; z-index: 30; background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(0.75rem); backdrop-filter: blur(0.75rem); border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: .5rem; box-shadow: var(--ax-shadow-lg)">
-            <sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem"><div role="region" aria-label="Document selection" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--ax-space-3) var(--ax-space-4);padding:0.875rem var(--ax-space-5);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)"><span role="status" aria-live="polite" style="font-size:1.125rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><div style="display:flex;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex-basis:100%;display:flex;align-items:center;gap:var(--ax-space-2);margin:0;font-size:var(--ax-text-sm);color:#B42318"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</p></sc-if></div></div></sc-if>
+          <div style="display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: var(--ax-space-3); padding: 1rem 1.25rem; margin-bottom: .75rem; position: sticky; bottom: .75rem; z-index: 30; border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: .5rem; box-shadow: var(--ax-shadow-lg)">
+            <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(0.75rem);backdrop-filter:blur(0.75rem);pointer-events:none"></div>
+            <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1rem;display:flex;flex-direction:column;gap:var(--ax-space-2)"><sc-if value="{{ dupAtMax }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>Maximum of 35 orders reached.</div></sc-if><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</div></sc-if><sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div role="region" aria-label="Document selection" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ax-space-3) var(--ax-space-4); padding: 1rem 1.25rem; background: rgba(255,255,255,.85); -webkit-backdrop-filter: blur(0.75rem); backdrop-filter: blur(0.75rem); border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: .5rem; box-shadow: var(--ax-shadow-lg)"><div style="display:flex;align-items:center;gap:var(--ax-space-8)"><span role="status" aria-live="polite" style="font-size:1rem;color:var(--ax-text-secondary)"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsSelAll }}" hint-size="auto,40px">{{ dsSelAllLabel }}</x-import></div><div style="display:flex;align-items:center;gap:var(--ax-space-6)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div></div></sc-if></div>
             <div style="display:flex;flex-direction:column;gap:var(--ax-space-2)">
               <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.625rem">
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ dupPrevious }}" hint-size="auto,40px">Previous</x-import>
                 <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" leading-icon="{{ iconPlus }}" onClick="{{ dupSaveNew }}" hint-size="auto,40px">Save &amp; New</x-import>
-                <div style="display:flex;flex-direction:column;align-items:flex-start;gap:var(--ax-space-1-5)"><button type="button" onClick="{{ dupSaveDuplicate }}" disabled="{{ dupAddDisabled }}" style="display:inline-flex;align-items:center;gap:0.625rem;height:2.5rem;padding:0 var(--ax-space-4);border:var(--ax-border-width) solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;box-shadow:var(--ax-shadow-xs);font-family:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary);cursor:pointer" style-hover="background:var(--ax-gray-50)" style-disabled="color:var(--ax-text-tertiary);background:var(--ax-gray-50);cursor:not-allowed">Save &amp; Duplicate<span style="padding:var(--ax-space-0-5) var(--ax-space-2);border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-sm);font-size:0.7813rem;font-weight:600;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ dupCountLabel }}</span></button><span style="font-size:0.8125rem;color:{{ dupMaxColor }}">{{ dupMaxNote }}</span></div>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;gap:var(--ax-space-1-5)"><button type="button" onClick="{{ dupSaveDuplicate }}" disabled="{{ dupAddDisabled }}" style="display:inline-flex;align-items:center;gap:0.625rem;height:2.5rem;padding:0 var(--ax-space-4);border:var(--ax-border-width) solid var(--ax-gray-300);border-radius:var(--ax-radius-md);background:#fff;box-shadow:var(--ax-shadow-xs);font-family:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-primary);cursor:pointer" style-hover="background:var(--ax-gray-50)" style-disabled="color:var(--ax-text-tertiary);background:var(--ax-gray-50);cursor:not-allowed">Save &amp; Duplicate<span style="padding:var(--ax-space-0-5) var(--ax-space-2);border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-sm);font-size:0.7813rem;font-weight:600;color:var(--ax-text-secondary);font-variant-numeric:tabular-nums">{{ dupCountLabel }}</span></button></div>
                 </div>
             </div>
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-4)">
@@ -5476,8 +5477,8 @@ a:hover{color:#00B6BD;text-decoration:underline}
     <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Modal" open="{{ true }}" onClose="{{ dsDelCancel }}" title="{{ dsDelTitle }}" width="25rem" hint-size="100%,100%">
       {{ dsDelText }}
       <div style="display:flex;justify-content:flex-end;gap:0.625rem;margin:var(--ax-space-4) -1.5rem -1.25rem;padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-border-subtle);background:var(--ax-gray-25)">
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" onClick="{{ dsDelCancel }}" hint-size="auto,40px">Keep Editing</x-import>
-          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" onClick="{{ dsDelGo }}" hint-size="auto,40px">Delete</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" disabled="{{ dsDelBusy }}" onClick="{{ dsDelCancel }}" hint-size="auto,40px">Keep Editing</x-import>
+          <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" loading="{{ dsDelBusy }}" aria-busy="{{ dsDelBusy }}" onClick="{{ dsDelGo }}" hint-size="auto,40px">{{ dsDelBtnLabel }}</x-import>
       </div>
     </x-import>
   </sc-if>
@@ -13568,16 +13569,33 @@ pcPrint: () => window.print(),
     return {
       dsDelOpen: true,
       dsDelTitle: n === 1 ? 'Delete order?' : 'Delete ' + n + ' orders?',
-      dsDelText: (n === 1 ? 'You’re about to delete this order.' : 'You’re about to delete these ' + n + ' orders.') + ' Any information you’ve entered so far will be lost. Are you sure you want to delete?',
-      dsDelCancel: () => this.setState({ dsDel: null }),
+      dsDelText: m.all && !s.dup.paid
+        ? (n === 1 ? 'You’re about to delete this order.' : 'You’re about to delete all ' + n + ' orders.') + ' You’ll go back to Create Order, where you left off. Are you sure you want to delete?'
+        : (n === 1 ? 'You’re about to delete this order.' : 'You’re about to delete these ' + n + ' orders.') + ' Any information you’ve entered so far will be lost. Are you sure you want to delete?',
+      dsDelBusy: !!m.busy,
+      dsDelBtnLabel: m.busy ? 'Deleting…' : 'Delete',
+      dsDelCancel: () => { if (this.state.dsDel && this.state.dsDel.busy) return; this.setState({ dsDel: null }); },
       dsDelGo: () => {
+        if (this.state.dsDel && this.state.dsDel.busy) return;
+        /* Loading state: the Delete button shows a spinner while the delete runs. */
+        this.setState((st) => ({ dsDel: st.dsDel ? { ...st.dsDel, busy: true } : st.dsDel }));
+        setTimeout(() => {
+        if (!this.state.dsDel) return;
         try {
           /* Test hook: set window.__caFailDocDelete = true to see the error path. */
           if (window.__caFailDocDelete) throw new Error('Simulated delete failure');
           const items = (this.state.dup && this.state.dup.items) || [];
           const drop = {}; m.keys.forEach((k) => { drop[k] = true; });
           const list = items.filter((x) => !drop[x.key]);
-          if (!list.length || list.length === items.length) throw new Error('Nothing deleted');
+          if (list.length === items.length) throw new Error('Nothing deleted');
+          if (!list.length) {
+            /* Every order deleted on the Duplicated Order page: back to Create Order, form as the user left it. */
+            if (this.state.dup.paid) throw new Error('An order must keep one document');
+            this.setState((st) => ({ dsDel: null, dsSel: {}, dup: null, pay: { ...st.pay, stage: 'info' } }));
+            this.flash(n === 1 ? 'The order has been removed.' : 'All ' + n + ' orders have been removed.', '', null, 'success');
+            if (window.caAnnounce) window.caAnnounce('All orders removed. Back on Create Order.');
+            return;
+          }
           const openKey = this.state.dup.open == null ? null : (items[this.state.dup.open] || {}).key;
           const open = openKey != null && !drop[openKey] ? list.findIndex((x) => x.key === openKey) : null;
           this.setState((st) => ({ dsDel: null, dsSel: {}, dup: { ...st.dup, items: list, open } }));
@@ -13587,6 +13605,7 @@ pcPrint: () => window.print(),
           this.setState({ dsDel: null });
           this.flash('Something went wrong. Try again.', 'Couldn’t delete document', null, 'error');
         }
+        }, 900);
       },
     };
   }
@@ -13769,9 +13788,9 @@ pcPrint: () => window.print(),
         dsCb: dsOn, dsSelOn: !!dsSel[it.key],
         dsToggleSel: () => this.setState((st) => ({ dsSel: { ...(st.dsSel || {}), [it.key]: !(st.dsSel || {})[it.key] } })),
         dsCbLabel: 'Select Document ' + (i + 1) + ' – ' + (descText || it.doc.type || 'Document'),
-        dsTrash: dsOn, dsDelOff: dsCount <= 1,
-        dsDelTip: dsCount <= 1 ? 'An order must have at least one document.' : 'Delete document',
-        dsDel: () => { if (dsCount <= 1) return; this.setState({ dsDel: { keys: [it.key] } }); },
+        dsTrash: dsOn, dsDelOff: dsCount <= 1 && !!paid,
+        dsDelTip: dsCount <= 1 && paid ? 'An order must have at least one document.' : 'Delete document',
+        dsDel: () => { if (dsCount <= 1 && paid) return; this.setState({ dsDel: { keys: [it.key], all: dsCount <= 1 } }); },
         cpTitle: 'Document ' + (i + 1) + ' \u2022 ' + (descText || 'Document'),
         cpStatus: !cu ? '' : !copy ? (readiness === 'Upload Missing' ? 'Upload missing' : readiness === 'Information Missing' ? (digital ? 'Incomplete' : 'Missing Information') : 'Ready') : miss.filter((m) => m !== 'Documents not uploaded').length ? (digital ? 'Incomplete' : 'Missing Information') : (digital && !it.files.length) ? 'Upload missing' : 'Ready',
         cpCanCopy: !paid || (!!paid.qr && paid.status === 'Draft'),
@@ -13965,11 +13984,15 @@ pcPrint: () => window.print(),
         const keys = items.map((x) => x.key).filter((k) => dsSel[k]), n = keys.length, all = n > 0 && n === items.length;
         return {
           dsBarOn: dsOn && n > 0, dsSelCount: n, dsSelNoun: n === 1 ? 'document selected' : 'documents selected',
-          dsAllSel: all, dsSomeSel: n > 0 && !all, dsAllPicked: dsOn && all,
+          /* Duplicated Order (not yet paid): every document can be deleted, which returns to Create Order.
+             In-Person orders from a QR code (paid) must keep at least one document. */
+          dsAllSel: all, dsSomeSel: n > 0 && !all, dsAllPicked: dsOn && all && !!paid,
           dsDelLabel: 'Delete (' + n + ')',
           dsSelAll: () => this.setState({ dsSel: all ? {} : items.reduce((o, x) => { o[x.key] = true; return o; }, {}) }),
+          dsSelectAll: () => this.setState({ dsSel: items.reduce((o, x) => { o[x.key] = true; return o; }, {}) }),
+          dsSelAllLabel: all ? 'Deselect all' : 'Select all',
           dsClear: () => this.setState({ dsSel: {} }),
-          dsAskSel: () => { if (!n || all) return; this.setState({ dsDel: { keys } }); },
+          dsAskSel: () => { if (!n || (all && paid)) return; this.setState({ dsDel: { keys, all } }); },
         };
       })(),
       dupPaid: !!paid, dupPaidNotCopy: !!paid && !copy,
@@ -14114,6 +14137,7 @@ pcPrint: () => window.print(),
           })),
         }), () => this.flash('Your progress is saved. This order stays in Paid Drafts until it is finalized.', 'Draft saved', null, 'success'));
       },
+      dupAtMax: atMax,
       dupCountLabel: items.length + '/' + MAX, dupMaxColor: atMax ? '#B42318' : 'var(--ax-text-tertiary)',
       dupMaxNote: atMax ? 'Maximum of ' + MAX + ' orders reached.' : (bothSrc ? 'A paper copy of each digital order is added automatically at payment. ' : '') + 'Maximum of ' + MAX + ' orders per session.',
       dupFileRef: (el) => { this.dupFileEl = el; },

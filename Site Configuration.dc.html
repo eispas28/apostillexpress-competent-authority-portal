@@ -826,6 +826,40 @@ class Component extends DCLogic {
     };
   }
 
+  /* ---------- deep links ----------
+     Each section and User Configuration tab has its own hash. Standalone, Locations keeps the
+     plain URL (#/service-types, …); embedded in CA Dashboard the same names sit under #/site. */
+  siteBase() { return this.props.embedded === true ? '/site' : ''; }
+  siteRoute() {
+    const SLUG = { services: 'service-types', certTypes: 'certificate-types', certInfo: 'certificate-information', system: 'system-settings', regulatory: 'regulatory-settings', notifications: 'customer-notifications' };
+    const TAB = { titles: 'job-titles', divisions: 'divisions', templates: 'user-templates' };
+    const s = this.state, b = this.siteBase();
+    if (s.section === 'user') return TAB[s.userTab] ? b + '/' + TAB[s.userTab] : b;
+    return SLUG[s.section] ? b + '/' + SLUG[s.section] : b;
+  }
+  siteFromHash() {
+    const h = String(window.location.hash || '').replace(/^#/, ''), b = this.siteBase();
+    if (b && h.indexOf(b) !== 0) return null;
+    const slug = h.slice(b.length).replace(/^\//, '');
+    const SEC = { 'service-types': 'services', 'certificate-types': 'certTypes', 'certificate-information': 'certInfo', 'system-settings': 'system', 'regulatory-settings': 'regulatory', 'customer-notifications': 'notifications' };
+    const TAB = { 'job-titles': 'titles', 'divisions': 'divisions', 'user-templates': 'templates' };
+    if (SEC[slug]) return { section: SEC[slug], menu: null, banner: null };
+    return { section: 'user', userTab: TAB[slug] || 'locations', menu: null, banner: null };
+  }
+  componentDidMount() {
+    const go = () => { const p = this.siteFromHash(); if (p) { this._lock = true; this.setState(p, () => { this._lock = false; }); } };
+    if (window.location.hash) go();
+    this._onPop = go;
+    window.addEventListener('popstate', this._onPop);
+  }
+  componentDidUpdate() {
+    if (this._lock) return;
+    const r = this.siteRoute(), want = r ? '#' + r : '';
+    if ((window.location.hash || '') === want) return;
+    try { history.pushState(null, '', want || (window.location.pathname + window.location.search)); } catch (e) {}
+  }
+  componentWillUnmount() { window.removeEventListener('popstate', this._onPop); }
+
   /* ---------- helpers ---------- */
   flash(msg, title, action) {
     this.setState({ toast: msg, toastTitle: title || '', toastActionDef: action || null });

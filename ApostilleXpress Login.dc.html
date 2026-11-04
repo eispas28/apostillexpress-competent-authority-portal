@@ -228,10 +228,34 @@ a:hover{color:#00B0BE;text-decoration:underline}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showSso&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sign-in options&quot;},&quot;accountNotFound&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;},&quot;wrongCredentials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;},&quot;mfaCodeIncorrect&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;},&quot;resetLinkFails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;},&quot;codeMismatch&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;},&quot;changeFails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Error states&quot;}}">
+/* Deep-link hash for each sign-in step (the email step keeps the plain URL). */
+const LOGIN_ROUTES = { email: '', password: '/password', forgot: '/forgot-password', code: '/verification-code', change: '/new-password' };
 class Component extends DCLogic {
   state = { step: 'email', email: '', password: '', showPw: false, emailInvalid: false, pwInvalid: false, formError: '', loading: false,
             code: '', codeInvalid: false, newPw: '', confirmPw: '', showNewPw: false, showConfirmPw: false, mismatch: false };
-  componentWillUnmount() { clearTimeout(this._t); }
+  componentWillUnmount() { clearTimeout(this._t); window.removeEventListener('popstate', this._onPop); }
+
+  /* Deep links: each sign-in step has its own hash (#/password, #/forgot-password, …);
+     the email step keeps the plain URL. Back/Forward move between steps. */
+  stepFromHash(h) {
+    const path = String(h || '').replace(/^#/, '');
+    const step = Object.keys(LOGIN_ROUTES).filter((k) => LOGIN_ROUTES[k] && LOGIN_ROUTES[k] === path)[0] || 'email';
+    const sample = step === 'email' ? {} : { email: 'j.smith@delmarva.gov' };
+    return { step, ...sample, password: '', code: '', newPw: '', confirmPw: '', formError: '', emailInvalid: false, pwInvalid: false, codeInvalid: false, mismatch: false, loading: false };
+  }
+  componentDidMount() {
+    if (window.location.hash) { this._lock = true; this.setState(this.stepFromHash(window.location.hash), () => { this._lock = false; }); }
+    this._onPop = () => { this._lock = true; this.setState(this.stepFromHash(window.location.hash), () => { this._lock = false; }); };
+    window.addEventListener('popstate', this._onPop);
+  }
+  componentDidUpdate() {
+    if (this._lock) return;
+    const r = LOGIN_ROUTES[this.state.step];
+    if (r == null) return;
+    const want = r ? '#' + r : '';
+    if ((window.location.hash || '') === want) return;
+    try { history.pushState(null, '', want || (window.location.pathname + window.location.search)); } catch (e) {}
+  }
 
   renderVals() {
     const s = this.state;

@@ -5543,6 +5543,15 @@ a:hover{color:#00B6BD;text-decoration:underline}
             <p role="alert" style="display:flex;align-items:flex-start;gap:var(--ax-space-2);margin:0 0 var(--ax-space-4);padding:0.6875rem 0.875rem;border:var(--ax-border-width) solid #F1AEB5;border-radius:var(--ax-radius-md);background:#FEF3F2;font-size:0.8438rem;line-height:1.5;color:#B4231C;text-wrap:pretty"><i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="margin-top:var(--ax-space-0-5);flex-shrink:0"></i>{{ eoiErrorText }}</p>
           </sc-if>
 
+          <sc-if value="{{ eoiBnFees }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="display:flex;gap:var(--ax-space-3);margin-bottom:var(--ax-space-4);padding:var(--ax-space-4) var(--ax-space-5);border:var(--ax-border-width) solid #F5DE9B;border-radius:var(--ax-radius-lg);background:#FDF3D0">
+              <i class="bi bi-exclamation-triangle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:0.125rem;font-size:var(--ax-text-lg);color:#8A6A00"></i>
+              <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);min-width:0">
+                <div style="font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary)">Fees may change.</div>
+                <div style="font-size:var(--ax-text-sm);line-height:1.45;color:var(--ax-text-secondary);text-wrap:pretty">Changing the delivery method can change this order’s fees. Totals update when you save.</div>
+              </div>
+            </div>
+          </sc-if>
           <sc-if value="{{ eoiBnCore }}" hint-placeholder-val="{{ false }}">
             <div role="alert" style="display:flex;gap:var(--ax-space-4);margin-bottom:var(--ax-space-4);padding:var(--ax-space-5);border:var(--ax-border-width) solid #FECDCA;border-radius:var(--ax-radius-xl);background:#FEF3F2;box-shadow:var(--ax-shadow-xs)">
               <i class="bi bi-exclamation-circle-fill" aria-hidden="true" style="flex-shrink:0;margin-top:var(--ax-space-0-5);font-size:var(--ax-text-xl);color:#D92D20"></i>
@@ -14543,6 +14552,8 @@ pcPrint: () => window.print(),
       eoiBnCoreText: [tabErr.order ? 'Order Information' : '', tabErr.req ? 'Requestor Information' : ''].filter(Boolean).join(' and ') + ' must be completed — pricing and processing can\u2019t be determined without ' + (tabErr.order && tabErr.req ? 'them' : 'it') + '.',
       eoiGoCore: () => this.eoiPatch({ tab: tabErr.order ? 'order' : 'req', removing: false }),
       eoiMailSrc: e.mailSrc || '', eoiMailSrcOpts: mailSrcOpts, eoiSetMailSrc: setMailSrc,
+      /* Duplicated Order edit: warn about fees once the delivery method differs from what the order had when opened. */
+      eoiBnFees: cpyMode && tab === 'order' && (() => { try { return ((JSON.parse(e.base || '{}').oi || {}).delivery || '') !== ((d.oi || {}).delivery || ''); } catch (err) { return false; } })(),
       eoiBnDoc: cpyMode && (!!tabErr.docInfo || !!tabErr.upload) && tab !== 'doc' && !(e.dis && e.dis.doc), eoiBnDocText: tabErr.docInfo && tabErr.upload ? 'Add the document type, description, destination country and uploaded file before you can continue.' : tabErr.upload ? 'Digital (e-Apostille) orders need their own uploaded document before you can continue.' : 'Add the document type, description and destination country before you can continue.', eoiBnUpload: false, eoiBnMail: cpyMode && !!tabErr.mail && tab !== 'mail' && !(e.dis && e.dis.mail),
       eoiDismissDoc: () => this.eoiPatch({ dis: { ...(e.dis || {}), doc: true } }),
       eoiDismissUpload: () => this.eoiPatch({ dis: { ...(e.dis || {}), upload: true } }), eoiDismissMail: () => this.eoiPatch({ dis: { ...(e.dis || {}), mail: true } }),

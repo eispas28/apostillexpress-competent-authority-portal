@@ -5590,7 +5590,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
               <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);min-width:0">
                 <div style="font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary)">Mailing address needed</div>
                 <div style="font-size:var(--ax-text-sm);line-height:1.45;color:var(--ax-text-secondary);text-wrap:pretty">Traditional Delivery includes a paper apostille, so we need an address to mail it to.</div>
-                <div style="display:flex;gap:var(--ax-space-4);margin-top:0.625rem"><button type="button" onClick="{{ eoiDismissMail }}" style="padding:0;border:none;background:none;font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-secondary);cursor:pointer">Dismiss</button><button type="button" onClick="{{ eoiGoMail }}" style="padding:0;border:none;background:none;font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Add mailing info</button></div>
+                <div style="display:flex;gap:var(--ax-space-4);margin-top:0.625rem"><button type="button" onClick="{{ eoiDismissMail }}" style="padding:0;border:none;background:none;font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-text-secondary);cursor:pointer">Dismiss</button><button type="button" onClick="{{ eoiGoMail }}" style="padding:0;border:none;background:none;font:inherit;font-size:var(--ax-text-sm);font-weight:600;color:var(--ax-sea-depths);cursor:pointer">Add Mailing info</button></div>
               </div>
               <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.CloseButton" label="Dismiss" onClick="{{ eoiDismissMail }}" style="position:absolute;top:0.875rem;right:0.875rem" hint-size="32px,32px"></x-import>
             </div>
@@ -13722,14 +13722,14 @@ pcPrint: () => window.print(),
             /* Every order deleted on the Duplicated Order page: back to Create Order, form as the user left it. */
             if (this.state.dup.paid) throw new Error('An order must keep one document');
             this.setState((st) => ({ dsDel: null, dsSel: {}, dup: null, pay: { ...st.pay, stage: 'info' } }));
-            this.flash(n === 1 ? 'The order has been removed.' : 'All ' + n + ' orders have been removed.', '', null, 'success');
+            this.flash(n === 1 ? 'The order has been removed.' : 'All ' + n + ' orders have been removed.', n === 1 ? 'Order removed' : 'Orders removed', null, 'success');
             if (window.caAnnounce) window.caAnnounce('All orders removed. Back on Create Order.');
             return;
           }
           const openKey = this.state.dup.open == null ? null : (items[this.state.dup.open] || {}).key;
           const open = openKey != null && !drop[openKey] ? list.findIndex((x) => x.key === openKey) : null;
           this.setState((st) => ({ dsDel: null, dsSel: {}, dup: { ...st.dup, items: list, open } }));
-          this.flash(n === 1 ? 'The document has been removed.' : n + ' documents have been removed.', '', null, 'success');
+          this.flash(n === 1 ? 'The document has been removed.' : n + ' documents have been removed.', n === 1 ? 'Document removed' : 'Documents removed', null, 'success');
           if (window.caAnnounce) window.caAnnounce(n === 1 ? 'The document has been removed.' : n + ' documents have been removed.');
         } catch (err) {
           this.setState({ dsDel: null });
@@ -13918,9 +13918,10 @@ pcPrint: () => window.print(),
         dsCb: dsOn, dsSelOn: !!dsSel[it.key],
         dsToggleSel: () => this.setState((st) => ({ dsSel: { ...(st.dsSel || {}), [it.key]: !(st.dsSel || {})[it.key] } })),
         dsCbLabel: 'Select Document ' + (i + 1) + ' – ' + (descText || it.doc.type || 'Document'),
-        dsTrash: dsOn, dsDelOff: dsCount <= 1 && !!paid,
-        dsDelTip: dsCount <= 1 && paid ? 'An order must have at least one document.' : 'Delete',
-        dsDel: () => { if (dsCount <= 1 && paid) return; this.setState({ dsDel: { keys: [it.key], all: dsCount <= 1 } }); },
+        /* While documents are selected, the row trash is off: delete from the selection bar instead. */
+        dsTrash: dsOn, dsDelOff: (dsCount <= 1 && !!paid) || dup.items.some((x) => dsSel[x.key]),
+        dsDelTip: dsCount <= 1 && paid ? 'An order must have at least one document.' : dup.items.some((x) => dsSel[x.key]) ? 'Use Delete in the selection bar' : 'Delete',
+        dsDel: () => { if ((dsCount <= 1 && paid) || dup.items.some((x) => (this.state.dsSel || {})[x.key])) return; this.setState({ dsDel: { keys: [it.key], all: dsCount <= 1 } }); },
         cpTitle: 'Document ' + (i + 1) + ' \u2022 ' + (descText || 'Document'),
         cpStatus: !cu ? '' : !copy ? (readiness === 'Upload Missing' ? 'Upload missing' : readiness === 'Information Missing' ? (digital ? 'Incomplete' : 'Missing Information') : 'Ready') : miss.filter((m) => m !== 'Documents not uploaded').length ? (digital ? 'Incomplete' : 'Missing Information') : (digital && !it.files.length) ? 'Upload missing' : 'Ready',
         cpCanCopy: !paid || (!!paid.qr && paid.status === 'Draft'),

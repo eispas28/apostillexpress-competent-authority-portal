@@ -417,7 +417,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
           <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--ax-space-4)">
             <div>
               
-              <h1 style="margin:var(--ax-space-1-5) 0 0;font-size:1.5rem;font-weight:600;color:var(--ax-text-primary)">Reports</h1>
+              <h1 style="margin: var(--ax-space-1-5) 0 0; font-size: 1.5rem; font-weight: 600; color: var(--ax-text-primary)">Reports</h1>
               <p style="margin:var(--ax-space-2) 0 0;font-size:var(--ax-text-sm);color:var(--ax-text-secondary)"><span style="caret-color: rgb(115, 115, 115); color: rgb(115, 115, 115); font-family: Roboto, sans-serif; font-size: 0.8125rem; background-color: rgb(250, 251, 252);">Financial &amp; Operational Activity</span></p>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-2)">
@@ -533,7 +533,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
         <div data-screen-label="User Management" style="display:flex;flex-direction:column;gap:var(--ax-space-5);width:100%;min-width:0">
           <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--ax-space-4)">
             <div style="min-width:17.5rem">
-              <h1 style="margin:0;font-size:1.5rem;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">User Management</h1>
+              <h1 style="margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; color: var(--ax-text-primary)">User Management</h1>
               <p style="margin:var(--ax-space-1-5) 0 0;font-size:0.9375rem;color:var(--ax-text-secondary);text-wrap:pretty">Here you can see manage all users, create new roles, and set permissions</p>
             </div>
             <sc-if value="{{ uCanInvite }}" hint-placeholder-val="{{ true }}">
@@ -3117,9 +3117,9 @@ a:hover{color:#00B6BD;text-decoration:underline}
                 <div style="flex:1;display:flex;justify-content:flex-end"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="lg" onClick="{{ dupCheckout }}" hint-size="auto,48px">Checkout</x-import></div>
               </sc-if>
               <sc-if value="{{ dupPaid }}" hint-placeholder-val="{{ false }}">
-                <div style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:var(--ax-space-4);width:100%">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:var(--ax-space-4);width:100%">
                   <div style="justify-self:start"><span style="font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty;max-width:18.75rem;text-align:left">{{ dupPaidProgress }}</span></div>
-                  <div style="justify-self:center"><sc-if value="{{ dupQrDraft }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:var(--ax-space-3)"><label for="ax-cpb-n2" style="font-size:0.9375rem;font-weight:500;color:var(--ax-text-primary);white-space:nowrap">Create additional copies</label><div style="display:inline-flex;align-items:center;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:#fff;box-shadow:var(--ax-shadow-xs)"><button type="button" onClick="{{ cpbMinus }}" disabled="{{ cpbMinusOff }}" aria-label="Fewer copies" style="border-radius:calc(var(--ax-radius-lg) - var(--ax-border-width)) 0 0 calc(var(--ax-radius-lg) - var(--ax-border-width));width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">—</button><input id="ax-cpb-n2" type="text" inputmode="numeric" value="{{ cpbN }}" onInput="{{ cpbType }}" aria-label="Additional copies" style="width:3rem;height:2.5rem;padding:0;border:none;border-left:var(--ax-border-width) solid var(--ax-gray-200);border-right:var(--ax-border-width) solid var(--ax-gray-200);text-align:center;font:inherit;font-size:var(--ax-text-sm);font-weight:600;outline:none;background:var(--ax-gray-50);color:var(--ax-text-primary)"><span class="ca-tip" style="display:inline-flex"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="{{ cpbPlusTip }}" placement="top" hint-size="auto,auto"><button type="button" onClick="{{ cpbPlus }}" disabled="{{ cpbPlusOff }}" aria-label="{{ cpbPlusTip }}" style="border-radius:0 calc(var(--ax-radius-lg) - var(--ax-border-width)) calc(var(--ax-radius-lg) - var(--ax-border-width)) 0;width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">+</button></x-import></span></div></div></sc-if></div>
+                  <div style="justify-self:end"><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:var(--ax-space-3)"><label for="ax-cpb-n2" style="font-size:0.9375rem;font-weight:500;color:var(--ax-text-primary);white-space:nowrap">Create additional copies</label><div style="display:inline-flex;align-items:center;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:#fff;box-shadow:var(--ax-shadow-xs)"><button type="button" onClick="{{ cpbMinus }}" disabled="{{ cpbMinusOff }}" aria-label="Fewer copies" style="border-radius:calc(var(--ax-radius-lg) - var(--ax-border-width)) 0 0 calc(var(--ax-radius-lg) - var(--ax-border-width));width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">—</button><input id="ax-cpb-n2" type="text" inputmode="numeric" value="{{ cpbN }}" onInput="{{ cpbType }}" aria-label="Additional copies" style="width:3rem;height:2.5rem;padding:0;border:none;border-left:var(--ax-border-width) solid var(--ax-gray-200);border-right:var(--ax-border-width) solid var(--ax-gray-200);text-align:center;font:inherit;font-size:var(--ax-text-sm);font-weight:600;outline:none;background:var(--ax-gray-50);color:var(--ax-text-primary)"><span class="ca-tip" style="display:inline-flex"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="{{ cpbPlusTip }}" placement="top" hint-size="auto,auto"><button type="button" onClick="{{ cpbPlus }}" disabled="{{ cpbPlusOff }}" aria-label="{{ cpbPlusTip }}" style="border-radius:0 calc(var(--ax-radius-lg) - var(--ax-border-width)) calc(var(--ax-radius-lg) - var(--ax-border-width)) 0;width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">+</button></x-import></span></div></div></sc-if></div>
                   <div style="display:flex;align-items:center;justify-content:flex-end;gap:var(--ax-space-3)">
                   <sc-if value="{{ dupNotQr }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="lg" disabled="{{ dupBlocked }}" onClick="{{ dupFinalize }}" hint-size="auto,48px">Finalize Order</x-import></sc-if>
                   <sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}">
@@ -3457,7 +3457,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
             <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--ax-space-3) var(--ax-space-4);position:sticky;bottom:0.75rem;z-index:30;margin-bottom:0.75rem;padding:var(--ax-space-3) var(--ax-space-5);border-radius:var(--ax-radius-xl);background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(0.75rem);backdrop-filter:blur(0.75rem);box-shadow:0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12)">
               <div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:var(--ax-space-2)"><sc-if value="{{ dsAllPicked }}" hint-placeholder-val="{{ false }}"><div role="alert" style="align-self:center;display:flex;align-items:center;gap:var(--ax-space-2);padding:var(--ax-space-3) var(--ax-space-4);border-radius:var(--ax-radius-md);background:#FEF3F2;color:#B42318;font-size:var(--ax-text-sm);font-weight:500;box-shadow:0 0 0 0.0625rem #FECDCA"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>You can’t delete every document. At least one document is required.</div></sc-if><sc-if value="{{ dsBarOn }}" hint-placeholder-val="{{ false }}"><div role="region" aria-label="Document selection" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ax-space-3) var(--ax-space-4); padding: 0.875rem var(--ax-space-5); border-radius: var(--ax-radius-xl); background: #fff; box-shadow: 0 0 0 0.0625rem var(--ax-gray-200),0 0.5rem 1rem -0.25rem rgba(10,13,18,.12); flex-direction: row"><div style="display:flex;align-items:center;gap:var(--ax-space-8)"><span role="status" aria-live="polite" style="font-size: 0.88rem; color: #212529"><b style="font-weight:600;color:var(--ax-text-primary)">{{ dsSelCount }}</b><span class="ca-sr"> {{ dsSelNoun }}</span><span aria-hidden="true"> selected</span></span><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsSelAll }}" hint-size="auto,40px">{{ dsSelAllLabel }}</x-import></div><div style="display:flex;align-items:center;gap:var(--ax-space-6)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="tertiary" size="md" onClick="{{ dsClear }}" hint-size="auto,40px">Clear</x-import><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="danger" size="md" leading-icon="{{ iconTrash }}" disabled="{{ dsAllPicked }}" onClick="{{ dsAskSel }}" hint-size="auto,40px">{{ dsDelLabel }}</x-import></div></div></sc-if></div>
               <span style="font-size:0.8438rem;color:var(--ax-text-secondary);text-wrap:pretty">{{ dupPaidProgress }}</span>
-<sc-if value="{{ dupNotQr }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ dupBlocked }}" onClick="{{ dupFinalize }}" hint-size="auto,40px">Finalize Order</x-import></sc-if><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.625rem"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ dupCheckout }}" hint-size="auto,40px">Checkout</x-import></div></sc-if>
+<sc-if value="{{ dupNotQr }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" disabled="{{ dupBlocked }}" onClick="{{ dupFinalize }}" hint-size="auto,40px">Finalize Order</x-import></sc-if><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-4)"><div style="display:flex;align-items:center;gap:var(--ax-space-3)"><label for="ax-cpb-n5" style="font-size:0.9375rem;font-weight:500;color:var(--ax-text-primary);white-space:nowrap">Create additional copies</label><div style="display:inline-flex;align-items:center;border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-lg);background:#fff;box-shadow:var(--ax-shadow-xs)"><button type="button" onClick="{{ cpbMinus }}" disabled="{{ cpbMinusOff }}" aria-label="Fewer copies" style="border-radius:calc(var(--ax-radius-lg) - var(--ax-border-width)) 0 0 calc(var(--ax-radius-lg) - var(--ax-border-width));width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">—</button><input id="ax-cpb-n5" type="text" inputmode="numeric" value="{{ cpbN }}" onInput="{{ cpbType }}" aria-label="Additional copies" style="width:3rem;height:2.5rem;padding:0;border:none;border-left:var(--ax-border-width) solid var(--ax-gray-200);border-right:var(--ax-border-width) solid var(--ax-gray-200);border-radius:0;box-shadow:none;text-align:center;font:inherit;font-size:var(--ax-text-sm);font-weight:600;outline:none;background:var(--ax-gray-50);color:var(--ax-text-primary)"><span class="ca-tip" style="display:inline-flex"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Tooltip" label="{{ cpbPlusTip }}" placement="top" hint-size="auto,auto"><button type="button" onClick="{{ cpbPlus }}" disabled="{{ cpbPlusOff }}" aria-label="{{ cpbPlusTip }}" style="border-radius:0 calc(var(--ax-radius-lg) - var(--ax-border-width)) calc(var(--ax-radius-lg) - var(--ax-border-width)) 0;width:2.5rem;height:2.5rem;border:none;background:#fff;font-size:var(--ax-text-lg);color:var(--ax-text-primary);cursor:pointer" style-disabled="color:var(--ax-gray-300);cursor:not-allowed">+</button></x-import></span></div></div><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="primary" size="md" onClick="{{ dupCheckout }}" hint-size="auto,40px">Checkout</x-import></div></sc-if>
             </div>
           </sc-if>
 
@@ -3994,7 +3994,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
       <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
         <div data-screen-label="My Profile" style="display:flex;flex-direction:column;gap:var(--ax-space-5);width:100%">
           <div>
-            <h1 style="margin:0;font-size:1.5rem;font-weight:600;letter-spacing:-.01em;color:var(--ax-text-primary)">My Profile</h1>
+            <h1 style="margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; color: var(--ax-text-primary)">My Profile</h1>
             <p style="margin:var(--ax-space-2) 0 0;font-size:0.9375rem;color:var(--ax-text-secondary)">Personalize and Secure Your Account</p>
           </div>
 
@@ -4905,14 +4905,12 @@ a:hover{color:#00B6BD;text-decoration:underline}
         </sc-if>
       </main>
 
-      <footer style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--ax-space-3) var(--ax-space-6);width:100%;padding:var(--ax-space-5) var(--ax-space-8) var(--ax-space-6);font-size:var(--ax-text-sm);color:rgba(255,255,255,.8);background:#0D5257;flex-shrink:0">
-        <span>Copyright © 2026 @Gov</span>
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--ax-space-6)">
+      <footer style="display: flex; flex-wrap: wrap; gap: var(--ax-space-3) var(--ax-space-6); width: 100%; padding: var(--ax-space-5) var(--ax-space-8) var(--ax-space-6); font-size: var(--ax-text-sm); color: rgba(255,255,255,.8); background: #0D5257; flex-shrink: 0; justify-content: flex-end">
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--ax-space-6); justify-content: flex-end">
           <a href="https://apostille-xpress.com/terms-conditions/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff;text-decoration:underline">Terms &amp; Conditions</a>
           <a href="https://apostille-xpress.com/contact/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff;text-decoration:underline">Contact Us</a>
-          <span style="display:inline-flex;align-items:center;gap:var(--ax-space-2)">Powered by
-            <img src="assets/ax-gov-color.svg" alt="@Gov" style="display:block;height:1.375rem;width:auto;filter:brightness(0) invert(1);opacity:.9">
-          </span>
+          
         </div>
       </footer>
       </sc-if>
@@ -5476,7 +5474,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
   </sc-if>
 
   <sc-if value="{{ dsDelOpen }}" hint-placeholder-val="{{ false }}">
-    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Modal" open="{{ true }}" onClose="{{ dsDelCancel }}" title="{{ dsDelTitle }}" width="25rem" hint-size="100%,100%">
+    <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Modal" open="{{ true }}" onClose="{{ dsDelCancel }}" title="{{ dsDelTitle }}" width="30rem" hint-size="100%,100%">
       {{ dsDelText }}
       <div style="display:flex;justify-content:flex-end;gap:0.625rem;margin:var(--ax-space-4) -1.5rem -1.25rem;padding:var(--ax-space-4) var(--ax-space-6);border-top:var(--ax-border-width) solid var(--ax-border-subtle);background:var(--ax-gray-25)">
           <x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="secondary" size="md" disabled="{{ dsDelBusy }}" onClick="{{ dsDelCancel }}" hint-size="auto,40px">Keep Editing</x-import>
@@ -5564,7 +5562,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </div>
           </sc-if>
           <sc-if value="{{ eoiBnDoc }}" hint-placeholder-val="{{ false }}">
-            <div role="alert" style="position:relative;display:flex;gap:var(--ax-space-4);margin-bottom:var(--ax-space-4);padding:var(--ax-space-5) var(--ax-space-12) var(--ax-space-5) var(--ax-space-5);border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:var(--ax-shadow-xs)">
+            <div role="alert" style="position: relative; display: flex; gap: var(--ax-space-4); margin-bottom: var(--ax-space-4); padding: var(--ax-space-5) var(--ax-space-12) var(--ax-space-5) var(--ax-space-5); border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: var(--ax-radius-xl); background: #fff">
               <i class="bi bi-exclamation-circle" aria-hidden="true" style="flex-shrink:0;margin-top:var(--ax-space-0-5);font-size:var(--ax-text-xl);color:#D92D20"></i>
               <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);min-width:0">
                 <div style="font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary)">Document information needed</div>
@@ -5587,7 +5585,7 @@ a:hover{color:#00B6BD;text-decoration:underline}
             </div>
           </sc-if>
           <sc-if value="{{ eoiBnMail }}" hint-placeholder-val="{{ false }}">
-            <div role="alert" style="position:relative;display:flex;gap:var(--ax-space-4);margin-bottom:var(--ax-space-4);padding:var(--ax-space-5) var(--ax-space-12) var(--ax-space-5) var(--ax-space-5);border:var(--ax-border-width) solid var(--ax-gray-200);border-radius:var(--ax-radius-xl);background:#fff;box-shadow:var(--ax-shadow-xs)">
+            <div role="alert" style="position: relative; display: flex; gap: var(--ax-space-4); margin-bottom: var(--ax-space-4); padding: var(--ax-space-5) var(--ax-space-12) var(--ax-space-5) var(--ax-space-5); border: var(--ax-border-width) solid var(--ax-gray-200); border-radius: var(--ax-radius-xl); background: #fff">
               <i class="bi bi-exclamation-circle" aria-hidden="true" style="flex-shrink:0;margin-top:var(--ax-space-0-5);font-size:var(--ax-text-xl);color:#D92D20"></i>
               <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);min-width:0">
                 <div style="font-size:0.9375rem;font-weight:600;color:var(--ax-text-primary)">Mailing address needed</div>
@@ -7914,7 +7912,7 @@ class Component extends DCLogic {
       showTitle: !s.collapsed,
       items: sec.items.map(([k, label, icon]) => {
         const isAdmin = k === 'admin';
-        const fromOrders = s.screen === 'create' && s.pay && s.pay.stage === 'dup' && s.dup && s.dup.paid;
+        const fromOrders = ['overview', 'child', 'bulk', 'revoke'].indexOf(s.screen) >= 0 || (s.screen === 'create' && s.pay && s.pay.stage === 'dup' && s.dup && s.dup.paid);
         const active = fromOrders ? k === 'orders' : s.screen === k || (isAdmin && adminChildren.some((c) => c[0] === s.screen));
         return {
           label, icon,
@@ -8601,7 +8599,10 @@ class Component extends DCLogic {
         items: sec.items.map(([k, label, icon]) => ({
           id: k, label,
           icon: k === 'dashboard' ? 'dashboard' : k === 'orders' ? 'order-management' : (window.axNavIcon ? window.axNavIcon(icon.replace('bi bi-', '')) : icon.replace('bi bi-', '')),
-          active: s.screen === k || (k === 'users' && s.screen === 'userDetail'),
+          /* Orders opened from Order Management (Pending Drop-Off / Mail-In / In-Person, overviews, child orders) keep that tab active. */
+          active: (['overview', 'child', 'bulk', 'revoke'].indexOf(s.screen) >= 0 || (s.screen === 'create' && s.pay && s.pay.stage === 'dup' && s.dup && s.dup.paid))
+            ? k === 'orders'
+            : s.screen === k || (k === 'users' && s.screen === 'userDetail'),
         })),
       })),
       sideNavGo: (item) => {

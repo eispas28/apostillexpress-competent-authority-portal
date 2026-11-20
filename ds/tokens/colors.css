@@ -159,9 +159,9 @@
   /* Text */
   --ax-text-primary:    var(--ax-gray-900);   /* #212529 body */
   --ax-text-secondary:  var(--ax-gray-700);
-  --ax-text-tertiary:   var(--ax-gray-600);
+  --ax-text-tertiary:   var(--ax-gray-700);
   --ax-text-disabled:   var(--ax-gray-500);
-  --ax-text-placeholder: var(--ax-gray-500);
+  --ax-text-placeholder: var(--ax-gray-700);
   --ax-text-brand:      var(--ax-sea-depths);
   --ax-text-on-brand:   var(--ax-white);
   --ax-text-error:      var(--ax-danger-600);

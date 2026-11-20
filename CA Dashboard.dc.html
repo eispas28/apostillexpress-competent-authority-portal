@@ -3008,7 +3008,7 @@ a:hover{color:#005A60;text-decoration:underline}
               <sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;padding:var(--ax-space-0-5) 0.625rem;border:var(--ax-border-width) solid #99D8CF;border-radius:var(--ax-radius-full);background:#E8F7F4;font-size:0.8125rem;font-weight:500;color:#0B5F54">In-Person</span></sc-if>
               <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span>
               <span style="font-size:0.8438rem;color:var(--ax-text-secondary);font-weight:700">Placed on {{ dupPaidPlaced }}</span>
-              <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" leading-icon="{{ iconPrint }}" onClick="{{ dupPrintForm }}" hint-size="auto,24px">Order Confirmation Form</x-import></sc-if>
+              <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span><sc-if value="{{ dupQrIdle }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" leading-icon="{{ iconDownload }}" onClick="{{ dupPrintForm }}" aria-label="Download Order Confirmation Form (PDF)" hint-size="auto,24px">Order Confirmation Form</x-import></sc-if><sc-if value="{{ dupFormBusy }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" disabled="{{ true }}" aria-busy="true" hint-size="auto,24px"><span style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Spinner" size="14" hint-size="14px,14px"></x-import>Preparing PDF…</span></x-import></sc-if><span role="status" aria-live="polite" class="ca-sr">{{ dupFormStatus }}</span>
               
             </div>
             <div role="status" style="display:flex;align-items:flex-start;gap:0.625rem;padding:0.875rem var(--ax-space-4);margin-bottom:var(--ax-space-4);border:var(--ax-border-width) solid #B2DDFF;border-radius:var(--ax-radius-lg);background:#EFF8FF">
@@ -3153,7 +3153,7 @@ a:hover{color:#005A60;text-decoration:underline}
                   
                   <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span>
                   <span style="font-size: 0.8438rem; color: var(--ax-text-secondary); font-weight: 700">Placed on {{ dupPaidPlaced }}</span>
-              <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span><sc-if value="{{ dupQr }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" leading-icon="{{ iconPrint }}" onClick="{{ dupPrintForm }}" hint-size="auto,24px">Order Confirmation Form</x-import></sc-if>
+              <span aria-hidden="true" style="width:0.0625rem;height:0.875rem;background:var(--ax-gray-300)"></span><sc-if value="{{ dupQrIdle }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" leading-icon="{{ iconDownload }}" onClick="{{ dupPrintForm }}" aria-label="Download Order Confirmation Form (PDF)" hint-size="auto,24px">Order Confirmation Form</x-import></sc-if><sc-if value="{{ dupFormBusy }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Button" variant="link" size="sm" disabled="{{ true }}" aria-busy="true" hint-size="auto,24px"><span style="display:inline-flex;align-items:center;gap:var(--ax-space-1-5)"><x-import component-from-global-scope="ApostilleXpressDesignSystem_141fbe.Spinner" size="14" hint-size="14px,14px"></x-import>Preparing PDF…</span></x-import></sc-if><span role="status" aria-live="polite" class="ca-sr">{{ dupFormStatus }}</span>
                   
                 </div>
               </sc-if>
@@ -10061,6 +10061,59 @@ class Component extends DCLogic {
     setTimeout(() => { if (document.getElementById('ax-print-root')) cleanup(); }, 60000);
   }
 
+  /* Prototype only: simulates downloading the In-Person Order Confirmation Form as a PDF.
+     Shows a short loading state, then saves a one-page PDF built in the browser. */
+  downloadConfirmForm(o) {
+    if (!o || this.state.cfDl) return;
+    this.setState({ cfDl: true });
+    clearTimeout(this._cfT);
+    this._cfT = setTimeout(() => {
+      try {
+        const asc = (x) => String(x == null || x === '' ? '-' : x).replace(/[–—]/g, '-').replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/·/g, '-').replace(/[^\x20-\x7E]/g, '').replace(/([\\()])/g, '\\$1');
+        const docs = o.docs || [], paper = docs.filter((k) => /Paper/i.test(k.delivery || '')).length, dig = docs.length - paper;
+        const L = []; let y = 740;
+        const t = (txt, size, x, bold) => { L.push('BT /' + (bold ? 'F2' : 'F1') + ' ' + size + ' Tf ' + x + ' ' + y + ' Td (' + asc(txt) + ') Tj ET'); };
+        const line = (gap) => { L.push('0.6 0.64 0.72 RG 0.5 w 54 ' + (y - 6) + ' m 558 ' + (y - 6) + ' l S'); y -= gap || 0; };
+        t('IN-PERSON ORDER CONFIRMATION', 18, 54, true); y -= 18;
+        t('Delmarva Secretary of State - Apostille Services - Generated ' + new Date().toLocaleString('en-US'), 9, 54); y -= 30;
+        t('ORDER', 11, 54, true); line(22);
+        [['Order number', o.id], ['Order type', 'In-Person'], ['Status', o.status], ['Documents', docs.length + ' (' + dig + ' digital, ' + paper + ' paper)']].forEach(([k, v]) => { t(k, 10, 54); t(v, 10, 210, true); y -= 16; });
+        y -= 12; t('REQUESTOR', 11, 54, true); line(22);
+        [['Name', o.requestor], ['Organization', o.org], ['Email', o.email]].forEach(([k, v]) => { t(k, 10, 54); t(v, 10, 210, true); y -= 16; });
+        y -= 12; t('DOCUMENTS', 11, 54, true); line(22);
+        t('#', 9, 54, true); t('Document', 9, 74, true); t('Delivery', 9, 300, true); t('Service', 9, 410, true); t('Request', 9, 480, true); y -= 16;
+        docs.slice(0, 22).forEach((k, i) => { t(String(i + 1), 9, 54); t(String(k.name || '').slice(0, 40), 9, 74); t(/Paper/i.test(k.delivery || '') ? 'Paper' : 'Digital (e-Apostille)', 9, 300); t(k.service, 9, 410); t(String(k.request || '').slice(0, 16), 9, 480); y -= 15; });
+        y -= 14; t('Please present this form, the original documents and a valid photo ID at your appointment.', 8, 54); y -= 12;
+        t('Fees for any documents not paid online are due at the appointment.', 8, 54); y -= 50;
+        L.push('0 0 0 RG 0.6 w 54 ' + y + ' m 214 ' + y + ' l S 230 ' + y + ' m 390 ' + y + ' l S 406 ' + y + ' m 558 ' + y + ' l S'); y -= 12;
+        t('Requestor signature', 8, 54); t('Date', 8, 230); t('CA staff initials', 8, 406);
+        const stream = L.join('\n');
+        const objs = [
+          '<< /Type /Catalog /Pages 2 0 R >>',
+          '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+          '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>',
+          '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+          '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>',
+          '<< /Length ' + stream.length + ' >>\nstream\n' + stream + '\nendstream',
+        ];
+        let pdf = '%PDF-1.4\n'; const off = [];
+        objs.forEach((b, i) => { off.push(pdf.length); pdf += (i + 1) + ' 0 obj\n' + b + '\nendobj\n'; });
+        const xref = pdf.length;
+        pdf += 'xref\n0 ' + (objs.length + 1) + '\n0000000000 65535 f \n' + off.map((n) => String(n).padStart(10, '0') + ' 00000 n \n').join('');
+        pdf += 'trailer\n<< /Size ' + (objs.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF';
+        const url = URL.createObjectURL(new Blob([pdf], { type: 'application/pdf' }));
+        const a = document.createElement('a'); a.href = url; a.download = 'Order-Confirmation-' + String(o.id || '').replace(/[^\w-]/g, '') + '.pdf';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+        this.setState({ cfDl: false });
+        this.flash('Order-Confirmation-' + String(o.id || '').replace(/[^\w-]/g, '') + '.pdf was saved to your downloads.', 'Confirmation form downloaded', null, 'success');
+      } catch (e) {
+        this.setState({ cfDl: false });
+        this.flash('The confirmation form could not be downloaded. Try again.', 'Download failed', null, 'error');
+      }
+    }, 1600);
+  }
+
   printInPersonForm(o) {
     if (!o) return;
     const esc = (x) => String(x == null || x === '' ? '\u2014' : x).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -14265,7 +14318,9 @@ pcPrint: () => window.print(),
       dupCopyAdd: addCopy, dupCopyAddDisabled: false,
       dupPaidCopy: () => { this.setState((st) => ({ dup: { items: st.dup.items.map((it) => this.cloneItem(it)), open: 0, copy: true } })); this.flash('A new draft was created from this order. Uploaded files are not copied.', 'Copy Order'); },
       dupTitle: paid ? 'Order Overview ' + paid.id : copy ? 'Copy Order' : 'Duplicated Order',
-      dupPrintForm: () => this.printInPersonForm(paid),
+      dupPrintForm: () => this.downloadConfirmForm(paid),
+      dupQrIdle: !!(paid && paid.qr) && !s.cfDl, dupFormBusy: !!(paid && paid.qr) && !!s.cfDl,
+      dupFormStatus: s.cfDl ? 'Preparing the Order Confirmation Form…' : '',
       dupQr: !!(paid && paid.qr), dupQrDraft: !!(paid && paid.qr && paid.status === 'Draft'), dupNotQr: !(paid && paid.qr),
       dupStatusLabel: 'Incomplete',
       dupStatusBorder: '#B9A3DC', dupStatusBg: '#F5F1FB', dupStatusInk: '#4C2A85',
